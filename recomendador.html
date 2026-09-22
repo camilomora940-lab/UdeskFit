@@ -1,0 +1,3611 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>UdeskFit UdeC — ¿Qué equipo necesito para mi carrera?</title>
+  <meta name="description"
+    content="Descubre qué laptop, tablet, calculadora y accesorios necesitas según tu carrera en la Universidad de Concepción." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      /* =========================================================
+         COLORES INSTITUCIONALES UNIVERSIDAD DE CONCEPCIÓN
+         Fuente: Manual de Normas Gráficas UdeC (normasgraficas.udec.cl)
+         ========================================================= */
+      --udec-azul: #223c6a;
+      /* PANTONE 541 C - RGB(34, 60, 106) - CMYK(93, 88, 42, 7) */
+      --udec-amarillo: #e69b0a;
+      /* PANTONE 130 C - RGB(230, 155, 10) - CMYK(14, 47, 94, 0) */
+      --udec-rojo: #d21428;
+      /* PANTONE 485 C - RGB(210, 20, 40) - CMYK(19, 98, 88, 0) */
+      --udec-gris: #a0a0a0;
+      /* PANTONE Cool Grey 6C - RGB(160, 160, 160) - CMYK(44, 33, 34, 0) */
+      --udec-negro: #1d1d1b;
+      /* Negro institucional */
+      --udec-blanco: #ffffff;
+      /* Blanco */
+
+      /* Identidad GIIA & UdeC */
+      --giia-blue: #223c6a;
+      --giia-gold: #e69b0a;
+      --giia-gradient: linear-gradient(135deg, #1d4ed8 0%, #223c6a 60%, #e69b0a 100%);
+
+      /* UI System Institucional - Fondo Blanco (Normas Gráficas UdeC) */
+      --bg: #ffffff;
+      --bg2: #f8fafc;
+      --surface: #ffffff;
+      --surface2: #f8fafc;
+      --surface3: #f1f5f9;
+      --border: #e2e8f0;
+      --border2: #cbd5e1;
+      --border-subtle: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+      --accent: #223c6a;
+      --accent2: #1e3a8a;
+      --accent-blue: #223c6a;
+      --gold: #e69b0a;
+      --gold2: #d97706;
+      --silver: #64748b;
+      --eco: #059669;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --radius-xs: 8px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Tipografía de cuerpo: Roboto (oficial según manual de normas gráficas UdeC) */
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      transition: max-width 0.3s ease;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: inherit;
+      background: transparent;
+      min-height: unset;
+      box-sizing: border-box;
+    }
+
+    /* Tipografía de títulos y destacados: Poppins (oficial según manual de normas gráficas UdeC) */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .hero-eyebrow,
+    .logo-name,
+    .ai-chat-title,
+    .info-card-title,
+    .laptop-name,
+    .field-label,
+    .sec-title,
+    .result-title,
+    .tier-badge,
+    .motto-badge,
+    .search-btn,
+    .cta-btn,
+    .budget-chip,
+    .app-brand-name,
+    .giia-brand-title,
+    .result-sub,
+    .panel-title,
+    .score-num,
+    .spec-key,
+    .btn-fit-toggle {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .glow-bg {
+      display: none;
+    }
+
+    /* ─── UDEC & GIIA HEADER (FONDO BLANCO INSTITUCIONAL) ─── */
+    header {
+      position: relative;
+      z-index: 50;
+      padding: 14px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(34, 60, 106, 0.05);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Barra tricolor superior oficial UdeC (Azul 541 C, Amarillo 130 C, Rojo 485 C) */
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #223c6a 0%, #223c6a 60%, #e69b0a 60%, #e69b0a 88%, #d21428 88%, #d21428 100%);
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .udec-brand-pill {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      padding: 4px 10px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .udec-brand-pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(34, 60, 106, 0.12);
+    }
+
+    .udec-escudo-img {
+      height: 28px;
+      width: 28px;
+      object-fit: contain;
+      margin-right: 6px;
+    }
+
+    .udec-brand-img {
+      height: 28px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .brand-divider {
+      width: 1px;
+      height: 24px;
+      background: var(--border);
+    }
+
+    .giia-brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .giia-brand-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .giia-brand-img {
+      height: 30px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(34, 60, 106, 0.15));
+    }
+
+    .giia-brand-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .giia-brand-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      background: var(--giia-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .giia-brand-sub {
+      font-size: 0.65rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .app-brand-box {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      padding-left: 2px;
+    }
+
+    .app-brand-name {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--udec-azul);
+    }
+
+    .app-brand-name span {
+      color: var(--udec-amarillo);
+    }
+
+    .app-brand-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: rgba(230, 155, 10, 0.12);
+      color: #b45309;
+      border: 1px solid rgba(230, 155, 10, 0.4);
+      padding: 1px 7px;
+      border-radius: 99px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cna-header-img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .motto-badge {
+      font-style: italic;
+      font-size: 0.74rem;
+      color: var(--udec-azul);
+      background: rgba(230, 155, 10, 0.12);
+      border: 1px solid rgba(230, 155, 10, 0.35);
+      padding: 4px 12px;
+      border-radius: 99px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      font-weight: 500;
+    }
+
+    .badge-loc {
+      font-size: .75rem;
+      color: #475569;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 5px 12px;
+    }
+
+    /* ── MODO REAJUSTE A LA VENTANA ── */
+    .btn-fit-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f8fafc;
+      border: 1px solid var(--border2);
+      color: var(--udec-azul);
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-fit-toggle:hover {
+      background: #f1f5f9;
+      border-color: var(--udec-azul);
+      color: var(--udec-azul);
+      transform: translateY(-1px);
+    }
+
+    .btn-fit-toggle.active {
+      background: var(--udec-azul);
+      color: #ffffff;
+      border-color: var(--udec-azul);
+      box-shadow: 0 2px 8px rgba(34, 60, 106, 0.25);
+    }
+
+    body.fit-window .search-wrap {
+      max-width: 95vw !important;
+    }
+
+    body.fit-window #resultsArea {
+      max-width: 95vw !important;
+    }
+
+    body.fit-window .hero h1 {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+    }
+
+    body.fit-window .laptop-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    body.fit-window .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    @media (max-width: 900px) {
+      .cna-header-img {
+        display: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .motto-badge {
+        display: none;
+      }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 56px 24px 0;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 60, 106, 0.06);
+      border: 1px solid rgba(34, 60, 106, 0.18);
+      border-radius: 99px;
+      padding: 6px 18px;
+      font-size: .8rem;
+      color: var(--udec-azul);
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--udec-azul);
+    }
+
+    .hero p {
+      color: #475569;
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+
+    /* ─── SEARCH CARD (TARJETA BLANCA LIMPIA) ─── */
+    .search-wrap {
+      position: relative;
+      z-index: 20;
+      padding: 0 24px;
+      max-width: 860px;
+      margin: -8px auto 0;
+    }
+
+    .search-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 32px 28px;
+      box-shadow: 0 10px 35px rgba(34, 60, 106, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .search-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    @media(max-width:700px) {
+      .search-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field-label {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--udec-azul);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .field-select {
+      width: 100%;
+      height: 48px;
+      min-height: 48px;
+      max-height: 48px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-xs);
+      padding: 0 36px 0 14px;
+      color: #1e293b;
+      font-size: .92rem;
+      outline: none;
+      transition: all .2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .field-select:focus {
+      border-color: var(--udec-azul);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(34, 60, 106, 0.12);
+    }
+
+    .select-wrap {
+      position: relative;
+    }
+
+    .select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--udec-azul);
+      pointer-events: none;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .budget-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .budget-chip {
+      flex: 1 1 0;
+      min-width: 80px;
+      height: 48px;
+      min-height: 48px;
+      max-height: 48px;
+      padding: 6px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-xs);
+      background: #f8fafc;
+      color: #475569;
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all .2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .budget-chip:hover {
+      border-color: var(--udec-azul);
+      color: var(--udec-azul);
+      background: #f1f5f9;
+    }
+
+    .budget-chip.active {
+      background: var(--udec-azul);
+      border-color: var(--udec-azul);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(34, 60, 106, 0.25);
+    }
+
+    .budget-sub {
+      display: block;
+      font-size: .66rem;
+      font-weight: 400;
+      opacity: .9;
+      margin-top: 2px;
+    }
+
+    .budget-chip.active .budget-sub {
+      color: var(--udec-amarillo);
+    }
+
+    .cta-btn,
+    .search-btn {
+      width: 100%;
+      height: 52px;
+      min-height: 52px;
+      max-height: 52px;
+      padding: 0 20px;
+      background: linear-gradient(135deg, #223c6a 0%, #172a4c 100%);
+      border: 1px solid #223c6a;
+      border-radius: var(--radius-xs);
+      color: #ffffff;
+      font-size: 1.02rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s ease;
+      letter-spacing: .02em;
+      margin-top: 18px;
+      box-shadow: 0 4px 16px rgba(34, 60, 106, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .cta-btn:hover,
+    .search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(230, 155, 10, 0.35);
+      background: linear-gradient(135deg, #e69b0a 0%, #d97706 100%);
+      border-color: #e69b0a;
+      color: #ffffff;
+    }
+
+    .cta-btn:active,
+    .search-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ─── RESULTS AREA ─── */
+    #resultsArea {
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      display: none;
+    }
+
+    #resultsArea.visible {
+      display: block;
+    }
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .result-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--udec-azul);
+    }
+
+    .result-title span {
+      color: var(--udec-amarillo);
+    }
+
+    .result-sub {
+      font-size: .88rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .reset-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 99px;
+      padding: 8px 18px;
+      color: #475569;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .reset-btn:hover {
+      color: var(--udec-azul);
+      border-color: var(--udec-azul);
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(34, 60, 106, 0.1);
+    }
+
+    .sec-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--udec-azul);
+    }
+
+    .sec-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    /* ─── LAPTOPS GRID & CARDS (FONDO BLANCO) ─── */
+    .laptop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .laptop-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      transition: all .3s ease;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(34, 60, 106, 0.06);
+    }
+
+    .laptop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(34, 60, 106, 0.12);
+      border-color: rgba(34, 60, 106, 0.25);
+    }
+
+    .laptop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .laptop-card.tier-ideal::before {
+      background: linear-gradient(90deg, var(--udec-amarillo), #f59e0b);
+    }
+
+    .laptop-card.tier-balance::before {
+      background: linear-gradient(90deg, var(--udec-azul), #3b82f6);
+    }
+
+    .laptop-card.tier-eco::before {
+      background: linear-gradient(90deg, var(--eco), #10b981);
+    }
+
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .tier-ideal .tier-badge {
+      background: rgba(230, 155, 10, .14);
+      color: #b45309;
+      border: 1px solid rgba(230, 155, 10, .35);
+    }
+
+    .tier-balance .tier-badge {
+      background: rgba(34, 60, 106, .08);
+      color: var(--udec-azul);
+      border: 1px solid rgba(34, 60, 106, .22);
+    }
+
+    .tier-eco .tier-badge {
+      background: rgba(5, 150, 105, .1);
+      color: #047857;
+      border: 1px solid rgba(5, 150, 105, .25);
+    }
+
+    .laptop-name {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--udec-azul);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .laptop-price {
+      font-size: .88rem;
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+
+    .laptop-price strong {
+      color: #0f172a;
+      font-size: 1.05rem;
+    }
+
+    .spec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .spec-key {
+      font-size: .72rem;
+      color: #64748b;
+      font-weight: 600;
+      min-width: 72px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      flex-shrink: 0;
+    }
+
+    .spec-val {
+      font-size: .84rem;
+      font-weight: 500;
+      color: #1e293b;
+    }
+
+    .why-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-xs);
+      padding: 14px;
+      font-size: .8rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .why-box strong {
+      color: var(--udec-azul);
+    }
+
+    /* ─── SOLOTODO LIVE SECTION (CHILE) ─── */
+    .solotodo-live-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 26px 24px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 20px rgba(34, 60, 106, 0.06);
+    }
+
+    .solotodo-live-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 18px;
+    }
+
+    .solotodo-live-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--udec-azul);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
+    .solotodo-live-sub {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .solotodo-count-pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: rgba(34, 60, 106, 0.07);
+      border: 1px solid rgba(34, 60, 106, 0.16);
+      color: var(--udec-azul);
+      padding: 5px 14px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+
+    .solotodo-filters-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .solotodo-cat-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+
+    .cat-tab {
+      padding: 7px 16px;
+      border-radius: 99px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .cat-tab:hover {
+      border-color: var(--udec-azul);
+      color: var(--udec-azul);
+      background: #ffffff;
+    }
+
+    .cat-tab.active {
+      background: var(--udec-azul);
+      color: #ffffff;
+      border-color: var(--udec-azul);
+      box-shadow: 0 3px 10px rgba(34, 60, 106, 0.22);
+    }
+
+    .solotodo-subfilters {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-xs);
+      padding: 10px 14px;
+    }
+
+    .solotodo-budget-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .subfilter-lbl {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      margin-right: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .budget-pill {
+      padding: 4px 11px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .budget-pill:hover {
+      border-color: var(--udec-amarillo);
+      color: var(--udec-azul);
+    }
+
+    .budget-pill.active {
+      background: rgba(230, 155, 10, 0.16);
+      color: #b45309;
+      border-color: var(--udec-amarillo);
+      font-weight: 700;
+    }
+
+    .solotodo-quick-search input {
+      padding: 6px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      outline: none;
+      width: 220px;
+      transition: border-color 0.2s;
+    }
+
+    .solotodo-quick-search input:focus {
+      border-color: var(--udec-azul);
+      box-shadow: 0 0 0 2px rgba(34, 60, 106, 0.12);
+    }
+
+    .solotodo-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 18px;
+    }
+
+    /* ST Product Card */
+    .st-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+
+    .st-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(34, 60, 106, 0.12);
+      border-color: rgba(34, 60, 106, 0.3);
+    }
+
+    .st-badge-row {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .st-badge-compat {
+      background: var(--udec-azul);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .st-img-box {
+      height: 170px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border-bottom: 1px solid #f1f5f9;
+      position: relative;
+    }
+
+    .st-img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform 0.25s ease;
+    }
+
+    .st-card:hover .st-img {
+      transform: scale(1.04);
+    }
+
+    .st-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .st-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--udec-azul);
+      line-height: 1.35;
+      margin-bottom: 8px;
+      min-height: 38px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .st-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .st-price {
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .st-price-normal {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    .st-specs-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .st-spec-pill {
+      font-size: 0.7rem;
+      background: #f1f5f9;
+      padding: 2px 7px;
+      border-radius: 5px;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .st-stores-sec {
+      margin-top: auto;
+      border-top: 1px dashed #e2e8f0;
+      padding-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    .st-stores-title {
+      font-size: 0.66rem;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .st-stores-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .st-store-link {
+      font-size: 0.72rem;
+      color: var(--udec-azul);
+      background: rgba(34, 60, 106, 0.05);
+      border: 1px solid rgba(34, 60, 106, 0.12);
+      padding: 2px 7px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .st-store-link:hover {
+      background: var(--udec-azul);
+      color: #ffffff;
+    }
+
+    .st-btn {
+      width: 100%;
+      padding: 9px;
+      border-radius: var(--radius-xs);
+      background: var(--udec-azul);
+      color: #ffffff;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .st-btn:hover {
+      background: var(--udec-amarillo);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(230, 155, 10, 0.3);
+    }
+
+    .academic-guide-accordion {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 36px;
+    }
+
+    .academic-guide-accordion summary {
+      outline: none;
+    }
+
+
+    /* ─── SCORES & ALERTS ─── */
+    .scores-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .score-cell {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .score-num {
+      font-size: 1.7rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+      color: var(--udec-azul);
+    }
+
+    .score-lbl {
+      font-size: .7rem;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .score-lv {
+      font-size: .68rem;
+      font-weight: 600;
+      margin-top: 3px;
+      color: #0f172a;
+    }
+
+    .alert-banner {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      border-radius: var(--radius-xs);
+      margin-bottom: 28px;
+      font-size: .88rem;
+      line-height: 1.55;
+      background: rgba(34, 60, 106, 0.04);
+      border-left: 4px solid var(--udec-amarillo);
+      border-top: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      color: #334155;
+    }
+
+    .alert-banner strong {
+      color: var(--udec-azul);
+    }
+
+    .alert-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── ACCESSORIES & TABLETS ─── */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(34, 60, 106, 0.05);
+    }
+
+    .info-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .info-icon.purple {
+      background: rgba(34, 60, 106, .08);
+      border: 1px solid rgba(34, 60, 106, .15);
+    }
+
+    .info-icon.teal {
+      background: rgba(5, 150, 105, .1);
+      border: 1px solid rgba(5, 150, 105, .2);
+    }
+
+    .info-icon.amber {
+      background: rgba(230, 155, 10, .12);
+      border: 1px solid rgba(230, 155, 10, .25);
+    }
+
+    .info-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--udec-azul);
+    }
+
+    .info-card-sub {
+      font-size: .75rem;
+      color: #64748b;
+    }
+
+    .device-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .device-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .device-emoji {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .device-name {
+      font-size: .88rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 3px;
+    }
+
+    .device-reason {
+      font-size: .76rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .device-price-tag {
+      font-size: .74rem;
+      color: #047857;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .calc-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-xs);
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .calc-name {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--udec-azul);
+      margin-bottom: 4px;
+    }
+
+    .calc-why {
+      font-size: .78rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .calc-price {
+      font-size: .74rem;
+      color: #047857;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    /* ─── COMPONENT SPEC CARDS (TABLETS & PERIPHERALS) ─── */
+    .comp-spec-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #f1f5f9;
+    }
+
+    .comp-spec-row:last-child {
+      border-bottom: none;
+      padding-bottom: 4px;
+    }
+
+    .comp-spec-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .comp-spec-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--udec-azul);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .comp-spec-desc {
+      font-size: 0.77rem;
+      color: #475569;
+      line-height: 1.48;
+      margin-top: 2px;
+    }
+
+    .comp-pill-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .comp-pill-must {
+      background: rgba(239, 68, 68, 0.1);
+      color: #b91c1c;
+      border: 1px solid rgba(239, 68, 68, 0.22);
+    }
+
+    .comp-pill-rec {
+      background: rgba(34, 60, 106, 0.08);
+      color: var(--udec-azul);
+      border: 1px solid rgba(34, 60, 106, 0.18);
+    }
+
+    .comp-pill-opt {
+      background: rgba(100, 116, 139, 0.1);
+      color: #475569;
+      border: 1px solid rgba(100, 116, 139, 0.2);
+    }
+
+    .comp-models-ref {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-xs);
+      font-size: 0.74rem;
+      color: #475569;
+      line-height: 1.45;
+    }
+
+    /* ─── ESTÁNDARES ACADÉMICOS TEÓRICOS RECOMENDADOS ─── */
+    .academic-standards-block {
+      margin-top: 40px;
+      padding: 24px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    }
+
+    .academic-standards-header {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .standards-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(34, 60, 106, 0.08);
+      color: var(--udec-azul);
+      border: 1px solid rgba(34, 60, 106, 0.18);
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .standards-heading {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--udec-azul);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .standards-desc {
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.55;
+      max-width: 960px;
+    }
+
+    .academic-guide-accordion {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .academic-guide-accordion[open] {
+      border-color: rgba(34, 60, 106, 0.25);
+      box-shadow: 0 4px 14px rgba(34, 60, 106, 0.04);
+    }
+
+    .standards-summary {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.96rem;
+      color: var(--udec-azul);
+      outline: none;
+    }
+
+    .standards-summary-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .standards-accordion-tag {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 3px 10px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+
+    /* ─── ACOTACIÓN: QUÉ ES SOLOTODO ─── */
+    .solotodo-explainer-banner {
+      margin-top: 36px;
+      margin-bottom: 20px;
+      padding: 13px 18px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid var(--udec-amarillo);
+      border-radius: var(--radius-xs);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .solotodo-explainer-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .solotodo-badge-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(230, 155, 10, 0.12);
+      color: #b45309;
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 99px;
+      white-space: nowrap;
+      border: 1px solid rgba(230, 155, 10, 0.28);
+    }
+
+    .solotodo-explainer-text {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 0;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .solotodo-explainer-text strong {
+      color: var(--udec-azul);
+    }
+
+    .solotodo-explainer-text em {
+      font-style: normal;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .acc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .acc-item:last-child {
+      border-bottom: none;
+    }
+
+    .acc-emoji {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .acc-name {
+      font-size: .85rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+
+    .acc-reason {
+      font-size: .75rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    .acc-prio {
+      font-size: .66rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 3px;
+    }
+
+    .prio-must {
+      background: rgba(210, 20, 40, .1);
+      color: #b91c1c;
+      border: 1px solid rgba(210, 20, 40, .25);
+    }
+
+    .prio-rec {
+      background: rgba(230, 155, 10, .12);
+      color: #b45309;
+      border: 1px solid rgba(230, 155, 10, .3);
+    }
+
+    .prio-opt {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* ─── ANIMATIONS & SCROLLBAR ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .anim-1 {
+      animation: fadeUp .4s ease both;
+    }
+
+    .anim-2 {
+      animation: fadeUp .4s .08s ease both;
+    }
+
+    .anim-3 {
+      animation: fadeUp .4s .16s ease both;
+    }
+
+    .anim-4 {
+      animation: fadeUp .4s .24s ease both;
+    }
+
+    .anim-5 {
+      animation: fadeUp .4s .32s ease both;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 99px;
+    }
+
+    /* ─── FLOATING AI CHAT WIDGET ─── */
+    .ai-chat-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 48px;
+      min-height: 48px;
+      max-height: 48px;
+      padding: 0 20px;
+      background: #223c6a;
+      color: #ffffff;
+      border: 1px solid rgba(230, 155, 10, 0.8);
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(34, 60, 106, 0.35);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ai-chat-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(34, 60, 106, 0.45);
+      background: #172a4c;
+    }
+
+    .ai-chat-btn-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--udec-amarillo);
+      box-shadow: 0 0 10px var(--udec-amarillo);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+      }
+    }
+
+    .ai-chat-window {
+      position: fixed;
+      bottom: 86px;
+      right: 24px;
+      width: 420px;
+      max-width: calc(100vw - 32px);
+      height: 600px;
+      max-height: calc(100vh - 110px);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(34, 60, 106, 0.2), 0 2px 8px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transform: scale(0.92) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ai-chat-window.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .ai-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      background: #223c6a;
+      border-bottom: 2px solid var(--udec-amarillo);
+      color: #ffffff;
+    }
+
+    .ai-chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ai-chat-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid var(--udec-amarillo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ai-chat-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .ai-chat-status {
+      font-size: 0.72rem;
+      color: #86efac;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    .ai-chat-header-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .ai-chat-btn-icon {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.15s ease;
+    }
+
+    .ai-chat-btn-icon:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--udec-amarillo);
+    }
+
+    .ai-chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f8fafc;
+    }
+
+    .ai-msg {
+      max-width: 88%;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      animation: fadeMsg 0.2s ease;
+    }
+
+    @keyframes fadeMsg {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .ai-msg.user {
+      align-self: flex-end;
+      background: #223c6a;
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 16px 16px 4px 16px;
+      box-shadow: 0 2px 8px rgba(34, 60, 106, 0.2);
+    }
+
+    .ai-msg.assistant {
+      align-self: flex-start;
+      background: #ffffff;
+      color: #1e293b;
+      padding: 12px 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px 16px 16px 4px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .ai-msg.assistant strong {
+      color: var(--udec-azul);
+    }
+
+    .ai-msg.assistant a.chat-link {
+      color: var(--udec-azul);
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    .ai-msg.assistant a.chat-link:hover {
+      color: var(--udec-amarillo);
+    }
+
+    .ai-msg.system {
+      align-self: center;
+      font-size: 0.74rem;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 5px 12px;
+      border-radius: 99px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .ai-chat-typing {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 14px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px 16px 16px 4px;
+      width: fit-content;
+      align-self: flex-start;
+    }
+
+    .ai-typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--udec-azul);
+      animation: bounceDot 1.2s infinite ease-in-out;
+    }
+
+    .ai-typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .ai-typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounceDot {
+
+      0%,
+      80%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.5;
+      }
+
+      40% {
+        transform: translateY(-5px);
+        opacity: 1;
+      }
+    }
+
+    .ai-chat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .ai-chip {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: var(--udec-azul);
+      font-size: 0.74rem;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .ai-chip:hover {
+      background: var(--udec-azul);
+      border-color: var(--udec-azul);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .ai-chat-input-wrap {
+      padding: 12px 16px;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .ai-chat-input-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 6px 8px 6px 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .ai-chat-input-box:focus-within {
+      border-color: var(--udec-azul);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(34, 60, 106, 0.15);
+    }
+
+    .ai-chat-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #1e293b;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .ai-chat-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .ai-chat-send {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--udec-amarillo);
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .ai-chat-send:hover:not(:disabled) {
+      background: #d97706;
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(230, 155, 10, 0.4);
+    }
+
+    .ai-chat-send:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .ai-chat-footer-note {
+      font-size: 0.68rem;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    /* ─── UDEC & GIIA FOOTER (FONDO BLANCO INSTITUCIONAL) ─── */
+    .udec-footer {
+      position: relative;
+      z-index: 10;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 48px 24px 38px;
+      text-align: center;
+      color: #475569;
+    }
+
+    .udec-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #223c6a 0%, #223c6a 60%, #e69b0a 60%, #e69b0a 88%, #d21428 88%, #d21428 100%);
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-logos {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-motto {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--udec-azul);
+      letter-spacing: 0.03em;
+      font-weight: 600;
+    }
+
+    .footer-text {
+      font-size: 0.86rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .footer-text strong {
+      color: var(--udec-azul);
+    }
+
+    .footer-links {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+
+    .footer-links a {
+      color: var(--udec-azul);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--udec-amarillo);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow-bg"></div>
+
+  <header>
+    <div class="brand-cluster">
+      <a href="https://www.udec.cl" target="_blank" rel="noopener noreferrer" class="udec-brand-pill"
+        title="Universidad de Concepción">
+        <img src="assets/escudo_udec.png" alt="Escudo UdeC" class="udec-escudo-img" />
+        <img src="assets/logo_udec.png" alt="Universidad de Concepción" class="udec-brand-img" />
+      </a>
+      <span class="brand-divider"></span>
+      <a href="#" class="giia-brand-link" title="Grupo de Interés en Inteligencia Artificial">
+        <img src="assets/logo_giia.png" alt="GIIA" class="giia-brand-img" />
+        <div class="giia-brand-col">
+          <span class="giia-brand-title">GIIA</span>
+          <span class="giia-brand-sub">Inteligencia Artificial</span>
+        </div>
+      </a>
+      <span class="brand-divider"></span>
+      <div class="app-brand-box">
+        <span class="app-brand-name">U<span>Desk</span>Fit</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="btn-fit-toggle" id="btnFitToggle" onclick="toggleFitWindow()"
+        title="Alternar entre ancho estándar y reajuste fluido a la ventana">
+        <span id="fitToggleIcon">⛶</span> <span id="fitToggleText">Ajustar a ventana</span>
+      </button>
+      <img src="assets/cna_acreditacion.png" alt="Acreditación CNA 7 años" class="cna-header-img" />
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>¿Qué equipo necesitas<br />para tu carrera UdeC?</h1>
+    <p>Selecciona tu carrera de la Universidad de Concepción. Te diremos qué equipo buscar según el software real que
+      cursarás, por qué cada especificación importa.</p>
+  </div>
+  <div class="search-wrap">
+    <div class="search-card" id="searchCard">
+      <div class="search-grid">
+        <div class="field-group">
+          <label class="field-label">Carrera Universidad de Concepción</label>
+          <div class="select-wrap">
+            <select class="field-select" id="carreraSelect">
+              <option value="">— Selecciona tu carrera UdeC —</option>
+              <optgroup label="Facultad de Ingeniería">
+                <option value="ing_civil_industrial">Ingeniería Civil Industrial</option>
+                <option value="ing_civil_informatica">Ingeniería Civil Informática</option>
+                <option value="ing_mecanica">Ingeniería Mecánica</option>
+                <option value="ing_electrica">Ingeniería Civil Eléctrica / Electrónica</option>
+                <option value="ing_quimica">Ingeniería Civil Química</option>
+              </optgroup>
+              <optgroup label="Facultad de Arquitectura, Urbanismo y Geografía">
+                <option value="arquitectura">Arquitectura</option>
+                <option value="diseno_grafico">Diseño Gráfico / Visual</option>
+              </optgroup>
+              <optgroup label="Facultad de Medicina y Salud">
+                <option value="medicina">Medicina</option>
+                <option value="odontologia">Odontología</option>
+                <option value="enfermeria">Enfermería</option>
+                <option value="kinesiologia">Kinesiología</option>
+              </optgroup>
+              <optgroup label="Ciencias Jurídicas y Sociales">
+                <option value="derecho">Derecho</option>
+                <option value="psicologia">Psicología</option>
+                <option value="periodismo">Periodismo</option>
+              </optgroup>
+              <optgroup label="Ciencias Económicas y Administrativas">
+                <option value="ing_comercial">Ingeniería Comercial / Auditoría</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Presupuesto para Laptop</label>
+          <div class="budget-chips">
+            <button class="budget-chip" data-val="bajo" onclick="selectBudget(this)">Bajo<span
+                class="budget-sub">&lt;$400k</span></button>
+            <button class="budget-chip" data-val="medio" onclick="selectBudget(this)">Medio<span
+                class="budget-sub">$400k–$700k</span></button>
+            <button class="budget-chip active" data-val="alto" onclick="selectBudget(this)">Alto<span
+                class="budget-sub">$700k–$1.2M</span></button>
+            <button class="budget-chip" data-val="premium" onclick="selectBudget(this)">Premium<span
+                class="budget-sub">+$1.2M</span></button>
+          </div>
+        </div>
+      </div>
+      <button class="search-btn cta-btn" id="searchBtn" onclick="generateRec()">
+        <span>Obtener Recomendación Personalizada UdeC</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="resultsArea">
+    <div class="result-header anim-1">
+      <div>
+        <div class="result-title">Recomendación para <span id="resCarreraName"></span></div>
+        <div class="result-sub" id="resSubtitle"></div>
+      </div>
+      <button class="reset-btn" onclick="resetForm()">← Nueva búsqueda</button>
+    </div>
+    <div class="alert-banner anim-1">
+      <div class="alert-icon" style="font-weight:700;font-size:1.1rem;color:var(--udec-azul)">i</div>
+      <div id="resAlertText"></div>
+    </div>
+    <div class="scores-strip anim-2" id="scoresStrip"></div>
+
+    <!-- ESTÁNDARES ACADÉMICOS TEÓRICOS RECOMENDADOS POR CARRERA -->
+    <div class="academic-standards-block anim-3" id="academicStandardsBlock">
+      <div class="academic-standards-header">
+        <div class="standards-kicker">
+          <span>ESTÁNDARES ACADÉMICOS TEÓRICOS RECOMENDADOS POR CARRERA</span>
+        </div>
+        <h2 class="standards-heading">¿Qué tipo de componentes buscar en cada dispositivo?</h2>
+        <p class="standards-desc">
+          En lugar de fijarte en marcas o modelos comerciales específicos (cuyo catálogo y stock cambian continuamente
+          en el mercado chileno), aquí tienes la guía institucional de <strong>qué tipo de componentes técnicos y
+            tecnologías clave</strong> buscar en tu <strong>Notebook, Tablet, Calculadora y Periféricos</strong> según
+          las exigencias reales de tu carrera UdeC.
+        </p>
+      </div>
+
+      <!-- 1. NOTEBOOKS: COMPONENTES SEGÚN TIER -->
+      <details class="academic-guide-accordion" open>
+        <summary class="standards-summary">
+          <div class="standards-summary-title">
+            <span><strong>Notebooks:</strong> Especificaciones de Procesador, RAM, GPU, Pantalla y Batería</span>
+          </div>
+          <span class="standards-accordion-tag">Perfiles técnicos de hardware ▾</span>
+        </summary>
+        <div class="laptop-grid" id="laptopGrid" style="margin-top:20px;"></div>
+      </details>
+
+      <!-- 2. TABLETS, CALCULADORAS Y PERIFÉRICOS -->
+      <div class="standards-extras-wrap" style="margin-top:28px;">
+        <div class="sec-title" style="margin-bottom:12px;">
+          <span>Tablets · Calculadoras · Accesorios: Componentes Clave</span>
+        </div>
+        <div class="grid-3 anim-4" id="extraGrid"></div>
+      </div>
+    </div>
+
+    <!-- ACOTACIÓN: QUÉ ES SOLOTODO -->
+    <div class="solotodo-explainer-banner anim-4">
+      <div class="solotodo-explainer-inner">
+        <span class="solotodo-badge-mini">SoloTodo</span>
+        <p class="solotodo-explainer-text">
+          <strong>SoloTodo</strong> (<em>solotodo.cl</em>) es el comparador de hardware y tecnología independiente más
+          consultado de Chile. Rastrea y actualiza en tiempo real los precios, especificaciones y disponibilidad de las
+          principales tiendas del país (Falabella, Paris, PC Factory, Lenovo, Ripley, SP Digital, etc.), permitiéndote
+          revisar las opciones que cumplen con tus estándares académicos y comprar directamente en la tienda oficial más
+          económica, sin sobreprecios ni comisiones.
+        </p>
+      </div>
+    </div>
+
+    <!-- CATÁLOGO REAL SOLOTODO CHILE (EN VIVO) -->
+    <div class="solotodo-live-section anim-5" id="solotodoLiveSection">
+      <div class="solotodo-live-header">
+        <div>
+          <div class="solotodo-live-title">
+            <span class="live-dot"></span> Opciones Disponibles en SoloTodo Chile
+          </div>
+          <div class="solotodo-live-sub">
+            Dispositivos del mercado chileno que cumplen con los componentes técnicos y perfil de tu carrera, ordenados
+            con precios en tiendas oficiales.
+          </div>
+        </div>
+        <div class="solotodo-count-pill" id="solotodoResultsCount">
+          Cargando opciones...
+        </div>
+      </div>
+
+      <!-- Barra de Filtros: Categorías + Presupuesto + Búsqueda -->
+      <div class="solotodo-filters-bar">
+        <div class="solotodo-cat-tabs" id="solotodoCatTabs">
+          <button class="cat-tab active" data-cat="notebook"
+            onclick="setRecCategory('notebook', this)">Notebooks</button>
+          <button class="cat-tab" data-cat="tablet" onclick="setRecCategory('tablet', this)">Tablets</button>
+          <button class="cat-tab" data-cat="monitor" onclick="setRecCategory('monitor', this)">Monitores</button>
+          <button class="cat-tab" data-cat="periferico"
+            onclick="setRecCategory('periferico', this)">Periféricos</button>
+          <button class="cat-tab" data-cat="calculadora"
+            onclick="setRecCategory('calculadora', this)">Calculadoras</button>
+          <button class="cat-tab" data-cat="todos" onclick="setRecCategory('todos', this)">Ver Todo</button>
+        </div>
+
+        <div class="solotodo-subfilters">
+          <div class="solotodo-budget-pills" id="solotodoBudgetPills">
+            <span class="subfilter-lbl">Presupuesto:</span>
+            <button class="budget-pill" data-p="todos" onclick="setRecBudget('todos', this)">Todos</button>
+            <button class="budget-pill" data-p="bajo" onclick="setRecBudget('bajo', this)">Bajo (&lt;$450k)</button>
+            <button class="budget-pill" data-p="medio" onclick="setRecBudget('medio', this)">Medio
+              ($400k–$750k)</button>
+            <button class="budget-pill" data-p="alto" onclick="setRecBudget('alto', this)">Alto ($700k–$1.25M)</button>
+            <button class="budget-pill" data-p="premium" onclick="setRecBudget('premium', this)">Premium
+              (+$1.2M)</button>
+          </div>
+          <div class="solotodo-quick-search">
+            <input type="text" id="solotodoSearchText" placeholder="Filtrar por modelo, procesador, tienda..."
+              oninput="onRecSearchInput()" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Grilla de Productos SoloTodo -->
+      <div class="solotodo-products-grid" id="solotodoProductsGrid">
+        <div style="grid-column:1/-1;text-align:center;padding:50px 0;color:#64748b">
+          Cargando catálogo en tiempo real...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="udec-footer">
+    <div class="footer-inner">
+      <div class="footer-logos">
+        <a href="https://www.udec.cl" target="_blank" rel="noopener noreferrer" class="udec-brand-pill"
+          style="padding: 5px 12px;">
+          <img src="assets/escudo_udec.png" alt="Escudo UdeC"
+            style="height:26px;width:26px;object-fit:contain;margin-right:6px;" />
+          <img src="assets/logo_udec.png" alt="Universidad de Concepción" style="height:26px;" />
+        </a>
+        <img src="assets/logo_giia.png" alt="GIIA" style="height:32px;" />
+        <img src="assets/cna_acreditacion.png" alt="CNA Chile Acreditación 7 años" style="height:28px;" />
+      </div>
+      <div class="footer-motto">
+        «Por el desarrollo libre del espíritu»
+      </div>
+      <div class="footer-text">
+        Iniciativa del <strong>GIIA (Grupo de Interés en Inteligencia Artificial)</strong> · Universidad de Concepción ·
+        Concepción, Chile
+      </div>
+      <div class="footer-links">
+        <a href="recomendador.html">Asesor de Equipamiento</a> ·
+        <a href="https://www.udec.cl" target="_blank" rel="noopener noreferrer">Portal UdeC ↗</a> ·
+        <a href="https://normasgraficas.udec.cl" target="_blank" rel="noopener noreferrer">Manual de Normas Gráficas
+          ↗</a> ·
+        <a href="admin.html" style="opacity:.35;font-size:.7rem">Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var selectedBudget = 'alto';
+
+    function selectBudget(el) {
+      document.querySelectorAll('.budget-chip').forEach(function (c) { c.classList.remove('active'); });
+      el.classList.add('active');
+      selectedBudget = el.dataset.val;
+    }
+
+    var CAREERS = {
+      ing_civil_industrial: {
+        label: 'Ing. Civil Industrial', emoji: '',
+        alert: '<strong>Carrera cuantitativa:</strong> Usarás Python, R, MATLAB y simuladores como Simio. El cuello de botella real es la RAM — con 8GB tendrás freezes constantes al trabajar con datasets y simulaciones simultáneas.',
+        scores: { CPU: 7, RAM: 8, Storage: 7, GPU: 3, Battery: 7, Display: 6 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Python + Pandas', 'R + RStudio', 'Simio Simulation', 'Excel Solver', 'AutoCAD básico'],
+        laptops: {
+          ideal: { name: 'Lenovo ThinkBook 16 G6 / HP EliteBook 845', cpu: 'AMD Ryzen 7 7730U o Intel i7-1355U', ram: '16 GB DDR4 3200MHz', storage: 'SSD NVMe 512GB+', gpu: 'Radeon / Iris Xe integrada', battery: '~10-12 hrs', display: '16" FHD IPS Anti-glare', price: '$750.000 – $950.000', why: '16 GB son <strong>indispensables</strong> para correr MATLAB, RStudio y Arena al mismo tiempo. El Ryzen 7 7730U compila Python en la mitad del tiempo de un i5 de gama media. Anti-glare por las horas de pantalla.' },
+          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5 (Ryzen 5)', cpu: 'AMD Ryzen 5 7530U o Intel i5-1235U', ram: '16 GB DDR4 (actualizable)', storage: 'SSD NVMe 512GB', gpu: 'AMD Radeon Vega integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $700.000', why: 'Si viene con 8GB, <strong>actualiza a 16GB antes del primer semestre</strong> (~$35.000 extra). El SSD NVMe marca la diferencia: abrir RStudio tarda 8s vs 90s con HDD.' },
+          eco: { name: 'Equipo refurbished (Mínimo viable)', cpu: 'Intel i5 10ma gen o AMD Ryzen 5 4000', ram: '8 GB DDR4 → actualiza a 16GB', storage: 'SSD 256GB mínimo + disco externo', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$200.000–$380.000 + ~$50.000 mejoras', why: 'Compra refurbished y <strong>reemplaza el HDD por un SSD</strong> (~$40k) y agrega RAM. Esa inversión de $90k puede hacer funcionar un equipo de $250k tan bien como uno de $500k.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad (9a/10a gen) — Muy recomendada', reason: 'Apuntes en clases de estadística con Apple Pencil, anotar correcciones en mallas de procesos, leer papers. Complementa perfectamente la laptop.', price: '$230.000 – $380.000 CLP' },
+          { emoji: '', name: 'Samsung Galaxy Tab A8 — Económica', reason: 'Para leer apuntes y PDFs. Sin lápiz preciso pero cumple para estudio básico.', price: '$120.000 – $180.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW (ClassWiz) — RECOMENDADA', why: '552 funciones, álgebra matricial, estadística avanzada, integración numérica. QR code para ver gráficos en el celular. Permitida en la mayoría de certámenes.', price: '~$32.000 – $42.000 CLP' },
+          { name: 'HP 50g — Para usuarios avanzados', why: 'Calculadora gráfica con CAS (álgebra simbólica). Útil desde 4to semestre para Optimización y EDDP. Curva de aprendizaje alta.', price: '~$85.000 – $120.000 CLP (usada)' }
+        ],
+        accessories: [
+          { name: 'Ratón ergonómico inalámbrico', emoji: '', priority: 'must', reason: 'Trabajarás horas con hojas de cálculo y simulaciones. El trackpad no es viable para Excel/MATLAB a largo plazo.' },
+          { name: 'Monitor externo 24" FHD', emoji: '', priority: 'rec', reason: 'Python en un monitor y Excel en el otro es un cambio de productividad enorme. ~$90.000 en ferias.' },
+          { name: 'Disco externo 1TB USB 3.0', emoji: '', priority: 'must', reason: 'Datasets, proyectos y backups. Un semestre puede generar 30-50GB de archivos de simulación.' },
+          { name: 'Hub USB-C multipuerto', emoji: '', priority: 'rec', reason: 'Laptops modernas tienen pocos puertos. Conectas monitor, ratón, disco y cargador simultáneamente.' },
+          { name: 'Audífonos con cancelación de ruido', emoji: '', priority: 'opt', reason: 'Para concentrarse en la biblioteca durante certámenes.' },
+          { name: 'Mochila con compartimento acolchado', emoji: '', priority: 'must', reason: 'No cargues una laptop de $700k sin protección. ~$15.000-$25.000 en FabricStore o Falabella.' }
+        ]
+      },
+
+      ing_civil_informatica: {
+        label: 'Ing. Civil Informática', emoji: '',
+        alert: '<strong>La carrera más exigente en hardware.</strong> Correrás máquinas virtuales (VM), compilarás código constantemente y usarás IDEs pesados como IntelliJ. Menos de 16GB de RAM es inaceptable desde primer año.',
+        scores: { CPU: 9, RAM: 9, Storage: 8, GPU: 6, Battery: 6, Display: 7 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#22c55e', Battery: '#f59e0b', Display: '#14b8a6' },
+        software: ['VS Code / IntelliJ', 'Docker + VMs', 'Git + GitHub', 'Linux WSL2', 'Node.js / Python / Java'],
+        laptops: {
+          ideal: { name: 'ASUS ROG Zephyrus G14 / Lenovo Legion Slim 5', cpu: 'AMD Ryzen 9 7940H o Intel i7-13700H', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB PCIe 4.0', gpu: 'NVIDIA RTX 4060 6GB', battery: '~6-8 hrs', display: '14-16" QHD 165Hz', price: '$1.200.000 – $1.600.000', why: '32GB para correr 2 VMs + IntelliJ + Chrome con 20 tabs sin que nada se queje. La RTX 4060 sirve en ML/IA desde 3er año. El SSD PCIe 4.0 hace que compilar un proyecto Java grande tome 8s en vez de 45s.' },
+          balance: { name: 'Lenovo IdeaPad Gaming 3 / HP Victus 15', cpu: 'AMD Ryzen 5 7535H o Intel i5-12500H', ram: '16 GB DDR5 (actualizar a 32GB)', storage: 'SSD NVMe 512GB', gpu: 'NVIDIA RTX 3050 4GB', battery: '~5-7 hrs', display: '15.6" FHD 144Hz', price: '$650.000 – $900.000', why: 'RTX 3050 permite correr modelos de ML con CUDA. 16GB son suficientes el 1er año, pero <strong>planifica actualizar antes de 3er año</strong> cuando lleguen Redes y SSOO.' },
+          eco: { name: 'Laptop Ryzen 5 5500U + upgrade manual', cpu: 'AMD Ryzen 5 5500U', ram: '8GB → actualizar a 16GB inmediato', storage: 'SSD NVMe 256GB + externo', gpu: 'AMD Radeon integrada', battery: '~8 hrs', display: '15.6" FHD', price: '$300.000 – $500.000', why: 'Funciona los primeros 2 años. Sin GPU dedicada no podrás hacer Deep Learning nativo, pero sí todo el stack de desarrollo. La actualización a 16GB es <strong>obligatoria el día 1</strong>.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad Pro + Apple Pencil — Ideal para diagramas', reason: 'Diagramas UML en clases de diseño de sistemas, fotos a la pizarra con OCR, reuniones de equipo.', price: '$600.000 – $900.000 CLP' },
+          { emoji: '', name: 'Monitor externo es mejor inversión', reason: 'El dinero de una tablet rinde más en un 2do monitor. La productividad de desarrollar con doble pantalla es enorme.', price: '$80.000 – $150.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — Para los primeros semestres', why: 'Solo necesitarás calculadora en Cálculo, Álgebra y Física (años 1-2). Después todo es en código.', price: '~$32.000 – $42.000 CLP' },
+          { name: 'WolframAlpha / GeoGebra / Python SymPy', why: 'Desde 3er año en adelante, todas las operaciones matemáticas complejas van en código. No necesitas calculadora gráfica.', price: 'Gratis' }
+        ],
+        accessories: [
+          { name: '2do monitor externo 27" FHD/QHD', emoji: '', priority: 'must', reason: 'Código en un lado, documentación/terminal en el otro. El setup de doble monitor aumenta la productividad de un dev en ~35%.' },
+          { name: 'Teclado mecánico externo', emoji: '', priority: 'rec', reason: 'Escribirás miles de líneas de código por semestre. Un teclado bueno reduce fatiga y aumenta velocidad.' },
+          { name: 'Ratón de alta precisión', emoji: '', priority: 'must', reason: 'Para navegar código, clic preciso en IDEs y trabajo en hojas de datos.' },
+          { name: 'Hub USB-C con Ethernet', emoji: '', priority: 'rec', reason: 'Ethernet para pruebas de red en los ramos de Redes y Servidores.' },
+          { name: 'Audífonos con micrófono', emoji: '', priority: 'must', reason: 'Stand-ups del equipo, defensa de proyectos en remoto, reuniones de grupo.' }
+        ]
+      },
+
+      arquitectura: {
+        label: 'Arquitectura', emoji: '',
+        alert: '<strong>La carrera con mayores exigencias de GPU y pantalla.</strong> Revit y SketchUp Pro consumen GPU dedicada para renderizar. Una pantalla 100% sRGB es tan importante como el procesador.',
+        scores: { CPU: 8, RAM: 9, Storage: 8, GPU: 9, Battery: 5, Display: 10 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#f97316', Battery: '#64748b', Display: '#ec4899' },
+        software: ['AutoCAD 2024', 'Revit (BIM)', 'SketchUp Pro', 'Lumion / Enscape', 'Adobe Photoshop + Illustrator', 'Rhino 3D'],
+        laptops: {
+          ideal: { name: 'ASUS ProArt Studiobook / MacBook Pro 14" M3 Pro', cpu: 'Intel i9-13900H o Apple M3 Pro', ram: '32 GB DDR5 / 36GB unificada', storage: 'SSD NVMe 1TB', gpu: 'NVIDIA RTX 4070 / GPU M3 30-core', battery: '~5-7 hrs (8-12 en Mac)', display: '16" OLED/Retina, 100% sRGB, DCI-P3', price: '$1.500.000 – $2.500.000', why: 'En Lumion, renderizar una escena de 30s toma <strong>3 min con RTX 4070 vs 45 min con GPU integrada</strong>. La pantalla OLED es indispensable para que los colores de tus renders sean fieles al imprimirlos.' },
+          balance: { name: 'Lenovo Legion 5 / MSI Katana 15 B12V', cpu: 'AMD Ryzen 7 7745H o Intel i7-12650H', ram: '16 GB DDR5 (actualizar a 32GB)', storage: 'SSD 512GB + externo', gpu: 'NVIDIA RTX 4060 8GB', battery: '~4-6 hrs', display: '15.6" FHD 144Hz (busca 100% sRGB)', price: '$900.000 – $1.200.000', why: 'RTX 4060 con 8GB VRAM es suficiente para Revit y renders medianos. <strong>Busca específicamente 100% sRGB</strong> — es el dato que más se omite en fichas técnicas y más importa para diseño.' },
+          eco: { name: 'Desktop potente + laptop básica para clases', cpu: 'Desktop: Ryzen 7 5700X + RTX 3060 Ti', ram: '32 GB DDR4 (desktop)', storage: 'SSD 512GB + HDD 2TB', gpu: 'RTX 3060 Ti (desktop)', battery: 'No aplica (desktop)', display: 'Monitor 27" IPS 100% sRGB (~$150.000)', price: '$600.000 – $900.000 (desktop completo)', why: 'Si tienes espacio en casa: un desktop potente + laptop básica para clases es más económico que una laptop gaming de $1.2M. Los renders se corren en el desktop por la noche.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad Pro 12.9" + Apple Pencil Pro — ESENCIAL', reason: 'Croquis digitales, bocetos de fachadas, anotaciones sobre planos exportados. En los primeros años pasarás más tiempo dibujando en tablet que en laptop.', price: '$800.000 – $1.100.000 CLP' },
+          { emoji: '', name: 'Wacom Intuos Medium — Alternativa económica', reason: 'Tableta de dibujo sin pantalla. Compatible con AutoCAD y Photoshop. Sin movilidad pero mucho más económica.', price: '$90.000 – $140.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — Para Cálculo y Física', why: 'Solo necesitarás calculadora en las ciencias básicas del primer año. Arquitectura no tiene matemáticas pesadas después del 2do año.', price: '~$32.000 – $42.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Monitor externo 27" IPS 100% sRGB', emoji: '', priority: 'must', reason: 'Para trabajar con planos en casa. La diferencia con la pantalla de 15" es enorme.' },
+          { name: 'Impresora A3 / acceso a impresión', emoji: '', priority: 'must', reason: 'Imprimirás muchos planos. Busca una de tinta A3 (~$80.000) o el servicio de impresión más cercano a tu facultad.' },
+          { name: 'Disco SSD externo 2TB', emoji: '', priority: 'must', reason: 'Un proyecto de Revit puede pesar 500MB-2GB. Un semestre genera fácilmente 20-30GB de archivos.' },
+          { name: 'Hub USB-C con HDMI 4K', emoji: '', priority: 'rec', reason: 'Para conectar el monitor externo y otros periféricos simultáneamente.' }
+        ]
+      },
+
+      diseno_grafico: {
+        label: 'Diseño Gráfico / UX', emoji: '',
+        alert: '<strong>La pantalla lo es todo.</strong> Una pantalla sin calibración de color te hará entregar trabajos que se ven distintos al imprimirlos. Prioriza 100% sRGB. La tableta digitalizadora es tu accesorio #1.',
+        scores: { CPU: 7, RAM: 7, Storage: 8, GPU: 7, Battery: 7, Display: 10 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#14b8a6', GPU: '#f97316', Battery: '#22c55e', Display: '#ec4899' },
+        software: ['Adobe Photoshop + Illustrator + InDesign', 'Figma (UX/UI)', 'Adobe XD', 'Lightroom', 'DaVinci Resolve (video)'],
+        laptops: {
+          ideal: { name: 'MacBook Pro 14" M3 / Dell XPS 15 OLED', cpu: 'Apple M3 / Intel i7-13700H', ram: '18GB unificada / 32GB DDR5', storage: 'SSD 512GB-1TB', gpu: 'M3 GPU / RTX 4060', battery: '+15 hrs (Mac) / 5-7 hrs (Dell)', display: 'Liquid Retina / OLED 3.5K 100% DCI-P3', price: '$1.400.000 – $1.800.000', why: 'El MacBook M3 corre Photoshop e Illustrator más rápido que cualquier PC equivalente en precio. La pantalla Retina es la mejor calibrada del mercado. La batería de 15hrs te libera del enchufe en clases.' },
+          balance: { name: 'ASUS VivoBook Pro 16 OLED / Lenovo IdeaPad 5 Pro', cpu: 'AMD Ryzen 7 6800H o Intel i5-12500H', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'NVIDIA RTX 3050 Ti', battery: '~6-8 hrs', display: '16" OLED 2.8K 100% DCI-P3', price: '$700.000 – $950.000', why: 'Los modelos OLED en este rango tienen paneles de excelente calidad. Clave: <strong>busca específicamente "OLED" o "100% DCI-P3"</strong> al comparar especificaciones.' },
+          eco: { name: 'Laptop básica + monitor externo calibrado', cpu: 'Intel i5 10ma / Ryzen 5 5000', ram: '16 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: 'Variable', display: 'Monitor externo IPS 100% sRGB', price: '$250.000 (laptop) + $100.000 (monitor)', why: 'Si el presupuesto aprieta: laptop básica + <strong>monitor externo IPS 100% sRGB</strong> (~$100k) para casa. La laptop solo para movilidad en clases, el trabajo real en el monitor calibrado.' }
+        },
+        tablets: [
+          { emoji: '', name: 'Wacom Intuus Medium — ESENCIAL', reason: 'Para diseño vectorial en Illustrator, retoque en Photoshop y wireframes en Figma. La diferencia de precisión respecto al mouse es enorme. Es el accesorio #1 de esta carrera.', price: '$90.000 – $130.000 CLP' },
+          { emoji: '', name: 'iPad Air + Apple Pencil 2 — Alternativa premium', reason: 'Si prefieres portabilidad, el iPad Air + Procreate reemplaza al Wacom y además sirve como tablet para apuntes.', price: '$500.000 – $700.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-82MS — Solo para ciencias básicas', why: 'Diseño Gráfico no tiene ramos de matemáticas avanzadas. Una científica básica es suficiente para el primer año.', price: '~$12.000 – $18.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Monitor externo IPS 24-27" 100% sRGB', emoji: '', priority: 'must', reason: 'Calibración de color consistente. Busca "100% sRGB" o "100% Adobe RGB" en especificaciones.' },
+          { name: 'Disco SSD externo 1TB', emoji: '', priority: 'must', reason: 'Archivos PSD y proyectos de video son enormes. Un semestre puede generar 50-100GB.' },
+          { name: 'Calibrador de pantalla (Spyder X)', emoji: '', priority: 'opt', reason: 'Para trabajo profesional serio. Calibra tu monitor para que los colores sean fieles al imprimir.' }
+        ]
+      },
+
+      medicina: {
+        label: 'Medicina', emoji: '',
+        alert: '<strong>Portabilidad y durabilidad sobre todo.</strong> Irás a hospitales y rotaciones donde no siempre habrá enchufes. La batería es crítica. El iPad es el accesorio más importante de la carrera.',
+        scores: { CPU: 6, RAM: 7, Storage: 6, GPU: 3, Battery: 10, Display: 7 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['OneNote / GoodNotes', 'Anki (memorización)', 'Complete Anatomy 3D', 'Office 365', 'Zoom / Teams'],
+        laptops: {
+          ideal: { name: 'MacBook Air 13" M2 / Lenovo ThinkPad X1 Carbon', cpu: 'Apple M2 / Intel i7-1365U', ram: '16 GB', storage: 'SSD 512GB', gpu: 'Integrada (suficiente)', battery: '+15 hrs (Mac) / 12 hrs (ThinkPad)', display: '13-14" Retina/IPS antirreflejo', price: '$950.000 – $1.300.000', why: 'La batería de +15hrs del MacBook M2 es el mayor activo para rotaciones clínicas. No necesitas GPU dedicada para medicina. La delgadez del ThinkPad X1 lo hace ideal para ambientes hospitalarios.' },
+          balance: { name: 'ASUS ZenBook 14 / Samsung Galaxy Book3', cpu: 'Intel i5-1335U o AMD Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10-12 hrs', display: '14" FHD IPS', price: '$600.000 – $850.000', why: 'Laptops ligeras (~1.3-1.5kg) con buena batería son perfectas. Evita laptops gaming pesadas: las cargarás todo el día en el hospital.' },
+          eco: { name: 'iPad + teclado + laptop básica', cpu: 'iPad M1 + cualquier laptop i5', ram: '8GB laptop / 8GB iPad', storage: 'iPad 128GB + nube', gpu: 'Integrada', battery: 'iPad: 10hrs+ | Laptop: variable', display: 'iPad 10.9" Liquid Retina', price: '$350.000 (iPad) + $250.000 (laptop)', why: 'Para los primeros años donde solo tomas apuntes, el iPad con teclado puede reemplazar la laptop en el hospital. La laptop queda para casa y trabajos escritos.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad 10a gen + Apple Pencil — ESENCIAL', reason: 'Anki en modo activo, apuntes sobre láminas de histología, GoodNotes para anatomía. Es el accesorio #1 de los estudiantes de medicina modernos.', price: '$280.000 – $380.000 CLP' },
+          { emoji: '', name: 'iPad Air + Apple Pencil 2 — Premium', reason: 'Pantalla laminada de mayor calidad para anotar sobre imágenes PACS. La diferencia de calidad al escribir sobre anatomía es notable.', price: '$500.000 – $600.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — Para bioquímica y farmacología', why: 'Cálculos de dosis, concentraciones y diluciones en farmacología. Una científica avanzada es suficiente para toda la carrera.', price: '~$32.000 – $42.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Mochila médica ergonómica ligera', emoji: '', priority: 'must', reason: 'Cargarás libros enormes (Harrison, Robbins) + laptop + iPad. Una mochila ergonómica te ahorra lesiones de columna.' },
+          { name: 'Batería externa 20.000mAh', emoji: '', priority: 'must', reason: 'Para rotaciones de turnos largos sin enchufe. Carga laptop pequeña + celular + iPad.' },
+          { name: 'Audífonos discretos con micro', emoji: '', priority: 'rec', reason: 'Para clases en línea, seminarios y discusiones de caso en biblioteca.' }
+        ]
+      },
+
+      administracion: {
+        label: 'Administración de Empresas', emoji: '',
+        alert: '<strong>Excel avanzado es tu herramienta central.</strong> Usarás Power BI, SPSS y quizás SAP desde 3er año. La calculadora financiera BA II Plus es tan importante como la laptop.',
+        scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 2, Battery: 8, Display: 6 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Excel + Power BI', 'Word + PowerPoint', 'SPSS / Minitab', 'SAP (algunos programas)', 'Google Workspace'],
+        laptops: {
+          ideal: { name: 'Lenovo ThinkBook 14s / HP EliteBook 840', cpu: 'Intel i5-1335U o Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10-12 hrs', display: '14" FHD IPS antirreflejo', price: '$550.000 – $750.000', why: 'Un ThinkBook tiene teclado de calidad superior (clave para redactar informes largos), buena batería y pantalla antirreflejo para leer Excel en campus.' },
+          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Intel i5-1135G7 o Ryzen 5 5500U', ram: '8-16 GB', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$380.000 – $550.000', why: 'Equipos confiables. Si viene con 8GB, verifica que tenga slot libre para agregar más RAM más adelante.' },
+          eco: { name: 'Laptop refurbished i5/Ryzen 5 + SSD', cpu: 'Intel i5 8va-10ma gen', ram: '8 GB DDR4', storage: 'SSD 256GB (reemplaza HDD)', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$180.000 – $320.000', why: 'Para Administración no necesitas hardware potente. Un equipo de segunda mano con SSD funciona perfectamente durante toda la carrera.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad básico — Recomendado', reason: 'Para presentaciones de proyectos, lectura de casos y apuntes en clases. Útil pero no esencial como en otras carreras.', price: '$230.000 – $320.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — Para estadística', why: 'Estadística básica, probabilidades y análisis financiero. Permite trabajar con distribuciones estadísticas directamente.', price: '~$32.000 – $42.000 CLP' },
+          { name: 'Texas Instruments BA II Plus — Para finanzas', why: 'Si te especializas en Finanzas, la BA II Plus es la calculadora financiera estándar mundial (CFA, CPA). Calcula TIR, VPN, amortización directamente.', price: '~$45.000 – $70.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Ratón ergonómico inalámbrico', emoji: '', priority: 'must', reason: 'Trabajarás horas en Excel. El trackpad nunca es suficiente para tablas dinámicas grandes.' },
+          { name: 'Monitor externo 24" para casa', emoji: '', priority: 'rec', reason: 'Ver una hoja de Excel con 50 columnas en un monitor de 24" vs pantalla de 15" es una diferencia enorme.' }
+        ]
+      },
+
+      contabilidad: {
+        label: 'Contabilidad y Auditoría', emoji: '',
+        alert: '<strong>Excel, ERP y software contable.</strong> Softland, SAP B1 o ContaPlus corren bien en hardware modesto. La calculadora financiera BA II Plus es tu segunda herramienta más importante.',
+        scores: { CPU: 4, RAM: 5, Storage: 4, GPU: 1, Battery: 8, Display: 5 },
+        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Excel + tablas dinámicas', 'SAP / Softland / ContaPlus', 'Word + PowerPoint', 'SII en línea'],
+        laptops: {
+          ideal: { name: 'ASUS VivoBook 15 / HP Laptop 15s', cpu: 'Intel i5-1235U o Ryzen 5 5500U', ram: '8-16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$380.000 – $550.000', why: 'Contabilidad no requiere hardware potente. La pantalla de 15.6" da espacio para trabajar con múltiples columnas en Excel sin scroll horizontal constante.' },
+          balance: { name: 'Laptop básica 14-15" con SSD', cpu: 'Intel i3-1215U o Ryzen 3 5300U', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~7-9 hrs', display: '14-15" FHD', price: '$250.000 – $380.000', why: 'Con SSD el equipo más básico moderno es suficiente. El SSD hace que SAP y Excel abran en segundos en vez de minutos.' },
+          eco: { name: 'Laptop refurbished con SSD', cpu: 'Intel i5 7ma-8va gen con SSD', ram: '8 GB DDR3', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '15.6"', price: '$130.000 – $220.000', why: 'La opción más económica válida. Asegúrate que tenga SSD (pide el modelo exacto y verifica en Speccy antes de comprar).' }
+        },
+        tablets: [
+          { emoji: '', name: 'Tablet básica Android — Opcional', reason: 'Para leer y anotar en PDFs de normas IFRS o material de curso. No es esencial para Contabilidad.', price: 'Desde $80.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Texas Instruments BA II Plus — ESENCIAL', why: 'La calculadora financiera estándar para CPA y auditoría. Calcula VPN, TIR, NPV, amortización, flujos de caja descontados. Muchas asignaturas la exigen específicamente.', price: '~$45.000 – $70.000 CLP' },
+          { name: 'Casio fx-991CW — Complementaria', why: 'Para ramos de estadística y matemáticas del primer año.', price: '~$32.000 – $42.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Ratón ergonómico', emoji: '', priority: 'must', reason: 'Excel intensivo requiere ratón. El trackpad no es viable para trabajo contable real.' }
+        ]
+      },
+
+      derecho: {
+        label: 'Derecho', emoji: '',
+        alert: '<strong>Portabilidad y batería por encima de todo.</strong> Leerás miles de páginas de jurisprudencia y redactarás escritos. Un equipo ligero con batería larga vale más que uno potente y pesado.',
+        scores: { CPU: 4, RAM: 5, Storage: 5, GPU: 1, Battery: 10, Display: 6 },
+        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Word + Outlook + OneDrive', 'Westlaw / LexisNexis / Vlex', 'Zotero (citas)', 'Adobe Acrobat', 'Zoom/Teams'],
+        laptops: {
+          ideal: { name: 'MacBook Air 13" M2 / Lenovo IdeaPad Slim 5', cpu: 'Apple M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+15 hrs (Mac) / +10 hrs (Lenovo)', display: '13-14" IPS antirreflejo', price: '$700.000 – $1.000.000', why: 'Para Derecho el factor #1 es la batería. El MacBook Air M2 dura una jornada completa sin enchufar. Su pantalla antirreflejo es ideal para leer sentencias horas seguidas.' },
+          balance: { name: 'Samsung Galaxy Book3 / ASUS VivoBook 14', cpu: 'Intel i5-1235U', ram: '8 GB DDR4', storage: 'SSD 256GB', gpu: 'Intel Iris Xe', battery: '~10 hrs', display: '14" FHD IPS', price: '$400.000 – $600.000', why: 'Laptops de 14" ultralivianas (~1.3-1.5 kg). Evita las de 15.6" para Derecho — la diferencia de peso se siente enormemente al final de un día con varios ramos.' },
+          eco: { name: 'Chromebook / laptop básica 14"', cpu: 'Intel Celeron / Pentium', ram: '4-8 GB', storage: '64-128GB eMMC + nube', gpu: 'Integrada', battery: '~8 hrs', display: '14" HD o FHD', price: '$150.000 – $280.000', why: 'Para Derecho, un Chromebook es perfectamente funcional: Google Docs, Gmail, plataformas de jurisprudencia online. Solo necesitarás Windows si la universidad requiere software específico.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad + Kindle Paperwhite — Muy recomendados', reason: 'Leer el Código Civil completo en papel es un martirio. Un iPad o Kindle con los textos legales en PDF cambia radicalmente la experiencia de estudio.', price: 'iPad desde $230.000 / Kindle ~$100.000 CLP' }
+        ],
+        calcs: [
+          { name: 'No se necesita calculadora en Derecho', why: 'Los ramos de Economía o Estadística que pueda haber se resuelven con calculadora básica del celular.', price: 'Calculadora celular = $0' }
+        ],
+        accessories: [
+          { name: 'Ratón compacto inalámbrico', emoji: '', priority: 'rec', reason: 'Para redactar escritos largos con comodidad.' },
+          { name: 'Funda/sleeve para laptop', emoji: '', priority: 'must', reason: 'Protección básica. No necesitas mochila gaming, una sleeve delgada es suficiente.' },
+          { name: 'Batería externa 10.000mAh', emoji: '', priority: 'rec', reason: 'Para jornadas largas en tribunales o biblioteca.' }
+        ]
+      },
+
+      psicologia: {
+        label: 'Psicología', emoji: '',
+        alert: '<strong>Hardware modesto con software estadístico.</strong> Usarás SPSS o Jamovi para análisis de datos desde 2do año. El peso de la laptop importa porque irás a práctica y trabajo de campo.',
+        scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 1, Battery: 9, Display: 6 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['SPSS / Jamovi / JASP', 'Word + APA Style', 'Zotero', 'Google Forms / Qualtrics', 'Zoom'],
+        laptops: {
+          ideal: { name: 'MacBook Air 13" M2 / ASUS ZenBook 14', cpu: 'M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+12 hrs', display: '13-14" IPS', price: '$600.000 – $950.000', why: 'Portabilidad es la clave para Psicología. Irás a centros de salud, colegios y campo. Una laptop ligera con buena batería vale más que una potente y pesada.' },
+          balance: { name: 'Lenovo IdeaPad Slim 3 / Acer Aspire 5 14"', cpu: 'Ryzen 5 5500U o Intel i5-1135G7', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" FHD IPS', price: '$320.000 – $500.000', why: 'Equipos confiables de 14" por la portabilidad. El SSD es el componente más importante.' },
+          eco: { name: 'Laptop refurbished + apps en nube', cpu: 'Intel i5 cualquier gen con SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '13-15"', price: '$180.000 – $300.000', why: 'SPSS y Jamovi corren bien incluso en hardware modesto. Lo crítico es el SSD.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad + GoodNotes — Recomendado', reason: 'Para apuntes en clases de evaluación y diagnóstico, observaciones en campo, y lectura del DSM-5.', price: '$230.000 – $380.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW', why: 'Para estadística descriptiva e inferencial del primer año. SPSS hace el resto.', price: '~$32.000 – $42.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Mochila ligera ergonómica', emoji: '', priority: 'must', reason: 'Prácticas de campo con laptop + materiales de evaluación.' },
+          { name: 'Audífonos con micrófono', emoji: '', priority: 'rec', reason: 'Entrevistas y sesiones de práctica en modalidad online.' }
+        ]
+      },
+
+      periodismo: {
+        label: 'Periodismo / Comunicación', emoji: '',
+        alert: '<strong>Edición de video y audio desde primer año.</strong> DaVinci Resolve y Premiere requieren SSD rápido y algo de GPU. El micrófono externo es tan importante como la laptop.',
+        scores: { CPU: 6, RAM: 7, Storage: 8, GPU: 6, Battery: 7, Display: 7 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#14b8a6', GPU: '#f97316', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Adobe Premiere Pro', 'DaVinci Resolve', 'Adobe Audition / Audacity', 'Canva Pro', 'WordPress'],
+        laptops: {
+          ideal: { name: 'MacBook Pro 14" M3 / ASUS ProArt Studiobook', cpu: 'M3 / Intel i7-13700H', ram: '18GB M3 / 32GB DDR5', storage: 'SSD 1TB', gpu: 'M3 GPU / RTX 4060', battery: '+15hrs (Mac)', display: '14-16" Liquid Retina / OLED 100% DCI-P3', price: '$1.300.000 – $1.800.000', why: 'DaVinci Resolve corre en tiempo real en el M3 sin fan noise. Para producción audiovisual profesional, el MacBook Pro M3 rinde mucho mejor que cualquier PC equivalente en precio.' },
+          balance: { name: 'Lenovo Legion Slim 5 / HP Pavilion Plus 16"', cpu: 'Ryzen 7 7745H o Intel i5-13500H', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 4060 / RTX 3050 Ti', battery: '~6-8 hrs', display: '16" FHD/QHD IPS 100% sRGB', price: '$750.000 – $1.000.000', why: 'GPU dedicada para edición de video. El SSD NVMe es crítico para que Premiere no se queje al trabajar con footage 4K.' },
+          eco: { name: 'Cualquier laptop i5 + DaVinci Resolve gratis', cpu: 'Intel i5 10ma+ con SSD NVMe', ram: '16 GB DDR4', storage: 'SSD 512GB + externo 1TB', gpu: 'Integrada (render más lento)', battery: 'Variable', display: '15.6" FHD', price: '$350.000 – $500.000 + disco externo', why: 'DaVinci Resolve es gratuito y corre sin GPU dedicada (más lento). El SSD y 16GB de RAM son el mínimo real.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad + LumaFusion — Edición móvil', reason: 'Editar videos cortos para redes sociales directo desde el iPad. Útil para cobertura en campo.', price: '$280.000 – $500.000 CLP' }
+        ],
+        calcs: [
+          { name: 'No se necesita calculadora específica', why: 'Periodismo no tiene ramos de matemáticas intensivas. La calculadora del celular es suficiente.', price: '$0' }
+        ],
+        accessories: [
+          { name: 'Micrófono USB de condensador', emoji: '', priority: 'must', reason: 'Para podcast, entrevistas y contenido audiovisual. Un Rode NT-USB Mini (~$50.000-$80.000) marca enorme diferencia respecto al micro integrado.' },
+          { name: 'Disco SSD externo 2TB', emoji: '', priority: 'must', reason: 'Footage 4K ocupa 400MB/min. Un semestre de proyectos puede generar 100-200GB fácilmente.' },
+          { name: 'Auriculares de estudio (planos)', emoji: '', priority: 'must', reason: 'Para mezcla de audio correcta. Los audífonos con bass boost engañan al editar.' },
+          { name: 'Hub USB-C con lector SD', emoji: '', priority: 'rec', reason: 'Para transferir footage desde cámaras y grabadoras.' }
+        ]
+      },
+
+      cine: {
+        label: 'Cine / Producción Audiovisual', emoji: '',
+        alert: '<strong>La carrera con mayor demanda de almacenamiento.</strong> Un día de rodaje en 4K genera fácilmente 100-200GB de footage. GPU dedicada y SSD veloz son absolutamente necesarios.',
+        scores: { CPU: 9, RAM: 8, Storage: 10, GPU: 9, Battery: 5, Display: 9 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#f97316', GPU: '#ec4899', Battery: '#64748b', Display: '#14b8a6' },
+        software: ['DaVinci Resolve / Adobe Premiere', 'Adobe After Effects', 'ProTools / Logic Pro', 'Blender (motion)'],
+        laptops: {
+          ideal: { name: 'MacBook Pro 16" M3 Max / ASUS ProArt Studiobook 16', cpu: 'M3 Max / Intel i9-13980HX', ram: '48GB M3 / 64GB DDR5', storage: 'SSD 1TB+', gpu: 'M3 Max 40-core / RTX 4090', battery: '~12 hrs (Mac)', display: '16" Liquid Retina XDR / OLED 4K', price: '$2.500.000 – $4.000.000', why: 'Editar en 4K RAW o 8K requiere el máximo poder disponible. El M3 Max hace renders que tardan horas en PCs convencionales.' },
+          balance: { name: 'ASUS ROG Strix G16 / Lenovo Legion Pro 5', cpu: 'Intel i7-13700H', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB PCIe 4.0', gpu: 'NVIDIA RTX 4070 8GB VRAM', battery: '~4-6 hrs', display: '16" QHD 165Hz 100% DCI-P3', price: '$1.300.000 – $1.700.000', why: 'RTX 4070 con 8GB VRAM permite edición 4K fluida en Premiere y After Effects. Pantalla QHD con DCI-P3 para colorimetría correcta.' },
+          eco: { name: 'Desktop gaming + monitor de producción', cpu: 'Ryzen 9 5900X o i7-12700K', ram: '32 GB DDR4', storage: 'SSD NVMe 1TB + HDD 4TB', gpu: 'RTX 3070 o 3080 (segunda mano)', battery: 'No aplica', display: '27" IPS 4K 100% DCI-P3', price: '$700.000 – $1.100.000 (todo el set)', why: 'Para Cine, el workflow principal es en estación fija. Un desktop potente de segunda mano + buen monitor es mejor relación precio/rendimiento que una laptop de $2M.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad Pro + Apple Pencil — Para storyboards', reason: 'Dibujar storyboards digitales, animar en Procreate, usar LumaFusion para edición rápida en set.', price: '$800.000 – $1.100.000 CLP' }
+        ],
+        calcs: [
+          { name: 'No aplica para esta carrera', why: 'Cine no tiene ramos de matemáticas avanzadas.', price: '$0' }
+        ],
+        accessories: [
+          { name: 'SSD externo 4TB (Crucial X9 Pro o similar)', emoji: '', priority: 'must', reason: 'El accesorio más crítico de Cine. Footage RAW ocupa enormidades. Necesitas rápido (USB 3.2 Gen2) y grande.' },
+          { name: 'Monitor de referencia de color', emoji: '', priority: 'must', reason: 'Un monitor calibrado para post-producción. BenQ SW270C (~$300.000) es el entry-level profesional.' },
+          { name: 'Tarjeta de sonido externa', emoji: '', priority: 'rec', reason: 'Para monitoreo de audio de calidad durante la mezcla.' }
+        ]
+      },
+
+      ing_mecanica: {
+        label: 'Ingeniería Mecánica', emoji: '',
+        alert: '<strong>Simulación FEM y CAD 3D son las cargas más pesadas.</strong> ANSYS y SolidWorks son los programas más exigentes de la ingeniería. GPU dedicada y 16GB RAM son el mínimo desde 3er año.',
+        scores: { CPU: 8, RAM: 8, Storage: 7, GPU: 8, Battery: 5, Display: 7 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#f97316', Battery: '#64748b', Display: '#14b8a6' },
+        software: ['SolidWorks / Fusion 360', 'ANSYS (FEM)', 'MATLAB / Simulink', 'AutoCAD Mechanical', 'Python numérico'],
+        laptops: {
+          ideal: { name: 'Lenovo ThinkPad P16 / HP ZBook Fury 15', cpu: 'Intel i7-13700H o Ryzen 9 Pro', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB', gpu: 'NVIDIA RTX A2000 (Workstation)', battery: '~6-8 hrs', display: '16" FHD/QHD IPS antirreflejo', price: '$1.400.000 – $2.000.000', why: 'Workstations certificadas para SolidWorks y ANSYS. La diferencia entre una GPU gaming y una Workstation (RTX A vs RTX) es la certificación de drivers que garantiza que las simulaciones no fallen en medio de un cálculo.' },
+          balance: { name: 'ASUS ROG Zephyrus G15 / MSI Stealth 15', cpu: 'Ryzen 7 7745H', ram: '16-32 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 4060 o RTX 4070', battery: '~5-7 hrs', display: '15.6" QHD 165Hz', price: '$900.000 – $1.300.000', why: 'RTX 4060/4070 con drivers actualizados corren SolidWorks y ANSYS Student perfectamente para uso estudiantil.' },
+          eco: { name: 'Laptop gaming media gama + acceso a labs', cpu: 'Intel i5-12500H + RTX 3050', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 3050 4GB', battery: '~5 hrs', display: '15.6" FHD 144Hz', price: '$550.000 – $750.000', why: 'RTX 3050 corre SolidWorks básico y simulaciones pequeñas. Para simulaciones FEM grandes, usa los laboratorios de cómputo de la facultad en horas de bajo uso.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad — Útil para apuntes técnicos', reason: 'Para anotar en clases de termodinámica, mecánica de fluidos y resistencia de materiales con diagramas.', price: '$230.000 – $380.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — ESENCIAL años 1-3', why: 'Cálculos manuales de mecánica, termodinámica y resistencia de materiales. La ClassWiz tiene resolución de ecuaciones diferenciales numéricas e integración.', price: '~$32.000 – $42.000 CLP' },
+          { name: 'HP 50g o TI-Nspire CX CAS — Avanzada', why: 'Para Mecánica de Fluidos y simulaciones donde quieras verificar resultados analíticamente. CAS te permite hacer álgebra simbólica.', price: '~$80.000 – $130.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Ratón ergonómico preciso', emoji: '', priority: 'must', reason: 'Modelado CAD 3D con trackpad es una pesadilla. Un ratón con buen DPI es fundamental.' },
+          { name: 'Monitor externo 27" FHD/QHD', emoji: '', priority: 'rec', reason: 'Ver un modelo 3D de SolidWorks en un monitor grande cambia el flujo de trabajo completamente.' },
+          { name: 'Disco externo 1TB', emoji: '', priority: 'must', reason: 'Proyectos de simulación FEM pueden pesar varios GB cada uno.' }
+        ]
+      },
+
+      bioquimica: {
+        label: 'Bioquímica / Biología', emoji: '',
+        alert: '<strong>Análisis bioinformático desde 3er año.</strong> Alineamientos de secuencias y análisis de datos NGS requieren RAM y CPU. Python/R para bioinformática es el stack principal.',
+        scores: { CPU: 7, RAM: 8, Storage: 6, GPU: 4, Battery: 7, Display: 6 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Python + BioPython', 'R + Bioconductor', 'BLAST / HMMER', 'PyMOL (visualización)', 'ImageJ / FIJI'],
+        laptops: {
+          ideal: { name: 'Lenovo ThinkBook 16 / ASUS ZenBook Pro 16X', cpu: 'AMD Ryzen 7 7745H o Intel i7-1360P', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB', gpu: 'RTX 4060 (CUDA para Deep Learning bio)', battery: '~8-10 hrs', display: '16" IPS 4K antiglare', price: '$900.000 – $1.300.000', why: '32GB para correr BLAST, alinear genomas completos y tener Jupyter + PyMOL abiertos simultáneamente. La GPU con CUDA ayuda en Bioinformática Computacional avanzada.' },
+          balance: { name: 'ASUS VivoBook Pro 15 / Lenovo IdeaPad 5 Pro', cpu: 'Ryzen 5 7530U o Intel i5-1335U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$550.000 – $750.000', why: '16GB es el mínimo real para bioinformática. Para visualización de proteínas en PyMOL la GPU integrada es suficiente.' },
+          eco: { name: 'Laptop + acceso a clúster universitario', cpu: 'i5/Ryzen 5 con SSD', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8 hrs', display: '15.6" FHD', price: '$380.000 – $550.000', why: 'Los análisis más pesados (ensamblaje genómico, RNA-seq) conviene correrlos en el clúster de la universidad o en Google Colab gratis.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad + GoodNotes — Recomendado', reason: 'Para apuntes en laboratorio, diagramas de vías metabólicas y lectura de papers en PDF.', price: '$230.000 – $380.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW', why: 'Para Química, Bioquímica y Fisicoquímica. Cálculos de pH, concentraciones y cinética enzimática.', price: '~$32.000 – $42.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Disco externo SSD 1TB', emoji: '', priority: 'must', reason: 'Datos de secuenciación (FASTQ) son archivos enormes (1-20GB por muestra).' },
+          { name: 'Ratón de laboratorio', emoji: '', priority: 'rec', reason: 'Trabajarás en entornos de laboratorio donde el ratón necesita ser fácil de limpiar.' }
+        ]
+      },
+
+      pedagogia: {
+        label: 'Pedagogía', emoji: '',
+        alert: '<strong>Portabilidad y herramientas creativas.</strong> Crearás materiales didácticos y presentaciones. La laptop ligera con buena batería es perfecta para práctica profesional en establecimientos.',
+        scores: { CPU: 4, RAM: 5, Storage: 4, GPU: 1, Battery: 9, Display: 6 },
+        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['PowerPoint / Canva', 'Word + Google Docs', 'Kahoot / Mentimeter', 'Google Classroom', 'Loom (video)'],
+        laptops: {
+          ideal: { name: 'MacBook Air 13" M2 / Samsung Galaxy Book3', cpu: 'M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+12 hrs', display: '13-14" IPS antirreflejo', price: '$600.000 – $950.000', why: 'Para práctica en establecimientos la batería larga es crítica. El MacBook M2 dura todo el día sin enchufar y tiene el mejor trackpad para presentaciones.' },
+          balance: { name: 'Lenovo IdeaPad Slim 3 14" / ASUS VivoBook 14', cpu: 'Intel i5-1135G7 o Ryzen 5 5500U', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" FHD IPS', price: '$320.000 – $500.000', why: '14" es el tamaño ideal: portable y con pantalla suficiente para presentar al proyector de una sala.' },
+          eco: { name: 'Chromebook 14" / laptop básica', cpu: 'Intel Celeron / Pentium', ram: '4-8 GB', storage: '64GB eMMC + Google Drive', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" HD', price: '$150.000 – $250.000', why: 'Si toda tu plataforma es Google (Docs, Classroom, Drive), un Chromebook es perfectamente suficiente y tiene batería excelente.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad básico — Muy recomendado', reason: 'Para mostrar contenido interactivo a estudiantes, apps educativas como Khan Academy y crear material en Canva.', price: '$230.000 – $320.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Calculadora según mención', why: 'Si tu mención es Matemática o Ciencias, necesitarás Casio fx-991CW para demostrar a los alumnos. Otras menciones no requieren calculadora específica.', price: '~$32.000 CLP si aplica' }
+        ],
+        accessories: [
+          { name: 'Puntero láser con control de presentación', emoji: '', priority: 'must', reason: 'Para presentaciones en sala sin tener que estar pegado al computador.' },
+          { name: 'Adaptador HDMI universal', emoji: '', priority: 'must', reason: 'Los proyectores de establecimientos usan HDMI o VGA. Lleva siempre un adaptador.' }
+        ]
+      },
+
+      enfermeria: {
+        label: 'Enfermería / Kinesiología', emoji: '',
+        alert: '<strong>Similares a Medicina en portabilidad.</strong> Priorizas batería y peso. El software clínico suele ser web-based, no necesitas hardware potente.',
+        scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 2, Battery: 10, Display: 6 },
+        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['OneNote / GoodNotes', 'Anki', 'Office 365', 'Zoom', 'Software clínico web-based'],
+        laptops: {
+          ideal: { name: 'MacBook Air 13" M2 / Lenovo ThinkPad E14', cpu: 'M2 / Intel i5-1235U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+12 hrs', display: '13-14" IPS', price: '$700.000 – $1.000.000', why: 'Batería y portabilidad son lo más importante. Irás a hospitales y clínicas todo el día.' },
+          balance: { name: 'ASUS VivoBook 14 / Acer Aspire 5 14"', cpu: 'Ryzen 5 5500U o Intel i5-1135G7', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" FHD', price: '$320.000 – $500.000', why: 'Laptops de 14" ultralivianas. La diferencia de peso de una de 15.6" se siente al final de una jornada clínica.' },
+          eco: { name: 'Laptop refurbished ligera', cpu: 'Intel i5 8va gen con SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '14-15"', price: '$180.000 – $300.000', why: 'Perfectamente válido para Enfermería. El software que usarás es liviano.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad + GoodNotes — ESENCIAL', reason: 'Para apuntes sobre anatomo-patología, procedimientos y protocolos clínicos. Funciona igual que en Medicina.', price: '$230.000 – $380.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW', why: 'Para cálculos de dosis, goteos, concentraciones de soluciones y farmacología.', price: '~$32.000 – $42.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Mochila ergonómica', emoji: '', priority: 'must', reason: 'Cargarás laptop + material clínico + libros todo el día.' },
+          { name: 'Batería externa 10.000mAh', emoji: '', priority: 'rec', reason: 'Para turnos largos sin acceso a enchufes.' }
+        ]
+      },
+
+      economia: {
+        label: 'Economía', emoji: '',
+        alert: '<strong>Similar a Ingeniería en el componente cuantitativo.</strong> Python/R para econometría, STATA o EViews para series de tiempo. RAM y CPU moderados son suficientes.',
+        scores: { CPU: 6, RAM: 7, Storage: 6, GPU: 2, Battery: 7, Display: 6 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Python + Pandas/Statsmodels', 'R + tidyverse', 'STATA / EViews', 'Excel + Power BI', 'MATLAB (algunos programas)'],
+        laptops: {
+          ideal: { name: 'Lenovo ThinkBook 14 / ASUS VivoBook Pro 14', cpu: 'Intel i5-1335U o Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10 hrs', display: '14" FHD IPS', price: '$500.000 – $700.000', why: '16GB son el mínimo real para correr STATA + Python + Excel sin problemas. Un procesador moderno con SSD es suficiente para econometría.' },
+          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Intel i5-1135G7 o Ryzen 5 5500U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD', price: '$320.000 – $500.000', why: 'Equipos confiables. Si viene con 8GB, actualiza a 16GB al inicio.' },
+          eco: { name: 'Laptop refurbished + SSD', cpu: 'i5 8va-10ma gen con SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '15.6"', price: '$180.000 – $300.000', why: 'STATA y Python corren bien en equipos modestos modernos con SSD.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad — Recomendado para apuntes', reason: 'Para apuntes en clases de econometría y microeconomía con diagramas.', price: '$230.000 – $380.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — Para matemáticas', why: 'Para cálculo, álgebra lineal y estadística del primer año.', price: '~$32.000 – $42.000 CLP' },
+          { name: 'Texas Instruments BA II Plus — Optativa', why: 'Si te especializas en Finanzas Públicas o Evaluación de Proyectos, la BA II Plus te ahorra tiempo en cálculos de VPN y TIR.', price: '~$45.000 – $70.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Ratón inalámbrico', emoji: '', priority: 'must', reason: 'Para trabajo intensivo en Excel y hojas de datos.' },
+          { name: 'Monitor externo 24"', emoji: '', priority: 'rec', reason: 'Muy útil para análisis de datos con Python y STATA en casa.' }
+        ]
+      },
+
+      ing_electrica: {
+        label: 'Ingeniería Eléctrica / Electrónica', emoji: '',
+        alert: '<strong>MATLAB, Simulink y software de diseño de circuitos.</strong> Las simulaciones de circuitos pueden ser pesadas. GPU no es prioritaria pero sí CPU y RAM.',
+        scores: { CPU: 7, RAM: 7, Storage: 6, GPU: 4, Battery: 6, Display: 7 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['MATLAB + Simulink', 'LTspice / Multisim', 'AutoCAD Electrical', 'Python numérico', 'LabVIEW'],
+        laptops: {
+          ideal: { name: 'Lenovo ThinkBook 16 / Dell Inspiron 16 Plus', cpu: 'AMD Ryzen 7 7745H o Intel i7-1360P', ram: '16-32 GB DDR4/5', storage: 'SSD 512GB-1TB', gpu: 'RTX 3050 o integrada', battery: '~8-10 hrs', display: '16" FHD IPS antirreflejo', price: '$700.000 – $1.000.000', why: '16-32GB para correr MATLAB + Simulink + LTspice sin problemas. El SSD NVMe reduce el tiempo de carga de modelos grandes de Simulink.' },
+          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Ryzen 5 7530U o Intel i5-1235U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $700.000', why: '16GB son suficientes para la mayoría de los años de la carrera. Actualiza si llegas a ramos de control avanzado con simulaciones muy pesadas.' },
+          eco: { name: 'Laptop refurbished i5/Ryzen 5 + SSD', cpu: 'Intel i5 10ma gen o Ryzen 5 4000', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$200.000 – $380.000', why: 'Para los primeros años es suficiente. MATLAB y LTspice no son extremadamente pesados en los primeros semestres.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad — Para apuntes de circuitos', reason: 'Diagramar circuitos a mano en GoodNotes es más cómodo que en papel. Útil para clases de electrónica.', price: '$230.000 – $380.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — ESENCIAL', why: 'Para análisis de circuitos, números complejos, transformadas de Fourier manuales y cálculos de potencia. Imprescindible en certámenes.', price: '~$32.000 – $42.000 CLP' },
+          { name: 'HP 50g — Para usuarios avanzados', why: 'Para resolver ecuaciones de estado en Control Automático y sistemas complejos.', price: '~$80.000 – $120.000 CLP (usada)' }
+        ],
+        accessories: [
+          { name: 'Ratón inalámbrico', emoji: '', priority: 'must', reason: 'Para diseño de circuitos en LTspice y navegación en MATLAB.' },
+          { name: 'Monitor externo 24"', emoji: '', priority: 'rec', reason: 'Para tener Simulink en un monitor y código en el otro.' },
+          { name: 'Multímetro digital básico', emoji: '', priority: 'rec', reason: 'Para las prácticas de laboratorio. Un Fluke o UNI-T básico (~$15.000-$30.000).' }
+        ]
+      },
+
+      ing_quimica: {
+        label: 'Ingeniería Química', emoji: '',
+        alert: '<strong>Simulación de procesos y análisis de datos.</strong> Aspen Plus y HYSYS son los simuladores de planta más usados. MATLAB y Python para modelado numérico.',
+        scores: { CPU: 7, RAM: 8, Storage: 6, GPU: 3, Battery: 6, Display: 6 },
+        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
+        software: ['Aspen Plus / HYSYS', 'MATLAB + Simulink', 'Python (SciPy, NumPy)', 'AutoCAD P&ID', 'Excel avanzado'],
+        laptops: {
+          ideal: { name: 'Lenovo ThinkBook 16 / HP EliteBook 845', cpu: 'AMD Ryzen 7 7730U o Intel i7-1355U', ram: '16-32 GB DDR4', storage: 'SSD NVMe 512GB-1TB', gpu: 'Integrada', battery: '~10-12 hrs', display: '16" FHD IPS', price: '$750.000 – $1.000.000', why: 'Aspen Plus con modelos de columnas de destilación complejos puede usar 8-12GB de RAM solo. 16GB es el mínimo funcional; 32GB la opción ideal.' },
+          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5 Ryzen', cpu: 'AMD Ryzen 5 7530U o Intel i5-1235U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $700.000', why: '16GB DDR4 con SSD NVMe corre Aspen en la mayoría de los casos. Evita equipos con 8GB para esta carrera.' },
+          eco: { name: 'Laptop refurbished + upgrade RAM', cpu: 'Intel i5/Ryzen 5 reciente', ram: '8GB → actualiza a 16GB', storage: 'SSD NVMe', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$250.000 – $450.000', why: 'Si el presupuesto aprieta, compra un equipo refurbished moderno y actualiza la RAM a 16GB. El SSD es indispensable.' }
+        },
+        tablets: [
+          { emoji: '', name: 'iPad — Para apuntes de termodinámica', reason: 'Para diagramar ciclos termodinámicos, diagramas de flujo de proceso y apuntar en clases de operaciones unitarias.', price: '$230.000 – $380.000 CLP' }
+        ],
+        calcs: [
+          { name: 'Casio fx-991CW — ESENCIAL', why: 'Cálculos de equilibrio de fases, termodinámica, balance de masa y energía. Imprescindible en certámenes de los primeros 4 años.', price: '~$32.000 – $42.000 CLP' }
+        ],
+        accessories: [
+          { name: 'Ratón inalámbrico', emoji: '', priority: 'must', reason: 'Para trabajar cómodamente en Aspen y Excel.' },
+          { name: 'Disco externo 1TB', emoji: '', priority: 'must', reason: 'Las simulaciones de Aspen y proyectos de diseño de planta generan archivos pesados.' }
+        ]
+      }
+    };
+
+    // ══════════════════════════════════════════
+    // SOLOTODO LIVE RECOMMENDATION CONTROLLER
+    // ══════════════════════════════════════════
+    var currentRecCarrera = '';
+    var currentRecCategory = 'notebook';
+    var currentRecBudget = 'todos';
+    var currentRecSearch = '';
+    var searchDebounceTimer = null;
+    var cachedAllSoloTodoProducts = null;
+
+    function setRecCategory(cat, btn) {
+      currentRecCategory = cat;
+      document.querySelectorAll('#solotodoCatTabs .cat-tab').forEach(function (b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      fetchSoloTodoRecs();
+    }
+
+    function setRecBudget(budget, btn) {
+      currentRecBudget = budget;
+      document.querySelectorAll('#solotodoBudgetPills .budget-pill').forEach(function (b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      fetchSoloTodoRecs();
+    }
+
+    function onRecSearchInput() {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(function () {
+        var el = document.getElementById('solotodoSearchText');
+        currentRecSearch = el ? el.value.trim() : '';
+        fetchSoloTodoRecs();
+      }, 250);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    var API_BASE = (window.location.protocol.startsWith('http')) ? '' : 'http://127.0.0.1:8000';
+
+    function getSoloTodoImgUrl(url) {
+      if (!url || url.indexOf('placeholder.png') !== -1) return 'assets/escudo_udec.png';
+      if (url.indexOf('media.solotodo.com') !== -1) {
+        return API_BASE + '/api/imagen-proxy?url=' + encodeURIComponent(url);
+      }
+      return url;
+    }
+
+    function fetchSoloTodoRecs() {
+      var grid = document.getElementById('solotodoProductsGrid');
+      var badge = document.getElementById('solotodoResultsCount');
+      if (!grid) return;
+
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:45px 0;color:#64748b;font-size:0.9rem">' +
+        '' +
+        'Buscando opciones en SoloTodo Chile para tu carrera...' +
+        '</div>';
+
+      var apiUrl = API_BASE + '/api/recomendar?carrera=' + encodeURIComponent(currentRecCarrera) +
+        '&presupuesto=' + encodeURIComponent(currentRecBudget) +
+        '&categoria=' + encodeURIComponent(currentRecCategory) +
+        '&q=' + encodeURIComponent(currentRecSearch);
+
+      fetch(apiUrl)
+        .then(function (res) {
+          if (!res.ok) throw new Error('API offline');
+          return res.json();
+        })
+        .then(function (data) {
+          renderSoloTodoRecs(data.productos || []);
+        })
+        .catch(function (err) {
+          // Fallback a products_db.json local si FastAPI no responde
+          fallbackLocalSoloTodoRecs();
+        });
+    }
+
+    function fallbackLocalSoloTodoRecs() {
+      if (cachedAllSoloTodoProducts) {
+        processAndRenderLocalRecs(cachedAllSoloTodoProducts);
+        return;
+      }
+      fetch('backend/products_db.json')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          cachedAllSoloTodoProducts = data;
+          processAndRenderLocalRecs(data);
+        })
+        .catch(function (e) {
+          var grid = document.getElementById('solotodoProductsGrid');
+          if (grid) {
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#64748b;background:#f8fafc;border-radius:12px;border:1px dashed #cbd5e1">' +
+              'ℹ️ Inicia el servidor backend en http://127.0.0.1:8000 para cargar las ofertas de SoloTodo en tiempo real.' +
+              '</div>';
+          }
+        });
+    }
+
+    function processAndRenderLocalRecs(allProds) {
+      var filtered = allProds.filter(function (p) {
+        if (currentRecCategory && currentRecCategory !== 'todos') {
+          var cat = (p.categoria || '').toLowerCase();
+          var sub = (p.subcategoria || '').toLowerCase();
+          if (cat.indexOf(currentRecCategory) === -1 && sub.indexOf(currentRecCategory) === -1) return false;
+        }
+        var precio = p.precio || 0;
+        if (currentRecBudget === 'bajo' && precio > 450000) return false;
+        if (currentRecBudget === 'medio' && (precio < 400000 || precio > 750000)) return false;
+        if (currentRecBudget === 'alto' && (precio < 700000 || precio > 1250000)) return false;
+        if (currentRecBudget === 'premium' && precio < 1200000) return false;
+
+        if (currentRecSearch) {
+          var q = currentRecSearch.toLowerCase();
+          var txt = (p.nombre + ' ' + (p.descripcion || '') + ' ' + JSON.stringify(p.specs || {})).toLowerCase();
+          if (txt.indexOf(q) === -1) return false;
+        }
+        return true;
+      });
+
+      filtered.sort(function (a, b) { return (a.precio || 0) - (b.precio || 0); });
+
+      var mapped = filtered.map(function (p) {
+        return {
+          id: p.id,
+          nombre: p.nombre,
+          categoria: p.categoria,
+          precio: p.precio,
+          precio_normal: p.precio_normal,
+          precio_clp: '$' + Number(p.precio || 0).toLocaleString('es-CL') + ' CLP',
+          imagen: p.imagen,
+          specs: p.specs || {},
+          tiendas: p.tiendas || [],
+          solotodo_url: p.solotodo_url || p.link || 'https://www.solotodo.cl',
+          badge: 'Compatible UdeC'
+        };
+      });
+
+      renderSoloTodoRecs(mapped);
+    }
+
+    function renderSoloTodoRecs(prods) {
+      var grid = document.getElementById('solotodoProductsGrid');
+      var badge = document.getElementById('solotodoResultsCount');
+      if (!grid) return;
+
+
+      if (prods.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:50px 20px;color:#64748b;background:#f8fafc;border-radius:12px;border:1px dashed #cbd5e1">' +
+          '' +
+          '<div style="font-weight:700;color:var(--udec-azul);margin-bottom:6px">No hay productos para este rango de presupuesto</div>' +
+          '<div style="font-size:0.85rem;margin-bottom:14px">Prueba seleccionando "Todos" para ver todas las alternativas disponibles.</div>' +
+          '<button class="budget-pill active" onclick="setRecBudget(\'todos\', document.querySelector(\'#solotodoBudgetPills [data-p=todos]\'))">Ver todas las opciones</button>' +
+          '</div>';
+        return;
+      }
+
+      var html = '';
+      prods.forEach(function (p) {
+        var specs = p.specs || {};
+        var priceStr = p.precio_clp || ('$' + Number(p.precio || 0).toLocaleString('es-CL') + ' CLP');
+        var normalPriceStr = (p.precio_normal && p.precio_normal > p.precio) ? ('$' + Number(p.precio_normal).toLocaleString('es-CL')) : '';
+
+        var specPills = [];
+        if (specs.cpu) specPills.push('CPU: ' + specs.cpu);
+        if (specs.ram) specPills.push('RAM: ' + specs.ram);
+        if (specs.gpu && specs.gpu !== 'No posee') specPills.push('GPU: ' + specs.gpu);
+        if (specs.storage) specPills.push('SSD: ' + specs.storage);
+        if (specs.pantalla) specPills.push('Pantalla: ' + specs.pantalla);
+        if (specs.peso) specPills.push('Peso: ' + specs.peso);
+        if (specs.funciones) specPills.push(specs.funciones);
+
+        var specsHtml = specPills.slice(0, 4).map(function (s) {
+          return '<span class="st-spec-pill">' + escapeHtml(s) + '</span>';
+        }).join('');
+
+        var tiendasHtml = '';
+        if (p.tiendas && p.tiendas.length > 0) {
+          var tLinks = p.tiendas.slice(0, 3).map(function (t) {
+            var tName = escapeHtml(t.tienda);
+            var tPrice = '$' + Number(t.precio_oferta).toLocaleString('es-CL');
+            var tUrl = t.url ? ('href="' + escapeHtml(t.url) + '" target="_blank" rel="noopener"') : '';
+            return '<a ' + tUrl + ' class="st-store-link">' + tName + ' (' + tPrice + ') ↗</a>';
+          }).join('');
+
+          tiendasHtml = '<div class="st-stores-sec">' +
+            '<div class="st-stores-title">Tiendas con Stock en Chile:</div>' +
+            '<div class="st-stores-list">' + tLinks + '</div>' +
+            '</div>';
+        }
+
+        var imgUrl = getSoloTodoImgUrl(p.imagen);
+        var directSoloTodoUrl = p.solotodo_url || p.link_solotodo || 'https://www.solotodo.cl';
+        var badgeText = p.badge || 'Recomendado';
+
+        html += '<div class="st-card">' +
+          '<div class="st-badge-row">' +
+          '<span class="st-badge-compat">' + escapeHtml(badgeText) + '</span>' +
+          '</div>' +
+          '<div class="st-img-box">' +
+          '<img src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(p.nombre) + '" class="st-img" loading="lazy" onerror="this.onerror=null;this.src=\'assets/escudo_udec.png\';" />' +
+          '</div>' +
+          '<div class="st-content">' +
+          '<div class="st-title" title="' + escapeHtml(p.nombre) + '">' + escapeHtml(p.nombre) + '</div>' +
+          '<div class="st-price-wrap">' +
+          '<span class="st-price">' + priceStr + '</span>' +
+          (normalPriceStr ? '<span class="st-price-normal">' + normalPriceStr + '</span>' : '') +
+          '</div>' +
+          '<div class="st-specs-box">' + specsHtml + '</div>' +
+          tiendasHtml +
+          '<a href="' + escapeHtml(directSoloTodoUrl) + '" target="_blank" rel="noopener" class="st-btn">' +
+          '<span>Cotizar en SoloTodo</span> ↗' +
+          '</a>' +
+          '</div>' +
+          '</div>';
+      });
+
+      grid.innerHTML = html;
+    }
+
+    function generateRec() {
+      var carreraKey = document.getElementById('carreraSelect').value;
+      var budget = selectedBudget;
+
+      if (!carreraKey) {
+        var sel = document.getElementById('carreraSelect');
+        sel.style.borderColor = '#f87171';
+        sel.style.boxShadow = '0 0 0 3px rgba(239,68,68,.15)';
+        setTimeout(function () {
+          sel.style.borderColor = '';
+          sel.style.boxShadow = '';
+        }, 2000);
+        return;
+      }
+
+      var career = CAREERS[carreraKey];
+      if (!career) { alert('Carrera no encontrada. Por favor selecciona otra.'); return; }
+
+      var budgetLabels = { bajo: 'hasta $450.000', medio: '$400k–$750k', alto: '$700k–$1.25M', premium: '+$1.2M' };
+      var tierMap = { bajo: 'eco', medio: 'balance', alto: 'ideal', premium: 'ideal' };
+      var activeTier = tierMap[budget];
+
+      // Guardar contexto para SoloTodo live feed
+      currentRecCarrera = carreraKey;
+      currentRecBudget = budget;
+      currentRecCategory = 'notebook';
+
+      // Sincronizar UI de filtros de SoloTodo
+      document.querySelectorAll('#solotodoCatTabs .cat-tab').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-cat') === 'notebook');
+      });
+      document.querySelectorAll('#solotodoBudgetPills .budget-pill').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-p') === budget);
+      });
+
+      // Show results
+      document.getElementById('resultsArea').classList.add('visible');
+      setTimeout(function () {
+        document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+
+      // Header
+      document.getElementById('resCarreraName').textContent = career.label;
+      document.getElementById('resSubtitle').textContent = 'Presupuesto: ' + budgetLabels[budget] + ' · Universidad de Concepción (UdeC) · Software: ' + career.software.slice(0, 3).join(', ');
+
+      // Alert
+      document.getElementById('resAlertText').innerHTML = career.alert;
+
+      // SCORES STRIP
+      var strip = document.getElementById('scoresStrip');
+      strip.innerHTML = '';
+      var scoreLabels = { CPU: 'CPU', RAM: 'RAM', Storage: 'Storage', GPU: 'GPU', Battery: 'Batería', Display: 'Pantalla' };
+      Object.keys(career.scores).forEach(function (key) {
+        var val = career.scores[key];
+        var color = career.scoreColors[key] || '#6366f1';
+        var level = val <= 3 ? 'Básico' : val <= 6 ? 'Medio' : val <= 8 ? 'Alto' : 'Crítico';
+        strip.innerHTML += '<div class="score-cell"><div class="score-num" style="color:' + color + '">' + val + '<span style="font-size:1rem;color:var(--muted)">/10</span></div><div class="score-lbl">' + scoreLabels[key] + '</div><div class="score-lv" style="color:' + color + '">' + level + '</div></div>';
+      });
+
+      // Consultar opciones reales de SoloTodo en vivo
+      fetchSoloTodoRecs();
+
+      // ═════════════════════════════════════════════════════════
+      // GUÍA TÉCNICA DE COMPONENTES POR CARRERA (LAPTOPS & EXTRAS)
+      // ═════════════════════════════════════════════════════════
+      var compGuide = getComponentGuideForCareer(carreraKey, career);
+
+      // 1. CARDS DE COMPONENTES DE LAPTOPS (en acordeón desplegable)
+      var laptopGrid = document.getElementById('laptopGrid');
+      laptopGrid.innerHTML = '';
+      var tiers = ['ideal', 'balance', 'eco'];
+      var tierLabels = { ideal: 'Rendimiento Óptimo', balance: 'Estándar Recomendado', eco: 'Mínimo Viable' };
+
+      compGuide.laptops.forEach(function (lap) {
+        var tier = lap.tier;
+        var isHL = (tier === activeTier);
+        var hlStyle = isHL ? 'class="laptop-card tier-' + tier + ' highlight-ring"' : 'class="laptop-card tier-' + tier + '"';
+        var badge = tierLabels[tier] + (isHL ? ' ← Tu rango' : '');
+        var specHtml = lap.specs.map(function (s) {
+          return '<div class="spec-row"><span class="spec-key" style="min-width:105px">' + s.k + '</span><span class="spec-val">' + s.v + '</span></div>';
+        }).join('');
+
+        laptopGrid.innerHTML += '<div ' + hlStyle + '>' +
+          '<div class="tier-badge">' + badge + '</div>' +
+          '<div class="laptop-name">' + lap.name + '</div>' +
+          '<div class="laptop-price">Inversión referencial: <strong>' + lap.price + '</strong></div>' +
+          '<div class="spec-list">' + specHtml + '</div>' +
+          '<div class="why-box"><strong>Criterio técnico:</strong> ' + lap.why + '</div>' +
+          '</div>';
+      });
+
+      // 2. EXTRAS GRID: QUÉ BUSCAR EN TABLETS, CALCULADORAS Y ACCESORIOS
+      var extraGrid = document.getElementById('extraGrid');
+      extraGrid.innerHTML = '';
+
+      // TABLET: COMPONENTES A BUSCAR
+      var tabSpecsHtml = compGuide.tabletSpecs.map(function (t) {
+        return '<div class="comp-spec-row">' +
+          '<div class="comp-spec-header">' +
+          '<div class="comp-spec-title">' + (t.icon ? t.icon + ' ' : '') + t.title + '</div>' +
+          (t.badge ? '<span class="comp-pill-badge ' + t.badgeCls + '">' + t.badge + '</span>' : '') +
+          '</div>' +
+          '<div class="comp-spec-desc">' + t.desc + '</div>' +
+          '</div>';
+      }).join('');
+
+      var tabletCardHtml = '<div class="info-card">' +
+        '<div class="info-card-header">' +
+        '<div class="info-icon purple" style="font-weight:700;font-size:0.75rem">TAB</div>' +
+        '<div>' +
+        '<div class="info-card-title">Tablets: Qué Componentes Buscar</div>' +
+        '<div class="info-card-sub">Especificaciones para ' + escapeHtml(career.label) + '</div>' +
+        '</div>' +
+        '</div>' +
+        tabSpecsHtml +
+        '<div class="comp-models-ref"><strong>Modelos de referencia:</strong> ' + compGuide.tabletModels + '</div>' +
+        '</div>';
+
+      extraGrid.innerHTML += tabletCardHtml;
+
+      // CALCULADORA: ESPECIFICACIONES Y NORMATIVA UDEC
+      var calcSpecsHtml = compGuide.calcSpecs.map(function (c) {
+        return '<div class="comp-spec-row">' +
+          '<div class="comp-spec-header">' +
+          '<div class="comp-spec-title">' + (c.icon ? c.icon + ' ' : '') + c.title + '</div>' +
+          '</div>' +
+          '<div class="comp-spec-desc">' + c.desc + '</div>' +
+          '</div>';
+      }).join('');
+
+      var calcCardHtml = '<div class="info-card">' +
+        '<div class="info-card-header">' +
+        '<div class="info-icon amber" style="font-weight:700;font-size:0.75rem">CALC</div>' +
+        '<div>' +
+        '<div class="info-card-title">Calculadora: Normativa & Specs</div>' +
+        '<div class="info-card-sub">Requisitos para certámenes oficiales UdeC</div>' +
+        '</div>' +
+        '</div>' +
+        calcSpecsHtml +
+        '<div class="comp-models-ref"><strong>Modelos de referencia:</strong> ' + compGuide.calcModel + '</div>' +
+        '</div>';
+
+      extraGrid.innerHTML += calcCardHtml;
+
+      // ACCESORIOS Y ERGONOMÍA
+      var prioOrder = { must: 0, rec: 1, opt: 2 };
+      var prioLabel = { must: 'Imprescindible', rec: 'Recomendado', opt: 'Opcional' };
+      var sorted = career.accessories.slice().sort(function (a, b) { return prioOrder[a.priority] - prioOrder[b.priority]; });
+      var accHtml = sorted.map(function (a) {
+        return '<div class="acc-item">' +
+          (a.emoji ? '<div class="acc-emoji">' + a.emoji + '</div>' : '<div class="acc-emoji" style="font-size:0.75rem;color:var(--udec-azul)">•</div>') +
+          '<div>' +
+          '<div class="acc-name">' + a.name + '</div>' +
+          '<div class="acc-reason">' + a.reason + '</div>' +
+          '<span class="acc-prio prio-' + a.priority + '">' + prioLabel[a.priority] + '</span>' +
+          '</div>' +
+          '</div>';
+      }).join('');
+
+      var accCardHtml = '<div class="info-card">' +
+        '<div class="info-card-header">' +
+        '<div class="info-icon teal" style="font-weight:700;font-size:0.75rem">PERIF</div>' +
+        '<div>' +
+        '<div class="info-card-title">Ergonomía y Periféricos Clave</div>' +
+        '<div class="info-card-sub">Protege tu postura y maximiza productividad</div>' +
+        '</div>' +
+        '</div>' +
+        accHtml +
+        '</div>';
+
+      extraGrid.innerHTML += accCardHtml;
+    }
+
+    function getComponentGuideForCareer(careerKey, career) {
+      var isHeavyDev = (careerKey === 'ing_civil_informatica');
+      var isVisual3D = (careerKey === 'arquitectura' || careerKey === 'cine');
+      var isDesign = (careerKey === 'diseno_grafico');
+      var isHealth = (careerKey === 'medicina' || careerKey === 'enfermeria' || careerKey === 'odontologia' || careerKey === 'kinesiologia' || careerKey === 'bioquimica');
+      var isEngineering = (careerKey.indexOf('ing_') !== -1 && !isHeavyDev);
+      var isBusiness = (careerKey === 'administracion' || careerKey === 'contabilidad' || careerKey === 'economia' || careerKey === 'ing_comercial');
+
+      // ─── 1. LAPTOPS: QUÉ COMPONENTES BUSCAR POR TIER ───
+      var cpuIdeal = (isHeavyDev || isVisual3D) ? '8+ núcleos / 16 hilos (AMD Ryzen 7/9 serie 7000H/8000 o Intel Core i7/i9 gen 13H/14H) o Apple M3 Pro'
+        : isHealth ? 'Intel Core i7 gen 13+ o AMD Ryzen 7 serie 7000 (bajo consumo U/HS, gran eficiencia) o Apple M2/M3'
+          : '6 a 8 núcleos / 12 a 16 hilos (AMD Ryzen 7 serie 7000/8000 o Intel Core i7 gen 13+)';
+
+      var ramIdeal = (isHeavyDev || isVisual3D) ? '32 GB DDR5 o memoria unificada de 36 GB (indispensable para correr múltiples VMs, Docker o renderizado pesado sin congelarse)'
+        : '16 GB a 32 GB DDR5 (idealmente en doble canal Dual Channel para mayor ancho de banda)';
+
+      var gpuIdeal = (isVisual3D || isHeavyDev) ? 'Dedicada NVIDIA GeForce RTX 4060 o RTX 4070 (8 GB VRAM GDDR6 con soporte CUDA y Studio Drivers)'
+        : isDesign ? 'Dedicada NVIDIA RTX 3050/4050 o Apple Silicon GPU (10+ núcleos GPU para Adobe Suite)'
+          : 'Gráficos integrados avanzados (AMD Radeon 780M / 680M o Intel Iris Xe). No requiere GPU dedicada pesada';
+
+      var storageIdeal = 'SSD M.2 NVMe PCIe 4.0 de al menos 1 TB (velocidad de lectura >= 4.500 MB/s para que simulaciones e IDEs abran en segundos)';
+
+      var displayIdeal = (isDesign || isVisual3D) ? 'Panel OLED o IPS 100% sRGB / DCI-P3 calibrado, resolución 2.5K o QHD, brillo >= 400 nits'
+        : 'Panel IPS con acabado mate antirreflejo, resolución 1920x1080 (FHD) o superior, brillo >= 300 nits';
+
+      var batteryIdeal = isHealth ? 'Batería >= 60 Wh con carga rápida USB-C Power Delivery (PD) y peso pluma (<1.4 kg para rotaciones)'
+        : 'Batería de 55 a 75 Wh con soporte para carga rápida por USB-C y autonomía de 8 a 12 horas';
+
+      var laptopIdeal = {
+        tier: 'ideal',
+        name: 'Perfil Rendimiento Óptimo & Multitarea',
+        price: (isHeavyDev || isVisual3D) ? '$1.100.000 – $1.800.000 CLP' : '$750.000 – $1.100.000 CLP',
+        specs: [
+          { k: 'CPU', v: cpuIdeal },
+          { k: 'RAM', v: ramIdeal },
+          { k: 'GPU', v: gpuIdeal },
+          { k: 'Almacenamiento', v: storageIdeal },
+          { k: 'Pantalla', v: displayIdeal },
+          { k: 'Batería & Chasis', v: batteryIdeal }
+        ],
+        why: career.laptops.ideal.why
+      };
+
+      var cpuBalance = (isVisual3D || isHeavyDev) ? 'AMD Ryzen 5 serie 7000H o Intel Core i5 gen 12H/13H (6 núcleos / 12 hilos)'
+        : 'AMD Ryzen 5 serie 5000/7000 o Intel Core i5 gen 12/13 (6 núcleos / 12 hilos)';
+
+      var ramBalance = '16 GB DDR4 o DDR5 (verificar que al menos un slot sea SO-DIMM para no quedar limitado si viene soldada)';
+
+      var gpuBalance = (isVisual3D || isHeavyDev) ? 'Dedicada NVIDIA GeForce RTX 3050 o RTX 4050 (4 a 6 GB VRAM GDDR6)'
+        : 'Gráficos integrados Intel UHD / AMD Radeon Graphics';
+
+      var laptopBalance = {
+        tier: 'balance',
+        name: 'Perfil Estándar Recomendado (Costo/Beneficio)',
+        price: (isVisual3D || isHeavyDev) ? '$650.000 – $950.000 CLP' : '$450.000 – $700.000 CLP',
+        specs: [
+          { k: 'CPU', v: cpuBalance },
+          { k: 'RAM', v: ramBalance },
+          { k: 'GPU', v: gpuBalance },
+          { k: 'Almacenamiento', v: 'SSD formato M.2 NVMe PCIe de 512 GB (arranque ultra veloz)' },
+          { k: 'Pantalla', v: 'Panel IPS con resolución 1920x1080 (FHD), ángulo de visión de 178° y acabado mate antirreflejo' },
+          { k: 'Batería & Chasis', v: 'Batería de 45 a 55 Wh con autonomía real de 6 a 8 horas de uso ofimático' }
+        ],
+        why: career.laptops.balance.why
+      };
+
+      var laptopEco = {
+        tier: 'eco',
+        name: 'Perfil Mínimo Viable (Con potencial de mejora)',
+        price: '$250.000 – $420.000 CLP (+ ~$35.000 en mejoras)',
+        specs: [
+          { k: 'CPU', v: 'Mínimo 4 a 6 núcleos modernos (AMD Ryzen 5 serie 4000/5000 o Intel Core i5 10ma/11ma gen). Evitar Celeron o dual-cores' },
+          { k: 'RAM', v: '8 GB DDR4 como base mínima, pero con slot libre obligatorio para agregar un segundo módulo de 8GB (~$25.000 extra)' },
+          { k: 'GPU', v: isVisual3D ? 'GPU Dedicada básica (GTX 1650 / RTX 3050) como piso mínimo para abrir Revit/AutoCAD' : 'Gráficos integrados estándar' },
+          { k: 'Almacenamiento', v: 'SSD de 256 GB a 512 GB. Jamás aceptar un equipo con disco mecánico HDD como unidad principal de sistema' },
+          { k: 'Pantalla', v: 'Pantalla 14" o 15.6" con resolución mínima FHD (1920x1080; evitar resoluciones 1366x768 que cansan la vista)' },
+          { k: 'Batería & Chasis', v: 'Autonomía básica, recomendable mantener el cargador compacto en la mochila universitaria' }
+        ],
+        why: career.laptops.eco.why
+      };
+
+      // ─── 2. TABLETS: QUÉ COMPONENTES BUSCAR ───
+      var tabletSpecs = [];
+      if (isVisual3D || isDesign) {
+        tabletSpecs = [
+          { icon: '', title: 'Lápiz Activo (Stylus)', desc: 'IMPRESCINDIBLE: Stylus activo con tecnología de rechazo de palma (Palm Rejection), mínimo 4.096 niveles de presión y detección de ángulo/inclinación (Tilt). Vital para vectorizar, ilustrar y trazar cotas o bocetos a escala sin trazos involuntarios.', badge: 'Imprescindible', badgeCls: 'comp-pill-must' },
+          { icon: '', title: 'Tecnología de Pantalla: AMOLED / IPS Laminada', desc: 'Priorizar panel AMOLED / OLED (negros puros y contraste infinito) o IPS con Laminación Completa (Full Lamination, que elimina la cámara de aire entre vidrio y sensor para suprimir el paralaje óptico). Cobertura mínima 100% sRGB / DCI-P3 y tasa de 90Hz–120Hz para trazo sin retraso (latencia <9ms).', badge: 'Crítico para Color', badgeCls: 'comp-pill-must' },
+          { icon: '', title: 'Tamaño & Espacio de Trabajo', desc: 'Mínimo 11" a 12.9" o 13". Un lienzo amplio es crucial para ver planos completos, fachadas y capas de ilustración sin necesidad de hacer zoom continuo.', badge: '11" a 13" Amplia', badgeCls: 'comp-pill-rec' },
+          { icon: '', title: 'Memoria RAM & Almacenamiento', desc: 'Mínimo 8 GB de RAM y 128 GB a 256 GB de almacenamiento. En Procreate, Photoshop o visores BIM, cada capa gráfica consume memoria RAM activa.', badge: '8GB RAM + 128GB+', badgeCls: 'comp-pill-rec' }
+        ];
+      } else if (isHealth) {
+        tabletSpecs = [
+          { icon: '', title: 'Lápiz de Precisión Activo', desc: 'MUY RECOMENDADO: Stylus activo de punta fina con rechazo de palma para rotular cortes histológicos, esquemas de patología y atlas 3D interactivos (Complete Anatomy).', badge: 'Muy Recomendado', badgeCls: 'comp-pill-must' },
+          { icon: '', title: 'Pantalla AMOLED / IPS de Alta Densidad', desc: 'Panel AMOLED o IPS de alta resolución (2K / Retina) para distinguir microestructuras celulares en imágenes médicas. Debe incluir modo de protección ocular (Eye Care / Low Blue Light) para resistir extensas guardias.', badge: 'Filtro Luz Azul / 2K', badgeCls: 'comp-pill-rec' },
+          { icon: '', title: 'Formato Bolsillo de Bata Médica', desc: '10" a 11" como máximo y peso inferior a 480 gramos. Es el factor de forma exacto para caber en el bolsillo de la bata clínica o delantal durante rondas hospitalarias.', badge: 'Formato Bata Clínica', badgeCls: 'comp-pill-must' },
+          { icon: '', title: 'Batería para Turnos Completos', desc: 'Batería de larga duración (>= 10 horas de pantalla encendida continua) para no depender de enchufes en policlínicos y salas de hospital.', badge: '10h+ Autonomía', badgeCls: 'comp-pill-rec' }
+        ];
+      } else if (isEngineering) {
+        tabletSpecs = [
+          { icon: '', title: 'Lápiz con Rechazo de Palma', desc: 'RECOMENDADO: Stylus activo con Palm Rejection para apoyar la mano con postura natural mientras resuelves certámenes pasados, ecuaciones diferenciales y balances de materia.', badge: 'Recomendado', badgeCls: 'comp-pill-rec' },
+          { icon: '', title: 'Pantalla IPS / AMOLED con 90Hz+', desc: 'Panel IPS o AMOLED de 10.5" a 11.5" con resolución 2K y refresco de 90Hz o 120Hz para que la escritura de fórmulas matemáticas complejas fluya sin retardo perceptible.', badge: 'Resolución 2K / 90Hz+', badgeCls: 'comp-pill-rec' },
+          { icon: '', title: 'Tamaño & Relación de Aspecto', desc: '10.9" a 11" con relación 4:3 o 3:2, óptima para visualizar documentos PDF de doble columna (guías de laboratorio y libros de texto) en orientación vertical.', badge: '10.9" a 11"', badgeCls: 'comp-pill-opt' },
+          { icon: '', title: 'Almacenamiento para Libros', desc: 'Mínimo 64 GB a 128 GB. Suficiente para albergar libros clásicos de ingeniería (Stewart, Hibbeler, etc.), guías resueltas y apuntes de toda la carrera.', badge: '64GB - 128GB', badgeCls: 'comp-pill-opt' }
+        ];
+      } else if (isHeavyDev) {
+        tabletSpecs = [
+          { icon: '', title: 'Lápiz / Stylus para Diagramas', desc: 'OPCIONAL: Útil para modelar diagramas de clases UML, grafos de algoritmos y bocetos de wireframes en reuniones de sprint de desarrollo.', badge: 'Opcional', badgeCls: 'comp-pill-opt' },
+          { icon: '', title: 'Prioridad de Inversión: Monitor > Tablet', desc: 'En Informática, la tablet es secundaria. Un 2do monitor externo de 27" IPS para trabajar con código en una pantalla y documentación en la otra ofrece un impacto en productividad 3 veces superior.', badge: 'Monitor > Tablet', badgeCls: 'comp-pill-rec' },
+          { icon: '', title: 'Pantalla 10"–11" Antirreflejo', desc: 'Panel IPS estándar de 10" a 11" para lectura cómoda de manuales API, especificaciones RFC y libros técnicos de programación en PDF.', badge: 'Lectura Técnica', badgeCls: 'comp-pill-opt' }
+        ];
+      } else {
+        tabletSpecs = [
+          { icon: '', title: 'Lápiz para Subrayado y Anotaciones', desc: 'OPCIONAL / RECOMENDADO: Stylus activo para destacar códigos legales, leyes actualizadas y anotar marginalias en lecturas extensas de doctrina o casos.', badge: 'Opcional', badgeCls: 'comp-pill-opt' },
+          { icon: '', title: 'Pantalla con Modo Lectura Cómoda', desc: 'Panel con acabado antirreflejo y modo lectura (papel digital o escala de grises con filtro de luz azul). Crucial para leer cientos de páginas continuas sin fatiga ocular.', badge: 'Lectura Cómoda', badgeCls: 'comp-pill-rec' },
+          { icon: '', title: 'Compatibilidad con Funda Teclado', desc: 'Buscar tablet con pines magnéticos o compatibilidad Bluetooth para funda-teclado, permitiendo redactar resúmenes, minutas y escritos directamente en la cátedra.', badge: 'Teclado Recomendado', badgeCls: 'comp-pill-rec' },
+          { icon: '', title: 'Almacenamiento', desc: '64 GB a 128 GB son más que suficientes para almacenar miles de documentos PDF, bibliotecas de jurisprudencia y textos de cátedra.', badge: '64 GB+', badgeCls: 'comp-pill-opt' }
+        ];
+      }
+
+      var tabletModels = (isVisual3D || isDesign) ? 'Modelos de referencia que cumplen estas specs: Apple iPad Pro / iPad Air con Apple Pencil, Samsung Galaxy Tab S9 / S9+ (incluye S-Pen con 4096 niveles de presión).'
+        : isHealth ? 'Modelos de referencia que cumplen estas specs: Apple iPad 10a gen / Air con Apple Pencil, Samsung Galaxy Tab S9 FE (S-Pen incluido y resistencia IP68).'
+          : isEngineering ? 'Modelos de referencia que cumplen estas specs: Apple iPad 10a gen con Apple Pencil USB-C, Samsung Galaxy Tab S9 FE / S6 Lite, Xiaomi Pad 6 con Smart Pen.'
+            : 'Modelos de referencia: Apple iPad 10a gen con Magic Keyboard Folio, Samsung Galaxy Tab A9+, o e-reader con stylus (Kindle Scribe).';
+
+      // ─── 3. CALCULADORA: COMPONENTES & NORMATIVA ───
+      var calcSpecs = [];
+      if (isEngineering || careerKey === 'bioquimica') {
+        calcSpecs = [
+          { icon: '', title: 'Pantalla & Formato', desc: 'Pantalla Natural Textbook Display (matriz de puntos de alta resolución que muestra integrales, fracciones y matrices tal como en la pizarra).' },
+          { icon: '', title: 'Procesamiento Matemático', desc: 'Capacidad para álgebra matricial (hasta 4x4), cálculo de determinantes, sistemas de ecuaciones lineales, estadística bivariada e integración numérica.' },
+          { icon: '', title: 'Normativa Oficial UdeC', desc: 'Estrictamente NO programable y sin memoria alfanumérica permanente (condición obligatoria para ser autorizada en certámenes de ciencias básicas UdeC).' }
+        ];
+      } else if (isBusiness) {
+        calcSpecs = [
+          { icon: '', title: 'Pantalla & Formato', desc: 'Pantalla multilínea para visualización de tablas estadísticas y amortizaciones.' },
+          { icon: '', title: 'Funciones Financieras', desc: 'Cálculo de flujos de caja, valor presente neto (VAN), tasa interna de retorno (TIR) y funciones de interés compuesto.' },
+          { icon: '', title: 'Normativa Oficial UdeC', desc: 'Científica avanzada no programable permitida en certámenes de Métodos Cuantitativos y Finanzas.' }
+        ];
+      } else {
+        calcSpecs = [
+          { icon: '', title: 'Pantalla & Uso', desc: 'Calculadora científica estándar de 2 líneas para operaciones básicas, potencias y estadística univariada.' },
+          { icon: '', title: 'Relevancia en la Carrera', desc: 'No se requiere calculadora avanzada; la mayoría de los análisis cuantitativos se ejecutan en software de computador.' }
+        ];
+      }
+
+      var calcModel = (isEngineering || careerKey === 'bioquimica') ? 'Modelo de referencia institucional: Casio fx-991CW (ClassWiz) o Casio fx-570CW (552 funciones, código QR para gráficos en celular, permitida en certámenes UdeC).'
+        : isBusiness ? 'Modelo de referencia: Casio fx-991CW o Calculadora Financiera HP 12C / Casio FC-200V según el ramo.'
+          : 'Modelo de referencia: Casio fx-82SP / fx-991CW o calculadora científica básica.';
+
+      return {
+        laptops: [laptopIdeal, laptopBalance, laptopEco],
+        tabletSpecs: tabletSpecs,
+        tabletModels: tabletModels,
+        calcSpecs: calcSpecs,
+        calcModel: calcModel
+      };
+    }
+
+    function resetForm() {
+      document.getElementById('resultsArea').classList.remove('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
+    // =========================================================
+    // AI CHATBOT CONTROLLER
+    // =========================================================
+    function initAIChat() {
+      const API_URL = (API_BASE ? API_BASE : '') + '/api/chat';
+      const API_RESET_URL = (API_BASE ? API_BASE : '') + '/api/chat/reset';
+
+      const launcher = document.getElementById('aiChatLauncher');
+      const chatWin = document.getElementById('aiChatWindow');
+      const closeBtn = document.getElementById('aiChatCloseBtn');
+      const resetBtn = document.getElementById('aiChatResetBtn');
+      const chatForm = document.getElementById('aiChatForm');
+      const chatInput = document.getElementById('aiChatInput');
+      const sendBtn = document.getElementById('aiChatSendBtn');
+      const msgList = document.getElementById('aiChatMessages');
+
+      if (!launcher || !chatWin) {
+        console.warn('Elementos del chat no encontrados en el DOM aún.');
+        return;
+      }
+
+      // Obtener o crear ID de sesión único y persistente
+      let sessionId = localStorage.getItem('udeskfit_session_id');
+      if (!sessionId) {
+        sessionId = 'web_' + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem('udeskfit_session_id', sessionId);
+      }
+
+      function toggleChat() {
+        chatWin.classList.toggle('open');
+        if (chatWin.classList.contains('open')) {
+          setTimeout(() => chatInput.focus(), 150);
+        }
+      }
+
+      launcher.addEventListener('click', toggleChat);
+      closeBtn.addEventListener('click', () => chatWin.classList.remove('open'));
+
+      // Chips interactivos de preguntas sugeridas
+      msgList.addEventListener('click', function (e) {
+        const chip = e.target.closest('.ai-chip');
+        if (chip && chip.dataset.prompt) {
+          chatInput.value = chip.dataset.prompt;
+          chatForm.dispatchEvent(new Event('submit'));
+        }
+      });
+
+      // Reiniciar memoria conversacional
+      resetBtn.addEventListener('click', async function () {
+        if (confirm('¿Deseas reiniciar la memoria de la conversación?')) {
+          try {
+            await fetch(`${API_RESET_URL}?session_id=${encodeURIComponent(sessionId)}`, { method: 'POST' });
+          } catch (e) {
+            console.warn('Reset error', e);
+          }
+          sessionId = 'web_' + Math.random().toString(36).substring(2, 10);
+          localStorage.setItem('udeskfit_session_id', sessionId);
+
+          const sysMsg = document.createElement('div');
+          sysMsg.className = 'ai-msg system';
+          sysMsg.textContent = 'Memoria conversacional reiniciada.';
+          msgList.appendChild(sysMsg);
+          msgList.scrollTop = msgList.scrollHeight;
+        }
+      });
+
+      // Formateador seguro de Markdown para enlaces, listas y negritas
+      function parseMarkdown(text) {
+        if (!text) return '';
+        let safe = text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+
+        // Enlaces markdown [texto](url)
+        safe = safe.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="chat-link">$1 ↗</a>');
+
+        // Enlaces directos sueltos (que no hayan sido convertidos en enlace previamente)
+        safe = safe.replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer" class="chat-link">Ver en SoloTodo ↗</a>');
+
+        // Formato negrita **texto**
+        safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        // Formato cursiva *texto*
+        safe = safe.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        // Listas viñetas
+        safe = safe.replace(/^[*-]\s+(.+)$/gm, '<li style="margin-left:14px; margin-bottom:4px;">$1</li>');
+        // Saltos de línea
+        safe = safe.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+        return safe;
+      }
+
+      function appendMessage(text, role) {
+        const msg = document.createElement('div');
+        msg.className = `ai-msg ${role}`;
+        if (role === 'assistant') {
+          msg.innerHTML = parseMarkdown(text);
+        } else {
+          msg.textContent = text;
+        }
+        msgList.appendChild(msg);
+        msgList.scrollTop = msgList.scrollHeight;
+        return msg;
+      }
+
+      function showTyping() {
+        const typing = document.createElement('div');
+        typing.className = 'ai-chat-typing';
+        typing.id = 'aiChatTyping';
+        typing.innerHTML = '<span class="ai-typing-dot"></span><span class="ai-typing-dot"></span><span class="ai-typing-dot"></span>';
+        msgList.appendChild(typing);
+        msgList.scrollTop = msgList.scrollHeight;
+      }
+
+      function hideTyping() {
+        const typing = document.getElementById('aiChatTyping');
+        if (typing) typing.remove();
+      }
+
+      chatForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        appendMessage(text, 'user');
+        chatInput.value = '';
+        sendBtn.disabled = true;
+        showTyping();
+
+        try {
+          const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              mensaje: text,
+              session_id: sessionId
+            })
+          });
+
+          hideTyping();
+
+          if (!res.ok) {
+            appendMessage('Lo siento, hubo un problema al procesar la respuesta. Verifica que el servidor FastAPI esté corriendo en el puerto 8000.', 'assistant');
+            return;
+          }
+
+          const data = await res.json();
+          appendMessage(data.respuesta || 'No se recibió respuesta.', 'assistant');
+        } catch (err) {
+          hideTyping();
+          appendMessage('No se pudo conectar con el servidor local. Por favor, asegúrate de que FastAPI esté ejecutándose en http://127.0.0.1:8000.', 'assistant');
+        } finally {
+          sendBtn.disabled = false;
+          chatInput.focus();
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAIChat);
+    } else {
+      initAIChat();
+    }
+  </script>
+
+  <!-- FLOATING AI CHAT WIDGET -->
+  <button id="aiChatLauncher" class="ai-chat-btn" aria-label="Abrir Asesor Inteligente UdeC">
+    <span class="ai-chat-btn-dot"></span>
+    <img src="assets/escudo_udec.png" alt="Escudo UdeC" style="width:19px;height:19px;object-fit:contain;" />
+    <span>Asistente IA UdeC</span>
+  </button>
+
+  <div id="aiChatWindow" class="ai-chat-window" role="dialog" aria-modal="true" aria-label="Chat del Asesor Tech">
+    <!-- Header -->
+    <div class="ai-chat-header">
+      <div class="ai-chat-header-info">
+        <div class="ai-chat-avatar">
+          <img src="assets/escudo_udec.png" alt="Escudo UdeC" style="width:24px;height:24px;object-fit:contain;" />
+        </div>
+        <div>
+          <div class="ai-chat-title">UdeskFit</div>
+          <div class="ai-chat-status">
+            <span class="ai-chat-btn-dot"></span> Asesor Oficial GIIA · UdeC
+          </div>
+        </div>
+      </div>
+      <div class="ai-chat-header-actions">
+        <button id="aiChatResetBtn" class="ai-chat-btn-icon" title="Reiniciar memoria de la conversación"
+          style="font-size:1rem;line-height:1">↺</button>
+        <button id="aiChatCloseBtn" class="ai-chat-btn-icon" title="Cerrar chat">✕</button>
+      </div>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="aiChatMessages" class="ai-chat-messages">
+      <div class="ai-msg assistant">
+        ¡Hola! Soy tu <strong>Asesor Tech UdeC</strong> de la iniciativa <strong>GIIA</strong>. Te ayudo a encontrar
+        el notebook, monitor o accesorio ideal según los ramos y software de tu carrera en la <strong>Universidad de
+          Concepción</strong>.
+        <div style="margin-top:10px; font-weight:600; font-size:0.78rem; color:var(--muted);">Consultas frecuentes UdeC:
+        </div>
+        <div class="ai-chat-chips">
+          <button class="ai-chip" data-prompt="Busco un notebook para Arquitectura UdeC por menos de 800000">
+            Arquitectura UdeC &lt; $800k</button>
+          <button class="ai-chip" data-prompt="¿Qué equipo necesito para Ingeniería Civil Industrial UdeC?">Ing.
+            Civil Industrial</button>
+          <button class="ai-chip" data-prompt="Notebook para programar en Informática UdeC">Informática UdeC</button>
+          <button class="ai-chip" data-prompt="Quiero una opción económica con buena batería para el campus">Económico
+            para el campus</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="ai-chat-input-wrap">
+      <form id="aiChatForm" class="ai-chat-input-box">
+        <input type="text" id="aiChatInput" class="ai-chat-input"
+          placeholder="Pregúntale a la IA (ej: notebook < $800k)..." autocomplete="off" maxlength="500" />
+        <button type="submit" id="aiChatSendBtn" class="ai-chat-send" title="Enviar mensaje">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+      <div class="ai-chat-footer-note">Potenciado por Google Gemini • Catálogo en tiempo real</div>
+    </div>
+  </div>
+</body>
+
+</html>

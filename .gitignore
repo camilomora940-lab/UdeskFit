@@ -1,0 +1,24 @@
+# Entorno virtual y Python
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Variables de entorno y secretos privados
+.env
+backend/.env
+*.env.local
+
+# Caché de imágenes local
+backend/cache_images/
+.tempmediaStorage/
+
+# Logs y temporales
+*.log
+download_log.txt
+test_chat_output.txt
+.DS_Store
+Thumbs.db

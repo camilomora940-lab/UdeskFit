@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Panel Admin — TechAdvisor UdeC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Colores Oficiales Universidad de Concepción (normasgraficas.udec.cl) */
+      --udec-azul: #223c6a;       /* Pantone 541 C */
+      --udec-amarillo: #e69b0a;   /* Pantone 130 C */
+      --udec-rojo: #d21428;       /* Pantone 485 C */
+      --udec-gris: #a0a0a0;       /* Pantone Cool Grey 6C */
+
+      --bg: #ffffff;
+      --bg2: #f8fafc;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --surface3: #e2e8f0;
+      --border: #e2e8f0;
+      --border2: #cbd5e1;
+      --text: #1e293b;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+      --accent: #223c6a;
+      --accent2: #1e3a8a;
+      --accent3: #b45309;
+      --gold: #e69b0a;
+      --eco: #059669;
+      --danger: #d21428;
+      --danger2: #ef4444;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --radius-xs: 8px;
+      --sidebar: 260px;
+    }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth }
+    body { font-family: 'Roboto', sans-serif; background: #ffffff; color: var(--text); min-height: 100vh; overflow-x: hidden }
+
+    /* ── GLOW ── */
+    .glow-bg { display: none; }
+
+    /* ── LOGIN OVERLAY ── */
+    #loginOverlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(248, 250, 252, 0.88);
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .login-card {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      width: 100%; max-width: 420px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+      text-align: center;
+    }
+    .login-icon { font-size: 3rem; margin-bottom: 16px }
+    .login-title { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 6px }
+    .login-sub { color: var(--muted); font-size: .85rem; margin-bottom: 32px }
+    .login-field {
+      width: 100%; padding: 14px 16px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius-xs); color: var(--text);
+      font-size: .95rem; font-family: 'Roboto', sans-serif;
+      outline: none; transition: .2s; margin-bottom: 14px;
+      letter-spacing: .08em;
+    }
+    .login-field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(99,102,241,.15) }
+    .login-btn {
+      width: 100%; padding: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none; border-radius: var(--radius-xs);
+      color: #fff; font-size: 1rem; font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer; transition: .25s; letter-spacing: .01em;
+    }
+    .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99,102,241,.45) }
+    .login-error { color: var(--danger2); font-size: .82rem; margin-top: 10px; display: none }
+
+    /* ── LAYOUT ── */
+    #app { display: none; min-height: 100vh }
+    #app.visible { display: flex }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar); flex-shrink: 0;
+      background: var(--bg2); border-right: 1px solid var(--border);
+      position: fixed; top: 0; left: 0; height: 100vh;
+      display: flex; flex-direction: column; z-index: 100;
+      overflow-y: auto;
+    }
+    .sidebar-logo {
+      display: flex; align-items: center; gap: 10px;
+      padding: 22px 20px; border-bottom: 1px solid var(--border);
+    }
+    .logo-mark {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 9px; display: grid; place-items: center; font-size: 16px; flex-shrink: 0;
+    }
+    .logo-name { font-family: 'Poppins', sans-serif; font-size: .95rem; font-weight: 700; color: var(--text) }
+    .logo-name span { color: var(--accent3) }
+    .admin-badge {
+      background: rgba(239,68,68,.15); color: var(--danger2);
+      font-size: .6rem; font-weight: 700; padding: 2px 7px;
+      border-radius: 99px; border: 1px solid rgba(239,68,68,.2);
+      margin-left: auto; letter-spacing: .05em;
+    }
+    .sidebar-section { padding: 20px 12px 8px }
+    .sidebar-label { font-size: .65rem; font-weight: 700; color: var(--muted2); text-transform: uppercase; letter-spacing: .08em; padding: 0 8px; margin-bottom: 6px }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 10px; border-radius: 10px;
+      color: var(--muted); font-size: .83rem; font-weight: 500;
+      cursor: pointer; transition: .18s; margin-bottom: 2px;
+      border: 1px solid transparent;
+    }
+    .nav-item:hover { background: var(--surface); color: var(--text) }
+    .nav-item.active { background: rgba(99,102,241,.12); color: var(--accent3); border-color: rgba(99,102,241,.2) }
+    .nav-item .nav-emoji { font-size: 1rem; flex-shrink: 0 }
+    .sidebar-footer { margin-top: auto; padding: 16px 12px; border-top: 1px solid var(--border) }
+    .logout-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 10px; border-radius: 10px;
+      color: var(--muted); font-size: .82rem; cursor: pointer;
+      transition: .18s; width: 100%; background: none; border: none;
+    }
+    .logout-btn:hover { color: var(--danger2) }
+
+    /* ── MAIN CONTENT ── */
+    .main { margin-left: var(--sidebar); flex: 1; min-height: 100vh; position: relative; z-index: 10 }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; border-bottom: 1px solid var(--border);
+      background: #ffffff; box-shadow: 0 1px 4px rgba(0,0,0,0.05); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 50;
+    }
+    .topbar-title { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700 }
+    .topbar-sub { font-size: .78rem; color: var(--muted); margin-top: 2px }
+    .topbar-actions { display: flex; gap: 10px; align-items: center }
+    .btn-primary {
+      display: flex; align-items: center; gap: 6px;
+      padding: 9px 18px; background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none; border-radius: 99px; color: #fff;
+      font-size: .82rem; font-weight: 700; cursor: pointer;
+      font-family: 'Poppins', sans-serif; transition: .2s;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99,102,241,.4) }
+    .btn-secondary {
+      display: flex; align-items: center; gap: 6px;
+      padding: 9px 16px; background: var(--surface2);
+      border: 1px solid var(--border); border-radius: 99px;
+      color: var(--muted); font-size: .82rem; cursor: pointer; transition: .2s;
+    }
+    .btn-secondary:hover { color: var(--text); border-color: var(--border2) }
+    .btn-danger {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px; background: rgba(239,68,68,.1);
+      border: 1px solid rgba(239,68,68,.2); border-radius: 99px;
+      color: var(--danger2); font-size: .78rem; cursor: pointer; transition: .2s;
+    }
+    .btn-danger:hover { background: rgba(239,68,68,.18) }
+
+    .page { display: none; padding: 32px; max-width: 1100px }
+    .page.active { display: block }
+
+    /* ── DASHBOARD ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px }
+    .stat-num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1 }
+    .stat-label { font-size: .75rem; color: var(--muted); margin-top: 6px; font-weight: 500 }
+    .recent-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px }
+    .recent-title { font-family: 'Poppins', sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: 16px }
+    .activity-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border) }
+    .activity-item:last-child { border-bottom: none; padding-bottom: 0 }
+    .activity-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 5px; flex-shrink: 0 }
+    .activity-text { font-size: .82rem; color: var(--muted) }
+    .activity-text strong { color: var(--text) }
+    .activity-time { font-size: .72rem; color: var(--muted2); margin-top: 2px }
+
+    /* ── CAREER EDITOR ── */
+    .career-picker { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px }
+    .career-chip {
+      padding: 8px 16px; border: 1px solid var(--border);
+      border-radius: 99px; background: var(--surface);
+      color: var(--muted); font-size: .8rem; font-weight: 600;
+      cursor: pointer; transition: .18s;
+    }
+    .career-chip:hover { border-color: var(--accent); color: var(--text) }
+    .career-chip.active { background: rgba(99,102,241,.12); border-color: var(--accent); color: var(--accent3) }
+    .section-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px }
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px }
+    .section-title { display: flex; align-items: center; gap: 8px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700 }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px }
+    .field-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px }
+    @media(max-width:700px) { .field-grid, .field-grid-3 { grid-template-columns: 1fr } }
+    .field-group { display: flex; flex-direction: column; gap: 5px }
+    .field-label { font-size: .72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em }
+    .field-input, .field-textarea, .field-select {
+      width: 100%; padding: 10px 13px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius-xs); color: var(--text);
+      font-size: .87rem; font-family: 'Roboto', sans-serif;
+      outline: none; transition: .2s;
+    }
+    .field-textarea { resize: vertical; min-height: 80px; line-height: 1.5 }
+    .field-input:focus, .field-textarea:focus, .field-select:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(99,102,241,.12)
+    }
+    .field-full { grid-column: 1 / -1 }
+
+    /* ── LIST ITEMS (tablets, calcs, accesorios) ── */
+    .list-item {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius-xs); padding: 16px; margin-bottom: 10px;
+      position: relative;
+    }
+    .list-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px }
+    .list-item-num { font-size: .7rem; font-weight: 700; color: var(--accent3); text-transform: uppercase; letter-spacing: .06em }
+    .item-remove { background: none; border: none; color: var(--muted2); cursor: pointer; font-size: 1.1rem; transition: .15s; padding: 0 4px }
+    .item-remove:hover { color: var(--danger2) }
+    .add-item-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; background: transparent;
+      border: 1px dashed var(--border2); border-radius: var(--radius-xs);
+      color: var(--muted); font-size: .82rem; cursor: pointer;
+      transition: .2s; width: 100%; justify-content: center; margin-top: 4px;
+    }
+    .add-item-btn:hover { border-color: var(--accent); color: var(--accent3); background: rgba(99,102,241,.05) }
+
+    /* ── SCORES ── */
+    .scores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px }
+    .score-item { display: flex; flex-direction: column; gap: 6px }
+    .score-label-row { display: flex; justify-content: space-between; align-items: center }
+    .score-name { font-size: .75rem; font-weight: 600; color: var(--muted) }
+    .score-val-badge { font-size: .75rem; font-weight: 700; color: var(--accent3) }
+    input[type="range"] { width: 100%; accent-color: var(--accent); height: 4px; cursor: pointer }
+
+    /* ── NEW CAREER PAGE ── */
+    .new-career-form { max-width: 700px }
+    .step-indicator {
+      display: flex; gap: 8px; margin-bottom: 32px
+    }
+    .step { flex: 1; height: 4px; border-radius: 99px; background: var(--surface2) }
+    .step.done { background: var(--accent) }
+    .step.current { background: linear-gradient(90deg, var(--accent), var(--accent2)) }
+
+    /* ── EXPORT PAGE ── */
+    .export-box { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px; margin-bottom: 16px }
+    .export-title { font-family: 'Poppins', sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: 8px }
+    .export-desc { font-size: .82rem; color: var(--muted); line-height: 1.5 }
+    pre { background: #0a0f1e; border: 1px solid var(--border); border-radius: var(--radius-xs); padding: 16px; font-size: .75rem; color: var(--eco); overflow-x: auto; max-height: 300px; overflow-y: auto; margin-top: 12px }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: var(--radius-sm); padding: 14px 20px;
+      font-size: .85rem; font-weight: 600; display: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      animation: slideIn .3s ease;
+    }
+    #toast.show { display: block }
+    #toast.success { border-color: rgba(34,197,94,.3); color: var(--eco) }
+    #toast.info { border-color: rgba(99,102,241,.3); color: var(--accent3) }
+    @keyframes slideIn { from { transform: translateY(20px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px }
+    ::-webkit-scrollbar-track { background: var(--bg) }
+    ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 99px }
+
+    /* ── EMPTY STATE ── */
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--muted) }
+    .empty-state .es-icon { font-size: 3rem; margin-bottom: 12px }
+    .empty-state p { font-size: .9rem }
+
+    /* ── PRIORITY SELECT ── */
+    .priority-pills { display: flex; gap: 8px }
+    .prio-pill {
+      flex: 1; padding: 8px; border-radius: var(--radius-xs);
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--muted); font-size: .74rem; font-weight: 600;
+      cursor: pointer; text-align: center; transition: .15s;
+    }
+    .prio-pill.active-must { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.3); color: #f87171 }
+    .prio-pill.active-rec { background: rgba(245,158,11,.1); border-color: rgba(245,158,11,.25); color: var(--gold) }
+    .prio-pill.active-opt { background: rgba(148,163,184,.08); border-color: rgba(148,163,184,.2); color: #94a3b8 }
+
+    /* ── DIFF INDICATOR ── */
+    .changed-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); display: inline-block; margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+<div class="glow-bg"></div>
+
+<!-- ══════════════════════════════ LOGIN OVERLAY ══════════════════════════════ -->
+<div id="loginOverlay">
+  <div class="login-card">
+    <div class="login-icon"></div>
+    <div class="login-title">Panel Admin</div>
+    <div class="login-sub">Acceso exclusivo para el administrador de TechAdvisor UdeC</div>
+    <input type="password" id="pwInput" class="login-field" placeholder="Contraseña de administrador"
+      onkeydown="if(event.key==='Enter') checkLogin()" />
+    <button class="login-btn" onclick="checkLogin()">Acceder al Panel →</button>
+    <div class="login-error" id="loginError">Contraseña incorrecta. Inténtalo de nuevo.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ APP ══════════════════════════════ -->
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark" style="background:transparent;box-shadow:none;"><img src="assets/escudo_udec.png" alt="UdeC" style="width:28px;height:28px;object-fit:contain;" /></div>
+      <div class="logo-name">Tech<span>Advisor</span></div>
+      <span class="admin-badge">ADMIN</span>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Panel</div>
+      <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard', this)">
+        <span class="nav-emoji"></span> Dashboard
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Recomendaciones</div>
+      <div class="nav-item" data-page="laptops" onclick="showPage('laptops', this)">
+        <span class="nav-emoji"></span> Laptops
+      </div>
+      <div class="nav-item" data-page="tablets" onclick="showPage('tablets', this)">
+        <span class="nav-emoji"></span> Tablets
+      </div>
+      <div class="nav-item" data-page="calcs" onclick="showPage('calcs', this)">
+        <span class="nav-emoji"></span> Calculadoras
+      </div>
+      <div class="nav-item" data-page="accessories" onclick="showPage('accessories', this)">
+        <span class="nav-emoji"></span> Accesorios
+      </div>
+      <div class="nav-item" data-page="scores" onclick="showPage('scores', this)">
+        <span class="nav-emoji"></span> Puntajes Hardware
+      </div>
+      <div class="nav-item" data-page="alerts" onclick="showPage('alerts', this)">
+        <span class="nav-emoji"></span> Alertas y Contexto
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Catálogo en Vivo</div>
+      <div class="nav-item" data-page="solotodo" onclick="showPage('solotodo', this)">
+        <span class="nav-emoji"></span> Catálogo SoloTodo
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Gestión</div>
+      <div class="nav-item" data-page="newcareer" onclick="showPage('newcareer', this)">
+        <span class="nav-emoji"></span> Nueva Carrera
+      </div>
+      <div class="nav-item" data-page="exportar" onclick="showPage('exportar', this)">
+        <span class="nav-emoji"></span> Exportar JSON
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="doLogout()">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title" id="topbarTitle">Dashboard</div>
+        <div class="topbar-sub" id="topbarSub">Resumen general del sistema</div>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn-secondary" onclick="window.open('recomendador.html','_blank')">↗ Ver Recomendador</button>
+        <button class="btn-primary" onclick="showPage('exportar', document.querySelector('[data-page=exportar]'))">Exportar JSON</button>
+      </div>
+    </div>
+
+    <!-- ── DASHBOARD ── -->
+    <div class="page active" id="page-dashboard">
+      <div style="padding:32px">
+        <div class="stats-grid">
+          <div class="stat-card" style="border-top:3px solid var(--accent)">
+            <div class="stat-num" style="color:var(--accent3)" id="statCareers">16</div>
+            <div class="stat-label">Carreras en el sistema</div>
+          </div>
+          <div class="stat-card" style="border-top:3px solid var(--gold)">
+            <div class="stat-num" style="color:var(--gold)" id="statChanges">0</div>
+            <div class="stat-label">Cambios sin exportar</div>
+          </div>
+          <div class="stat-card" style="border-top:3px solid var(--eco)">
+            <div class="stat-num" style="color:var(--eco)">48</div>
+            <div class="stat-label">Laptops recomendadas</div>
+          </div>
+          <div class="stat-card" style="border-top:3px solid #ec4899">
+            <div class="stat-num" style="color:#ec4899">3</div>
+            <div class="stat-label">Tiers por carrera</div>
+          </div>
+        </div>
+
+        <div class="recent-box">
+          <div class="recent-title">️ Guía rápida de uso</div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--accent3)"></div>
+            <div>
+              <div class="activity-text"><strong>Editar laptops:</strong> Ve a la sección "Laptops", selecciona la carrera y modifica cada tier (Ideal, Balance, Eco).</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--gold)"></div>
+            <div>
+              <div class="activity-text"><strong>Agregar ítem:</strong> En Tablets, Calculadoras o Accesorios, usa el botón "+ Agregar" al fondo de la lista.</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--eco)"></div>
+            <div>
+              <div class="activity-text"><strong>Nueva carrera:</strong> Ve a "Nueva Carrera" y completa el formulario. Se agregará al sistema.</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:#ec4899"></div>
+            <div>
+              <div class="activity-text"><strong>Guardar cambios:</strong> Cuando termines, ve a "Exportar JSON" y descarga el archivo. Comparte con el desarrollador para aplicar los cambios al recomendador.html.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LAPTOPS ── -->
+    <div class="page" id="page-laptops">
+      <div style="padding:32px">
+        <div id="laptopCareerPicker" class="career-picker"></div>
+        <div id="laptopEditor"><div class="empty-state"><div class="es-icon"></div><p>Selecciona una carrera para editar sus laptops</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── TABLETS ── -->
+    <div class="page" id="page-tablets">
+      <div style="padding:32px">
+        <div id="tabletCareerPicker" class="career-picker"></div>
+        <div id="tabletEditor"><div class="empty-state"><div class="es-icon"></div><p>Selecciona una carrera para editar sus tablets</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── CALCULADORAS ── -->
+    <div class="page" id="page-calcs">
+      <div style="padding:32px">
+        <div id="calcCareerPicker" class="career-picker"></div>
+        <div id="calcEditor"><div class="empty-state"><div class="es-icon"></div><p>Selecciona una carrera para editar sus calculadoras</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── ACCESORIOS ── -->
+    <div class="page" id="page-accessories">
+      <div style="padding:32px">
+        <div id="accCareerPicker" class="career-picker"></div>
+        <div id="accEditor"><div class="empty-state"><div class="es-icon"></div><p>Selecciona una carrera para editar sus accesorios</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── PUNTAJES ── -->
+    <div class="page" id="page-scores">
+      <div style="padding:32px">
+        <div id="scoresCareerPicker" class="career-picker"></div>
+        <div id="scoresEditor"><div class="empty-state"><div class="es-icon"></div><p>Selecciona una carrera para editar sus puntajes</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── ALERTAS ── -->
+    <div class="page" id="page-alerts">
+      <div style="padding:32px">
+        <div id="alertCareerPicker" class="career-picker"></div>
+        <div id="alertEditor"><div class="empty-state"><div class="es-icon"></div><p>Selecciona una carrera para editar su alerta y contexto</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── NUEVA CARRERA ── -->
+    <div class="page" id="page-newcareer">
+      <div style="padding:32px; max-width:720px">
+        <div class="section-card">
+          <div class="section-header">
+            <div class="section-title">Crear nueva carrera</div>
+          </div>
+          <div class="field-grid" style="margin-bottom:14px">
+            <div class="field-group">
+              <label class="field-label">Clave interna (sin espacios)</label>
+              <input type="text" class="field-input" id="nc-key" placeholder="ej: ing_ambiental" oninput="this.value=this.value.toLowerCase().replace(/\s/g,'_')" />
+            </div>
+            <div class="field-group">
+              <label class="field-label">Nombre visible</label>
+              <input type="text" class="field-input" id="nc-label" placeholder="ej: Ingeniería Ambiental" />
+            </div>
+            <div class="field-group">
+              <label class="field-label">Emoji representativo</label>
+              <input type="text" class="field-input" id="nc-emoji" placeholder="ej: " />
+            </div>
+            <div class="field-group">
+              <label class="field-label">Software principal (separado por comas)</label>
+              <input type="text" class="field-input" id="nc-software" placeholder="ej: Python, QGIS, AutoCAD" />
+            </div>
+          </div>
+          <div class="field-group" style="margin-bottom:14px">
+            <label class="field-label">Texto de alerta / contexto de la carrera</label>
+            <textarea class="field-textarea" id="nc-alert" placeholder="ej: &lt;strong&gt;Carrera mixta:&lt;/strong&gt; Combina trabajo de campo con análisis de datos..."></textarea>
+          </div>
+          <p style="font-size:.8rem; color:var(--muted); margin-bottom:16px">
+            Después de crear la carrera, podrás editar sus laptops, tablets, calculadoras y accesorios en las secciones correspondientes.
+          </p>
+          <button class="btn-primary" style="width:100%; justify-content:center; padding:13px" onclick="addNewCareer()">Crear carrera</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CATÁLOGO SOLOTODO ── -->
+    <div class="page" id="page-solotodo">
+      <div style="padding:32px">
+        <div class="section-card" style="margin-bottom:20px; border-left:4px solid var(--accent)">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px">
+            <div>
+              <div style="font-family:'Poppins',sans-serif; font-size:1.25rem; font-weight:800; color:var(--udec-azul); display:flex; align-items:center; gap:8px">
+                Base de Datos SoloTodo (Chile)
+              </div>
+              <div style="font-size:0.84rem; color:var(--muted); margin-top:4px">
+                Productos reales sincronizados con tiendas en Chile (PC Factory, Falabella, Paris, Lenovo, etc.)
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+              <span id="solotodoCountBadge" style="font-size:0.8rem; font-weight:700; background:#f1f5f9; padding:6px 14px; border-radius:99px; border:1px solid var(--border); color:var(--udec-azul)">
+                Cargando catálogo...
+              </span>
+              <button id="btnSyncSoloTodo" class="btn-primary" onclick="triggerSyncSoloTodo()" style="gap:8px">
+                <span id="syncIcon"></span> <span id="syncText">Sincronizar con SoloTodo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros y Búsqueda -->
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px; align-items:center">
+          <input type="text" id="solotodoSearchInput" class="field-input" placeholder="Buscar por modelo, procesador, GPU (ej: RTX, Ryzen 7, MacBook, 16GB)..." style="flex:1; min-width:260px" oninput="filterSoloTodo()" />
+          
+          <div style="display:flex; gap:8px; flex-wrap:wrap" id="solotodoCatFilters">
+            <button class="career-chip active" data-cat="" onclick="setSoloTodoCat('', this)">Todos</button>
+            <button class="career-chip" data-cat="notebook" onclick="setSoloTodoCat('notebook', this)">Notebooks</button>
+            <button class="career-chip" data-cat="tablet" onclick="setSoloTodoCat('tablet', this)">Tablets</button>
+            <button class="career-chip" data-cat="monitor" onclick="setSoloTodoCat('monitor', this)">Monitores</button>
+            <button class="career-chip" data-cat="periferico" onclick="setSoloTodoCat('periferico', this)">Periféricos</button>
+            <button class="career-chip" data-cat="calculadora" onclick="setSoloTodoCat('calculadora', this)">Calculadoras</button>
+          </div>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div id="solotodoGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:18px">
+          <div style="grid-column:1/-1; text-align:center; padding:60px 0; color:var(--muted)">
+            Cargando catálogo tecnológico...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EXPORTAR ── -->
+    <div class="page" id="page-exportar">
+      <div style="padding:32px; max-width:760px">
+        <div class="export-box">
+          <div class="export-title">¿Cómo funciona el export?</div>
+          <div class="export-desc">
+            Al hacer clic en "Descargar JSON", recibirás un archivo <code style="color:var(--accent3)">recomendaciones_admin.json</code> con todos los cambios que hiciste en el panel. <br><br>
+            Envíaselo al desarrollador o aplícalo tú mismo reemplazando la variable <code style="color:var(--eco)">CAREERS</code> en el archivo <code>recomendador.html</code>.
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-header">
+            <div class="section-title">Exportar datos</div>
+            <div style="display:flex;gap:10px">
+              <button class="btn-secondary" onclick="previewJSON()">Vista previa</button>
+              <button class="btn-primary" onclick="downloadJSON()">⬇️ Descargar JSON</button>
+            </div>
+          </div>
+          <div id="jsonPreview" style="display:none">
+            <pre id="jsonContent"></pre>
+          </div>
+          <div id="jsonPlaceholder" style="text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem">
+            Haz clic en "Vista previa" para ver el JSON generado
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════
+// CONTRASEÑA (solo tú eres admin)
+// ══════════════════════════════════════════
+var ADMIN_PASS = 'GiiaUdeC2025';
+var pendingChanges = 0;
+
+function checkLogin() {
+  var pw = document.getElementById('pwInput').value;
+  if (pw === ADMIN_PASS) {
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+    initApp();
+  } else {
+    var err = document.getElementById('loginError');
+    err.style.display = 'block';
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwInput').classList.add('shake');
+    setTimeout(function() { document.getElementById('pwInput').classList.remove('shake'); }, 400);
+  }
+}
+
+function doLogout() {
+  if (pendingChanges > 0 && !confirm('Tienes ' + pendingChanges + ' cambios sin exportar. ¿Seguro que quieres salir?')) return;
+  location.reload();
+}
+
+// ══════════════════════════════════════════
+// DATA (copia de CAREERS del recomendador)
+// ══════════════════════════════════════════
+var DATA = {
+  ing_civil_industrial: {
+    label: 'Ing. Civil Industrial', emoji: '',
+    alert: '<strong>Carrera cuantitativa:</strong> Usarás Python, R, MATLAB y simuladores como Arena. El cuello de botella real es la RAM — con 8GB tendrás freezes constantes al trabajar con datasets y simulaciones simultáneas.',
+    scores: { CPU: 7, RAM: 8, Storage: 7, GPU: 3, Battery: 7, Display: 6 },
+    software: ['Python + Pandas', 'R + RStudio', 'Arena Simulation', 'Excel Solver', 'AutoCAD básico'],
+    laptops: {
+      ideal: { name: 'Lenovo ThinkBook 16 G6 / HP EliteBook 845', cpu: 'AMD Ryzen 7 7730U o Intel i7-1355U', ram: '16 GB DDR4 3200MHz', storage: 'SSD NVMe 512GB+', gpu: 'Radeon / Iris Xe integrada', battery: '~10-12 hrs', display: '16" FHD IPS Anti-glare', price: '$750.000 – $950.000', why: '16 GB son <strong>indispensables</strong> para correr MATLAB, RStudio y Arena al mismo tiempo.' },
+      balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5 (Ryzen 5)', cpu: 'AMD Ryzen 5 7530U o Intel i5-1235U', ram: '16 GB DDR4 (actualizable)', storage: 'SSD NVMe 512GB', gpu: 'AMD Radeon Vega integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $700.000', why: 'Si viene con 8GB, <strong>actualiza a 16GB antes del primer semestre</strong> (~$35.000 extra).' },
+      eco: { name: 'Equipo refurbished (Mínimo viable)', cpu: 'Intel i5 10ma gen o AMD Ryzen 5 4000', ram: '8 GB DDR4 → actualiza a 16GB', storage: 'SSD 256GB mínimo + disco externo', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$200.000–$380.000 + ~$50.000 mejoras', why: 'Compra refurbished y <strong>reemplaza el HDD por un SSD</strong> (~$40k) y agrega RAM.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad (9a/10a gen) — Muy recomendada', reason: 'Apuntes en clases de estadística con Apple Pencil, anotar correcciones en mallas.', price: '$230.000 – $380.000 CLP' },
+      { emoji: '', name: 'Samsung Galaxy Tab A8 — Económica', reason: 'Para leer apuntes y PDFs. Sin lápiz preciso pero cumple para estudio básico.', price: '$120.000 – $180.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW (ClassWiz) — RECOMENDADA', why: '552 funciones, álgebra matricial, estadística avanzada, integración numérica.', price: '~$32.000 – $42.000 CLP' },
+      { name: 'HP 50g — Para usuarios avanzados', why: 'Calculadora gráfica con CAS (álgebra simbólica). Útil desde 4to semestre.', price: '~$85.000 – $120.000 CLP (usada)' }
+    ],
+    accessories: [
+      { name: 'Ratón ergonómico inalámbrico', emoji: '', priority: 'must', reason: 'Trabajarás horas con hojas de cálculo y simulaciones.' },
+      { name: 'Monitor externo 24" FHD', emoji: '', priority: 'rec', reason: 'Python en un monitor y Excel en el otro es un cambio de productividad enorme.' },
+      { name: 'Disco externo 1TB USB 3.0', emoji: '', priority: 'must', reason: 'Datasets, proyectos y backups. Un semestre puede generar 30-50GB.' },
+      { name: 'Hub USB-C multipuerto', emoji: '', priority: 'rec', reason: 'Conectas monitor, ratón, disco y cargador simultáneamente.' },
+      { name: 'Mochila con compartimento acolchado', emoji: '', priority: 'must', reason: 'No cargues una laptop de $700k sin protección.' }
+    ]
+  },
+  ing_civil_informatica: {
+    label: 'Ing. Civil Informática', emoji: '',
+    alert: '<strong>La carrera más exigente en hardware.</strong> Correrás máquinas virtuales (VM), compilarás código constantemente y usarás IDEs pesados como IntelliJ. Menos de 16GB de RAM es inaceptable desde primer año.',
+    scores: { CPU: 9, RAM: 9, Storage: 8, GPU: 6, Battery: 6, Display: 7 },
+    software: ['VS Code / IntelliJ', 'Docker + VMs', 'Git + GitHub', 'Linux WSL2', 'Node.js / Python / Java'],
+    laptops: {
+      ideal: { name: 'ASUS ROG Zephyrus G14 / Lenovo Legion Slim 5', cpu: 'AMD Ryzen 9 7940H o Intel i7-13700H', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB PCIe 4.0', gpu: 'NVIDIA RTX 4060 6GB', battery: '~6-8 hrs', display: '14-16" QHD 165Hz', price: '$1.200.000 – $1.600.000', why: '32GB para correr 2 VMs + IntelliJ + Chrome con 20 tabs sin que nada se queje.' },
+      balance: { name: 'Lenovo IdeaPad Gaming 3 / HP Victus 15', cpu: 'AMD Ryzen 5 7535H o Intel i5-12500H', ram: '16 GB DDR5 (actualizar a 32GB)', storage: 'SSD NVMe 512GB', gpu: 'NVIDIA RTX 3050 4GB', battery: '~5-7 hrs', display: '15.6" FHD 144Hz', price: '$650.000 – $900.000', why: 'RTX 3050 permite correr modelos de ML con CUDA. 16GB suficientes el 1er año.' },
+      eco: { name: 'Laptop Ryzen 5 5500U + upgrade manual', cpu: 'AMD Ryzen 5 5500U', ram: '8GB → actualizar a 16GB inmediato', storage: 'SSD NVMe 256GB + externo', gpu: 'AMD Radeon integrada', battery: '~8 hrs', display: '15.6" FHD', price: '$300.000 – $500.000', why: 'Funciona los primeros 2 años. La actualización a 16GB es <strong>obligatoria el día 1</strong>.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad Pro + Apple Pencil — Ideal para diagramas', reason: 'Diagramas UML en clases de diseño de sistemas, fotos a la pizarra con OCR.', price: '$600.000 – $900.000 CLP' },
+      { emoji: '', name: 'Monitor externo es mejor inversión', reason: 'El dinero de una tablet rinde más en un 2do monitor.', price: '$80.000 – $150.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW — Para los primeros semestres', why: 'Solo necesitarás calculadora en Cálculo, Álgebra y Física (años 1-2).', price: '~$32.000 – $42.000 CLP' },
+      { name: 'WolframAlpha / GeoGebra / Python SymPy', why: 'Desde 3er año en adelante, todas las operaciones van en código.', price: 'Gratis' }
+    ],
+    accessories: [
+      { name: '2do monitor externo 27" FHD/QHD', emoji: '', priority: 'must', reason: 'Código en un lado, documentación/terminal en el otro.' },
+      { name: 'Teclado mecánico externo', emoji: '', priority: 'rec', reason: 'Escribirás miles de líneas de código por semestre.' },
+      { name: 'Ratón de alta precisión', emoji: '', priority: 'must', reason: 'Para navegar código, clic preciso en IDEs.' },
+      { name: 'Audífonos con micrófono', emoji: '', priority: 'must', reason: 'Stand-ups del equipo, defensa de proyectos en remoto.' }
+    ]
+  },
+  arquitectura: {
+    label: 'Arquitectura', emoji: '',
+    alert: '<strong>La carrera con mayores exigencias de GPU y pantalla.</strong> Revit y SketchUp Pro consumen GPU dedicada para renderizar. Una pantalla 100% sRGB es tan importante como el procesador.',
+    scores: { CPU: 8, RAM: 9, Storage: 8, GPU: 9, Battery: 5, Display: 10 },
+    software: ['AutoCAD 2024', 'Revit (BIM)', 'SketchUp Pro', 'Lumion / Enscape', 'Adobe Photoshop + Illustrator'],
+    laptops: {
+      ideal: { name: 'ASUS ProArt Studiobook / MacBook Pro 14" M3 Pro', cpu: 'Intel i9-13900H o Apple M3 Pro', ram: '32 GB DDR5 / 36GB unificada', storage: 'SSD NVMe 1TB', gpu: 'NVIDIA RTX 4070 / GPU M3 30-core', battery: '~5-7 hrs (8-12 en Mac)', display: '16" OLED/Retina, 100% sRGB', price: '$1.500.000 – $2.500.000', why: 'En Lumion, renderizar una escena de 30s toma <strong>3 min con RTX 4070 vs 45 min con GPU integrada</strong>.' },
+      balance: { name: 'Lenovo Legion 5 / MSI Katana 15 B12V', cpu: 'AMD Ryzen 7 7745H o Intel i7-12650H', ram: '16 GB DDR5 (actualizar a 32GB)', storage: 'SSD 512GB + externo', gpu: 'NVIDIA RTX 4060 8GB', battery: '~4-6 hrs', display: '15.6" FHD 144Hz (busca 100% sRGB)', price: '$900.000 – $1.200.000', why: 'RTX 4060 con 8GB VRAM es suficiente para Revit y renders medianos.' },
+      eco: { name: 'Desktop potente + laptop básica para clases', cpu: 'Desktop: Ryzen 7 5700X + RTX 3060 Ti', ram: '32 GB DDR4 (desktop)', storage: 'SSD 512GB + HDD 2TB', gpu: 'RTX 3060 Ti (desktop)', battery: 'No aplica (desktop)', display: 'Monitor 27" IPS 100% sRGB (~$150.000)', price: '$600.000 – $900.000 (desktop completo)', why: 'Un desktop potente + laptop básica para clases es más económico que una laptop gaming de $1.2M.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad Pro 12.9" + Apple Pencil Pro — ESENCIAL', reason: 'Croquis digitales, bocetos de fachadas, anotaciones sobre planos exportados.', price: '$800.000 – $1.100.000 CLP' },
+      { emoji: '', name: 'Wacom Intuos Medium — Alternativa económica', reason: 'Tableta de dibujo sin pantalla. Compatible con AutoCAD y Photoshop.', price: '$90.000 – $140.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW — Para Cálculo y Física', why: 'Solo necesitarás calculadora en las ciencias básicas del primer año.', price: '~$32.000 – $42.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Monitor externo 27" IPS 100% sRGB', emoji: '', priority: 'must', reason: 'Para trabajar con planos en casa.' },
+      { name: 'Impresora A3 / acceso a impresión', emoji: '', priority: 'must', reason: 'Imprimirás muchos planos.' },
+      { name: 'Disco SSD externo 2TB', emoji: '', priority: 'must', reason: 'Un proyecto de Revit puede pesar 500MB-2GB.' },
+      { name: 'Hub USB-C con HDMI 4K', emoji: '', priority: 'rec', reason: 'Para conectar el monitor externo y otros periféricos simultáneamente.' }
+    ]
+  },
+  diseno_grafico: {
+    label: 'Diseño Gráfico / UX', emoji: '',
+    alert: '<strong>La pantalla lo es todo.</strong> Una pantalla sin calibración de color te hará entregar trabajos que se ven distintos al imprimirlos. Prioriza 100% sRGB.',
+    scores: { CPU: 7, RAM: 7, Storage: 8, GPU: 7, Battery: 7, Display: 10 },
+    software: ['Adobe Photoshop + Illustrator + InDesign', 'Figma (UX/UI)', 'Adobe XD', 'Lightroom', 'DaVinci Resolve (video)'],
+    laptops: {
+      ideal: { name: 'MacBook Pro 14" M3 / Dell XPS 15 OLED', cpu: 'Apple M3 / Intel i7-13700H', ram: '18GB unificada / 32GB DDR5', storage: 'SSD 512GB-1TB', gpu: 'M3 GPU / RTX 4060', battery: '+15 hrs (Mac) / 5-7 hrs (Dell)', display: 'Liquid Retina / OLED 3.5K 100% DCI-P3', price: '$1.400.000 – $1.800.000', why: 'El MacBook M3 corre Photoshop e Illustrator más rápido que cualquier PC equivalente en precio.' },
+      balance: { name: 'ASUS VivoBook Pro 16 OLED / Lenovo IdeaPad 5 Pro', cpu: 'AMD Ryzen 7 6800H o Intel i5-12500H', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'NVIDIA RTX 3050 Ti', battery: '~6-8 hrs', display: '16" OLED 2.8K 100% DCI-P3', price: '$700.000 – $950.000', why: 'Los modelos OLED en este rango tienen paneles de excelente calidad.' },
+      eco: { name: 'Laptop básica + monitor externo calibrado', cpu: 'Intel i5 10ma / Ryzen 5 5000', ram: '16 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: 'Variable', display: 'Monitor externo IPS 100% sRGB', price: '$250.000 (laptop) + $100.000 (monitor)', why: 'Laptop básica + <strong>monitor externo IPS 100% sRGB</strong> (~$100k) para casa.' }
+    },
+    tablets: [
+      { emoji: '', name: 'Wacom Intuus Medium — ESENCIAL', reason: 'Para diseño vectorial en Illustrator, retoque en Photoshop y wireframes en Figma.', price: '$90.000 – $130.000 CLP' },
+      { emoji: '', name: 'iPad Air + Apple Pencil 2 — Alternativa premium', reason: 'Si prefieres portabilidad, el iPad Air + Procreate reemplaza al Wacom.', price: '$500.000 – $700.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-82MS — Solo para ciencias básicas', why: 'Diseño Gráfico no tiene ramos de matemáticas avanzadas.', price: '~$12.000 – $18.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Monitor externo IPS 24-27" 100% sRGB', emoji: '', priority: 'must', reason: 'Calibración de color consistente.' },
+      { name: 'Disco SSD externo 1TB', emoji: '', priority: 'must', reason: 'Archivos PSD y proyectos de video son enormes.' },
+      { name: 'Calibrador de pantalla (Spyder X)', emoji: '', priority: 'opt', reason: 'Para trabajo profesional serio.' }
+    ]
+  },
+  medicina: {
+    label: 'Medicina', emoji: '',
+    alert: '<strong>Portabilidad y durabilidad sobre todo.</strong> Irás a hospitales y rotaciones donde no siempre habrá enchufes. La batería es crítica.',
+    scores: { CPU: 6, RAM: 7, Storage: 6, GPU: 3, Battery: 10, Display: 7 },
+    software: ['OneNote / GoodNotes', 'Anki (memorización)', 'Complete Anatomy 3D', 'Office 365', 'Zoom / Teams'],
+    laptops: {
+      ideal: { name: 'MacBook Air 13" M2 / Lenovo ThinkPad X1 Carbon', cpu: 'Apple M2 / Intel i7-1365U', ram: '16 GB', storage: 'SSD 512GB', gpu: 'Integrada (suficiente)', battery: '+15 hrs (Mac) / 12 hrs (ThinkPad)', display: '13-14" Retina/IPS antirreflejo', price: '$950.000 – $1.300.000', why: 'La batería de +15hrs del MacBook M2 es el mayor activo para rotaciones clínicas.' },
+      balance: { name: 'ASUS ZenBook 14 / Samsung Galaxy Book3', cpu: 'Intel i5-1335U o AMD Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10-12 hrs', display: '14" FHD IPS', price: '$600.000 – $850.000', why: 'Laptops ligeras (~1.3-1.5kg) con buena batería son perfectas.' },
+      eco: { name: 'iPad + teclado + laptop básica', cpu: 'iPad M1 + cualquier laptop i5', ram: '8GB laptop / 8GB iPad', storage: 'iPad 128GB + nube', gpu: 'Integrada', battery: 'iPad: 10hrs+ | Laptop: variable', display: 'iPad 10.9" Liquid Retina', price: '$350.000 (iPad) + $250.000 (laptop)', why: 'Para los primeros años donde solo tomas apuntes, el iPad puede reemplazar la laptop en el hospital.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad 10a gen + Apple Pencil — ESENCIAL', reason: 'Anki en modo activo, apuntes sobre láminas de histología, GoodNotes para anatomía.', price: '$280.000 – $380.000 CLP' },
+      { emoji: '', name: 'iPad Air + Apple Pencil 2 — Premium', reason: 'Pantalla laminada de mayor calidad para anotar sobre imágenes PACS.', price: '$500.000 – $600.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW — Para bioquímica y farmacología', why: 'Cálculos de dosis, concentraciones y diluciones en farmacología.', price: '~$32.000 – $42.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Mochila médica ergonómica ligera', emoji: '', priority: 'must', reason: 'Cargarás libros enormes + laptop + iPad.' },
+      { name: 'Batería externa 20.000mAh', emoji: '', priority: 'must', reason: 'Para rotaciones de turnos largos sin enchufe.' },
+      { name: 'Audífonos discretos con micro', emoji: '', priority: 'rec', reason: 'Para clases en línea, seminarios y discusiones de caso.' }
+    ]
+  },
+  administracion: {
+    label: 'Administración de Empresas', emoji: '',
+    alert: '<strong>Excel avanzado es tu herramienta central.</strong> Usarás Power BI, SPSS y quizás SAP desde 3er año. La calculadora financiera BA II Plus es tan importante como la laptop.',
+    scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 2, Battery: 8, Display: 6 },
+    software: ['Excel + Power BI', 'Word + PowerPoint', 'SPSS / Minitab', 'SAP (algunos programas)', 'Google Workspace'],
+    laptops: {
+      ideal: { name: 'Lenovo ThinkBook 14s / HP EliteBook 840', cpu: 'Intel i5-1335U o Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10-12 hrs', display: '14" FHD IPS antirreflejo', price: '$550.000 – $750.000', why: 'Un ThinkBook tiene teclado de calidad superior, buena batería y pantalla antirreflejo.' },
+      balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Intel i5-1135G7 o Ryzen 5 5500U', ram: '8-16 GB', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$380.000 – $550.000', why: 'Equipos confiables. Si viene con 8GB, verifica que tenga slot libre para agregar más RAM.' },
+      eco: { name: 'Laptop refurbished i5/Ryzen 5 + SSD', cpu: 'Intel i5 8va-10ma gen', ram: '8 GB DDR4', storage: 'SSD 256GB (reemplaza HDD)', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$180.000 – $320.000', why: 'Para Administración no necesitas hardware potente. Un equipo de segunda mano con SSD funciona perfectamente.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad básico — Recomendado', reason: 'Para presentaciones de proyectos, lectura de casos y apuntes en clases.', price: '$230.000 – $320.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW — Para estadística', why: 'Estadística básica, probabilidades y análisis financiero.', price: '~$32.000 – $42.000 CLP' },
+      { name: 'Texas Instruments BA II Plus — Para finanzas', why: 'La BA II Plus es la calculadora financiera estándar mundial (CFA, CPA).', price: '~$45.000 – $70.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Ratón ergonómico inalámbrico', emoji: '', priority: 'must', reason: 'Trabajarás horas en Excel. El trackpad nunca es suficiente.' },
+      { name: 'Monitor externo 24" para casa', emoji: '', priority: 'rec', reason: 'Ver una hoja de Excel con 50 columnas en un monitor de 24" es una diferencia enorme.' }
+    ]
+  },
+  contabilidad: {
+    label: 'Contabilidad y Auditoría', emoji: '',
+    alert: '<strong>Excel, ERP y software contable.</strong> Softland, SAP B1 o ContaPlus corren bien en hardware modesto. La calculadora financiera BA II Plus es tu segunda herramienta más importante.',
+    scores: { CPU: 4, RAM: 5, Storage: 4, GPU: 1, Battery: 8, Display: 5 },
+    software: ['Excel + tablas dinámicas', 'SAP / Softland / ContaPlus', 'Word + PowerPoint', 'SII en línea'],
+    laptops: {
+      ideal: { name: 'ASUS VivoBook 15 / HP Laptop 15s', cpu: 'Intel i5-1235U o Ryzen 5 5500U', ram: '8-16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$380.000 – $550.000', why: 'Contabilidad no requiere hardware potente. La pantalla de 15.6" da espacio para trabajar con múltiples columnas en Excel.' },
+      balance: { name: 'Laptop básica 14-15" con SSD', cpu: 'Intel i3-1215U o Ryzen 3 5300U', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~7-9 hrs', display: '14-15" FHD', price: '$250.000 – $380.000', why: 'Con SSD el equipo más básico moderno es suficiente.' },
+      eco: { name: 'Laptop refurbished con SSD', cpu: 'Intel i5 7ma-8va gen con SSD', ram: '8 GB DDR3', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '15.6"', price: '$130.000 – $220.000', why: 'Asegúrate que tenga SSD.' }
+    },
+    tablets: [
+      { emoji: '', name: 'Tablet básica Android — Opcional', reason: 'Para leer y anotar en PDFs de normas IFRS o material de curso.', price: 'Desde $80.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Texas Instruments BA II Plus — ESENCIAL', why: 'La calculadora financiera estándar para CPA y auditoría.', price: '~$45.000 – $70.000 CLP' },
+      { name: 'Casio fx-991CW — Complementaria', why: 'Para ramos de estadística y matemáticas del primer año.', price: '~$32.000 – $42.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Ratón ergonómico', emoji: '', priority: 'must', reason: 'Excel intensivo requiere ratón.' }
+    ]
+  },
+  derecho: {
+    label: 'Derecho', emoji: '',
+    alert: '<strong>Portabilidad y batería por encima de todo.</strong> Leerás miles de páginas de jurisprudencia y redactarás escritos.',
+    scores: { CPU: 4, RAM: 5, Storage: 5, GPU: 1, Battery: 10, Display: 6 },
+    software: ['Word + Outlook + OneDrive', 'Westlaw / LexisNexis / Vlex', 'Zotero (citas)', 'Adobe Acrobat', 'Zoom/Teams'],
+    laptops: {
+      ideal: { name: 'MacBook Air 13" M2 / Lenovo IdeaPad Slim 5', cpu: 'Apple M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+15 hrs (Mac) / +10 hrs (Lenovo)', display: '13-14" IPS antirreflejo', price: '$700.000 – $1.000.000', why: 'Para Derecho el factor #1 es la batería. El MacBook Air M2 dura una jornada completa sin enchufar.' },
+      balance: { name: 'Samsung Galaxy Book3 / ASUS VivoBook 14', cpu: 'Intel i5-1235U', ram: '8 GB DDR4', storage: 'SSD 256GB', gpu: 'Intel Iris Xe', battery: '~10 hrs', display: '14" FHD IPS', price: '$400.000 – $600.000', why: 'Laptops de 14" ultralivianas (~1.3-1.5 kg).' },
+      eco: { name: 'Chromebook / laptop básica 14"', cpu: 'Intel Celeron / Pentium', ram: '4-8 GB', storage: '64-128GB eMMC + nube', gpu: 'Integrada', battery: '~8 hrs', display: '14" HD o FHD', price: '$150.000 – $280.000', why: 'Para Derecho, un Chromebook es perfectamente funcional.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad + Kindle Paperwhite — Muy recomendados', reason: 'Leer el Código Civil completo en papel es un martirio. Un iPad o Kindle con los textos legales en PDF cambia todo.', price: 'iPad desde $230.000 / Kindle ~$100.000 CLP' }
+    ],
+    calcs: [
+      { name: 'No se necesita calculadora en Derecho', why: 'Los ramos de Economía o Estadística se resuelven con calculadora básica del celular.', price: 'Calculadora celular = $0' }
+    ],
+    accessories: [
+      { name: 'Ratón compacto inalámbrico', emoji: '', priority: 'rec', reason: 'Para redactar escritos largos con comodidad.' },
+      { name: 'Funda/sleeve para laptop', emoji: '', priority: 'must', reason: 'Protección básica.' },
+      { name: 'Batería externa 10.000mAh', emoji: '', priority: 'rec', reason: 'Para jornadas largas en tribunales o biblioteca.' }
+    ]
+  },
+  psicologia: {
+    label: 'Psicología', emoji: '',
+    alert: '<strong>Hardware modesto con software estadístico.</strong> Usarás SPSS o Jamovi para análisis de datos desde 2do año.',
+    scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 1, Battery: 9, Display: 6 },
+    software: ['SPSS / Jamovi / JASP', 'Word + APA Style', 'Zotero', 'Google Forms / Qualtrics', 'Zoom'],
+    laptops: {
+      ideal: { name: 'MacBook Air 13" M2 / ASUS ZenBook 14', cpu: 'M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+12 hrs', display: '13-14" IPS', price: '$600.000 – $950.000', why: 'Portabilidad es la clave. Irás a centros de salud, colegios y campo.' },
+      balance: { name: 'Lenovo IdeaPad Slim 3 / Acer Aspire 5 14"', cpu: 'Ryzen 5 5500U o Intel i5-1135G7', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" FHD IPS', price: '$320.000 – $500.000', why: 'Equipos confiables de 14" por la portabilidad.' },
+      eco: { name: 'Laptop refurbished + apps en nube', cpu: 'Intel i5 cualquier gen con SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '13-15"', price: '$180.000 – $300.000', why: 'SPSS y Jamovi corren bien incluso en hardware modesto.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad + GoodNotes — Recomendado', reason: 'Para apuntes en clases de evaluación y diagnóstico, observaciones en campo, y lectura del DSM-5.', price: '$230.000 – $380.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW', why: 'Para estadística descriptiva e inferencial del primer año. SPSS hace el resto.', price: '~$32.000 – $42.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Mochila ligera ergonómica', emoji: '', priority: 'must', reason: 'Prácticas de campo con laptop + materiales de evaluación.' },
+      { name: 'Audífonos con micrófono', emoji: '', priority: 'rec', reason: 'Entrevistas y sesiones de práctica en modalidad online.' }
+    ]
+  },
+  periodismo: {
+    label: 'Periodismo / Comunicación', emoji: '',
+    alert: '<strong>Edición de video y audio desde primer año.</strong> DaVinci Resolve y Premiere requieren SSD rápido y algo de GPU.',
+    scores: { CPU: 6, RAM: 7, Storage: 8, GPU: 6, Battery: 7, Display: 7 },
+    software: ['Adobe Premiere Pro', 'DaVinci Resolve', 'Adobe Audition / Audacity', 'Canva Pro', 'WordPress'],
+    laptops: {
+      ideal: { name: 'MacBook Pro 14" M3 / ASUS ProArt Studiobook', cpu: 'M3 / Intel i7-13700H', ram: '18GB M3 / 32GB DDR5', storage: 'SSD 1TB', gpu: 'M3 GPU / RTX 4060', battery: '+15hrs (Mac)', display: '14-16" Liquid Retina / OLED 100% DCI-P3', price: '$1.300.000 – $1.800.000', why: 'DaVinci Resolve corre en tiempo real en el M3 sin fan noise.' },
+      balance: { name: 'Lenovo Legion Slim 5 / HP Pavilion Plus 16"', cpu: 'Ryzen 7 7745H o Intel i5-13500H', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 4060 / RTX 3050 Ti', battery: '~6-8 hrs', display: '16" FHD/QHD IPS 100% sRGB', price: '$750.000 – $1.000.000', why: 'GPU dedicada para edición de video.' },
+      eco: { name: 'Cualquier laptop i5 + DaVinci Resolve gratis', cpu: 'Intel i5 10ma+ con SSD NVMe', ram: '16 GB DDR4', storage: 'SSD 512GB + externo 1TB', gpu: 'Integrada (render más lento)', battery: 'Variable', display: '15.6" FHD', price: '$350.000 – $500.000 + disco externo', why: 'DaVinci Resolve es gratuito y corre sin GPU dedicada (más lento).' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad + LumaFusion — Edición móvil', reason: 'Editar videos cortos para redes sociales directo desde el iPad.', price: '$280.000 – $500.000 CLP' }
+    ],
+    calcs: [
+      { name: 'No se necesita calculadora específica', why: 'Periodismo no tiene ramos de matemáticas intensivas.', price: '$0' }
+    ],
+    accessories: [
+      { name: 'Micrófono USB de condensador', emoji: '', priority: 'must', reason: 'Para podcast, entrevistas y contenido audiovisual.' },
+      { name: 'Disco SSD externo 2TB', emoji: '', priority: 'must', reason: 'Footage 4K ocupa 400MB/min.' },
+      { name: 'Auriculares de estudio (planos)', emoji: '', priority: 'must', reason: 'Para mezcla de audio correcta.' },
+      { name: 'Hub USB-C con lector SD', emoji: '', priority: 'rec', reason: 'Para transferir footage desde cámaras y grabadoras.' }
+    ]
+  },
+  cine: {
+    label: 'Cine / Producción Audiovisual', emoji: '',
+    alert: '<strong>La carrera con mayor demanda de almacenamiento.</strong> Un día de rodaje en 4K genera fácilmente 100-200GB de footage. GPU dedicada y SSD veloz son absolutamente necesarios.',
+    scores: { CPU: 9, RAM: 8, Storage: 10, GPU: 9, Battery: 5, Display: 9 },
+    software: ['DaVinci Resolve / Adobe Premiere', 'Adobe After Effects', 'ProTools / Logic Pro', 'Blender (motion)'],
+    laptops: {
+      ideal: { name: 'MacBook Pro 16" M3 Max / ASUS ProArt Studiobook 16', cpu: 'M3 Max / Intel i9-13980HX', ram: '48GB M3 / 64GB DDR5', storage: 'SSD 1TB+', gpu: 'M3 Max 40-core / RTX 4090', battery: '~12 hrs (Mac)', display: '16" Liquid Retina XDR / OLED 4K', price: '$2.500.000 – $4.000.000', why: 'Editar en 4K RAW o 8K requiere el máximo poder disponible.' },
+      balance: { name: 'ASUS ROG Strix G16 / Lenovo Legion Pro 5', cpu: 'Intel i7-13700H', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB PCIe 4.0', gpu: 'NVIDIA RTX 4070 8GB VRAM', battery: '~4-6 hrs', display: '16" QHD 165Hz 100% DCI-P3', price: '$1.300.000 – $1.700.000', why: 'RTX 4070 con 8GB VRAM permite edición 4K fluida en Premiere y After Effects.' },
+      eco: { name: 'Desktop gaming + monitor de producción', cpu: 'Ryzen 9 5900X o i7-12700K', ram: '32 GB DDR4', storage: 'SSD NVMe 1TB + HDD 4TB', gpu: 'RTX 3070 o 3080 (segunda mano)', battery: 'No aplica', display: '27" IPS 4K 100% DCI-P3', price: '$700.000 – $1.100.000 (todo el set)', why: 'Un desktop potente de segunda mano + buen monitor es mejor relación precio/rendimiento.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad Pro + Apple Pencil — Para storyboards', reason: 'Dibujar storyboards digitales, animar en Procreate, usar LumaFusion para edición rápida en set.', price: '$800.000 – $1.100.000 CLP' }
+    ],
+    calcs: [
+      { name: 'No aplica para esta carrera', why: 'Cine no tiene ramos de matemáticas avanzadas.', price: '$0' }
+    ],
+    accessories: [
+      { name: 'SSD externo 4TB (Crucial X9 Pro o similar)', emoji: '', priority: 'must', reason: 'El accesorio más crítico de Cine. Footage RAW ocupa enormidades.' },
+      { name: 'Monitor de referencia de color', emoji: '', priority: 'must', reason: 'Un monitor calibrado para post-producción.' },
+      { name: 'Tarjeta de sonido externa', emoji: '', priority: 'rec', reason: 'Para monitoreo de audio de calidad durante la mezcla.' }
+    ]
+  },
+  ing_mecanica: {
+    label: 'Ingeniería Mecánica', emoji: '',
+    alert: '<strong>Simulación FEM y CAD 3D son las cargas más pesadas.</strong> ANSYS y SolidWorks son los programas más exigentes de la ingeniería.',
+    scores: { CPU: 8, RAM: 8, Storage: 7, GPU: 8, Battery: 5, Display: 7 },
+    software: ['SolidWorks / Fusion 360', 'ANSYS (FEM)', 'MATLAB / Simulink', 'AutoCAD Mechanical', 'Python numérico'],
+    laptops: {
+      ideal: { name: 'Lenovo ThinkPad P16 / HP ZBook Fury 15', cpu: 'Intel i7-13700H o Ryzen 9 Pro', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB', gpu: 'NVIDIA RTX A2000 (Workstation)', battery: '~6-8 hrs', display: '16" FHD/QHD IPS antirreflejo', price: '$1.400.000 – $2.000.000', why: 'Workstations certificadas para SolidWorks y ANSYS.' },
+      balance: { name: 'ASUS ROG Zephyrus G15 / MSI Stealth 15', cpu: 'Ryzen 7 7745H', ram: '16-32 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 4060 o RTX 4070', battery: '~5-7 hrs', display: '15.6" QHD 165Hz', price: '$900.000 – $1.300.000', why: 'RTX 4060/4070 corren SolidWorks y ANSYS Student perfectamente para uso estudiantil.' },
+      eco: { name: 'Laptop gaming media gama + acceso a labs', cpu: 'Intel i5-12500H + RTX 3050', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 3050 4GB', battery: '~5 hrs', display: '15.6" FHD 144Hz', price: '$550.000 – $750.000', why: 'RTX 3050 corre SolidWorks básico y simulaciones pequeñas.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad — Útil para apuntes técnicos', reason: 'Para anotar en clases de termodinámica, mecánica de fluidos y resistencia de materiales con diagramas.', price: '$230.000 – $380.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW — ESENCIAL años 1-3', why: 'Cálculos manuales de mecánica, termodinámica y resistencia de materiales.', price: '~$32.000 – $42.000 CLP' },
+      { name: 'HP 50g o TI-Nspire CX CAS — Avanzada', why: 'Para Mecánica de Fluidos y simulaciones donde quieras verificar resultados analíticamente.', price: '~$80.000 – $130.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Monitor externo 27" con resolución QHD', emoji: '', priority: 'must', reason: 'Para ver modelos 3D y planos CAD con detalle.' },
+      { name: 'Ratón 3D (3DConnexion SpaceMouse)', emoji: '', priority: 'opt', reason: 'Navegar modelos CAD 3D de forma profesional.' },
+      { name: 'Disco externo 2TB', emoji: '', priority: 'rec', reason: 'Proyectos de SolidWorks y archivos de simulación pueden ser enormes.' }
+    ]
+  },
+  ing_electrica: {
+    label: 'Ingeniería Eléctrica / Electrónica', emoji: '',
+    alert: '<strong>MATLAB y simuladores de circuitos son las herramientas clave.</strong> Desde 2do año usarás SPICE, LabVIEW y MATLAB/Simulink. 16GB RAM es el mínimo práctico.',
+    scores: { CPU: 7, RAM: 8, Storage: 6, GPU: 5, Battery: 6, Display: 7 },
+    software: ['MATLAB / Simulink', 'LTSpice / Multisim', 'LabVIEW', 'Python + NumPy', 'Altium Designer / KiCad'],
+    laptops: {
+      ideal: { name: 'Lenovo ThinkBook 16 G6 / Dell XPS 15', cpu: 'AMD Ryzen 7 7730U o Intel i7-1355U', ram: '16-32 GB DDR5', storage: 'SSD NVMe 512GB+', gpu: 'NVIDIA RTX 3050 o Radeon integrada', battery: '~9-11 hrs', display: '16" FHD IPS antirreflejo', price: '$800.000 – $1.200.000', why: 'MATLAB y Simulink necesitan 16GB+ para modelos grandes. Pantalla antirreflejo para trabajo con esquemáticos.' },
+      balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5 Ryzen 7', cpu: 'AMD Ryzen 7 5700U o Intel i5-1235U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Radeon integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $750.000', why: 'Con 16GB funciona bien para MATLAB, SPICE y LabVIEW.' },
+      eco: { name: 'Refurbished + upgrade a 16GB RAM', cpu: 'Intel i5 cualquier gen con SSD', ram: '8GB → 16GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$250.000 – $400.000', why: 'Con actualización de RAM funciona para los primeros años.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad — Para apuntes de circuitos', reason: 'Dibujar esquemáticos a mano en GoodNotes durante las clases de circuitos.', price: '$230.000 – $380.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW — Para análisis de circuitos', why: 'Números complejos, matrices, ecuaciones diferenciales. La ClassWiz maneja todo esto nativamente.', price: '~$32.000 – $42.000 CLP' },
+      { name: 'HP Prime G2 — Para más potencia', why: 'Calculadora gráfica con CAS ideal para control automático y análisis de señales.', price: '~$80.000 – $120.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Monitor externo 24-27" FHD', emoji: '', priority: 'must', reason: 'Para trabajar con esquemáticos y simulaciones.' },
+      { name: 'Multímetro digital (Fluke 115 o similar)', emoji: '', priority: 'must', reason: 'Para laboratorios de circuitos. Desde 2do año lo necesitarás constantemente.' },
+      { name: 'Disco externo 1TB', emoji: '', priority: 'rec', reason: 'Proyectos de simulación y archivos de diseño PCB.' }
+    ]
+  },
+  ing_quimica: {
+    label: 'Ingeniería Química', emoji: '',
+    alert: '<strong>Simulación de procesos y análisis numérico pesado.</strong> HYSYS, Aspen Plus y MATLAB son los caballos de batalla. 16GB RAM y un CPU potente son imprescindibles desde 3er año.',
+    scores: { CPU: 8, RAM: 8, Storage: 6, GPU: 3, Battery: 6, Display: 6 },
+    software: ['Aspen Plus / HYSYS', 'MATLAB / Python', 'AutoCAD P&ID', 'Excel avanzado', 'ChemDraw'],
+    laptops: {
+      ideal: { name: 'Lenovo ThinkBook 16 G6 / HP EliteBook 845 G9', cpu: 'AMD Ryzen 7 7730U o Intel i7-1355U', ram: '16-32 GB DDR4', storage: 'SSD NVMe 512GB+', gpu: 'Integrada', battery: '~10-12 hrs', display: '16" FHD IPS', price: '$750.000 – $1.100.000', why: 'Aspen Plus es extremadamente demandante en CPU. El Ryzen 7 7730U hace simulaciones 2-3x más rápido que un i5 de gama media.' },
+      balance: { name: 'ASUS VivoBook 15 Ryzen 7 / Acer Aspire 7', cpu: 'AMD Ryzen 7 5700U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-9 hrs', display: '15.6" FHD IPS', price: '$480.000 – $680.000', why: '16GB y Ryzen 7 son suficientes para Aspen Plus nivel académico.' },
+      eco: { name: 'Refurbished i5/Ryzen 5 + 16GB RAM', cpu: 'Intel i5 10ma o Ryzen 5 4000', ram: '16 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$280.000 – $450.000', why: '16GB son obligatorios. Haz el upgrade de RAM antes de 3er año.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad — Para diagramas de proceso', reason: 'Dibujar P&IDs en clase y anotar sobre diagramas de flujo de procesos.', price: '$230.000 – $380.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW — ESENCIAL toda la carrera', why: 'Resolución de sistemas de ecuaciones, integrales, matrices. Imprescindible en termodinámica y balance de masa/energía.', price: '~$32.000 – $42.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Disco externo 1TB', emoji: '', priority: 'rec', reason: 'Archivos de simulación de Aspen Plus pueden ser enormes.' },
+      { name: 'Monitor externo 24"', emoji: '', priority: 'rec', reason: 'Trabajar con diagramas de proceso en pantalla grande.' }
+    ]
+  },
+  bioquimica: {
+    label: 'Bioquímica / Biología', emoji: '',
+    alert: '<strong>Análisis de datos de laboratorio y bioinformática.</strong> Desde 3er año usarás R, Python y software de análisis estadístico. Un SSD rápido y 16GB son la clave.',
+    scores: { CPU: 6, RAM: 7, Storage: 7, GPU: 3, Battery: 8, Display: 6 },
+    software: ['R + RStudio / Python', 'ImageJ', 'PyMOL / VMD', 'Office 365', 'GraphPad Prism'],
+    laptops: {
+      ideal: { name: 'ASUS ZenBook 15 / Lenovo ThinkBook 15', cpu: 'AMD Ryzen 7 5700U o Intel i7-1255U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10 hrs', display: '15.6" FHD IPS', price: '$550.000 – $800.000', why: '16GB para RStudio y análisis de datos de secuencias biológicas.' },
+      balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Intel i5-1235U o Ryzen 5 5500U', ram: '8-16 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$380.000 – $550.000', why: 'Suficiente para los primeros años. Actualiza a 16GB antes de 3er año.' },
+      eco: { name: 'Laptop básica + Lab computers', cpu: 'Intel i5 8va gen + SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '15.6"', price: '$200.000 – $350.000', why: 'Usa los computadores del laboratorio para análisis pesados.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad — Para apuntes de laboratorio', reason: 'Anotar protocolos de laboratorio y resultados en tiempo real con Apple Pencil.', price: '$230.000 – $380.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-991CW', why: 'Para estadística, química analítica y cálculos de concentraciones.', price: '~$32.000 – $42.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Disco externo 1TB', emoji: '', priority: 'rec', reason: 'Datasets de secuenciación y análisis genómicos.' },
+      { name: 'Mochila ligera', emoji: '', priority: 'must', reason: 'Trasladar laptop entre campus y laboratorio.' }
+    ]
+  },
+  enfermeria: {
+    label: 'Enfermería / Kinesiología', emoji: '',
+    alert: '<strong>Portabilidad y durabilidad en entornos clínicos.</strong> Prioriza batería larga y equipo resistente que aguante el uso diario en hospitales y centros de salud.',
+    scores: { CPU: 4, RAM: 5, Storage: 5, GPU: 1, Battery: 10, Display: 6 },
+    software: ['OneNote / GoodNotes', 'Anki', 'Office 365', 'Apps clínicas específicas', 'Zoom'],
+    laptops: {
+      ideal: { name: 'MacBook Air 13" M2 / Lenovo ThinkPad L14', cpu: 'Apple M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+15 hrs (Mac) / 10-12 hrs (ThinkPad)', display: '13-14" IPS antirreflejo', price: '$700.000 – $1.100.000', why: 'Batería larga para turnos de hospital. ThinkPad certificado MIL-STD-810 para mayor durabilidad.' },
+      balance: { name: 'Samsung Galaxy Book3 / ASUS VivoBook 14', cpu: 'Intel i5-1235U', ram: '8 GB DDR4', storage: 'SSD 256GB', gpu: 'Integrada', battery: '~10 hrs', display: '14" FHD IPS', price: '$400.000 – $600.000', why: 'Laptops livianas de 14" ideales para transporte diario.' },
+      eco: { name: 'Chromebook o laptop básica', cpu: 'Intel Celeron / i3', ram: '4-8 GB', storage: '64-128GB + nube', gpu: 'Integrada', battery: '~8 hrs', display: '14" HD/FHD', price: '$150.000 – $280.000', why: 'Para apuntes, Anki y plataformas de la universidad es suficiente.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad + Apple Pencil — MUY recomendado', reason: 'Anki con imágenes clínicas, apuntes de anatomía sobre esquemas, protocolos de atención.', price: '$280.000 – $500.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-82MS — Para farmacología', why: 'Cálculos de dosis, goteo y concentraciones. Una científica básica es suficiente.', price: '~$10.000 – $18.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Mochila ergonómica robusta', emoji: '', priority: 'must', reason: 'Cargarás apuntes, laptop y materiales clínicos.' },
+      { name: 'Batería externa 10.000mAh', emoji: '', priority: 'rec', reason: 'Para turnos largos en hospital sin enchufes disponibles.' }
+    ]
+  },
+  pedagogia: {
+    label: 'Pedagogía', emoji: '',
+    alert: '<strong>Herramientas de comunicación y diseño educativo.</strong> Usarás Office, plataformas LMS y apps de creación de contenido. La batería larga y la portabilidad son prioritarias.',
+    scores: { CPU: 4, RAM: 5, Storage: 5, GPU: 2, Battery: 9, Display: 6 },
+    software: ['Office 365 completo', 'Canva', 'Google Classroom / Moodle', 'Kahoot / Mentimeter', 'Zoom/Teams'],
+    laptops: {
+      ideal: { name: 'ASUS VivoBook 14 / Samsung Galaxy Book3', cpu: 'Intel i5-1235U o Ryzen 5 7530U', ram: '8-16 GB', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10-12 hrs', display: '14" FHD IPS', price: '$400.000 – $650.000', why: 'Una laptop liviana de 14" que dure todo el día de clases es perfecta para Pedagogía.' },
+      balance: { name: 'Acer Aspire 5 / Lenovo IdeaPad Slim 3', cpu: 'Intel i3/i5 o Ryzen 3/5', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD', price: '$280.000 – $450.000', why: 'Suficiente para todas las herramientas educativas.' },
+      eco: { name: 'Chromebook', cpu: 'Intel Celeron / MediaTek', ram: '4-8 GB', storage: '64GB + nube', gpu: 'Integrada', battery: '~10 hrs', display: '14" HD/FHD', price: '$150.000 – $250.000', why: 'Para pedagogía, un Chromebook es perfectamente funcional para Google Workspace y plataformas educativas.' }
+    },
+    tablets: [
+      { emoji: '', name: 'iPad — Para material didáctico', reason: 'Crear contenido visual, presentaciones interactivas y anotar sobre material pedagógico.', price: '$230.000 – $380.000 CLP' }
+    ],
+    calcs: [
+      { name: 'Casio fx-82MS — Para matemáticas básicas', why: 'En carreras de pedagogía en matemáticas, una científica básica es suficiente para los ramos de la carrera.', price: '~$10.000 – $18.000 CLP' }
+    ],
+    accessories: [
+      { name: 'Presentador inalámbrico (clicker)', emoji: '', priority: 'must', reason: 'Para presentaciones en práctica docente. Logitech R400 es el estándar.' },
+      { name: 'Parlante Bluetooth portátil', emoji: '', priority: 'rec', reason: 'Para actividades lúdicas y reproducción de audio en sala.' }
+    ]
+  }
+};
+
+// ══════════════════════════════════════════
+// APP INIT
+// ══════════════════════════════════════════
+function initApp() {
+  document.getElementById('statCareers').textContent = Object.keys(DATA).length;
+  buildAllPickers();
+  loadSoloTodoCatalog();
+}
+
+function buildAllPickers() {
+  ['laptop', 'tablet', 'calc', 'acc', 'scores', 'alert'].forEach(function(type) {
+    var container = document.getElementById(type + 'CareerPicker');
+    if (!container) return;
+    container.innerHTML = '';
+    Object.keys(DATA).forEach(function(key) {
+      var c = DATA[key];
+      var chip = document.createElement('div');
+      chip.className = 'career-chip';
+      chip.textContent = c.emoji + ' ' + c.label;
+      chip.dataset.key = key;
+      chip.dataset.type = type;
+      chip.onclick = function() { selectCareer(key, type, chip); };
+      container.appendChild(chip);
+    });
+  });
+}
+
+function selectCareer(key, type, chipEl) {
+  var picker = document.getElementById(type + 'CareerPicker');
+  picker.querySelectorAll('.career-chip').forEach(function(c) { c.classList.remove('active'); });
+  chipEl.classList.add('active');
+
+  if (type === 'laptop') renderLaptopEditor(key);
+  else if (type === 'tablet') renderTabletEditor(key);
+  else if (type === 'calc') renderCalcEditor(key);
+  else if (type === 'acc') renderAccEditor(key);
+  else if (type === 'scores') renderScoresEditor(key);
+  else if (type === 'alert') renderAlertEditor(key);
+}
+
+// ══════════════════════════════════════════
+// LAPTOP EDITOR
+// ══════════════════════════════════════════
+var TIERS = ['ideal', 'balance', 'eco'];
+var TIER_LABELS = { ideal: 'Ideal (Top)', balance: 'Balance (Relación calidad-precio)', eco: 'Eco (Mínimo viable)' };
+var TIER_COLORS = { ideal: 'var(--gold)', balance: 'var(--silver, #94a3b8)', eco: 'var(--eco)' };
+
+function renderLaptopEditor(key) {
+  var d = DATA[key];
+  var html = TIERS.map(function(tier) {
+    var lp = d.laptops[tier];
+    return '<div class="section-card">' +
+      '<div class="section-header"><div class="section-title" style="color:' + TIER_COLORS[tier] + '">' + TIER_LABELS[tier] + '</div></div>' +
+      '<div class="field-grid" style="margin-bottom:14px">' +
+        fld('Modelo / Nombre', 'lp-' + key + '-' + tier + '-name', lp.name) +
+        fld('Precio (rango)', 'lp-' + key + '-' + tier + '-price', lp.price) +
+        fld('CPU', 'lp-' + key + '-' + tier + '-cpu', lp.cpu) +
+        fld('RAM', 'lp-' + key + '-' + tier + '-ram', lp.ram) +
+        fld('Almacenamiento', 'lp-' + key + '-' + tier + '-storage', lp.storage) +
+        fld('GPU', 'lp-' + key + '-' + tier + '-gpu', lp.gpu) +
+        fld('Batería', 'lp-' + key + '-' + tier + '-battery', lp.battery) +
+        fld('Pantalla', 'lp-' + key + '-' + tier + '-display', lp.display) +
+      '</div>' +
+      '<div class="field-group"><label class="field-label">¿Por qué este equipo? (descripción)</label>' +
+        '<textarea class="field-textarea" id="lp-' + key + '-' + tier + '-why" oninput="markChange(\'lp-' + key + '-' + tier + '-why\',\'' + key + '\')">' + lp.why + '</textarea>' +
+      '</div>' +
+      '<div style="margin-top:14px;display:flex;justify-content:flex-end">' +
+        '<button class="btn-primary" onclick="saveLaptop(\'' + key + '\',\'' + tier + '\')" style="gap:6px">Guardar tier ' + tier + '</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+  document.getElementById('laptopEditor').innerHTML = html;
+}
+
+function fld(label, id, val, full) {
+  return '<div class="field-group' + (full ? ' field-full' : '') + '">' +
+    '<label class="field-label">' + label + '</label>' +
+    '<input type="text" class="field-input" id="' + id + '" value="' + escapeAttr(val) + '" oninput="markDirty()" />' +
+  '</div>';
+}
+
+function saveLaptop(key, tier) {
+  var prefix = 'lp-' + key + '-' + tier + '-';
+  DATA[key].laptops[tier] = {
+    name: gv(prefix + 'name'),
+    price: gv(prefix + 'price'),
+    cpu: gv(prefix + 'cpu'),
+    ram: gv(prefix + 'ram'),
+    storage: gv(prefix + 'storage'),
+    gpu: gv(prefix + 'gpu'),
+    battery: gv(prefix + 'battery'),
+    display: gv(prefix + 'display'),
+    why: gtv(prefix + 'why')
+  };
+  markDirty();
+  showToast('Tier "' + tier + '" de ' + DATA[key].label + ' guardado', 'success');
+}
+
+// ══════════════════════════════════════════
+// TABLET EDITOR
+// ══════════════════════════════════════════
+function renderTabletEditor(key) {
+  var el = document.getElementById('tabletEditor');
+  el.innerHTML = renderListEditor(key, 'tablet', DATA[key].tablets, function(item, i) {
+    return '<div class="list-item" id="tablet-item-' + key + '-' + i + '">' +
+      '<div class="list-item-header"><span class="list-item-num">Tablet #' + (i+1) + '</span>' +
+        '<button class="item-remove" onclick="removeItem(\'' + key + '\',\'tablets\',' + i + ',\'tablet\')"></button>' +
+      '</div>' +
+      '<div class="field-grid">' +
+        fld('Nombre', 'tab-' + key + '-' + i + '-name', item.name) +
+        fld('Emoji', 'tab-' + key + '-' + i + '-emoji', item.emoji) +
+        fld2('Precio', 'tab-' + key + '-' + i + '-price', item.price) +
+        fld2('Razón / descripción', 'tab-' + key + '-' + i + '-reason', item.reason) +
+      '</div></div>';
+  });
+  addAddBtn(el, key, 'tablet');
+  addSaveBtn(el, key, 'tablet');
+}
+
+function fld2(label, id, val) {
+  return '<div class="field-group">' +
+    '<label class="field-label">' + label + '</label>' +
+    '<input type="text" class="field-input" id="' + id + '" value="' + escapeAttr(val) + '" oninput="markDirty()" />' +
+  '</div>';
+}
+
+function addAddBtn(el, key, type) {
+  var btn = document.createElement('button');
+  btn.className = 'add-item-btn';
+  btn.innerHTML = '+ Agregar nuevo ítem';
+  btn.onclick = function() { addItem(key, type); };
+  el.querySelector('.section-card').appendChild(btn);
+}
+
+function addSaveBtn(el, key, type) {
+  var wrap = document.createElement('div');
+  wrap.style.cssText = 'display:flex;justify-content:flex-end;margin-top:16px';
+  wrap.innerHTML = '<button class="btn-primary" onclick="saveListItems(\'' + key + '\',\'' + type + '\')">Guardar cambios</button>';
+  el.querySelector('.section-card').appendChild(wrap);
+}
+
+function renderListEditor(key, type, items, rowFn) {
+  var rows = items.map(rowFn).join('');
+  return '<div class="section-card">' +
+    '<div class="section-header"><div class="section-title">' + { tablet: 'Tablets', calc: 'Calculadoras', acc: 'Accesorios' }[type] + '</div></div>' +
+    (items.length ? rows : '<p style="color:var(--muted);font-size:.85rem;padding:10px 0">No hay ítems. Agrega uno.</p>') +
+  '</div>';
+}
+
+// ══════════════════════════════════════════
+// CALC EDITOR
+// ══════════════════════════════════════════
+function renderCalcEditor(key) {
+  var el = document.getElementById('calcEditor');
+  el.innerHTML = renderListEditor(key, 'calc', DATA[key].calcs, function(item, i) {
+    return '<div class="list-item" id="calc-item-' + key + '-' + i + '">' +
+      '<div class="list-item-header"><span class="list-item-num">Calculadora #' + (i+1) + '</span>' +
+        '<button class="item-remove" onclick="removeItem(\'' + key + '\',\'calcs\',' + i + ',\'calc\')"></button>' +
+      '</div>' +
+      '<div class="field-grid">' +
+        fld2('Nombre', 'calc-' + key + '-' + i + '-name', item.name) +
+        fld2('Precio', 'calc-' + key + '-' + i + '-price', item.price) +
+        fld2('¿Por qué?', 'calc-' + key + '-' + i + '-why', item.why) +
+      '</div></div>';
+  });
+  addAddBtn(el, key, 'calc');
+  addSaveBtn(el, key, 'calc');
+}
+
+// ══════════════════════════════════════════
+// ACCESSORIES EDITOR
+// ══════════════════════════════════════════
+function renderAccEditor(key) {
+  var el = document.getElementById('accEditor');
+  el.innerHTML = renderListEditor(key, 'acc', DATA[key].accessories, function(item, i) {
+    return '<div class="list-item" id="acc-item-' + key + '-' + i + '">' +
+      '<div class="list-item-header"><span class="list-item-num">Accesorio #' + (i+1) + '</span>' +
+        '<button class="item-remove" onclick="removeItem(\'' + key + '\',\'accessories\',' + i + ',\'acc\')"></button>' +
+      '</div>' +
+      '<div class="field-grid">' +
+        fld2('Nombre', 'acc-' + key + '-' + i + '-name', item.name) +
+        fld2('Emoji', 'acc-' + key + '-' + i + '-emoji', item.emoji || '') +
+        fld2('Razón', 'acc-' + key + '-' + i + '-reason', item.reason) +
+      '</div>' +
+      '<div style="margin-top:10px"><label class="field-label" style="margin-bottom:6px;display:block">Prioridad</label>' +
+        '<div class="priority-pills">' +
+          prioPill(key, i, 'must', 'Obligatorio', item.priority) +
+          prioPill(key, i, 'rec', 'Recomendado', item.priority) +
+          prioPill(key, i, 'opt', 'Opcional', item.priority) +
+        '</div></div>' +
+    '</div>';
+  });
+  addAddBtn(el, key, 'acc');
+  addSaveBtn(el, key, 'acc');
+}
+
+function prioPill(key, i, val, label, current) {
+  var active = current === val ? ' active-' + val : '';
+  return '<div class="prio-pill' + active + '" id="prio-' + key + '-' + i + '-' + val + '" onclick="selectPrio(\'' + key + '\',' + i + ',\'' + val + '\')">' + label + '</div>';
+}
+
+function selectPrio(key, i, val) {
+  ['must','rec','opt'].forEach(function(v) {
+    var el = document.getElementById('prio-' + key + '-' + i + '-' + v);
+    if (el) { el.className = 'prio-pill' + (v === val ? ' active-' + v : ''); }
+  });
+  markDirty();
+}
+
+// ══════════════════════════════════════════
+// SCORES EDITOR
+// ══════════════════════════════════════════
+function renderScoresEditor(key) {
+  var d = DATA[key];
+  var scoreKeys = Object.keys(d.scores);
+  var rows = scoreKeys.map(function(sk) {
+    return '<div class="score-item">' +
+      '<div class="score-label-row"><span class="score-name">' + sk + '</span><span class="score-val-badge" id="sv-' + key + '-' + sk + '">' + d.scores[sk] + '/10</span></div>' +
+      '<input type="range" min="1" max="10" value="' + d.scores[sk] + '" ' +
+        'oninput="document.getElementById(\'sv-' + key + '-' + sk + '\').textContent=this.value+\'/10\';DATA[\'' + key + '\'].scores[\'' + sk + '\']=parseInt(this.value);markDirty()" />' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('scoresEditor').innerHTML =
+    '<div class="section-card">' +
+      '<div class="section-header"><div class="section-title">Puntajes de importancia de hardware</div></div>' +
+      '<p style="color:var(--muted);font-size:.82rem;margin-bottom:20px">Mueve los sliders para indicar qué tan importante es cada componente para esta carrera (1 = poco importante, 10 = crítico)</p>' +
+      '<div class="scores-grid">' + rows + '</div>' +
+      '<div style="margin-top:20px;display:flex;justify-content:flex-end">' +
+        '<button class="btn-primary" onclick="showToast(\'Puntajes actualizados\',\'success\')">Confirmar puntajes</button>' +
+      '</div>' +
+    '</div>';
+}
+
+// ══════════════════════════════════════════
+// ALERT EDITOR
+// ══════════════════════════════════════════
+function renderAlertEditor(key) {
+  var d = DATA[key];
+  document.getElementById('alertEditor').innerHTML =
+    '<div class="section-card">' +
+      '<div class="section-header"><div class="section-title">Alerta y contexto de carrera</div></div>' +
+      '<div class="field-group" style="margin-bottom:16px">' +
+        '<label class="field-label">Texto de alerta (acepta HTML básico: &lt;strong&gt;, &lt;em&gt;)</label>' +
+        '<textarea class="field-textarea" id="alert-' + key + '" style="min-height:120px" oninput="markDirty()">' + d.alert + '</textarea>' +
+      '</div>' +
+      '<div class="field-group" style="margin-bottom:16px">' +
+        '<label class="field-label">Software principal (uno por línea)</label>' +
+        '<textarea class="field-textarea" id="software-' + key + '" style="min-height:100px" oninput="markDirty()">' + (d.software || []).join('\n') + '</textarea>' +
+      '</div>' +
+      '<div style="display:flex;justify-content:flex-end">' +
+        '<button class="btn-primary" onclick="saveAlert(\'' + key + '\')">Guardar alerta</button>' +
+      '</div>' +
+    '</div>';
+}
+
+function saveAlert(key) {
+  DATA[key].alert = document.getElementById('alert-' + key).value;
+  var sw = document.getElementById('software-' + key).value.split('\n').map(function(s) { return s.trim(); }).filter(Boolean);
+  DATA[key].software = sw;
+  markDirty();
+  showToast('Alerta guardada', 'success');
+}
+
+// ══════════════════════════════════════════
+// SAVE LIST ITEMS
+// ══════════════════════════════════════════
+function saveListItems(key, type) {
+  var listKey = { tablet: 'tablets', calc: 'calcs', acc: 'accessories' }[type];
+  var prefix = type + '-' + key + '-';
+  var n = DATA[key][listKey].length;
+  for (var i = 0; i < n; i++) {
+    if (type === 'tablet') {
+      DATA[key].tablets[i] = {
+        name: gv(prefix + i + '-name'), emoji: gv(prefix + i + '-emoji'),
+        reason: gv(prefix + i + '-reason'), price: gv(prefix + i + '-price')
+      };
+    } else if (type === 'calc') {
+      DATA[key].calcs[i] = {
+        name: gv(prefix + i + '-name'), why: gv(prefix + i + '-why'), price: gv(prefix + i + '-price')
+      };
+    } else if (type === 'acc') {
+      var prio = 'rec';
+      ['must','rec','opt'].forEach(function(v) {
+        var el = document.getElementById('prio-' + key + '-' + i + '-' + v);
+        if (el && el.className.indexOf('active') > -1) prio = v;
+      });
+      DATA[key].accessories[i] = {
+        name: gv(prefix + i + '-name'), emoji: gv(prefix + i + '-emoji'),
+        reason: gv(prefix + i + '-reason'), priority: prio
+      };
+    }
+  }
+  markDirty();
+  showToast('Cambios guardados en ' + DATA[key].label, 'success');
+}
+
+// ══════════════════════════════════════════
+// ADD / REMOVE ITEMS
+// ══════════════════════════════════════════
+function addItem(key, type) {
+  if (type === 'tablet') {
+    DATA[key].tablets.push({ emoji: '', name: 'Nueva tablet', reason: 'Descripción aquí', price: '$0 CLP' });
+    renderTabletEditor(key);
+  } else if (type === 'calc') {
+    DATA[key].calcs.push({ name: 'Nueva calculadora', why: 'Descripción aquí', price: '$0 CLP' });
+    renderCalcEditor(key);
+  } else if (type === 'acc') {
+    DATA[key].accessories.push({ emoji: '', name: 'Nuevo accesorio', reason: 'Descripción aquí', priority: 'rec' });
+    renderAccEditor(key);
+  }
+  markDirty();
+  showToast('Ítem agregado', 'info');
+}
+
+function removeItem(key, listKey, idx, type) {
+  if (!confirm('¿Eliminar este ítem?')) return;
+  DATA[key][listKey].splice(idx, 1);
+  markDirty();
+  if (type === 'tablet') renderTabletEditor(key);
+  else if (type === 'calc') renderCalcEditor(key);
+  else if (type === 'acc') renderAccEditor(key);
+  showToast('Ítem eliminado', 'info');
+}
+
+// ══════════════════════════════════════════
+// NEW CAREER
+// ══════════════════════════════════════════
+function addNewCareer() {
+  var key = document.getElementById('nc-key').value.trim();
+  var label = document.getElementById('nc-label').value.trim();
+  var emoji = document.getElementById('nc-emoji').value.trim() || '';
+  var alert = document.getElementById('nc-alert').value.trim();
+  var sw = document.getElementById('nc-software').value.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+  if (!key || !label) { showToast('Completa clave y nombre', 'info'); return; }
+  if (DATA[key]) { showToast('Ya existe esa clave', 'info'); return; }
+  DATA[key] = {
+    label: label, emoji: emoji, alert: alert || 'Descripción de la carrera.',
+    scores: { CPU: 5, RAM: 5, Storage: 5, GPU: 3, Battery: 7, Display: 5 },
+    software: sw,
+    laptops: {
+      ideal: { name: 'Laptop Ideal', cpu: 'Intel i7 / Ryzen 7', ram: '16 GB', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10 hrs', display: '15.6" FHD', price: '$700.000 – $1.000.000', why: 'Descripción del modelo ideal.' },
+      balance: { name: 'Laptop Balance', cpu: 'Intel i5 / Ryzen 5', ram: '8-16 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: '~8 hrs', display: '15.6" FHD', price: '$400.000 – $650.000', why: 'Descripción del modelo balance.' },
+      eco: { name: 'Laptop Económica', cpu: 'Intel i3 / Ryzen 3', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '15.6"', price: '$200.000 – $380.000', why: 'Descripción del modelo económico.' }
+    },
+    tablets: [{ emoji: '', name: 'Tablet recomendada', reason: 'Descripción aquí', price: '$200.000 CLP' }],
+    calcs: [{ name: 'Casio fx-991CW', why: 'Calculadora científica avanzada.', price: '~$32.000 – $42.000 CLP' }],
+    accessories: [{ emoji: '', name: 'Ratón ergonómico', reason: 'Comodidad para trabajar.', priority: 'rec' }]
+  };
+  document.getElementById('statCareers').textContent = Object.keys(DATA).length;
+  buildAllPickers();
+  markDirty();
+  ['nc-key','nc-label','nc-emoji','nc-alert','nc-software'].forEach(function(id) { document.getElementById(id).value = ''; });
+  showToast('Carrera "' + label + '" creada. Ve a editar sus detalles en las secciones.', 'success');
+}
+
+// ══════════════════════════════════════════
+// EXPORT JSON
+// ══════════════════════════════════════════
+function previewJSON() {
+  var json = JSON.stringify(DATA, null, 2);
+  document.getElementById('jsonContent').textContent = json;
+  document.getElementById('jsonPreview').style.display = 'block';
+  document.getElementById('jsonPlaceholder').style.display = 'none';
+}
+
+function downloadJSON() {
+  var json = JSON.stringify(DATA, null, 2);
+  var blob = new Blob([json], { type: 'application/json' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'recomendaciones_admin.json';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('⬇️ JSON descargado correctamente', 'success');
+}
+
+// ══════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════
+var PAGE_TITLES = {
+  dashboard: ['Dashboard', 'Resumen general del sistema'],
+  solotodo: ['Catálogo SoloTodo (Chile)', 'Explora y sincroniza productos, precios y tiendas en tiempo real'],
+  laptops: ['Laptops', 'Edita los modelos recomendados por carrera'],
+  tablets: ['Tablets', 'Edita las tablets y accesorios de pantalla'],
+  calcs: ['Calculadoras', 'Edita las calculadoras recomendadas'],
+  accessories: ['Accesorios', 'Edita la lista de accesorios por carrera'],
+  scores: ['Puntajes Hardware', 'Ajusta la importancia de cada componente'],
+  alerts: ['Alertas y Contexto', 'Edita el texto explicativo de cada carrera'],
+  newcareer: ['Nueva Carrera', 'Agrega una carrera al sistema'],
+  exportar: ['Exportar JSON', 'Descarga los cambios como archivo JSON']
+};
+
+function showPage(id, navEl) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.nav-item').forEach(function(n) { n.classList.remove('active'); });
+  var page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+  if (navEl) navEl.classList.add('active');
+  var titles = PAGE_TITLES[id] || [id, ''];
+  document.getElementById('topbarTitle').textContent = titles[0];
+  document.getElementById('topbarSub').textContent = titles[1];
+
+  if (id === 'solotodo' && solotodoProducts.length === 0) {
+    loadSoloTodoCatalog();
+  }
+}
+
+// ══════════════════════════════════════════
+// CATÁLOGO SOLOTODO LOGIC
+// ══════════════════════════════════════════
+var solotodoProducts = [];
+var currentSoloTodoCat = '';
+
+function loadSoloTodoCatalog() {
+  fetch('http://127.0.0.1:8000/api/productos?limit=250')
+    .then(function(res) {
+      if (!res.ok) throw new Error('Servidor offline');
+      return res.json();
+    })
+    .then(function(data) {
+      solotodoProducts = data.productos || [];
+      var badge = document.getElementById('solotodoCountBadge');
+      if (badge) {
+        badge.textContent = solotodoProducts.length + ' productos en catálogo';
+      }
+      renderSoloTodoProducts();
+    })
+    .catch(function(err) {
+      var grid = document.getElementById('solotodoGrid');
+      if (grid) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);background:#f8fafc;border-radius:12px;border:1px dashed var(--border)">' +
+          'No se pudo conectar al servidor local en http://127.0.0.1:8000. ' +
+          'Asegúrate de que FastAPI esté ejecutándose para consultar el catálogo de SoloTodo.' +
+          '</div>';
+      }
+    });
+}
+
+function setSoloTodoCat(cat, btn) {
+  currentSoloTodoCat = cat;
+  var container = document.getElementById('solotodoCatFilters');
+  if (container) {
+    container.querySelectorAll('.career-chip').forEach(function(b) { b.classList.remove('active'); });
+  }
+  if (btn) btn.classList.add('active');
+  renderSoloTodoProducts();
+}
+
+function filterSoloTodo() {
+  renderSoloTodoProducts();
+}
+
+function getProductImageUrl(url) {
+  if (!url || url.indexOf('placeholder.png') !== -1) return 'assets/escudo_udec.png';
+  if (url.indexOf('media.solotodo.com') !== -1) {
+    return 'http://127.0.0.1:8000/api/imagen-proxy?url=' + encodeURIComponent(url);
+  }
+  return url;
+}
+
+function renderSoloTodoProducts() {
+  var grid = document.getElementById('solotodoGrid');
+  if (!grid) return;
+
+  var q = (document.getElementById('solotodoSearchInput') ? document.getElementById('solotodoSearchInput').value : '').toLowerCase().trim();
+  
+  var filtered = solotodoProducts.filter(function(p) {
+    if (currentSoloTodoCat) {
+      var pCat = (p.categoria || '').toLowerCase();
+      var pSub = (p.subcategoria || '').toLowerCase();
+      if (pCat !== currentSoloTodoCat && pSub !== currentSoloTodoCat) return false;
+    }
+    if (q) {
+      var txt = (p.nombre + ' ' + (p.descripcion || '') + ' ' + JSON.stringify(p.specs || {})).toLowerCase();
+      if (txt.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted)">' +
+      'No se encontraron productos que coincidan con la búsqueda.' +
+      '</div>';
+    return;
+  }
+
+  var html = '';
+  filtered.forEach(function(p) {
+    var specs = p.specs || {};
+    var priceStr = p.precio_clp || ('$' + Number(p.precio || 0).toLocaleString('es-CL') + ' CLP');
+    var normalPriceStr = p.precio_normal ? ('$' + Number(p.precio_normal).toLocaleString('es-CL')) : '';
+    
+    var specsBadges = [];
+    if (specs.cpu) specsBadges.push('' + specs.cpu);
+    if (specs.ram) specsBadges.push('' + specs.ram);
+    if (specs.gpu && specs.gpu !== 'No posee') specsBadges.push('' + specs.gpu);
+    if (specs.storage) specsBadges.push('' + specs.storage);
+    if (specs.pantalla) specsBadges.push('' + specs.pantalla);
+    if (specs.funciones) specsBadges.push('' + specs.funciones);
+
+    var specsHtml = specsBadges.map(function(s) {
+      return '<span style="font-size:0.72rem;background:#f1f5f9;padding:2px 8px;border-radius:6px;color:#334155;border:1px solid #e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">' + escapeAttr(s) + '</span>';
+    }).join(' ');
+
+    var tiendasHtml = '';
+    if (p.tiendas && p.tiendas.length > 0) {
+      var tLinks = p.tiendas.slice(0, 3).map(function(t) {
+        var tName = escapeAttr(t.tienda);
+        var tPrice = '$' + Number(t.precio_oferta).toLocaleString('es-CL');
+        var tUrl = t.url ? ('href="' + escapeAttr(t.url) + '" target="_blank" rel="noopener"') : '';
+        return '<a ' + tUrl + ' style="font-size:0.74rem;color:var(--udec-azul);text-decoration:underline;margin-right:8px;display:inline-block">' + tName + ' (' + tPrice + ')</a>';
+      }).join('');
+      tiendasHtml = '<div style="margin-top:8px;border-top:1px dashed #e2e8f0;padding-top:6px">' +
+        '<div style="font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase">Tiendas verificadas en Chile:</div>' +
+        '<div style="margin-top:3px">' + tLinks + '</div>' +
+        '</div>';
+    }
+
+    var imgUrl = p.imagen || 'https://media.solotodo.com/media/products/placeholder.png';
+    var soloTodoLink = p.link_solotodo || p.solotodo_url || p.link || 'https://www.solotodo.cl';
+    var displayImgUrl = getProductImageUrl(imgUrl);
+
+    html += '<div class="section-card" style="margin-bottom:0;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--border);border-radius:var(--radius);padding:18px;background:#ffffff;box-shadow:0 2px 10px rgba(34,60,106,0.04)">' +
+      '<div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px">' +
+          '<div style="width:70px;height:70px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;padding:4px">' +
+            '<img src="' + escapeAttr(displayImgUrl) + '" alt="' + escapeAttr(p.nombre) + '" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain" onerror="this.onerror=null;this.src=\'assets/escudo_udec.png\'" />' +
+          '</div>' +
+          '<div style="flex:1">' +
+            '<span style="font-size:0.68rem;font-weight:700;text-transform:uppercase;color:var(--udec-azul);background:rgba(34,60,106,0.08);padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:4px">' +
+              escapeAttr(p.categoria) +
+            '</span>' +
+            '<div style="font-family:\'Poppins\',sans-serif;font-size:0.92rem;font-weight:700;line-height:1.3;color:#1e293b">' +
+              escapeAttr(p.nombre) +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px">' +
+          specsHtml +
+        '</div>' +
+        tiendasHtml +
+      '</div>' +
+      '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">' +
+        '<div>' +
+          '<div style="font-family:\'Poppins\',sans-serif;font-size:1.15rem;font-weight:800;color:#059669">' + priceStr + '</div>' +
+          (normalPriceStr ? '<div style="font-size:0.72rem;color:var(--muted);text-decoration:line-through">Normal: ' + normalPriceStr + '</div>' : '') +
+        '</div>' +
+        '<div style="display:flex;gap:6px">' +
+          '<a href="' + escapeAttr(soloTodoLink) + '" target="_blank" rel="noopener" class="btn-secondary" style="font-size:0.75rem;padding:6px 12px;text-decoration:none">' +
+            'SoloTodo ↗' +
+          '</a>' +
+          '<button class="btn-primary" style="font-size:0.75rem;padding:6px 12px" onclick="copySoloTodoSpecs(\'' + escapeAttr(p.nombre) + '\', \'' + priceStr + '\', \'' + escapeAttr(specs.cpu || '') + '\', \'' + escapeAttr(specs.ram || '') + '\', \'' + escapeAttr(specs.gpu || '') + '\', \'' + escapeAttr(specs.storage || '') + '\')">' +
+            'Copiar' +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+
+  grid.innerHTML = html;
+}
+
+function copySoloTodoSpecs(name, price, cpu, ram, gpu, storage) {
+  var text = name + '\nPrecio: ' + price + '\nCPU: ' + cpu + '\nRAM: ' + ram + '\nGPU: ' + gpu + '\nAlmacenamiento: ' + storage;
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('¡Ficha copiada al portapapeles! Puedes pegarla en cualquier carrera.', 'success');
+  }).catch(function() {
+    prompt('Copia las especificaciones:', text);
+  });
+}
+
+function triggerSyncSoloTodo() {
+  var btn = document.getElementById('btnSyncSoloTodo');
+  var icon = document.getElementById('syncIcon');
+  var txt = document.getElementById('syncText');
+  if (btn) btn.disabled = true;
+  if (icon) icon.textContent = '';
+  if (txt) txt.textContent = 'Sincronizando con SoloTodo...';
+
+  fetch('http://127.0.0.1:8000/api/admin/sync-solotodo', { method: 'POST' })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Error al sincronizar');
+      return res.json();
+    })
+    .then(function(data) {
+      showToast(data.message || 'Catálogo actualizado con éxito.', 'success');
+      loadSoloTodoCatalog();
+    })
+    .catch(function(err) {
+      showToast('Error al conectar con el servidor de sincronización.', 'error');
+    })
+    .finally(function() {
+      if (btn) btn.disabled = false;
+      if (icon) icon.textContent = '';
+      if (txt) txt.textContent = 'Sincronizar con SoloTodo';
+    });
+}
+
+// ══════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════
+function gv(id) { var el = document.getElementById(id); return el ? el.value : ''; }
+function gtv(id) { var el = document.getElementById(id); return el ? el.value : ''; }
+function escapeAttr(s) { return String(s || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+
+function markDirty() {
+  pendingChanges++;
+  document.getElementById('statChanges').textContent = pendingChanges;
+}
+
+function markChange(fieldId, key) { markDirty(); }
+
+function showToast(msg, type) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show ' + (type || 'info');
+  setTimeout(function() { t.className = ''; }, 3000);
+}
+</script>
+</body>
+</html>

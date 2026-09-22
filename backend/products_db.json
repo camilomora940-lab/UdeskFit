@@ -1,0 +1,3312 @@
+[
+  {
+    "id": "nb_279220",
+    "solotodo_id": 279220,
+    "nombre": "Lenovo Legion 5 15IRX10 [83LY003NCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 2099990,
+    "precio_normal": 2133990,
+    "solotodo_url": "https://www.solotodo.cl/products/279220-lenovo-legion-5-15irx10-83ly003ncl",
+    "imagen": "https://media.solotodo.com/media/products/2099180_picture_1750852134.avif",
+    "specs": {
+      "cpu": "Intel Core i9-14900HX",
+      "ram": "32 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5070 (8 GB)",
+      "pantalla": "15,1\"\" 2560x1600",
+      "peso": "1.9 kg",
+      "bateria": "4 celdas (80000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i9-14900HX, 32 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 15,1\"\" 2560x1600. Incluye GPU NVIDIA GeForce RTX 5070 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Paris",
+        "precio_oferta": 2099990,
+        "precio_normal": 2199990,
+        "url": "https://www.paris.cl/notebook-gamer-legion-5-intel-core-i9-14900hx-nvidia-rtx-5070-32gb-ram-1tb-ssd-151-wqxga-165hz-227611999.html"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 2133990,
+        "precio_normal": 2133990,
+        "url": "https://www.mercadolibre.cl/p/MLC74539331?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "PC Factory",
+        "precio_oferta": 2182490,
+        "precio_normal": 2249990,
+        "url": "https://www.pcfactory.cl/producto/54229-lenovo-notebook-gamer-legion-5-gen-10-intel-core-i9-14900hx-nvidia-geforce-rtx-5070-15-1-wuxga-oled-165hz-32gb-ram-1tb-ssd-windows-11-home-eclipse-black-83ly003ncl"
+      },
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 2199990,
+        "precio_normal": 2199990,
+        "url": "https://simple.ripley.cl/notebook-lenovo-legion-5-15irx10-intel-core-i9-32gb-ram-1tb-ssd-nvidia-rtx-5070-151-2000408896579p"
+      }
+    ]
+  },
+  {
+    "id": "nb_390061",
+    "solotodo_id": 390061,
+    "nombre": "ASUS TUF A15 FA506NCQ-HN043W [90NR0QE7-M00280]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 769990,
+    "precio_normal": 789990,
+    "solotodo_url": "https://www.solotodo.cl/products/390061-asus-tuf-a15-fa506ncq-hn043w-90nr0qe7-m00280",
+    "imagen": "https://media.solotodo.com/media/products/2740125_picture_1776945522.webp",
+    "specs": {
+      "cpu": "AMD Ryzen 7 170",
+      "ram": "16 GB DDR5 (4800 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (4 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "3 celdas (48000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 170, 16 GB DDR5 (4800 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 3050 (4 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Paris",
+        "precio_oferta": 769990,
+        "precio_normal": 789990,
+        "url": "https://www.paris.cl/notebook-gamer-tuf-a15-fa506-amd-ryzen-7-nvidia-rtx-3050-16gb-ram-512gb-ssd-156-fhd-144hz-406334999.html"
+      },
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 799990,
+        "precio_normal": 829990,
+        "url": "https://simple.ripley.cl/notebook-asus-tuf-gaming-a15-fa506ncq-hn043w-amd-ryzen-7-16gb-ram-512gb-ssd-nvidia-rtx-3050-156-2000410235427p"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 799990,
+        "precio_normal": 799990,
+        "url": "https://www.mercadolibre.cl/p/MLC69755513?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "Lider",
+        "precio_oferta": 819990,
+        "precio_normal": 819990,
+        "url": "https://www.lider.cl/ip/computadores-y-tablets/notebook-asus-tuf-gaming-a15-amd-ryze-7-nvidia-rtx-3050-16gb-ram-512gb-ssd-15-6-fhd-144hz/00471163643954"
+      }
+    ]
+  },
+  {
+    "id": "nb_383742",
+    "solotodo_id": 383742,
+    "nombre": "Apple MacBook Neo (Early 2026 / Apple Silicon A18 5-Core GPU / 8 GB / 256 GB SSD / Silver) [MHFA4CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 660990,
+    "precio_normal": 660990,
+    "solotodo_url": "https://www.solotodo.cl/products/383742-apple-macbook-neo-early-2026-apple-silicon-a18-5-core-gpu-8-gb-256-gb-ssd-silver-mhfa4cia",
+    "imagen": "https://media.solotodo.com/media/products/2711476_picture_1772823475.webp",
+    "specs": {
+      "cpu": "Apple A-Series A18 Pro (6-Core CPU / 5-Core GPU)",
+      "ram": "8 GB UMA (Desconocido)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "13.0\"\" 2408x1506",
+      "peso": "1.2 kg",
+      "bateria": "36500 mWh"
+    },
+    "descripcion": "Notebook con Apple A-Series A18 Pro (6-Core CPU / 5-Core GPU), 8 GB UMA (Desconocido), SSD 256 GB y pantalla 13.0\"\" 2408x1506. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": [
+      {
+        "tienda": "TecnoSite",
+        "precio_oferta": 660990,
+        "precio_normal": 660990,
+        "url": "https://tienda.tecno-site.com/producto/macbook-neo-13-slv-8gb-256-gb-silver-mbn-13-slv-8g/"
+      },
+      {
+        "tienda": "ShopBox",
+        "precio_oferta": 721670,
+        "precio_normal": 743990,
+        "url": "https://www.shopbox.cl/product/apple-macbook-neo-13-8-gb-ram-256-gb-plata/"
+      },
+      {
+        "tienda": "Tecnomas.cl",
+        "precio_oferta": 735990,
+        "precio_normal": 735990,
+        "url": "https://tecnomas.cl/producto/apple-macbook-neo-early-2026-apple-silicon-a18-5-core-gpu-8-gb-256-gb-ssd-silver-mhfa4ci-a"
+      },
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 749990,
+        "precio_normal": 769990,
+        "url": "https://simple.ripley.cl/macbook-neo-a18-pro-8gb-ram-256gb-ssd-13-2000410247703"
+      }
+    ]
+  },
+  {
+    "id": "nb_355924",
+    "solotodo_id": 355924,
+    "nombre": "Lenovo LOQ 15IRX10 [83JE00UWCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 1159993,
+    "precio_normal": 1159993,
+    "solotodo_url": "https://www.solotodo.cl/products/355924-lenovo-loq-15irx10-83je00uwcl",
+    "imagen": "https://media.solotodo.com/media/products/2094489_picture_1749746237.jpg",
+    "specs": {
+      "cpu": "Intel Core i5-13450HX",
+      "ram": "16 GB DDR5 (4800 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 5060 (8 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.4 kg",
+      "bateria": "60000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core i5-13450HX, 16 GB DDR5 (4800 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 5060 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Lenovo Chile",
+        "precio_oferta": 1159993,
+        "precio_normal": 1159993,
+        "url": "https://www.lenovo.com/cl/es/p/notebooks/loq-laptops/lenovo-loq-15irx10/83je00uwcl"
+      },
+      {
+        "tienda": "Tecnomas.cl",
+        "precio_oferta": 1274990,
+        "precio_normal": 1306990,
+        "url": "https://tecnomas.cl/producto/lenovo-loq-15irx10-83je00uwcl"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio_oferta": 1329990,
+        "precio_normal": 1329990,
+        "url": "https://www.falabella.com/falabella-cl/product/147943305/notebook-gamer-loq-gen10-intel-core-i5-16gb-ram-512gb-ssd-nvidia-rtx-5060-15/147943306"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 1329990,
+        "precio_normal": 1329990,
+        "url": "https://www.mercadolibre.cl/p/MLC60858897?pdp_filters=official_store:all"
+      }
+    ]
+  },
+  {
+    "id": "nb_264768",
+    "solotodo_id": 264768,
+    "nombre": "Lenovo LOQ 15ARP9 [83JC008YCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 729990,
+    "precio_normal": 729990,
+    "solotodo_url": "https://www.solotodo.cl/products/264768-lenovo-loq-15arp9-83jc008ycl",
+    "imagen": "https://media.solotodo.com/media/products/2011726_picture_1774503348.png",
+    "specs": {
+      "cpu": "AMD Ryzen 5 7235HS",
+      "ram": "16 GB DDR5 (4800 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (6 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.4 kg",
+      "bateria": "60000 mWh"
+    },
+    "descripcion": "Notebook con AMD Ryzen 5 7235HS, 16 GB DDR5 (4800 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 3050 (6 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Bookcomputer",
+        "precio_oferta": 729990,
+        "precio_normal": 729990,
+        "url": "https://www.bookcomputer.cl/notebook-r5-7235hsrtx-3050-6gb-16gb-512gb-ssd-156-w11hsl-loq-15arp9-reacondicionado"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 789990,
+        "precio_normal": 789990,
+        "url": "https://www.mercadolibre.cl/p/MLC66815006?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "Hites",
+        "precio_oferta": 799990,
+        "precio_normal": 829990,
+        "url": "https://www.hites.com/notebook-gamer-15.6-lenovo-loq-amd-ryzen-5-16-gb-ram-nvidia-geforce-rtx-3050-512-gb-ssd-944488001.html"
+      },
+      {
+        "tienda": "Lider",
+        "precio_oferta": 799990,
+        "precio_normal": 799990,
+        "url": "https://www.lider.cl/ip/mundo-gamer/notebook-gamer-loq-amd-ryzen-5-7235hs-16gb-ram-512gb-ssd-rtx-3050-15-6-fhd-144hz-nvidia-lenovo/00019815389535"
+      }
+    ]
+  },
+  {
+    "id": "nb_385903",
+    "solotodo_id": 385903,
+    "nombre": "ASUS Gaming V16 V3607VH-RP064W [90NB16L1-M005X0]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 999990,
+    "precio_normal": 1029990,
+    "solotodo_url": "https://www.solotodo.cl/products/385903-asus-gaming-v16-v3607vh-rp064w-90nb16l1-m005x0",
+    "imagen": "https://media.solotodo.com/media/products/2259242_picture_1755802371.jpg",
+    "specs": {
+      "cpu": "Intel Core 7 240H",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 5050 (8 GB)",
+      "pantalla": "16.0\"\" 1920x1200",
+      "peso": "1.9 kg",
+      "bateria": "63000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core 7 240H, 16 GB DDR5 (5600 MHz), SSD 512 GB y pantalla 16.0\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 5050 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 999990,
+        "precio_normal": 1029990,
+        "url": "https://simple.ripley.cl/notebook-asus-gaming-v16-v3607vh-rp064w-intel-core-7-16gb-ram-512gb-ssd-nvidia-rtx-5050-16-2000409403349p"
+      }
+    ]
+  },
+  {
+    "id": "nb_354293",
+    "solotodo_id": 354293,
+    "nombre": "HP Omen 16-AP0002LA [BM6U5LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 1349990,
+    "precio_normal": 1349990,
+    "solotodo_url": "https://www.solotodo.cl/products/354293-hp-omen-16-ap0002la-bm6u5la",
+    "imagen": "https://media.solotodo.com/media/products/2543069_picture_1783626728.webp",
+    "specs": {
+      "cpu": "AMD Ryzen AI 7 350",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5060 (8 GB)",
+      "pantalla": "16.0\"\" 1920x1200",
+      "peso": "2.4 kg",
+      "bateria": "4 celdas (70000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen AI 7 350, 16 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 16.0\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 5060 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 1349990,
+        "precio_normal": 1349990,
+        "url": "https://simple.ripley.cl/notebook-gamer-hp-omen-16-ap0002la-amd-ryzen-ai-7-16gb-ram-nvidia-geforce-rtx5060-1tb-ssd-16-2k-2000409933532p"
+      },
+      {
+        "tienda": "Falabella",
+        "precio_oferta": 1399990,
+        "precio_normal": 1419990,
+        "url": "https://www.falabella.com/falabella-cl/product/17482526/notebook-gamer-16-ap0002la-r7-16gb-1tb-5060-16p-hp/17482526"
+      },
+      {
+        "tienda": "Travel Tienda",
+        "precio_oferta": 1399990,
+        "precio_normal": 1399990,
+        "url": "https://tienda.travel.cl/home-office/notebook-gamer-omen-16-ap0002la-amd-ryzen-ai-7-350-16-gb-ram-rtx-5060-1-tb-ssd-16/SKU140997"
+      },
+      {
+        "tienda": "PC Factory",
+        "precio_oferta": 1399990,
+        "precio_normal": 1443290,
+        "url": "https://www.pcfactory.cl/producto/56934-hp-notebook-gamer-omen-16-ap0002la-amd-ryzen-ai-7-nvidia-geforce-rtx-5060-16-2k-16gb-1tb-ssd-windows-11-home"
+      }
+    ]
+  },
+  {
+    "id": "nb_252715",
+    "solotodo_id": 252715,
+    "nombre": "Acer Nitro V 15 ANV15-41-R6A7-1 [NH.QPFAL.001]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 699990,
+    "precio_normal": 699990,
+    "solotodo_url": "https://www.solotodo.cl/products/252715-acer-nitro-v-15-anv15-41-r6a7-1-nhqpfal001",
+    "imagen": "https://media.solotodo.com/media/products/1907387_picture_1713950984.webp",
+    "specs": {
+      "cpu": "AMD Ryzen 5 7535HS",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (6 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.1 kg",
+      "bateria": "4 celdas (57000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 5 7535HS, 16 GB DDR5 (5600 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 3050 (6 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Acer Store",
+        "precio_oferta": 699990,
+        "precio_normal": 699990,
+        "url": "https://www.acerstore.cl/products/anv15-41-r6a7-1apnr-0889-a"
+      }
+    ]
+  },
+  {
+    "id": "nb_279679",
+    "solotodo_id": 279679,
+    "nombre": "HP Victus 15-FA2014LA [BA1U5LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 759990,
+    "precio_normal": 759990,
+    "solotodo_url": "https://www.solotodo.cl/products/279679-hp-victus-15-fa2014la-ba1u5la",
+    "imagen": "https://media.solotodo.com/media/products/2108086_picture_1752939233.jpeg",
+    "specs": {
+      "cpu": "Intel Core i5-13420H",
+      "ram": "16 GB DDR4 (3200 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (6 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "3 celdas (52500 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i5-13420H, 16 GB DDR4 (3200 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 3050 (6 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "PC Factory",
+        "precio_oferta": 769990,
+        "precio_normal": 793790,
+        "url": "https://www.pcfactory.cl/producto/56342-hp-notebook-gamer-victus-15-fa2014la-intel-core-i5-13420h-nvidia-geforce-rtx-3050-15-6-16gb-ram-512gb-ssd-windows-11-home-negro-ba1u5la-abm"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio_oferta": 779990,
+        "precio_normal": 782990,
+        "url": "https://www.falabella.com/falabella-cl/product/146057997/notebook-hp-gamer-victus-15-fa2014la-intel-core-i5-16gb-ram-512gb-ssd-rtx3050-6gb-windows-11-home/146057998"
+      },
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 799990,
+        "precio_normal": 829990,
+        "url": "https://simple.ripley.cl/notebook-gamer-hp-victus-15-fa2014la-intel-core-i5-16gb-ram-512gb-ssd-nvidia-rtx-3050-156-2000408299608p"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 809990,
+        "precio_normal": 809990,
+        "url": "https://www.mercadolibre.cl/p/MLC51257805?pdp_filters=official_store:all"
+      }
+    ]
+  },
+  {
+    "id": "nb_376368",
+    "solotodo_id": 376368,
+    "nombre": "HP Victus 15-FB3038LA [CJ3B2LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 1159990,
+    "precio_normal": 1169990,
+    "solotodo_url": "https://www.solotodo.cl/products/376368-hp-victus-15-fb3038la-cj3b2la",
+    "imagen": "https://media.solotodo.com/media/products/2672411_picture_1780409062.webp",
+    "specs": {
+      "cpu": "AMD Ryzen 7 260",
+      "ram": "24 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5050 (8 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "4 celdas (70000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 260, 24 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 5050 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Paris",
+        "precio_oferta": 1159990,
+        "precio_normal": 1169990,
+        "url": "https://www.paris.cl/notebook-gamer-victus-15-fb3038la-amd-ryzen-7-24gb-ram-1tb-ssd-nvidia-rtx-5050-156-fhd-144-hz-304098999.html"
+      },
+      {
+        "tienda": "HP Online",
+        "precio_oferta": 1699990,
+        "precio_normal": 1699990,
+        "url": "https://www.hp.com/cl-es/shop/victus-gaming-laptop-15-fb3038la-cj3b2la.html"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 1699990,
+        "precio_normal": 1699990,
+        "url": "https://www.mercadolibre.cl/p/MLC66879075?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio_oferta": 1699990,
+        "precio_normal": 1699990,
+        "url": "https://www.falabella.com/falabella-cl/product/151770416/notebook-hp-gamer-victus-15-fb3038la-amd-ryzen-7-24gb-ram-1tb-ssd-rtx5050-8gb-windows-11-home/151770417"
+      }
+    ]
+  },
+  {
+    "id": "nb_389222",
+    "solotodo_id": 389222,
+    "nombre": "ASUS TUF A15 FA506NCQ-HN020W [90NR0QE7-M000T0]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 679990,
+    "precio_normal": 699990,
+    "solotodo_url": "https://www.solotodo.cl/products/389222-asus-tuf-a15-fa506ncq-hn020w-90nr0qe7-m000t0",
+    "imagen": "https://media.solotodo.com/media/products/2019589_picture_1739891333.png",
+    "specs": {
+      "cpu": "AMD Ryzen 7 170",
+      "ram": "8 GB DDR5 (4800 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (4 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "3 celdas (48000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 170, 8 GB DDR5 (4800 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 3050 (4 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 679990,
+        "precio_normal": 699990,
+        "url": "https://simple.ripley.cl/notebook-asus-tuf-gaming-a15-fa506ncq-hn020w-amd-ryzen-7-8gb-ram-512gb-ssd-nvidia-rtx-3050-156-2000410235434p"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 712918,
+        "precio_normal": 712918,
+        "url": "https://www.mercadolibre.cl/p/MLC69756296?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "Paris",
+        "precio_oferta": 999990,
+        "precio_normal": 999990,
+        "url": "https://www.paris.cl/notebook-tuf-gaming-a15-fa506-amd-ryzen-7-nvidia-rtx-3050-8gb-ram-512gb-ssd-156-fhd-144hz-606197999.html"
+      }
+    ]
+  },
+  {
+    "id": "nb_378185",
+    "solotodo_id": 378185,
+    "nombre": "ASUS VivoBook 15 X1504VA-BQ4206W [90NB13Y1-M01V70]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 570333,
+    "precio_normal": 570333,
+    "solotodo_url": "https://www.solotodo.cl/products/378185-asus-vivobook-15-x1504va-bq4206w-90nb13y1-m01v70",
+    "imagen": "https://media.solotodo.com/media/products/2583953_picture_1762343491.jpeg",
+    "specs": {
+      "cpu": "Intel Core 5-120U",
+      "ram": "16 GB DDR5 (4800 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "No posee",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "1.7 kg",
+      "bateria": "3 celdas (42000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core 5-120U, 16 GB DDR5 (4800 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": [
+      {
+        "tienda": "Eylstore",
+        "precio_oferta": 431990,
+        "precio_normal": 453590,
+        "url": "https://www.eylstore.cl/producto/notebook-asus-vivobook-15-intel-core-5-120u-16gb-512gb-ssd-5i4EG"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 570333,
+        "precio_normal": 570333,
+        "url": "https://www.mercadolibre.cl/p/MLC78453582?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "Paris",
+        "precio_oferta": 579990,
+        "precio_normal": 599990,
+        "url": "https://www.paris.cl/notebook-vivobook-15-x1504va-bq4206w-intel-core-5-16gb-ram-512gb-ssd-156-60hz-332778999.html"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio_oferta": 969990,
+        "precio_normal": 969990,
+        "url": "https://www.falabella.com/falabella-cl/product/155153618/notebook-asus-vivobook-15-intel-core-5-16gb-ram-512gb-ssd-15-6/155153619"
+      }
+    ]
+  },
+  {
+    "id": "nb_378191",
+    "solotodo_id": 378191,
+    "nombre": "ASUS TUF F16 FX607VJB-RL151W [90NR0MZ6-M009X0]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 784990,
+    "precio_normal": 784990,
+    "solotodo_url": "https://www.solotodo.cl/products/378191-asus-tuf-f16-fx607vjb-rl151w-90nr0mz6-m009x0",
+    "imagen": "https://media.solotodo.com/media/products/2684440_picture_1769522795.webp",
+    "specs": {
+      "cpu": "Intel Core 5-210H",
+      "ram": "16 GB DDR4 (3200 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (6 GB)",
+      "pantalla": "16.0\"\" 1920x1200",
+      "peso": "2.2 kg",
+      "bateria": "4 celdas (56000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core 5-210H, 16 GB DDR4 (3200 MHz), SSD 512 GB y pantalla 16.0\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 3050 (6 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Paris",
+        "precio_oferta": 784990,
+        "precio_normal": 784990,
+        "url": "https://www.paris.cl/notebook-gamer-tuf-f16-intel-core-5-nvidia-geforce-rtx-3050-16gb-ram-512gb-ssd-16-144hz-332719999.html"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 784990,
+        "precio_normal": 784990,
+        "url": "https://www.mercadolibre.cl/p/MLC70079118?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio_oferta": 799990,
+        "precio_normal": 819990,
+        "url": "https://www.falabella.com/falabella-cl/product/151231897/notebook-asus-tuf-gaming-f16-intel-core-5-16gb-ram-512gb-ssd-rtx-3050/151231899"
+      },
+      {
+        "tienda": "ASUS Store",
+        "precio_oferta": 869990,
+        "precio_normal": 869990,
+        "url": "https://cl.store.asus.com/90nr0mz6-m009x0-notebook-asus-tuf-gaming-f16-intel-core-5-16gb-ram-512gb-ssd-rtx-3050-16-144hz-fx607vjb-rl151w.html"
+      }
+    ]
+  },
+  {
+    "id": "nb_269653",
+    "solotodo_id": 269653,
+    "nombre": "HP Victus 15-FB2019LA [A14LPLA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 899900,
+    "precio_normal": 899900,
+    "solotodo_url": "https://www.solotodo.cl/products/269653-hp-victus-15-fb2019la-a14lpla",
+    "imagen": "https://media.solotodo.com/media/products/1940403_picture_1722520155.jpg",
+    "specs": {
+      "cpu": "AMD Ryzen 7 8845HS",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 4050 (6 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "4 celdas (70000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 8845HS, 16 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 4050 (6 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Tecnomas.cl",
+        "precio_oferta": 989990,
+        "precio_normal": 989990,
+        "url": "https://tecnomas.cl/producto/hp-victus-15-fb2019la-a14lpla"
+      },
+      {
+        "tienda": "Reuse",
+        "precio_oferta": 999990,
+        "precio_normal": 999990,
+        "url": "https://www.reuse.cl/collections/computadores/products/hp-victus-15-fb2019la-15-6-ryzen-7-8845hs-5-1ghz-16gb-ram-1tb-ssd-rtx-4050-2024-negro-open-box"
+      }
+    ]
+  },
+  {
+    "id": "nb_279354",
+    "solotodo_id": 279354,
+    "nombre": "Lenovo LOQ 15AHP10 [83JG0019CL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 1329990,
+    "precio_normal": 1329990,
+    "solotodo_url": "https://www.solotodo.cl/products/279354-lenovo-loq-15ahp10-83jg0019cl",
+    "imagen": "https://media.solotodo.com/media/products/2103471_picture_1751747629.png",
+    "specs": {
+      "cpu": "AMD Ryzen 7 250",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 5060 (8 GB)",
+      "pantalla": "15.6\"\" 1920x1200",
+      "peso": "2.4 kg",
+      "bateria": "4 celdas (60000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 250, 16 GB DDR5 (5600 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 5060 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Tecnomas.cl",
+        "precio_oferta": 1329990,
+        "precio_normal": 1362990,
+        "url": "https://tecnomas.cl/producto/lenovo-loq-15ahp10-83jg0019cl"
+      },
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 1329990,
+        "precio_normal": 1329990,
+        "url": "https://simple.ripley.cl/notebook-lenovo-loq-15ahp10-amd-ryzen-7-16gb-512gb-ssd-nvidia-rtx-5060-156-2000408896586p"
+      },
+      {
+        "tienda": "Travel Tienda",
+        "precio_oferta": 1349990,
+        "precio_normal": 1349990,
+        "url": "https://tienda.travel.cl/home-office/notebook-lenovo-gamer-loq-r7-16gb-512gb-ssd-156-rtx-5060/SKU139055"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 1363144,
+        "precio_normal": 1363144,
+        "url": "https://www.mercadolibre.cl/p/MLC64943583?pdp_filters=official_store:all"
+      }
+    ]
+  },
+  {
+    "id": "nb_386331",
+    "solotodo_id": 386331,
+    "nombre": "HP Victus 15-FB3018LA [BT4F5LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 649990,
+    "precio_normal": 649990,
+    "solotodo_url": "https://www.solotodo.cl/products/386331-hp-victus-15-fb3018la-bt4f5la",
+    "imagen": "https://media.solotodo.com/media/products/2119099",
+    "specs": {
+      "cpu": "AMD Ryzen 7 7445HS",
+      "ram": "8 GB DDR5 (5600 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (4 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "3 celdas (52500 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 7445HS, 8 GB DDR5 (5600 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 3050 (4 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Travel Tienda",
+        "precio_oferta": 649990,
+        "precio_normal": 649990,
+        "url": "https://tienda.travel.cl/home-office/notebook-gamer-victus-by-hp-15-fb3018la-amd-ryzen-7-8-gb-ram-rtx-3050-512-gb-ssd-156-fhd-144-hz/SKU147172"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio_oferta": 799990,
+        "precio_normal": 808990,
+        "url": "https://www.falabella.com/falabella-cl/product/153374617/notebook-hp-gaming-victus-15-fb3018la-amd-ryzen-7-8gb-ram-512gb-ssd-rtx-3050-windows-11-home/153374618"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 809990,
+        "precio_normal": 809990,
+        "url": "https://www.mercadolibre.cl/p/MLC57728865?pdp_filters=official_store:all"
+      },
+      {
+        "tienda": "HP Online",
+        "precio_oferta": 849990,
+        "precio_normal": 849990,
+        "url": "https://www.hp.com/cl-es/shop/victus-gaming-laptop-15-fb3018la-bt4f5la.html"
+      }
+    ]
+  },
+  {
+    "id": "nb_369514",
+    "solotodo_id": 369514,
+    "nombre": "HP Victus 15-FB3036LA [CH8Z6LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 949990,
+    "precio_normal": 949990,
+    "solotodo_url": "https://www.solotodo.cl/products/369514-hp-victus-15-fb3036la-ch8z6la",
+    "imagen": "https://media.solotodo.com/media/products/2584429_picture_1762358719.jpg",
+    "specs": {
+      "cpu": "AMD Ryzen 7 7445HS",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 4050 (6 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "4 celdas (52500 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 7445HS, 16 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 4050 (6 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Tecnomas.cl",
+        "precio_oferta": 949990,
+        "precio_normal": 949990,
+        "url": "https://tecnomas.cl/producto/hp-victus-15-fb3036la-ch8z6la"
+      },
+      {
+        "tienda": "Travel Tienda",
+        "precio_oferta": 1059990,
+        "precio_normal": 1059990,
+        "url": "https://tienda.travel.cl/computaci%C3%B3n/notebook-gamer-victus-15-fb3036la-amd-ryzen-7-16-gb-ram-rtx-4050-1-tb-ssd-156-fhd/SKU138022"
+      },
+      {
+        "tienda": "Ripley",
+        "precio_oferta": 1079990,
+        "precio_normal": 1079990,
+        "url": "https://simple.ripley.cl/notebook-hp-victus-15-fb3036la-amd-ryzen-7-16gb-ram-1tb-ssd-nvidia-rtx4050-156-2000409933471p"
+      },
+      {
+        "tienda": "HP Online",
+        "precio_oferta": 1099990,
+        "precio_normal": 1099990,
+        "url": "https://www.hp.com/cl-es/shop/victus-gaming-laptop-15-fb3036la-ch8z6la.html"
+      }
+    ]
+  },
+  {
+    "id": "nb_378901",
+    "solotodo_id": 378901,
+    "nombre": "HP Omen 16-AP0007LA [C2DA0LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 1599990,
+    "precio_normal": 1599990,
+    "solotodo_url": "https://www.solotodo.cl/products/378901-hp-omen-16-ap0007la-c2da0la",
+    "imagen": "https://media.solotodo.com/media/products/2185169",
+    "specs": {
+      "cpu": "AMD Ryzen 9 8940HX",
+      "ram": "24 GB DDR5 (5200 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5070 (8 GB)",
+      "pantalla": "16.0\"\" 1920x1200",
+      "peso": "2.4 kg",
+      "bateria": "4 celdas (70000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 9 8940HX, 24 GB DDR5 (5200 MHz), SSD 1 TB y pantalla 16.0\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 5070 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Tecnomas.cl",
+        "precio_oferta": 1599990,
+        "precio_normal": 1599990,
+        "url": "https://tecnomas.cl/producto/hp-omen-16-ap0007la-c2da0la"
+      }
+    ]
+  },
+  {
+    "id": "nb_279664",
+    "solotodo_id": 279664,
+    "nombre": "Lenovo Legion 5 15IAX10 [83F00028CL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 2179993,
+    "precio_normal": 2179993,
+    "solotodo_url": "https://www.solotodo.cl/products/279664-lenovo-legion-5-15iax10-83f00028cl",
+    "imagen": "https://media.solotodo.com/media/products/2107892_picture_1752916422.png",
+    "specs": {
+      "cpu": "Intel Core Ultra 9 275HX",
+      "ram": "32 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5070 (8 GB)",
+      "pantalla": "15,1\"\" 2560x1600",
+      "peso": "1.9 kg",
+      "bateria": "80000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core Ultra 9 275HX, 32 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 15,1\"\" 2560x1600. Incluye GPU NVIDIA GeForce RTX 5070 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Lenovo Chile",
+        "precio_oferta": 2199993,
+        "precio_normal": 2199993,
+        "url": "https://www.lenovo.com/cl/es/p/notebooks/legion-laptops/serie-5/lenovo-legion-5i-gen-10-15-inch-intel/83f00028cl"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio_oferta": 2279990,
+        "precio_normal": 2329990,
+        "url": "https://www.falabella.com/falabella-cl/product/145504775/notebook-gamer-legion-5i-10ma-gen-intel-core-ultra-9-32gb-ram-1tb-ssd-nvidia-rtx-5070-151-wqxga/145504776"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 2329990,
+        "precio_normal": 2329990,
+        "url": "https://www.mercadolibre.cl/p/MLC68202999?pdp_filters=official_store:all"
+      }
+    ]
+  },
+  {
+    "id": "nb_280376",
+    "solotodo_id": 280376,
+    "nombre": "Gigabyte Gaming A16 CTH [CTHI3LA893SH]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 1099990,
+    "precio_normal": 1099990,
+    "solotodo_url": "https://www.solotodo.cl/products/280376-gigabyte-gaming-a16-cth-cthi3la893sh",
+    "imagen": "https://media.solotodo.com/media/products/2113216_picture_1753989579.png",
+    "specs": {
+      "cpu": "Intel Core i7-13620H",
+      "ram": "16 GB DDR5 (5200 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 5050 (8 GB)",
+      "pantalla": "16.0\"\" 1920x1200",
+      "peso": "2.2 kg",
+      "bateria": "76000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core i7-13620H, 16 GB DDR5 (5200 MHz), SSD 512 GB y pantalla 16.0\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 5050 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": [
+      {
+        "tienda": "Dust2",
+        "precio_oferta": 1089990,
+        "precio_normal": 1166289,
+        "url": "https://dust2.gg/producto/notebook-gigabyte-gaming-a16-i7-13620h-16g-512gb-rtx5050/"
+      },
+      {
+        "tienda": "Tecnomas.cl",
+        "precio_oferta": 1099990,
+        "precio_normal": 1099990,
+        "url": "https://tecnomas.cl/producto/gigabyte-gaming-a16-cth-cthi3la893sh"
+      },
+      {
+        "tienda": "SIPO",
+        "precio_oferta": 1509990,
+        "precio_normal": 1606372,
+        "url": "https://sipoonline.cl/notebook-gigabyte-gaming-a16-cth-intel-i7-13620h-rtx-5050-512gb-16gb-ddr5-ip"
+      },
+      {
+        "tienda": "Natcom",
+        "precio_oferta": 1639900,
+        "precio_normal": 1721895,
+        "url": "https://natcomchile.cl/producto/gigabyte-gaming-a16-cth-cthi3la893sh/"
+      }
+    ]
+  },
+  {
+    "id": "nb_247120",
+    "solotodo_id": 247120,
+    "nombre": "HP Victus 15-FA1107LA [A18C0LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 549990,
+    "precio_normal": 549990,
+    "solotodo_url": "https://www.solotodo.cl/products/247120-hp-victus-15-fa1107la-a18c0la",
+    "imagen": "https://media.solotodo.com/media/products/1925077_picture_1718182797.webp",
+    "specs": {
+      "cpu": "Intel Core i5-12450H",
+      "ram": "8 GB DDR4 (3200 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 2050 (4 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.5 kg",
+      "bateria": "No hay información disponible"
+    },
+    "descripcion": "Notebook con Intel Core i5-12450H, 8 GB DDR4 (3200 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 2050 (4 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_406121",
+    "solotodo_id": 406121,
+    "nombre": "ASUS TUF Gaming A16 FA608PM-RV064W",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 1564990,
+    "precio_normal": 1564990,
+    "solotodo_url": "https://www.solotodo.cl/products/406121-asus-tuf-gaming-a16-fa608pm-rv064w",
+    "imagen": "https://media.solotodo.com/media/products/2825182_picture_1789048862.webp",
+    "specs": {
+      "cpu": "AMD Ryzen 9 8940HX",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5060 (8 GB)",
+      "pantalla": "16.0\"\" 1920x1200",
+      "peso": "2.2 kg",
+      "bateria": "4 celdas (12000 mAh | 90000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 9 8940HX, 16 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 16.0\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 5060 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_74002",
+    "solotodo_id": 74002,
+    "nombre": "Apple MacBook Pro 16 (Late 2019 / i7-9750H / 512 GB / Silver) [MVVL2CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 499990,
+    "precio_normal": 499990,
+    "solotodo_url": "https://www.solotodo.cl/products/74002-apple-macbook-pro-16-late-2019-i7-9750h-512-gb-silver-mvvl2cia",
+    "imagen": "https://media.solotodo.com/media/products/1072792_picture_1580977063.jpg",
+    "specs": {
+      "cpu": "Intel Core i7-9750H",
+      "ram": "16 GB DDR4 (2666 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "AMD Radeon Pro 5300M (4 GB)",
+      "pantalla": "16.0\"\" 3072x1920",
+      "peso": "2.0 kg",
+      "bateria": "99800 mWh"
+    },
+    "descripcion": "Notebook con Intel Core i7-9750H, 16 GB DDR4 (2666 MHz), SSD 512 GB y pantalla 16.0\"\" 3072x1920. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_383743",
+    "solotodo_id": 383743,
+    "nombre": "Apple MacBook Neo (Early 2026 / Apple Silicon A18 5-Core GPU / 8 GB / 512 GB SSD / Silver) [MHFC4CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 799990,
+    "precio_normal": 821990,
+    "solotodo_url": "https://www.solotodo.cl/products/383743-apple-macbook-neo-early-2026-apple-silicon-a18-5-core-gpu-8-gb-512-gb-ssd-silver-mhfc4cia",
+    "imagen": "https://media.solotodo.com/media/products/2711476_picture_1772823475.webp",
+    "specs": {
+      "cpu": "Apple A-Series A18 Pro (6-Core CPU / 5-Core GPU)",
+      "ram": "8 GB UMA (Desconocido)",
+      "storage": "SSD 512 GB",
+      "gpu": "No posee",
+      "pantalla": "13.0\"\" 2408x1506",
+      "peso": "1.2 kg",
+      "bateria": "36500 mWh"
+    },
+    "descripcion": "Notebook con Apple A-Series A18 Pro (6-Core CPU / 5-Core GPU), 8 GB UMA (Desconocido), SSD 512 GB y pantalla 13.0\"\" 2408x1506. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_381034",
+    "solotodo_id": 381034,
+    "nombre": "Lenovo Legion 5 15AKP10 [83F1004FCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 1839992,
+    "precio_normal": 1839992,
+    "solotodo_url": "https://www.solotodo.cl/products/381034-lenovo-legion-5-15akp10-83f1004fcl",
+    "imagen": "https://media.solotodo.com/media/products/2665208_picture_1769089940.png",
+    "specs": {
+      "cpu": "AMD Ryzen AI 7 350",
+      "ram": "32 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5060 (8 GB)",
+      "pantalla": "15,1\"\" 2560x1600",
+      "peso": "2.0 kg",
+      "bateria": "80000 mWh"
+    },
+    "descripcion": "Notebook con AMD Ryzen AI 7 350, 32 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 15,1\"\" 2560x1600. Incluye GPU NVIDIA GeForce RTX 5060 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_375076",
+    "solotodo_id": 375076,
+    "nombre": "HP Victus 15-FB3026LA [BV5C6LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 759990,
+    "precio_normal": 759990,
+    "solotodo_url": "https://www.solotodo.cl/products/375076-hp-victus-15-fb3026la-bv5c6la",
+    "imagen": "https://media.solotodo.com/media/products/2584429_picture_1762358719.jpg",
+    "specs": {
+      "cpu": "AMD Ryzen 7 7445HS",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 3050 (4 GB)",
+      "pantalla": "15.6\"\" 1920x1080",
+      "peso": "2.3 kg",
+      "bateria": "4 celdas (52500 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 7 7445HS, 16 GB DDR5 (5600 MHz), SSD 512 GB y pantalla 15.6\"\" 1920x1080. Incluye GPU NVIDIA GeForce RTX 3050 (4 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_357476",
+    "solotodo_id": 357476,
+    "nombre": "Acer Nitro Lite 16 NL16-71G-50GH-1 [NH.DAHAL.003.1]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 859990,
+    "precio_normal": 859990,
+    "solotodo_url": "https://www.solotodo.cl/products/357476-acer-nitro-lite-16-nl16-71g-50gh-1-nhdahal0031",
+    "imagen": "https://media.solotodo.com/media/products/2563782_picture_1780949387.png",
+    "specs": {
+      "cpu": "Intel Core i5-13420H",
+      "ram": "16 GB DDR5 (4800 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "NVIDIA GeForce RTX 4050 (6 GB)",
+      "pantalla": "16.0\"\" 1920x1200",
+      "peso": "1.9 kg",
+      "bateria": "4 celdas (57000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i5-13420H, 16 GB DDR5 (4800 MHz), SSD 512 GB y pantalla 16.0\"\" 1920x1200. Incluye GPU NVIDIA GeForce RTX 4050 (6 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_333206",
+    "solotodo_id": 333206,
+    "nombre": "Lenovo Legion 9 18IAX10 [83EYCTO1WWCL2]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 11440967,
+    "precio_normal": 11440967,
+    "solotodo_url": "https://www.solotodo.cl/products/333206-lenovo-legion-9-18iax10-83eycto1wwcl2",
+    "imagen": "https://media.solotodo.com/media/products/2093140_picture_1749497081.webp",
+    "specs": {
+      "cpu": "Intel Core Ultra 9 275HX",
+      "ram": "192 GB DDR5 (4000 MHz)",
+      "storage": "SSD 2 TB",
+      "gpu": "NVIDIA GeForce RTX 5080 (16 GB)",
+      "pantalla": "18.0\"\" 3840x2400",
+      "peso": "3.5 kg",
+      "bateria": "4 celdas (99990 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core Ultra 9 275HX, 192 GB DDR5 (4000 MHz), SSD 2 TB y pantalla 18.0\"\" 3840x2400. Incluye GPU NVIDIA GeForce RTX 5080 (16 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_406699",
+    "solotodo_id": 406699,
+    "nombre": "Gigabyte AERO 2WH X16 [2WHA3LAC64DH]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 1819990,
+    "precio_normal": 1876290,
+    "solotodo_url": "https://www.solotodo.cl/products/406699-gigabyte-aero-2wh-x16-2wha3lac64dh",
+    "imagen": "https://media.solotodo.com/media/products/2826854_picture_1789391127.png",
+    "specs": {
+      "cpu": "AMD Ryzen AI 9 HX 370",
+      "ram": "32 GB DDR5 (5600 MHz)",
+      "storage": "SSD 1 TB",
+      "gpu": "NVIDIA GeForce RTX 5070 (8 GB)",
+      "pantalla": "16.0\"\" 2560x1600",
+      "peso": "1.9 kg",
+      "bateria": "4 celdas (76000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen AI 9 HX 370, 32 GB DDR5 (5600 MHz), SSD 1 TB y pantalla 16.0\"\" 2560x1600. Incluye GPU NVIDIA GeForce RTX 5070 (8 GB) para alta demanda gráfica, CAD, BIM, renderizado y Machine Learning.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_270842",
+    "solotodo_id": 270842,
+    "nombre": "Apple MacBook Air 13 (Early 2025 / Apple Silicon M4 (8-core GPU) / 16 GB / 256 GB SSD / Midnight) [MW123CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 1169990,
+    "precio_normal": 1169990,
+    "solotodo_url": "https://www.solotodo.cl/products/270842-apple-macbook-air-13-early-2025-apple-silicon-m4-8-core-gpu-16-gb-256-gb-ssd-midnight-mw123cia",
+    "imagen": "https://media.solotodo.com/media/products/2055891_picture_1743434940.jpeg",
+    "specs": {
+      "cpu": "Apple M-Series M4 (10-Core CPU / 8-Core GPU)",
+      "ram": "16 GB UMA (Desconocido)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "13.6\"\" 2560x1664",
+      "peso": "1.2 kg",
+      "bateria": "53800 mWh"
+    },
+    "descripcion": "Notebook con Apple M-Series M4 (10-Core CPU / 8-Core GPU), 16 GB UMA (Desconocido), SSD 256 GB y pantalla 13.6\"\" 2560x1664. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_117463",
+    "solotodo_id": 117463,
+    "nombre": "HP Chromebook 14 G6 [1B193LT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 179990,
+    "precio_normal": 179990,
+    "solotodo_url": "https://www.solotodo.cl/products/117463-hp-chromebook-14-g6-1b193lt",
+    "imagen": "https://media.solotodo.com/media/products/1233517_picture_1600818539.webp",
+    "specs": {
+      "cpu": "Intel Celeron N4020",
+      "ram": "4 GB LPDDR4 (2400 MHz)",
+      "storage": "eMMC 32 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "2 celdas (47000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Celeron N4020, 4 GB LPDDR4 (2400 MHz), eMMC 32 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_407588",
+    "solotodo_id": 407588,
+    "nombre": "HP 240 G7 (1T2N7LT / 12 GB RAM / SSD 240)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 199990,
+    "precio_normal": 204990,
+    "solotodo_url": "https://www.solotodo.cl/products/407588-hp-240-g7-1t2n7lt-12-gb-ram-ssd-240",
+    "imagen": "https://media.solotodo.com/media/products/1386890_picture_1620369003.png",
+    "specs": {
+      "cpu": "Intel Core i3-1005G1",
+      "ram": "12 GB DDR4 (2666 MHz)",
+      "storage": "SSD 240 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i3-1005G1, 12 GB DDR4 (2666 MHz), SSD 240 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_153810",
+    "solotodo_id": 153810,
+    "nombre": "HP 250 G9 [6K016LT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 199990,
+    "precio_normal": 204990,
+    "solotodo_url": "https://www.solotodo.cl/products/153810-hp-250-g9-6k016lt",
+    "imagen": "https://media.solotodo.com/media/products/1658150_picture_1666787314.png",
+    "specs": {
+      "cpu": "Intel Celeron N4500",
+      "ram": "8 GB DDR4 (2933 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "15.6\"\" 1366x768",
+      "peso": "1.7 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Celeron N4500, 8 GB DDR4 (2933 MHz), SSD 256 GB y pantalla 15.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_117019",
+    "solotodo_id": 117019,
+    "nombre": "CHUWI HeroBook Air (N4020 / 4GB / 128GB SSD)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 229990,
+    "precio_normal": 229990,
+    "solotodo_url": "https://www.solotodo.cl/products/117019-chuwi-herobook-air-n4020-4gb-128gb-ssd",
+    "imagen": "https://media.solotodo.com/media/products/1434017_picture_1628106357.jpg",
+    "specs": {
+      "cpu": "Intel Celeron N4020",
+      "ram": "4 GB LPDDR4 (2133 MHz)",
+      "storage": "SSD 128 GB",
+      "gpu": "No posee",
+      "pantalla": "11.6\"\" 1366x768",
+      "peso": "1.3 kg",
+      "bateria": "No hay información disponible"
+    },
+    "descripcion": "Notebook con Intel Celeron N4020, 4 GB LPDDR4 (2133 MHz), SSD 128 GB y pantalla 11.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_126196",
+    "solotodo_id": 126196,
+    "nombre": "HP 255 G7 (28S75LT / Windows 10 Home)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 229990,
+    "precio_normal": 229990,
+    "solotodo_url": "https://www.solotodo.cl/products/126196-hp-255-g7-28s75lt-windows-10-home",
+    "imagen": "https://media.solotodo.com/media/products/1425903_picture_1626969616.jpg",
+    "specs": {
+      "cpu": "AMD Athlon 3020e",
+      "ram": "8 GB DDR4 (2400 MHz)",
+      "storage": "HDD 1 TB (5400rpm)",
+      "gpu": "No posee",
+      "pantalla": "15.6\"\" 1366x768",
+      "peso": "1.8 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Athlon 3020e, 8 GB DDR4 (2400 MHz), HDD 1 TB (5400rpm) y pantalla 15.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_355156",
+    "solotodo_id": 355156,
+    "nombre": "Lenovo N22 [80SF001MCS]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 229990,
+    "precio_normal": 229990,
+    "solotodo_url": "https://www.solotodo.cl/products/355156-lenovo-n22-80sf001mcs",
+    "imagen": "https://media.solotodo.com/media/products/668126_picture_1503157556.jpg",
+    "specs": {
+      "cpu": "Intel Celeron N3050",
+      "ram": "2 GB DDR3L (1600 MHz)",
+      "storage": "eMMC 16 GB",
+      "gpu": "No posee",
+      "pantalla": "11.6\"\" 1366x768",
+      "peso": "1.2 kg",
+      "bateria": "3 celdas (45000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Celeron N3050, 2 GB DDR3L (1600 MHz), eMMC 16 GB y pantalla 11.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_106168",
+    "solotodo_id": 106168,
+    "nombre": "HP 15-DA0022DS [1X0K2UA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 237490,
+    "precio_normal": 237490,
+    "solotodo_url": "https://www.solotodo.cl/products/106168-hp-15-da0022ds-1x0k2ua",
+    "imagen": "https://media.solotodo.com/media/products/1370432_picture_1618576304.png",
+    "specs": {
+      "cpu": "Intel Pentium Gold 5405U",
+      "ram": "8 GB DDR4 (2133 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "15.6\"\" 1366x768",
+      "peso": "1.8 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Pentium Gold 5405U, 8 GB DDR4 (2133 MHz), SSD 256 GB y pantalla 15.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_402702",
+    "solotodo_id": 402702,
+    "nombre": "Dell Vostro 3400 (i3-1115G4 / 8GB / 256GB SSD / W11P)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 239900,
+    "precio_normal": 249496,
+    "solotodo_url": "https://www.solotodo.cl/products/402702-dell-vostro-3400-i3-1115g4-8gb-256gb-ssd-w11p",
+    "imagen": "https://media.solotodo.com/media/products/1373285_picture_1618921613.jpg",
+    "specs": {
+      "cpu": "Intel Core i3-1115G4",
+      "ram": "8 GB DDR4 (2666 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.6 kg",
+      "bateria": "3 celdas (42000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i3-1115G4, 8 GB DDR4 (2666 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_154049",
+    "solotodo_id": 154049,
+    "nombre": "HP 240 G9 [6K015LT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 248990,
+    "precio_normal": 248990,
+    "solotodo_url": "https://www.solotodo.cl/products/154049-hp-240-g9-6k015lt",
+    "imagen": "https://media.solotodo.com/media/products/1659668_picture_1666943643.png",
+    "specs": {
+      "cpu": "Intel Celeron N4500",
+      "ram": "8 GB DDR4 (2933 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.7 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Celeron N4500, 8 GB DDR4 (2933 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_118031",
+    "solotodo_id": 118031,
+    "nombre": "HP 245 G7 [382L0LS]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 249990,
+    "precio_normal": 256990,
+    "solotodo_url": "https://www.solotodo.cl/products/118031-hp-245-g7-382l0ls",
+    "imagen": "https://media.solotodo.com/media/products/958511_picture_1563396264.jpg",
+    "specs": {
+      "cpu": "AMD Ryzen 3 3250U",
+      "ram": "8 GB DDR4 (2400 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 3 3250U, 8 GB DDR4 (2400 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_133098",
+    "solotodo_id": 133098,
+    "nombre": "HP 240 G8 [5U0S2LT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 249990,
+    "precio_normal": 256990,
+    "solotodo_url": "https://www.solotodo.cl/products/133098-hp-240-g8-5u0s2lt",
+    "imagen": "https://media.solotodo.com/media/products/1551592_picture_1646307974.png",
+    "specs": {
+      "cpu": "Intel Core i3-1115G4",
+      "ram": "8 GB DDR4 (3200 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i3-1115G4, 8 GB DDR4 (3200 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_407589",
+    "solotodo_id": 407589,
+    "nombre": "HP 240 G8 (clone) [2T2D4LT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 249990,
+    "precio_normal": 256990,
+    "solotodo_url": "https://www.solotodo.cl/products/407589-hp-240-g8-clone-2t2d4lt",
+    "imagen": "https://media.solotodo.com/media/products/1379660_picture_1619611247.png",
+    "specs": {
+      "cpu": "Intel Core i5-1035G1",
+      "ram": "16 GB DDR4 (2666 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i5-1035G1, 16 GB DDR4 (2666 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_108716",
+    "solotodo_id": 108716,
+    "nombre": "CHUWI HeroBook Pro (N4020 / 8GB / 256GB SSD)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 259990,
+    "precio_normal": 274289,
+    "solotodo_url": "https://www.solotodo.cl/products/108716-chuwi-herobook-pro-n4020-8gb-256gb-ssd",
+    "imagen": "https://media.solotodo.com/media/products/1384070_picture_1620076310.jpg",
+    "specs": {
+      "cpu": "Intel Celeron N4020",
+      "ram": "8 GB LPDDR4 (2133 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.1\"\" 1920x1080",
+      "peso": "1.4 kg",
+      "bateria": "38000 mWh"
+    },
+    "descripcion": "Notebook con Intel Celeron N4020, 8 GB LPDDR4 (2133 MHz), SSD 256 GB y pantalla 14.1\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_402576",
+    "solotodo_id": 402576,
+    "nombre": "CHUWI LarkBook X (N5100 / 8 GB / 256GB SSD)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 275990,
+    "precio_normal": 291169,
+    "solotodo_url": "https://www.solotodo.cl/products/402576-chuwi-larkbook-x-n5100-8-gb-256gb-ssd",
+    "imagen": "https://media.solotodo.com/media/products/2810800_picture_1786623543.jpg",
+    "specs": {
+      "cpu": "Intel Celeron N5100",
+      "ram": "8 GB LPDDR4X (2133 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 2240x1400",
+      "peso": "1.4 kg",
+      "bateria": "38000 mWh"
+    },
+    "descripcion": "Notebook con Intel Celeron N5100, 8 GB LPDDR4X (2133 MHz), SSD 256 GB y pantalla 14.0\"\" 2240x1400. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_109724",
+    "solotodo_id": 109724,
+    "nombre": "Lenovo V14 ADA [82C600A9CL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 279990,
+    "precio_normal": 279990,
+    "solotodo_url": "https://www.solotodo.cl/products/109724-lenovo-v14-ada-82c600a9cl",
+    "imagen": "https://media.solotodo.com/media/products/1389436_picture_1620794803.jpg",
+    "specs": {
+      "cpu": "AMD Ryzen 3 3250U",
+      "ram": "4 GB DDR4 (2400 MHz)",
+      "storage": "HDD 1 TB (5400rpm)",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.6 kg",
+      "bateria": "30000 mWh"
+    },
+    "descripcion": "Notebook con AMD Ryzen 3 3250U, 4 GB DDR4 (2400 MHz), HDD 1 TB (5400rpm) y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_99151",
+    "solotodo_id": 99151,
+    "nombre": "Lenovo IdeaPad 3 14IIL05 [81WD00U9US]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299900,
+    "precio_normal": 311896,
+    "solotodo_url": "https://www.solotodo.cl/products/99151-lenovo-ideapad-3-14iil05-81wd00u9us",
+    "imagen": "https://media.solotodo.com/media/products/1327814_picture_1613661654.jpg",
+    "specs": {
+      "cpu": "Intel Core i5-1035G1",
+      "ram": "8 GB DDR4 (2666 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1080",
+      "peso": "1.6 kg",
+      "bateria": "35000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core i5-1035G1, 8 GB DDR4 (2666 MHz), SSD 512 GB y pantalla 14.0\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_382847",
+    "solotodo_id": 382847,
+    "nombre": "Acer Aspire Lite AL14-31P-3591-6",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/382847-acer-aspire-lite-al14-31p-3591-6",
+    "imagen": "https://media.solotodo.com/media/products/2108648_picture_1753187522.webp",
+    "specs": {
+      "cpu": "Intel Core i3-N300",
+      "ram": "8 GB DDR5 (5200 MHz)",
+      "storage": "SSD 128 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1200",
+      "peso": "1.4 kg",
+      "bateria": "3 celdas (45000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i3-N300, 8 GB DDR5 (5200 MHz), SSD 128 GB y pantalla 14.0\"\" 1920x1200. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_195952",
+    "solotodo_id": 195952,
+    "nombre": "Lenovo E41-50 [82HW0011CL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/195952-lenovo-e41-50-82hw0011cl",
+    "imagen": "https://media.solotodo.com/media/products/1538403_picture_1644238903.webp",
+    "specs": {
+      "cpu": "Intel Core i3-1005G1",
+      "ram": "8 GB DDR4 (3200 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.6 kg",
+      "bateria": "3 celdas (45000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i3-1005G1, 8 GB DDR4 (3200 MHz), SSD 512 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_109636",
+    "solotodo_id": 109636,
+    "nombre": "HP 240 G8 [2K2P2LT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/109636-hp-240-g8-2k2p2lt",
+    "imagen": "https://media.solotodo.com/media/products/1379660_picture_1619611247.png",
+    "specs": {
+      "cpu": "Intel Core i3-1005G1",
+      "ram": "4 GB DDR4 (2666 MHz)",
+      "storage": "HDD 1 TB (5400rpm)",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i3-1005G1, 4 GB DDR4 (2666 MHz), HDD 1 TB (5400rpm) y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_253285",
+    "solotodo_id": 253285,
+    "nombre": "Lenovo ThinkPad X250 [20CLA0T3CL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/253285-lenovo-thinkpad-x250-20cla0t3cl",
+    "imagen": "https://media.solotodo.com/media/products/thinkpad-x250-2-1500x1000.jpg",
+    "specs": {
+      "cpu": "Intel Core i5-5300U",
+      "ram": "4 GB DDR3L (1600 MHz)",
+      "storage": "HDD 500 GB (5400rpm)",
+      "gpu": "No posee",
+      "pantalla": "12.5\"\" 1366x768",
+      "peso": "1.3 kg",
+      "bateria": "3 celdas "
+    },
+    "descripcion": "Notebook con Intel Core i5-5300U, 4 GB DDR3L (1600 MHz), HDD 500 GB (5400rpm) y pantalla 12.5\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_98410",
+    "solotodo_id": 98410,
+    "nombre": "Lenovo V14 IGL [82C2000GCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/98410-lenovo-v14-igl-82c2000gcl",
+    "imagen": "https://media.solotodo.com/media/products/1290230_picture_1608674386.jpg",
+    "specs": {
+      "cpu": "Intel Celeron N4020",
+      "ram": "4 GB DDR4 (2400 MHz)",
+      "storage": "HDD 1 TB (5400rpm)",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.6 kg",
+      "bateria": "30000 mWh"
+    },
+    "descripcion": "Notebook con Intel Celeron N4020, 4 GB DDR4 (2400 MHz), HDD 1 TB (5400rpm) y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_127903",
+    "solotodo_id": 127903,
+    "nombre": "Lenovo V14 IGL [82C2000QCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/127903-lenovo-v14-igl-82c2000qcl",
+    "imagen": "https://media.solotodo.com/media/products/1290230_picture_1608674386.jpg",
+    "specs": {
+      "cpu": "Intel Celeron N4020",
+      "ram": "4 GB DDR4 (2400 MHz)",
+      "storage": "SSD 128 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.6 kg",
+      "bateria": "30000 mWh"
+    },
+    "descripcion": "Notebook con Intel Celeron N4020, 4 GB DDR4 (2400 MHz), SSD 128 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_279678",
+    "solotodo_id": 279678,
+    "nombre": "HP 245 G10 [BP0L4AT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 299990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/279678-hp-245-g10-bp0l4at",
+    "imagen": "https://media.solotodo.com/media/products/1834920_picture_1698245594.webp",
+    "specs": {
+      "cpu": "AMD Ryzen 3 7320U",
+      "ram": "8 GB LPDDR5 (4800 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.4 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen 3 7320U, 8 GB LPDDR5 (4800 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_143695",
+    "solotodo_id": 143695,
+    "nombre": "Lenovo V14 IML [82NA0049CL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 309990,
+    "precio_normal": 309990,
+    "solotodo_url": "https://www.solotodo.cl/products/143695-lenovo-v14-iml-82na0049cl",
+    "imagen": "https://media.solotodo.com/media/products/1461334_picture_1632210758.jpg",
+    "specs": {
+      "cpu": "Intel Core i3-10110U",
+      "ram": "8 GB DDR4 (2666 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.6 kg",
+      "bateria": "35000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core i3-10110U, 8 GB DDR4 (2666 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_177078",
+    "solotodo_id": 177078,
+    "nombre": "ASUS ExpertBook P2451FA (i5-10210U / 8GB / 256GB SSD)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 314900,
+    "precio_normal": 314900,
+    "solotodo_url": "https://www.solotodo.cl/products/177078-asus-expertbook-p2451fa-i5-10210u-8gb-256gb-ssd",
+    "imagen": "https://media.solotodo.com/media/products/1242814_picture_1601994627.jpg",
+    "specs": {
+      "cpu": "Intel Core i5-10210U",
+      "ram": "8 GB DDR4 (2666 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1080",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (48000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i5-10210U, 8 GB DDR4 (2666 MHz), SSD 256 GB y pantalla 14.0\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_114435",
+    "solotodo_id": 114435,
+    "nombre": "Lenovo 14w [81MQ00AGCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 469990,
+    "precio_normal": 469990,
+    "solotodo_url": "https://www.solotodo.cl/products/114435-lenovo-14w-81mq00agcl",
+    "imagen": "https://media.solotodo.com/media/products/1415006_picture_1625064930.webp",
+    "specs": {
+      "cpu": "AMD A6-9220C",
+      "ram": "4 GB LPDDR4X (1866 MHz)",
+      "storage": "SSD 128 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1080",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (57000 mWh)"
+    },
+    "descripcion": "Notebook con AMD A6-9220C, 4 GB LPDDR4X (1866 MHz), SSD 128 GB y pantalla 14.0\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_148105",
+    "solotodo_id": 148105,
+    "nombre": "Lenovo 300e Chromebook 2nd Gen [81MB006NPD]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 469990,
+    "precio_normal": 469990,
+    "solotodo_url": "https://www.solotodo.cl/products/148105-lenovo-300e-chromebook-2nd-gen-81mb006npd",
+    "imagen": "https://media.solotodo.com/media/products/1631018_picture_1659625711.jpg",
+    "specs": {
+      "cpu": "Intel Celeron N4120",
+      "ram": "4 GB LPDDR4 (2400 MHz)",
+      "storage": "eMMC 64 GB",
+      "gpu": "No posee",
+      "pantalla": "11.6\"\" 1366x768",
+      "peso": "1.3 kg",
+      "bateria": "3 celdas (42000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Celeron N4120, 4 GB LPDDR4 (2400 MHz), eMMC 64 GB y pantalla 11.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_33796",
+    "solotodo_id": 33796,
+    "nombre": "HP EliteBook 840 G4 [1BZ25LA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 859990,
+    "precio_normal": 859990,
+    "solotodo_url": "https://www.solotodo.cl/products/33796-hp-elitebook-840-g4-1bz25la",
+    "imagen": "https://media.solotodo.com/media/products/482060_picture_1468507608.png",
+    "specs": {
+      "cpu": "Intel Core i7-7600U",
+      "ram": "4 GB DDR4 (2133 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1080",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (46000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i7-7600U, 4 GB DDR4 (2133 MHz), SSD 256 GB y pantalla 14.0\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_38639",
+    "solotodo_id": 38639,
+    "nombre": "Lenovo ThinkPad T470s [20HGA00SCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 319900,
+    "precio_normal": 332696,
+    "solotodo_url": "https://www.solotodo.cl/products/38639-lenovo-thinkpad-t470s-20hga00scl",
+    "imagen": "https://media.solotodo.com/media/products/665409_picture_1502488671.jpg",
+    "specs": {
+      "cpu": "Intel Core i7-7600U",
+      "ram": "4 GB DDR4 (2133 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1080",
+      "peso": "1.4 kg",
+      "bateria": "6 celdas (49000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i7-7600U, 4 GB DDR4 (2133 MHz), SSD 256 GB y pantalla 14.0\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_395348",
+    "solotodo_id": 395348,
+    "nombre": "Lenovo 300e Yoga Chromebook Gen 4 [82W2001UPD]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 431054,
+    "precio_normal": 440538,
+    "solotodo_url": "https://www.solotodo.cl/products/395348-lenovo-300e-yoga-chromebook-gen-4-82w2001upd",
+    "imagen": "https://media.solotodo.com/media/products/2775017_picture_1780736697.png",
+    "specs": {
+      "cpu": "Mediatek-Kompanio 520",
+      "ram": "4 GB LPDDR3 (1866 MHz)",
+      "storage": "eMMC 32 GB",
+      "gpu": "No posee",
+      "pantalla": "11.6\"\" 1366x768",
+      "peso": "1.3 kg",
+      "bateria": "3 celdas (47000 mWh)"
+    },
+    "descripcion": "Notebook con Mediatek-Kompanio 520, 4 GB LPDDR3 (1866 MHz), eMMC 32 GB y pantalla 11.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_359933",
+    "solotodo_id": 359933,
+    "nombre": "ASUS Chromebook Flip CR1 CR1100CKA-GJ0250 [90NX03V1-M008J0]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 353900,
+    "precio_normal": 366641,
+    "solotodo_url": "https://www.solotodo.cl/products/359933-asus-chromebook-flip-cr1-cr1100cka-gj0250-90nx03v1-m008j0",
+    "imagen": "https://media.solotodo.com/media/products/2100760_picture_1751051211.png",
+    "specs": {
+      "cpu": "Intel Celeron N4500",
+      "ram": "8 GB LPDDR4X (3200 MHz)",
+      "storage": "eMMC 64 GB",
+      "gpu": "No posee",
+      "pantalla": "11.6\"\" 1366x768",
+      "peso": "2.0 kg",
+      "bateria": "2 celdas (47000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Celeron N4500, 8 GB LPDDR4X (3200 MHz), eMMC 64 GB y pantalla 11.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_95838",
+    "solotodo_id": 95838,
+    "nombre": "HP 348 G7 [2E4U1LT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 379990,
+    "precio_normal": 379990,
+    "solotodo_url": "https://www.solotodo.cl/products/95838-hp-348-g7-2e4u1lt",
+    "imagen": "https://media.solotodo.com/media/products/1302444_picture_1610637034.jpg",
+    "specs": {
+      "cpu": "Intel Core i3-10110U",
+      "ram": "4 GB DDR4 (2666 MHz)",
+      "storage": "HDD 1 TB (5400rpm)",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (41000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Core i3-10110U, 4 GB DDR4 (2666 MHz), HDD 1 TB (5400rpm) y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_120713",
+    "solotodo_id": 120713,
+    "nombre": "Lenovo V14 IML [82NA0032CL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 389990,
+    "precio_normal": 389990,
+    "solotodo_url": "https://www.solotodo.cl/products/120713-lenovo-v14-iml-82na0032cl",
+    "imagen": "https://media.solotodo.com/media/products/1461334_picture_1632210758.jpg",
+    "specs": {
+      "cpu": "Intel Core i3-10110U",
+      "ram": "4 GB DDR4 (2666 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.6 kg",
+      "bateria": "35000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core i3-10110U, 4 GB DDR4 (2666 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_115286",
+    "solotodo_id": 115286,
+    "nombre": "Lenovo ThinkPad A275 [20KCA01PCL]",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 799990,
+    "precio_normal": 799990,
+    "solotodo_url": "https://www.solotodo.cl/products/115286-lenovo-thinkpad-a275-20kca01pcl",
+    "imagen": "https://media.solotodo.com/media/products/1244847_picture_1602186285.jpg",
+    "specs": {
+      "cpu": "AMD A12-8830B",
+      "ram": "8 GB DDR4 (1866 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "12.5\"\" 1366x768",
+      "peso": "1.4 kg",
+      "bateria": "No hay información disponible"
+    },
+    "descripcion": "Notebook con AMD A12-8830B, 8 GB DDR4 (1866 MHz), SSD 256 GB y pantalla 12.5\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_373755",
+    "solotodo_id": 373755,
+    "nombre": "HP ProBook G3 MT440 [6Q2T7AA]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 564134,
+    "precio_normal": 583990,
+    "solotodo_url": "https://www.solotodo.cl/products/373755-hp-probook-g3-mt440-6q2t7aa",
+    "imagen": "https://media.solotodo.com/media/products/2654633_picture_1768918592.webp",
+    "specs": {
+      "cpu": "Intel Celeron 7305",
+      "ram": "8 GB DDR4 (3200 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1366x768",
+      "peso": "1.5 kg",
+      "bateria": "3 celdas (51000 mWh)"
+    },
+    "descripcion": "Notebook con Intel Celeron 7305, 8 GB DDR4 (3200 MHz), SSD 256 GB y pantalla 14.0\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_384706",
+    "solotodo_id": 384706,
+    "nombre": "HP 240 G10 240 [D14FRLT]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 646990,
+    "precio_normal": 646990,
+    "solotodo_url": "https://www.solotodo.cl/products/384706-hp-240-g10-240-d14frlt",
+    "imagen": "https://media.solotodo.com/media/products/2208731.png",
+    "specs": {
+      "cpu": "Intel Celeron 7305",
+      "ram": "8 GB DDR4 (3200 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1080",
+      "peso": "2.0 kg",
+      "bateria": "No hay información disponible"
+    },
+    "descripcion": "Notebook con Intel Celeron 7305, 8 GB DDR4 (3200 MHz), SSD 512 GB y pantalla 14.0\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_158600",
+    "solotodo_id": 158600,
+    "nombre": "Apple MacBook Air A1466 (2017 / i5-5350U / 8 GB / 256 GB SSD / Silver)",
+    "categoria": "notebook",
+    "rango_presupuesto": "bajo",
+    "precio": 349900,
+    "precio_normal": 363896,
+    "solotodo_url": "https://www.solotodo.cl/products/158600-apple-macbook-air-a1466-2017-i5-5350u-8-gb-256-gb-ssd-silver",
+    "imagen": "https://media.solotodo.com/media/products/1336920_picture_1614699399.jpeg",
+    "specs": {
+      "cpu": "Intel Core i5-5350U",
+      "ram": "8 GB LPDDR3 (1600 MHz)",
+      "storage": "SSD 256 GB",
+      "gpu": "No posee",
+      "pantalla": "13.3\"\" 1440x900",
+      "peso": "1.4 kg",
+      "bateria": "54000 mWh"
+    },
+    "descripcion": "Notebook con Intel Core i5-5350U, 8 GB LPDDR3 (1600 MHz), SSD 256 GB y pantalla 13.3\"\" 1440x900. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_405958",
+    "solotodo_id": 405958,
+    "nombre": "ASUS Chromebook CZ11 CZ1104CM4A-MZ0183 [90NX09Y1-M00620]",
+    "categoria": "notebook",
+    "rango_presupuesto": "medio",
+    "precio": 509156,
+    "precio_normal": 520358,
+    "solotodo_url": "https://www.solotodo.cl/products/405958-asus-chromebook-cz11-cz1104cm4a-mz0183-90nx09y1-m00620",
+    "imagen": "https://media.solotodo.com/media/products/2824552_picture_1788962811.webp",
+    "specs": {
+      "cpu": "Mediatek-Kompanio 540",
+      "ram": "8 GB LPDDR4 (4800 MHz)",
+      "storage": "eMMC 64 GB",
+      "gpu": "No posee",
+      "pantalla": "11.6\"\" 1366x768",
+      "peso": "2.0 kg",
+      "bateria": "No hay información disponible"
+    },
+    "descripcion": "Notebook con Mediatek-Kompanio 540, 8 GB LPDDR4 (4800 MHz), eMMC 64 GB y pantalla 11.6\"\" 1366x768. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_383705",
+    "solotodo_id": 383705,
+    "nombre": "Apple MacBook Air 13 (Early 2026 / Apple Silicon M5 8-Core GPU / 16 GB / 512 GB SSD / Sky Blue) [MDHH4CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 1449990,
+    "precio_normal": 1469990,
+    "solotodo_url": "https://www.solotodo.cl/products/383705-apple-macbook-air-13-early-2026-apple-silicon-m5-8-core-gpu-16-gb-512-gb-ssd-sky-blue-mdhh4cia",
+    "imagen": "https://media.solotodo.com/media/products/2710961_picture_1772805084.jpg",
+    "specs": {
+      "cpu": "Apple M-Series M5 (10-Core CPU / 8-Core GPU)",
+      "ram": "16 GB UMA (Desconocido)",
+      "storage": "SSD 512 GB",
+      "gpu": "No posee",
+      "pantalla": "13.6\"\" 2560x1664",
+      "peso": "1.2 kg",
+      "bateria": "53800 mWh"
+    },
+    "descripcion": "Notebook con Apple M-Series M5 (10-Core CPU / 8-Core GPU), 16 GB UMA (Desconocido), SSD 512 GB y pantalla 13.6\"\" 2560x1664. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_383729",
+    "solotodo_id": 383729,
+    "nombre": "Apple MacBook Pro 14 (Early 2026 / Apple Silicon M5 Pro 16-Core GPU / 24 GB / 1 TB SSD / Space Black) [MGDR4CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 2785934,
+    "precio_normal": 2785934,
+    "solotodo_url": "https://www.solotodo.cl/products/383729-apple-macbook-pro-14-early-2026-apple-silicon-m5-pro-16-core-gpu-24-gb-1-tb-ssd-space-black-mgdr4cia",
+    "imagen": "https://media.solotodo.com/media/products/2711290_picture_1772818122.jpg",
+    "specs": {
+      "cpu": "Apple M-Series M5 Pro (15-Core CPU / 16-Core GPU)",
+      "ram": "24 GB UMA (Desconocido)",
+      "storage": "SSD 1 TB",
+      "gpu": "No posee",
+      "pantalla": "14.2\"\" 3024x1964",
+      "peso": "1.6 kg",
+      "bateria": "72400 mWh"
+    },
+    "descripcion": "Notebook con Apple M-Series M5 Pro (15-Core CPU / 16-Core GPU), 24 GB UMA (Desconocido), SSD 1 TB y pantalla 14.2\"\" 3024x1964. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_383725",
+    "solotodo_id": 383725,
+    "nombre": "Apple MacBook Pro 14 (Early 2026 / Apple Silicon M5 Max 32-Core GPU / 36 GB / 2 TB SSD / Silver) [MGDQ4CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 4599990,
+    "precio_normal": 4599990,
+    "solotodo_url": "https://www.solotodo.cl/products/383725-apple-macbook-pro-14-early-2026-apple-silicon-m5-max-32-core-gpu-36-gb-2-tb-ssd-silver-mgdq4cia",
+    "imagen": "https://media.solotodo.com/media/products/2711241_picture_1772813461.png",
+    "specs": {
+      "cpu": "Apple M-Series M5 Max (18-Core CPU / 32-Core GPU)",
+      "ram": "36 GB UMA (Desconocido)",
+      "storage": "SSD 2 TB",
+      "gpu": "No posee",
+      "pantalla": "14.2\"\" 3024x1964",
+      "peso": "1.6 kg",
+      "bateria": "72400 mWh"
+    },
+    "descripcion": "Notebook con Apple M-Series M5 Max (18-Core CPU / 32-Core GPU), 36 GB UMA (Desconocido), SSD 2 TB y pantalla 14.2\"\" 3024x1964. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_404842",
+    "solotodo_id": 404842,
+    "nombre": "Apple MacBook Pro 14 (Early 2026 / Apple Silicon M5 Pro 20-Core GPU / 64 GB / 2 TB SSD / Silver) [Z1MH/64GB2TB-SV]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 4749990,
+    "precio_normal": 5011240,
+    "solotodo_url": "https://www.solotodo.cl/products/404842-apple-macbook-pro-14-early-2026-apple-silicon-m5-pro-20-core-gpu-64-gb-2-tb-ssd-silver-z1mh64gb2tb-sv",
+    "imagen": "https://media.solotodo.com/media/products/2711228_picture_1772813120.jpg",
+    "specs": {
+      "cpu": "Apple M-Series M5 Pro (18-Core CPU / 20-Core GPU)",
+      "ram": "64 GB UMA (Desconocido)",
+      "storage": "SSD 2 TB",
+      "gpu": "No posee",
+      "pantalla": "14.2\"\" 3024x1964",
+      "peso": "1.6 kg",
+      "bateria": "72400 mWh"
+    },
+    "descripcion": "Notebook con Apple M-Series M5 Pro (18-Core CPU / 20-Core GPU), 64 GB UMA (Desconocido), SSD 2 TB y pantalla 14.2\"\" 3024x1964. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_383261",
+    "solotodo_id": 383261,
+    "nombre": "ASUS Zenbook 14 UM3406GA-QD089W",
+    "categoria": "notebook",
+    "rango_presupuesto": "alto",
+    "precio": 879990,
+    "precio_normal": 899990,
+    "solotodo_url": "https://www.solotodo.cl/products/383261-asus-zenbook-14-um3406ga-qd089w",
+    "imagen": "https://media.solotodo.com/media/products/2708343_picture_1772542482.webp",
+    "specs": {
+      "cpu": "AMD Ryzen AI 5 340",
+      "ram": "16 GB DDR5 (5600 MHz)",
+      "storage": "SSD 512 GB",
+      "gpu": "No posee",
+      "pantalla": "14.0\"\" 1920x1080",
+      "peso": "1.2 kg",
+      "bateria": "4 celdas (75000 mWh)"
+    },
+    "descripcion": "Notebook con AMD Ryzen AI 5 340, 16 GB DDR5 (5600 MHz), SSD 512 GB y pantalla 14.0\"\" 1920x1080. Ideal para ofimática, programación general, cálculo y multitarea en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_383721",
+    "solotodo_id": 383721,
+    "nombre": "Apple MacBook Pro 16 (Early 2026 / Apple Silicon M5 Pro 20-Core GPU / 24 GB / 1 TB SSD / Space Black) [MGEA4CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 3199990,
+    "precio_normal": 3199990,
+    "solotodo_url": "https://www.solotodo.cl/products/383721-apple-macbook-pro-16-early-2026-apple-silicon-m5-pro-20-core-gpu-24-gb-1-tb-ssd-space-black-mgea4cia",
+    "imagen": "https://media.solotodo.com/media/products/2711179_picture_1772810514.jpg",
+    "specs": {
+      "cpu": "Apple M-Series M5 Pro (18-Core CPU / 20-Core GPU)",
+      "ram": "24 GB UMA (Desconocido)",
+      "storage": "SSD 1 TB",
+      "gpu": "No posee",
+      "pantalla": "16.2\"\" 3456x2234",
+      "peso": "2.1 kg",
+      "bateria": "100000 mWh"
+    },
+    "descripcion": "Notebook con Apple M-Series M5 Pro (18-Core CPU / 20-Core GPU), 24 GB UMA (Desconocido), SSD 1 TB y pantalla 16.2\"\" 3456x2234. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "nb_383735",
+    "solotodo_id": 383735,
+    "nombre": "Apple MacBook Pro 16 (Early 2026 / Apple Silicon M5 Max 40-Core GPU / 48 GB / 2 TB SSD / Silver) [MGE94CI/A]",
+    "categoria": "notebook",
+    "rango_presupuesto": "premium",
+    "precio": 5729616,
+    "precio_normal": 5729616,
+    "solotodo_url": "https://www.solotodo.cl/products/383735-apple-macbook-pro-16-early-2026-apple-silicon-m5-max-40-core-gpu-48-gb-2-tb-ssd-silver-mge94cia",
+    "imagen": "https://media.solotodo.com/media/products/2711394_picture_1772819817.jpg",
+    "specs": {
+      "cpu": "Apple M-Series M5 Max (18-Core CPU / 40-Core GPU)",
+      "ram": "48 GB UMA (Desconocido)",
+      "storage": "SSD 2 TB",
+      "gpu": "No posee",
+      "pantalla": "16.2\"\" 3456x2234",
+      "peso": "2.1 kg",
+      "bateria": "100000 mWh"
+    },
+    "descripcion": "Notebook con Apple M-Series M5 Max (18-Core CPU / 40-Core GPU), 48 GB UMA (Desconocido), SSD 2 TB y pantalla 16.2\"\" 3456x2234. Alta eficiencia energética, excelente pantalla y rendimiento sobresaliente para programación y diseño.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_271963",
+    "solotodo_id": 271963,
+    "nombre": "Samsung Galaxy Tab S10 FE (X520 / 128 GB / 8 GB / Gray) [SM-X520NZAACHO]",
+    "categoria": "tablet",
+    "precio": 389990,
+    "precio_normal": 389990,
+    "solotodo_url": "https://www.solotodo.cl/products/271963-samsung-galaxy-tab-s10-fe-x520-128-gb-8-gb-gray-sm-x520nzaacho",
+    "imagen": "https://media.solotodo.com/media/products/2063467_picture_1744724562.avif",
+    "specs": {
+      "pantalla": "10.9\"",
+      "almacenamiento": "128",
+      "ram": "8192"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_379415",
+    "solotodo_id": 379415,
+    "nombre": "Lenovo Idea Tab [ZAFM0725CL]",
+    "categoria": "tablet",
+    "precio": 264501,
+    "precio_normal": 270321,
+    "solotodo_url": "https://www.solotodo.cl/products/379415-lenovo-idea-tab-zafm0725cl",
+    "imagen": "https://media.solotodo.com/media/products/2622179_picture_1767853273.png",
+    "specs": {
+      "pantalla": "11.0\"",
+      "almacenamiento": "256",
+      "ram": "8192"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_403345",
+    "solotodo_id": 403345,
+    "nombre": "Lenovo Idea Tab Pro [ZAE50154CL]",
+    "categoria": "tablet",
+    "precio": 256355,
+    "precio_normal": 261995,
+    "solotodo_url": "https://www.solotodo.cl/products/403345-lenovo-idea-tab-pro-zae50154cl",
+    "imagen": "https://media.solotodo.com/media/products/2813804_picture_1788351411.webp",
+    "specs": {
+      "pantalla": "12,7\"",
+      "almacenamiento": "256",
+      "ram": "8192"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_267335",
+    "solotodo_id": 267335,
+    "nombre": "Apple iPad 11.0 2025 (Wi-Fi / 128 GB / Silver) [MD3Y4CI/A]",
+    "categoria": "tablet",
+    "precio": 449990,
+    "precio_normal": 459990,
+    "solotodo_url": "https://www.solotodo.cl/products/267335-apple-ipad-110-2025-wi-fi-128-gb-silver-md3y4cia",
+    "imagen": "https://media.solotodo.com/media/products/2025174_picture_1741289082.png",
+    "specs": {
+      "pantalla": "11.0\"",
+      "almacenamiento": "128",
+      "ram": "6144"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_362765",
+    "solotodo_id": 362765,
+    "nombre": "Samsung Galaxy Tab A11+ (X230 / 128 GB / 6 GB / Gray) [SM-X230NZAACHO]",
+    "categoria": "tablet",
+    "precio": 207891,
+    "precio_normal": 223526,
+    "solotodo_url": "https://www.solotodo.cl/products/362765-samsung-galaxy-tab-a11-x230-128-gb-6-gb-gray-sm-x230nzaacho",
+    "imagen": "https://media.solotodo.com/media/products/2596999_picture_1763561120.jpg",
+    "specs": {
+      "pantalla": "11.0\"",
+      "almacenamiento": "128",
+      "ram": "6144"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_403538",
+    "solotodo_id": 403538,
+    "nombre": "Lenovo Idea Tab Pro Gen 2 (TB390FU) [ZAHD0742CL]",
+    "categoria": "tablet",
+    "precio": 508740,
+    "precio_normal": 519933,
+    "solotodo_url": "https://www.solotodo.cl/products/403538-lenovo-idea-tab-pro-gen-2-tb390fu-zahd0742cl",
+    "imagen": "https://media.solotodo.com/media/products/2290706.jpg",
+    "specs": {
+      "pantalla": "13.0\"",
+      "almacenamiento": "256",
+      "ram": "8192"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_354688",
+    "solotodo_id": 354688,
+    "nombre": "Lenovo Idea Tab [ZAFR0125CL]",
+    "categoria": "tablet",
+    "precio": 219990,
+    "precio_normal": 219990,
+    "solotodo_url": "https://www.solotodo.cl/products/354688-lenovo-idea-tab-zafr0125cl",
+    "imagen": "https://media.solotodo.com/media/products/2545178_picture_1757413512.png",
+    "specs": {
+      "pantalla": "11.0\"",
+      "almacenamiento": "128",
+      "ram": "8192"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_255690",
+    "solotodo_id": 255690,
+    "nombre": "Samsung Galaxy Tab S10+ (X820 / 256 GB / 12 GB / Moonstone Gray) [SM-X820NZADCHO]",
+    "categoria": "tablet",
+    "precio": 847990,
+    "precio_normal": 849990,
+    "solotodo_url": "https://www.solotodo.cl/products/255690-samsung-galaxy-tab-s10-x820-256-gb-12-gb-moonstone-gray-sm-x820nzadcho",
+    "imagen": "https://media.solotodo.com/media/products/1965289_picture_1729537867.webp",
+    "specs": {
+      "pantalla": "12.4\"",
+      "almacenamiento": "256",
+      "ram": "12288"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_265288",
+    "solotodo_id": 265288,
+    "nombre": "Lenovo Legion Tab (8.8\", 3) [ZAEF0041CL]",
+    "categoria": "tablet",
+    "precio": 449990,
+    "precio_normal": 449990,
+    "solotodo_url": "https://www.solotodo.cl/products/265288-lenovo-legion-tab-88-3-zaef0041cl",
+    "imagen": "https://media.solotodo.com/media/products/2015156_picture_1738594562.png",
+    "specs": {
+      "pantalla": "8,8\"",
+      "almacenamiento": "256",
+      "ram": "12288"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_271966",
+    "solotodo_id": 271966,
+    "nombre": "Samsung Galaxy Tab S10 FE (X520 / 256 GB / 12 GB / Gray) [SM-X520NZAECHO]",
+    "categoria": "tablet",
+    "precio": 529191,
+    "precio_normal": 539990,
+    "solotodo_url": "https://www.solotodo.cl/products/271966-samsung-galaxy-tab-s10-fe-x520-256-gb-12-gb-gray-sm-x520nzaecho",
+    "imagen": "https://media.solotodo.com/media/products/2063467_picture_1744724562.avif",
+    "specs": {
+      "pantalla": "10.9\"",
+      "almacenamiento": "256",
+      "ram": "12288"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_383372",
+    "solotodo_id": 383372,
+    "nombre": "Apple iPad Air 11 2026 (Wi-Fi / 128 GB / Space Gray) [MH304CI/A]",
+    "categoria": "tablet",
+    "precio": 729990,
+    "precio_normal": 749990,
+    "solotodo_url": "https://www.solotodo.cl/products/383372-apple-ipad-air-11-2026-wi-fi-128-gb-space-gray-mh304cia",
+    "imagen": "https://media.solotodo.com/media/products/2709065_picture_1772645687.webp",
+    "specs": {
+      "pantalla": "11.0\"",
+      "almacenamiento": "128",
+      "ram": "12288"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_313089",
+    "solotodo_id": 313089,
+    "nombre": "Samsung Galaxy Tab S10 Lite (X400 / 128 GB / 6 GB / Gray) [SM-X400NZADCHO]",
+    "categoria": "tablet",
+    "precio": 289990,
+    "precio_normal": 299990,
+    "solotodo_url": "https://www.solotodo.cl/products/313089-samsung-galaxy-tab-s10-lite-x400-128-gb-6-gb-gray-sm-x400nzadcho",
+    "imagen": "https://media.solotodo.com/media/products/2281845_picture_1756150388.png",
+    "specs": {
+      "pantalla": "10.9\"",
+      "almacenamiento": "128",
+      "ram": "6144"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_359905",
+    "solotodo_id": 359905,
+    "nombre": "Samsung Galaxy Tab A11 (X133 / 64 GB / 4 GB / Gray) [SM-X133NZAAL07]",
+    "categoria": "tablet",
+    "precio": 108720,
+    "precio_normal": 111112,
+    "solotodo_url": "https://www.solotodo.cl/products/359905-samsung-galaxy-tab-a11-x133-64-gb-4-gb-gray-sm-x133nzaal07",
+    "imagen": "https://media.solotodo.com/media/products/2579233_picture_1761308384.jpg",
+    "specs": {
+      "pantalla": "8.7\"",
+      "almacenamiento": "64",
+      "ram": "4096"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_393839",
+    "solotodo_id": 393839,
+    "nombre": "Xiaomi Redmi Pad 2 9.7 (64 GB / 4 GB / Graphite Gray)",
+    "categoria": "tablet",
+    "precio": 129990,
+    "precio_normal": 139990,
+    "solotodo_url": "https://www.solotodo.cl/products/393839-xiaomi-redmi-pad-2-97-64-gb-4-gb-graphite-gray",
+    "imagen": "https://media.solotodo.com/media/products/2767711_picture_1779908815.webp",
+    "specs": {
+      "pantalla": "9.7\"",
+      "almacenamiento": "64",
+      "ram": "4096"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_369323",
+    "solotodo_id": 369323,
+    "nombre": "Xiaomi Redmi Pad 2 Pro (128 GB / 6 GB / Silver)",
+    "categoria": "tablet",
+    "precio": 279990,
+    "precio_normal": 279990,
+    "solotodo_url": "https://www.solotodo.cl/products/369323-xiaomi-redmi-pad-2-pro-128-gb-6-gb-silver",
+    "imagen": "https://media.solotodo.com/media/products/2625337_picture_1768494597.png",
+    "specs": {
+      "pantalla": "12,1\"",
+      "almacenamiento": "128",
+      "ram": "6144"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_266275",
+    "solotodo_id": 266275,
+    "nombre": "Lenovo Yoga Tab Plus (ZAEG0024CL)",
+    "categoria": "tablet",
+    "precio": 599990,
+    "precio_normal": 599990,
+    "solotodo_url": "https://www.solotodo.cl/products/266275-lenovo-yoga-tab-plus-zaeg0024cl",
+    "imagen": "https://media.solotodo.com/media/products/2019557_picture_1754084252.jpeg",
+    "specs": {
+      "pantalla": "12,7\"",
+      "almacenamiento": "256",
+      "ram": "16384"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_354628",
+    "solotodo_id": 354628,
+    "nombre": "Samsung Galaxy Tab S11 Ultra (X930 / 256 GB / 12 GB / Moonstone Gray) [SM-X930NZADCHO]",
+    "categoria": "tablet",
+    "precio": 1196991,
+    "precio_normal": 1199990,
+    "solotodo_url": "https://www.solotodo.cl/products/354628-samsung-galaxy-tab-s11-ultra-x930-256-gb-12-gb-moonstone-gray-sm-x930nzadcho",
+    "imagen": "https://media.solotodo.com/media/products/2544976_picture_1757356816.jpeg",
+    "specs": {
+      "pantalla": "14.6\"",
+      "almacenamiento": "256",
+      "ram": "12288"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_402607",
+    "solotodo_id": 402607,
+    "nombre": "Lenovo Legion Tab (8.8\", 5) [ZAH20139CL]",
+    "categoria": "tablet",
+    "precio": 799991,
+    "precio_normal": 799991,
+    "solotodo_url": "https://www.solotodo.cl/products/402607-lenovo-legion-tab-88-5-zah20139cl",
+    "imagen": "https://media.solotodo.com/media/products/2303050.png",
+    "specs": {
+      "pantalla": "8,8\"",
+      "almacenamiento": "256",
+      "ram": "12288"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_354627",
+    "solotodo_id": 354627,
+    "nombre": "Samsung Galaxy Tab S11 (X730 / 128 GB / 12 GB / Moonstone Gray) [SM-X730NZADCHO]",
+    "categoria": "tablet",
+    "precio": 818991,
+    "precio_normal": 945935,
+    "solotodo_url": "https://www.solotodo.cl/products/354627-samsung-galaxy-tab-s11-x730-128-gb-12-gb-moonstone-gray-sm-x730nzadcho",
+    "imagen": "https://media.solotodo.com/media/products/2544964_picture_1759720756.jpeg",
+    "specs": {
+      "pantalla": "11.0\"",
+      "almacenamiento": "128",
+      "ram": "12288"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "tab_271741",
+    "solotodo_id": 271741,
+    "nombre": "Samsung Galaxy Tab S10 FE+ (X620 / 128 GB / 8 GB / Gray) [SM-X620NZAACHO]",
+    "categoria": "tablet",
+    "precio": 549990,
+    "precio_normal": 566990,
+    "solotodo_url": "https://www.solotodo.cl/products/271741-samsung-galaxy-tab-s10-fe-x620-128-gb-8-gb-gray-sm-x620nzaacho",
+    "imagen": "https://media.solotodo.com/media/products/2062030_picture_1744385935.jpeg",
+    "specs": {
+      "pantalla": "13,1\"",
+      "almacenamiento": "128",
+      "ram": "8192"
+    },
+    "descripcion": "Tablet para toma de apuntes en certámenes, lectura de PDFs, papers y estudio en el campus.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_355701",
+    "solotodo_id": 355701,
+    "nombre": "ASUS TUF VG27AQ5A",
+    "categoria": "monitor",
+    "precio": 167990,
+    "precio_normal": 177229,
+    "solotodo_url": "https://www.solotodo.cl/products/355701-asus-tuf-vg27aq5a",
+    "imagen": "https://media.solotodo.com/media/products/2551689_picture_1758652823.png",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "IPS",
+      "tasa_refresco": "210 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_366640",
+    "solotodo_id": 366640,
+    "nombre": "ASUS TUF Gaming 5 [VG259QM5A]",
+    "categoria": "monitor",
+    "precio": 119990,
+    "precio_normal": 125395,
+    "solotodo_url": "https://www.solotodo.cl/products/366640-asus-tuf-gaming-5-vg259qm5a",
+    "imagen": "https://media.solotodo.com/media/products/2611285_picture_1766136142.png",
+    "specs": {
+      "pantalla": "24.5\" Full HD (1920x1080)",
+      "panel": "IPS",
+      "tasa_refresco": "240 Hz"
+    },
+    "descripcion": "Monitor secundario 24.5\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_397418",
+    "solotodo_id": 397418,
+    "nombre": "TCL 27P2A PRO",
+    "categoria": "monitor",
+    "precio": 249990,
+    "precio_normal": 249990,
+    "solotodo_url": "https://www.solotodo.cl/products/397418-tcl-27p2a-pro",
+    "imagen": "https://media.solotodo.com/media/products/2276573",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "IPS",
+      "tasa_refresco": "320 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_392555",
+    "solotodo_id": 392555,
+    "nombre": "Xiaomi A24i 2026 [69670]",
+    "categoria": "monitor",
+    "precio": 73700,
+    "precio_normal": 77320,
+    "solotodo_url": "https://www.solotodo.cl/products/392555-xiaomi-a24i-2026-69670",
+    "imagen": "https://media.solotodo.com/media/products/2759704_picture_1778765512.png",
+    "specs": {
+      "pantalla": "23.8\" Full HD (1920x1080)",
+      "panel": "IPS",
+      "tasa_refresco": "144 Hz"
+    },
+    "descripcion": "Monitor secundario 23.8\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_367652",
+    "solotodo_id": 367652,
+    "nombre": "Samsung Odyssey G5 G53F [LS27FG530ELXZS]",
+    "categoria": "monitor",
+    "precio": 153990,
+    "precio_normal": 157990,
+    "solotodo_url": "https://www.solotodo.cl/products/367652-samsung-odyssey-g5-g53f-ls27fg530elxzs",
+    "imagen": "https://media.solotodo.com/media/products/2618850_picture_1776707294.jpg",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "IPS",
+      "tasa_refresco": "200 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_389860",
+    "solotodo_id": 389860,
+    "nombre": "Xiaomi G27Qi 2026 [P27QDB-RGGL / 70845]",
+    "categoria": "monitor",
+    "precio": 157990,
+    "precio_normal": 165100,
+    "solotodo_url": "https://www.solotodo.cl/products/389860-xiaomi-g27qi-2026-p27qdb-rggl-70845",
+    "imagen": "https://media.solotodo.com/media/products/2742455_picture_1777291634.webp",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "IPS",
+      "tasa_refresco": "200 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_361487",
+    "solotodo_id": 361487,
+    "nombre": "LG UltraGear G4 [27G411A-B]",
+    "categoria": "monitor",
+    "precio": 109419,
+    "precio_normal": 109990,
+    "solotodo_url": "https://www.solotodo.cl/products/361487-lg-ultragear-g4-27g411a-b",
+    "imagen": "https://media.solotodo.com/media/products/2588838_picture_1763619951.png",
+    "specs": {
+      "pantalla": "27.0\" Full HD (1920x1080)",
+      "panel": "IPS",
+      "tasa_refresco": "144 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_393325",
+    "solotodo_id": 393325,
+    "nombre": "Viewsonic VA220A-H",
+    "categoria": "monitor",
+    "precio": 65900,
+    "precio_normal": 65900,
+    "solotodo_url": "https://www.solotodo.cl/products/393325-viewsonic-va220a-h",
+    "imagen": "https://media.solotodo.com/media/products/2764961_picture_1779579421.png",
+    "specs": {
+      "pantalla": "21.5\" Full HD (1920x1080)",
+      "panel": "VA",
+      "tasa_refresco": "120 Hz"
+    },
+    "descripcion": "Monitor secundario 21.5\" VA para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_378751",
+    "solotodo_id": 378751,
+    "nombre": "Gigabyte GS25F2A",
+    "categoria": "monitor",
+    "precio": 99900,
+    "precio_normal": 104900,
+    "solotodo_url": "https://www.solotodo.cl/products/378751-gigabyte-gs25f2a",
+    "imagen": "https://media.solotodo.com/media/products/2687595_picture_1781195460.webp",
+    "specs": {
+      "pantalla": "24.5\" Full HD (1920x1080)",
+      "panel": "IPS",
+      "tasa_refresco": "240 Hz"
+    },
+    "descripcion": "Monitor secundario 24.5\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_388316",
+    "solotodo_id": 388316,
+    "nombre": "Gigabyte GO27Q24",
+    "categoria": "monitor",
+    "precio": 449900,
+    "precio_normal": 472400,
+    "solotodo_url": "https://www.solotodo.cl/products/388316-gigabyte-go27q24",
+    "imagen": "https://media.solotodo.com/media/products/2736386_picture_1781195984.webp",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "OLED",
+      "tasa_refresco": "240 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" OLED para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_384137",
+    "solotodo_id": 384137,
+    "nombre": "Samsung Odyssey G5 G50SF [LS27FG500ELXZS]",
+    "categoria": "monitor",
+    "precio": 166700,
+    "precio_normal": 167990,
+    "solotodo_url": "https://www.solotodo.cl/products/384137-samsung-odyssey-g5-g50sf-ls27fg500elxzs",
+    "imagen": "https://media.solotodo.com/media/products/2713611_picture_1773252960.avif",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "IPS",
+      "tasa_refresco": "180 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_399262",
+    "solotodo_id": 399262,
+    "nombre": "Xiaomi G34WQi 2026 [70851]",
+    "categoria": "monitor",
+    "precio": 249700,
+    "precio_normal": 257990,
+    "solotodo_url": "https://www.solotodo.cl/products/399262-xiaomi-g34wqi-2026-70851",
+    "imagen": "https://media.solotodo.com/media/products/2795430_picture_1784323421.webp",
+    "specs": {
+      "pantalla": "34.0\" 3440x1440",
+      "panel": "VA",
+      "tasa_refresco": "180 Hz"
+    },
+    "descripcion": "Monitor secundario 34.0\" VA para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_379895",
+    "solotodo_id": 379895,
+    "nombre": "TCL 25G64",
+    "categoria": "monitor",
+    "precio": 154990,
+    "precio_normal": 169990,
+    "solotodo_url": "https://www.solotodo.cl/products/379895-tcl-25g64",
+    "imagen": "https://media.solotodo.com/media/products/2693274_picture_1770277301.png",
+    "specs": {
+      "pantalla": "24.5\" Full HD (1920x1080)",
+      "panel": "IPS",
+      "tasa_refresco": "300 Hz"
+    },
+    "descripcion": "Monitor secundario 24.5\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_378752",
+    "solotodo_id": 378752,
+    "nombre": "Gigabyte MO27Q28G",
+    "categoria": "monitor",
+    "precio": 569900,
+    "precio_normal": 606277,
+    "solotodo_url": "https://www.solotodo.cl/products/378752-gigabyte-mo27q28g",
+    "imagen": "https://media.solotodo.com/media/products/2687604_picture_1770040437.png",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "OLED",
+      "tasa_refresco": "280 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" OLED para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_389926",
+    "solotodo_id": 389926,
+    "nombre": "Xiaomi A27Qi 2026 [P27QDA-RAGL / 70857]",
+    "categoria": "monitor",
+    "precio": 125990,
+    "precio_normal": 132183,
+    "solotodo_url": "https://www.solotodo.cl/products/389926-xiaomi-a27qi-2026-p27qda-ragl-70857",
+    "imagen": "https://media.solotodo.com/media/products/2742512_picture_1777305011.png",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "IPS",
+      "tasa_refresco": "120 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_366630",
+    "solotodo_id": 366630,
+    "nombre": "Samsung Odyssey OLED G5 G50SF [LS27FG500SLXZS]",
+    "categoria": "monitor",
+    "precio": 404991,
+    "precio_normal": 443089,
+    "solotodo_url": "https://www.solotodo.cl/products/366630-samsung-odyssey-oled-g5-g50sf-ls27fg500slxzs",
+    "imagen": "https://media.solotodo.com/media/products/2167957",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "OLED",
+      "tasa_refresco": "180 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" OLED para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_401108",
+    "solotodo_id": 401108,
+    "nombre": "Gigabyte GO27Q24G",
+    "categoria": "monitor",
+    "precio": 459990,
+    "precio_normal": 474190,
+    "solotodo_url": "https://www.solotodo.cl/products/401108-gigabyte-go27q24g",
+    "imagen": "https://media.solotodo.com/media/products/2804059_picture_1785501605.webp",
+    "specs": {
+      "pantalla": "27.0\" Quad HD (2560x1440)",
+      "panel": "OLED",
+      "tasa_refresco": "240 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" OLED para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_358478",
+    "solotodo_id": 358478,
+    "nombre": "MSI MAG 255F E20",
+    "categoria": "monitor",
+    "precio": 89900,
+    "precio_normal": 94400,
+    "solotodo_url": "https://www.solotodo.cl/products/358478-msi-mag-255f-e20",
+    "imagen": "https://media.solotodo.com/media/products/2569905_picture_1776707275.png",
+    "specs": {
+      "pantalla": "24.5\" Full HD (1920x1080)",
+      "panel": "IPS",
+      "tasa_refresco": "200 Hz"
+    },
+    "descripcion": "Monitor secundario 24.5\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_356480",
+    "solotodo_id": 356480,
+    "nombre": "ASUS VG249Q5A [90LM0C60-B011I1]",
+    "categoria": "monitor",
+    "precio": 97500,
+    "precio_normal": 102800,
+    "solotodo_url": "https://www.solotodo.cl/products/356480-asus-vg249q5a-90lm0c60-b011i1",
+    "imagen": "https://media.solotodo.com/media/products/2551673_picture_1758651681.png",
+    "specs": {
+      "pantalla": "23.8\" Full HD (1920x1080)",
+      "panel": "IPS",
+      "tasa_refresco": "200 Hz"
+    },
+    "descripcion": "Monitor secundario 23.8\" IPS para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "mon_253813",
+    "solotodo_id": 253813,
+    "nombre": "Samsung Odyssey G3 [LS27DG300ELXZS]",
+    "categoria": "monitor",
+    "precio": 112990,
+    "precio_normal": 112990,
+    "solotodo_url": "https://www.solotodo.cl/products/253813-samsung-odyssey-g3-ls27dg300elxzs",
+    "imagen": "https://media.solotodo.com/media/products/1951215_picture_1724997848.png",
+    "specs": {
+      "pantalla": "27.0\" Full HD (1920x1080)",
+      "panel": "VA",
+      "tasa_refresco": "180 Hz"
+    },
+    "descripcion": "Monitor secundario 27.0\" VA para productividad con doble pantalla en programación, CAD y análisis de datos.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_391086",
+    "solotodo_id": 391086,
+    "nombre": "Razer Viper V4 Pro - Black (RZ01-05630100-R3U1)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 137900,
+    "precio_normal": 144800,
+    "solotodo_url": "https://www.solotodo.cl/products/391086-razer-viper-v4-pro-black-rz01-05630100-r3u1",
+    "imagen": "https://media.solotodo.com/media/products/2748733_picture_1777994671.webp",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_390362",
+    "solotodo_id": 390362,
+    "nombre": "Razer Viper V4 Pro - White",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 137900,
+    "precio_normal": 144800,
+    "solotodo_url": "https://www.solotodo.cl/products/390362-razer-viper-v4-pro-white",
+    "imagen": "https://media.solotodo.com/media/products/2744753_picture_1777473621.webp",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_47971",
+    "solotodo_id": 47971,
+    "nombre": "Logitech G305 LightSpeed Wireless Gaming Mouse - Black (910-005281 / 910-005283)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 33990,
+    "precio_normal": 33990,
+    "solotodo_url": "https://www.solotodo.cl/products/47971-logitech-g305-lightspeed-wireless-gaming-mouse-black-910-005281-910-005283",
+    "imagen": "https://media.solotodo.com/media/products/781932_picture_1532070690.png",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_382343",
+    "solotodo_id": 382343,
+    "nombre": "Logitech PRO X2 SUPERSTRIKE - Eclipse lunar (910-007775)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 188990,
+    "precio_normal": 188990,
+    "solotodo_url": "https://www.solotodo.cl/products/382343-logitech-pro-x2-superstrike-eclipse-lunar-910-007775",
+    "imagen": "https://media.solotodo.com/media/products/2196717",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_362642",
+    "solotodo_id": 362642,
+    "nombre": "Logitech Pro X Superlight 2C - Negro (910-007530)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 107990,
+    "precio_normal": 115549,
+    "solotodo_url": "https://www.solotodo.cl/products/362642-logitech-pro-x-superlight-2c-negro-910-007530",
+    "imagen": "https://media.solotodo.com/media/products/2595947_picture_1763454882.png",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_51795",
+    "solotodo_id": 51795,
+    "nombre": "Logitech G502 Hero (910-005550 / 910-005470 / 910-005469)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 37995,
+    "precio_normal": 39705,
+    "solotodo_url": "https://www.solotodo.cl/products/51795-logitech-g502-hero-910-005550-910-005470-910-005469",
+    "imagen": "https://media.solotodo.com/media/products/824987_picture_1625755678.png",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_65773",
+    "solotodo_id": 65773,
+    "nombre": "Logitech G502 Lightspeed (910-005566 / 910-005565)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 75990,
+    "precio_normal": 79409,
+    "solotodo_url": "https://www.solotodo.cl/products/65773-logitech-g502-lightspeed-910-005566-910-005565",
+    "imagen": "https://media.solotodo.com/media/products/982812_picture_1567288372.jfif",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_254110",
+    "solotodo_id": 254110,
+    "nombre": "Logitech G309 Lightspeed - Black (910-007198)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 39990,
+    "precio_normal": 39990,
+    "solotodo_url": "https://www.solotodo.cl/products/254110-logitech-g309-lightspeed-black-910-007198",
+    "imagen": "https://media.solotodo.com/media/products/1953103_picture_1725550057.webp",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_81452",
+    "solotodo_id": 81452,
+    "nombre": "Logitech G203 Lightsync Black (910-005793)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 18990,
+    "precio_normal": 19990,
+    "solotodo_url": "https://www.solotodo.cl/products/81452-logitech-g203-lightsync-black-910-005793",
+    "imagen": "https://media.solotodo.com/media/products/1169320_picture_1590763819.jpg",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_241532",
+    "solotodo_id": 241532,
+    "nombre": "Razer Viper V3 Pro - Black (RZ01-05120100-R3U1)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 99990,
+    "precio_normal": 105290,
+    "solotodo_url": "https://www.solotodo.cl/products/241532-razer-viper-v3-pro-black-rz01-05120100-r3u1",
+    "imagen": "https://media.solotodo.com/media/products/1907515_picture_1713955581.png",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_153270",
+    "solotodo_id": 153270,
+    "nombre": "Logitech G502 X Plus - Black (910-006161)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 125990,
+    "precio_normal": 125990,
+    "solotodo_url": "https://www.solotodo.cl/products/153270-logitech-g502-x-plus-black-910-006161",
+    "imagen": "https://media.solotodo.com/media/products/1654098_picture_1666206107.jpg",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_226714",
+    "solotodo_id": 226714,
+    "nombre": "HyperX Pulsefire Haste 2 Wireless (Black) (6N0B0AA)",
+    "categoria": "periferico",
+    "subcategoria": "mouse",
+    "precio": 56390,
+    "precio_normal": 56390,
+    "solotodo_url": "https://www.solotodo.cl/products/226714-hyperx-pulsefire-haste-2-wireless-black-6n0b0aa",
+    "imagen": "https://media.solotodo.com/media/products/1849851_picture_1701751486.jpg",
+    "descripcion": "Mouse de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_392336",
+    "solotodo_id": 392336,
+    "nombre": "AULA WIN60 HE - Black",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 35793,
+    "precio_normal": 36900,
+    "solotodo_url": "https://www.solotodo.cl/products/392336-aula-win60-he-black",
+    "imagen": "https://media.solotodo.com/media/products/2758138_picture_1778657725.png",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_400166",
+    "solotodo_id": 400166,
+    "nombre": "Redragon Kumara K552RGB-M SP - Magnetic Switch (K552RGB-M SP)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 43900,
+    "precio_normal": 43900,
+    "solotodo_url": "https://www.solotodo.cl/products/400166-redragon-kumara-k552rgb-m-sp-magnetic-switch-k552rgb-m-sp",
+    "imagen": "https://media.solotodo.com/media/products/2290382.jpg",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_265026",
+    "solotodo_id": 265026,
+    "nombre": "Redragon K686 Eisa PRO (K686WB-RGB-PRO)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 53253,
+    "precio_normal": 54900,
+    "solotodo_url": "https://www.solotodo.cl/products/265026-redragon-k686-eisa-pro-k686wb-rgb-pro",
+    "imagen": "https://media.solotodo.com/media/products/2013403_picture_1737990830.png",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_254104",
+    "solotodo_id": 254104,
+    "nombre": "Logitech G515 Lightspeed TKL Tactile - Black (920-012423)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 126990,
+    "precio_normal": 133340,
+    "solotodo_url": "https://www.solotodo.cl/products/254104-logitech-g515-lightspeed-tkl-tactile-black-920-012423",
+    "imagen": "https://media.solotodo.com/media/products/1953039_picture_1725549357.webp",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_221929",
+    "solotodo_id": 221929,
+    "nombre": "Logitech MX Keys S Wireless Illuminated Keyboard (920-011561)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 99990,
+    "precio_normal": 99990,
+    "solotodo_url": "https://www.solotodo.cl/products/221929-logitech-mx-keys-s-wireless-illuminated-keyboard-920-011561",
+    "imagen": "https://media.solotodo.com/media/products/1830357_picture_1697534660.jpg",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_148804",
+    "solotodo_id": 148804,
+    "nombre": "Redragon Horus (Red Switch) (K618)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 59990,
+    "precio_normal": 64040,
+    "solotodo_url": "https://www.solotodo.cl/products/148804-redragon-horus-red-switch-k618",
+    "imagen": "https://media.solotodo.com/media/products/1633530_picture_1660312757.png",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_254808",
+    "solotodo_id": 254808,
+    "nombre": "Redragon Horus RGB - Black (Red Switch) (K619-RGB-SP)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 46990,
+    "precio_normal": 49990,
+    "solotodo_url": "https://www.solotodo.cl/products/254808-redragon-horus-rgb-black-red-switch-k619-rgb-sp",
+    "imagen": "https://media.solotodo.com/media/products/1960056_picture_1726568093.jpg",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_187108",
+    "solotodo_id": 187108,
+    "nombre": "Razer Ornata V3 X - Español (RZ03-04471100-R311)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 31490,
+    "precio_normal": 33990,
+    "solotodo_url": "https://www.solotodo.cl/products/187108-razer-ornata-v3-x-espanol-rz03-04471100-r311",
+    "imagen": "https://media.solotodo.com/media/products/1732589_picture_1678209853.jpg",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_364748",
+    "solotodo_id": 364748,
+    "nombre": "Corsair K100 AIR WIRELESS (CH-913A01U-NA)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 134900,
+    "precio_normal": 140070,
+    "solotodo_url": "https://www.solotodo.cl/products/364748-corsair-k100-air-wireless-ch-913a01u-na",
+    "imagen": "https://media.solotodo.com/media/products/2603779_picture_1764853252.png",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_384994",
+    "solotodo_id": 384994,
+    "nombre": "Fantech ATOM HE68 MK811 - White",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 42990,
+    "precio_normal": 45999,
+    "solotodo_url": "https://www.solotodo.cl/products/384994-fantech-atom-he68-mk811-white",
+    "imagen": "https://media.solotodo.com/media/products/2719065_picture_1774034421.jpg",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_51199",
+    "solotodo_id": 51199,
+    "nombre": "Redragon Yama K550 (K550)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 50990,
+    "precio_normal": 53540,
+    "solotodo_url": "https://www.solotodo.cl/products/51199-redragon-yama-k550-k550",
+    "imagen": "https://media.solotodo.com/media/products/819230_picture_1605615378.jpg",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_135125",
+    "solotodo_id": 135125,
+    "nombre": "Logitech G413 SE (920-010433)",
+    "categoria": "periferico",
+    "subcategoria": "teclado",
+    "precio": 72208,
+    "precio_normal": 72990,
+    "solotodo_url": "https://www.solotodo.cl/products/135125-logitech-g413-se-920-010433",
+    "imagen": "https://media.solotodo.com/media/products/1565082_picture_1649333417.webp",
+    "descripcion": "Teclado de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_183082",
+    "solotodo_id": 183082,
+    "nombre": "Toshiba Canvio Basics 3.0 2 TB [HDTB520XK3AA]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 105900,
+    "precio_normal": 109990,
+    "solotodo_url": "https://www.solotodo.cl/products/183082-toshiba-canvio-basics-30-2-tb-hdtb520xk3aa",
+    "imagen": "https://media.solotodo.com/media/products/1725923_picture_1677219201.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_31365",
+    "solotodo_id": 31365,
+    "nombre": "ADATA HD650 2 TB (AHD650-2TU31-CBK)",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 101615,
+    "precio_normal": 104155,
+    "solotodo_url": "https://www.solotodo.cl/products/31365-adata-hd650-2-tb-ahd650-2tu31-cbk",
+    "imagen": "https://media.solotodo.com/media/products/568593_picture_1484907614.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_183115",
+    "solotodo_id": 183115,
+    "nombre": "Toshiba Canvio Basics 3.0 1 TB [HDTB510XK3AA]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 88290,
+    "precio_normal": 88990,
+    "solotodo_url": "https://www.solotodo.cl/products/183115-toshiba-canvio-basics-30-1-tb-hdtb510xk3aa",
+    "imagen": "https://media.solotodo.com/media/products/1725928_picture_1677219295.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_215820",
+    "solotodo_id": 215820,
+    "nombre": "Kingston XS1000 1 TB [SXS1000/1000G]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 159990,
+    "precio_normal": 163990,
+    "solotodo_url": "https://www.solotodo.cl/products/215820-kingston-xs1000-1-tb-sxs10001000g",
+    "imagen": "https://media.solotodo.com/media/products/1802969_picture_1692431267.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_234100",
+    "solotodo_id": 234100,
+    "nombre": "Crucial X9 Pro 1 TB [CT1000X9PROSSD9]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 192900,
+    "precio_normal": 204474,
+    "solotodo_url": "https://www.solotodo.cl/products/234100-crucial-x9-pro-1-tb-ct1000x9prossd9",
+    "imagen": "https://media.solotodo.com/media/products/1854137_picture_1702614549.png",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_191394",
+    "solotodo_id": 191394,
+    "nombre": "Toshiba Canvio Basics 3.0 4 TB [HDTB540XK3CA]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 168990,
+    "precio_normal": 168990,
+    "solotodo_url": "https://www.solotodo.cl/products/191394-toshiba-canvio-basics-30-4-tb-hdtb540xk3ca",
+    "imagen": "https://media.solotodo.com/media/products/1739091_picture_1679383915.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_41721",
+    "solotodo_id": 41721,
+    "nombre": "Western Digital Elements 2 TB [WDBU6Y0020BBK-WESN / WDBU6Y0020BBK-NESN]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 89990,
+    "precio_normal": 89990,
+    "solotodo_url": "https://www.solotodo.cl/products/41721-western-digital-elements-2-tb-wdbu6y0020bbk-wesn-wdbu6y0020bbk-nesn",
+    "imagen": "https://media.solotodo.com/media/products/71zydLcTyL._SL1500_.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_113023",
+    "solotodo_id": 113023,
+    "nombre": "Sandisk Portable SSD 1 TB [SDSSDE30-1T00-G25 / SDSSDE30-1T00-G26]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 199990,
+    "precio_normal": 199990,
+    "solotodo_url": "https://www.solotodo.cl/products/113023-sandisk-portable-ssd-1-tb-sdssde30-1t00-g25-sdssde30-1t00-g26",
+    "imagen": "https://media.solotodo.com/media/products/1404721_picture_1623393580.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_252289",
+    "solotodo_id": 252289,
+    "nombre": "Kingston XS1000R 1 TB [SXS1000R/1000G]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 151963,
+    "precio_normal": 155307,
+    "solotodo_url": "https://www.solotodo.cl/products/252289-kingston-xs1000r-1-tb-sxs1000r1000g",
+    "imagen": "https://media.solotodo.com/media/products/1941435_picture_1722725407.png",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_215819",
+    "solotodo_id": 215819,
+    "nombre": "Kingston XS1000 2 TB [SXS1000/2000G]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 249990,
+    "precio_normal": 257490,
+    "solotodo_url": "https://www.solotodo.cl/products/215819-kingston-xs1000-2-tb-sxs10002000g",
+    "imagen": "https://media.solotodo.com/media/products/1802969_picture_1692431267.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_355432",
+    "solotodo_id": 355432,
+    "nombre": "Lexar SL300 2 TB [LSL300002T- RNBNG]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 199990,
+    "precio_normal": 206190,
+    "solotodo_url": "https://www.solotodo.cl/products/355432-lexar-sl300-2-tb-lsl300002t-rnbng",
+    "imagen": "https://media.solotodo.com/media/products/2550144_picture_1758072505.png",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "peri_121620",
+    "solotodo_id": 121620,
+    "nombre": "Kingston XS2000 2 TB [SXS2000/2000G]",
+    "categoria": "periferico",
+    "subcategoria": "disco externo",
+    "precio": 329990,
+    "precio_normal": 329990,
+    "solotodo_url": "https://www.solotodo.cl/products/121620-kingston-xs2000-2-tb-sxs20002000g",
+    "imagen": "https://media.solotodo.com/media/products/1468502_picture_1633089506.jpg",
+    "descripcion": "Disco externo de alta durabilidad para estudio continuo y desarrollo.",
+    "tiendas": []
+  },
+  {
+    "id": "calc_fx991cw",
+    "nombre": "Casio fx-991CW (ClassWiz)",
+    "categoria": "calculadora",
+    "precio": 36990,
+    "precio_normal": 42990,
+    "solotodo_url": "https://www.solotodo.cl/search?search=casio+fx-991cw",
+    "imagen": "https://media.solotodo.com/media/products/casio_fx991cw.png",
+    "specs": {
+      "funciones": "552 funciones científicas",
+      "tipo": "Científica no programable (Permitida en certámenes UdeC)",
+      "pantalla": "LCD de 4 graduaciones de alta definición con menú de íconos",
+      "caracteristicas": "Álgebra matricial 4x4, vectores, integrales y derivadas numéricas, resolución de ecuaciones, código QR"
+    },
+    "descripcion": "La calculadora estándar y recomendada para todas las Ingenierías UdeC (Plan Común, Industrial, Mecánica, Eléctrica, etc.) y Ciencias.",
+    "tiendas": [
+      {
+        "tienda": "PC Factory",
+        "precio_oferta": 36990,
+        "precio_normal": 39990,
+        "url": "https://www.pcfactory.cl"
+      },
+      {
+        "tienda": "Lápiz López",
+        "precio_oferta": 38990,
+        "precio_normal": 42990,
+        "url": "https://www.lapizlopez.cl"
+      },
+      {
+        "tienda": "Falabella",
+        "precio_oferta": 37990,
+        "precio_normal": 41990,
+        "url": "https://www.falabella.com"
+      }
+    ]
+  },
+  {
+    "id": "calc_hpprime",
+    "nombre": "HP Prime G2 Graficadora CAS",
+    "categoria": "calculadora",
+    "precio": 149990,
+    "precio_normal": 169990,
+    "solotodo_url": "https://www.solotodo.cl/search?search=hp+prime",
+    "imagen": "https://media.solotodo.com/media/products/hp_prime_g2.png",
+    "specs": {
+      "funciones": "Sistema de Álgebra Computacional (CAS)",
+      "tipo": "Graficadora avanzada multitáctil a color",
+      "pantalla": "Táctil de 3.5\" a color",
+      "caracteristicas": "Ecuaciones diferenciales, geometría dinámica, hojas de cálculo, batería recargable de iones de litio"
+    },
+    "descripcion": "Calculadora gráfica de gama alta para cursos avanzados de modelado, termodinámica y métodos numéricos en ingeniería.",
+    "tiendas": [
+      {
+        "tienda": "PC Factory",
+        "precio_oferta": 149990,
+        "precio_normal": 159990,
+        "url": "https://www.pcfactory.cl"
+      },
+      {
+        "tienda": "Mercado Libre",
+        "precio_oferta": 152990,
+        "precio_normal": 165000,
+        "url": "https://www.mercadolibre.cl"
+      }
+    ]
+  },
+  {
+    "id": "calc_fx570",
+    "nombre": "Casio fx-570LA CW",
+    "categoria": "calculadora",
+    "precio": 28990,
+    "precio_normal": 32990,
+    "solotodo_url": "https://www.solotodo.cl/search?search=casio+fx-570la",
+    "imagen": "https://media.solotodo.com/media/products/casio_fx570.png",
+    "specs": {
+      "funciones": "540 funciones",
+      "tipo": "Científica a pilas AAA",
+      "pantalla": "Matriz de puntos de alta resolución",
+      "caracteristicas": "Cálculo diferencial e integral, matrices, vectores, números complejos"
+    },
+    "descripcion": "Alternativa económica idéntica a la 991CW en capacidad de cómputo, alimentada por pila AAA.",
+    "tiendas": [
+      {
+        "tienda": "Lápiz López",
+        "precio_oferta": 28990,
+        "precio_normal": 31990,
+        "url": "https://www.lapizlopez.cl"
+      }
+    ]
+  }
+]

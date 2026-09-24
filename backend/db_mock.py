@@ -167,39 +167,32 @@ def buscar_productos(categoria: str = None, presupuesto_maximo: int = None, quer
 
 
 def _cargar_perfiles_carreras():
-    modular_path = os.path.join(os.path.dirname(__file__), "carreras_udec_modular.json")
-    if os.path.exists(modular_path):
+    detallado_path = os.path.join(os.path.dirname(__file__), "carreras_detalladas_92.json")
+    if os.path.exists(detallado_path):
         try:
-            with open(modular_path, "r", encoding="utf-8") as f:
-                mod = json.load(f)
-            fams = mod.get("families", {})
-            cars = mod.get("carreras", {})
+            with open(detallado_path, "r", encoding="utf-8") as f:
+                raw_cars = json.load(f)
             profs = {}
-            for slug, c in cars.items():
-                fam = fams.get(c.get("family"), fams.get("business_quant", {}))
-                p = dict(fam.get("db_profile", {}))
+            for slug, c in raw_cars.items():
+                p = dict(c.get("db_profile", {}))
                 p["nombre"] = c.get("label", slug)
                 p["campus"] = c.get("campus", "Campus Concepción")
                 p["url"] = c.get("url", f"https://admision.udec.cl/{slug}/")
+                p["software"] = c.get("software", [])
+                p["alert"] = c.get("alert", "")
                 profs[slug] = p
             if profs:
                 return profs
         except Exception as e:
-            print(f"Error cargando carreras_udec_modular.json: {e}")
+            print(f"Error cargando carreras_detalladas_92.json: {e}")
 
-    # Fallback básico si el archivo no existe
+    # Fallback si no existe
     return {
-        "ing_civil_informatica": {
+        "ingenieria-civil-informatica": {
             "min_ram": 16, "gpu_dedicada": True,
-            "palabras_clave": ["rtx", "ryzen 7", "core i7", "legion", "16 gb", "32 gb"],
-            "motivo": "Recomendado para desarrollo de software, Docker y compilación.",
-            "badge": "Dev & VMs Ready", "nombre": "Ingeniería Civil Informática", "campus": "Campus Concepción"
-        },
-        "ing_civil_industrial": {
-            "min_ram": 16, "gpu_dedicada": False,
-            "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "16 gb"],
-            "motivo": "Fluidez óptima para simulación de procesos, RStudio y optimización.",
-            "badge": "Optimización & Datos", "nombre": "Ingeniería Civil Industrial", "campus": "Campus Concepción"
+            "palabras_clave": ["rtx", "ryzen 7", "core i7", "16 gb", "32 gb"],
+            "motivo": "Desarrollo de software, Docker y compilación pesada.",
+            "badge": "Dev & VMs Ready", "nombre": "Ingeniería Civil Informática"
         }
     }
 

@@ -183,6 +183,7 @@ def api_recomendar(carrera: str = "ing_civil_industrial", presupuesto: str = Non
         "presupuesto": presupuesto,
         "categoria": categoria,
         "total": len(res),
+        "productos": res
     }
 
 

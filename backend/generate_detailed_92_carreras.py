@@ -1,0 +1,1782 @@
+"""
+Generador de los 92 perfiles de equipamiento hiper-personalizados para la Universidad de Concepción.
+Cada carrera cuenta con:
+- Software real específico UdeC
+- Alerta académica personalizada
+- Requisitos de hardware (CPU, RAM, GPU, Pantalla, Batería)
+- Calculadora recomendada según normativa de certámenes
+- Tablet y accesorios adaptados al ejercicio formativo
+"""
+
+import json
+
+CARRERAS_DETALLADAS = {
+    # ══════════════════════════════════════════════════════════════════════
+    # FACULTAD DE INGENIERÍA Y CIENCIAS DE LA COMPUTACIÓN
+    # ══════════════════════════════════════════════════════════════════════
+    "ingenieria-civil-informatica": {
+        "label": "Ingeniería Civil Informática",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-informatica/",
+        "family": "software_dev",
+        "alert": "<strong>La carrera más exigente en CPU y RAM:</strong> Ejecutarás contenedores Docker, máquinas virtuales (VirtualBox/WSL2), múltiples IDEs (IntelliJ, VS Code) y modelos de Machine Learning. 16GB de RAM es el piso mínimo absoluto; 32GB es lo ideal para trabajar sin freezes.",
+        "software": ["Docker + WSL2", "IntelliJ IDEA / VS Code", "Git + GitHub", "Python (TensorFlow/PyTorch)", "PostgreSQL / MongoDB"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 7, "Battery": 6, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#f59e0b", "Display": "#14b8a6"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Para ramos matemáticos de plan común (Cálculo I-III, Álgebra Lineal). No se requiere graficadora.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Monitor externo 24\" a 27\" IPS FHD/QHD", "priority": "rec", "reason": "Dual monitor duplica la productividad: código en una pantalla, terminal y documentación en la otra."},
+            {"name": "Teclado mecánico ergonómico y mouse vertical", "priority": "rec", "reason": "Previene lesiones por esfuerzo repetitivo (túnel carpiano) durante maratones de programación."},
+            {"name": "Disco externo SSD NVMe 1TB USB-C", "priority": "must", "reason": "Respaldos veloces de máquinas virtuales, repositorios y entornos de desarrollo."}
+        ],
+        "tablets": [{"emoji": "📱", "name": "Tablet Samsung Galaxy Tab S9 FE / iPad 10ma", "reason": "Complemento opcional para lectura de papers y diagramas UML a mano alzada.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx", "ryzen 7", "core i7", "legion", "tuf", "victus", "loq", "16 gb", "32 gb"], "motivo": "Recomendado para desarrollo de software, Docker, VMs y compilación pesada.", "badge": "Dev & VMs Ready"}
+    },
+
+    "ingenieria-civil-industrial": {
+        "label": "Ingeniería Civil Industrial",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-industrial/",
+        "family": "business_quant",
+        "alert": "<strong>Modelación matemática y analítica de datos:</strong> Usarás Python (Pandas/NumPy), RStudio, Power BI, Excel Solver y simuladores estocásticos (Simio/Arena). El cuello de botella es la RAM y procesador multicore.",
+        "software": ["Python + Pandas", "R + RStudio", "Simio / Arena Simulation", "Power BI / Tableau", "Excel Solver + VBA"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Matrices, integrales y distribuciones estadísticas en certámenes de Optimización y Probabilidades.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico inalámbrico", "priority": "must", "reason": "Navegar hojas de cálculo kilométricas y flujos de simulación requiere alta comodidad."},
+            {"name": "Monitor externo 24\" FHD", "priority": "rec", "reason": "Permite ver el modelo de optimización en una pantalla y los datos en la otra."},
+            {"name": "Hub multipuerto USB-C con HDMI", "priority": "rec", "reason": "Para conectar tu notebook en salas de presentación de proyectos de gestión."}
+        ],
+        "tablets": [{"emoji": "📊", "name": "iPad 10ma gen o Galaxy Tab S9 FE", "reason": "Excelente para estudio de casos de negocios, papers y mallas de procesos.", "price": "$250.000 – $390.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "elitebook", "16 gb"], "motivo": "Fluidez óptima para simulación de procesos, RStudio, Python y optimización matemática.", "badge": "Optimización & Datos"}
+    },
+
+    "ingenieria-civil-aeroespacial": {
+        "label": "Ingeniería Civil Aeroespacial",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-aeroespacial/",
+        "family": "cad_heavy",
+        "alert": "<strong>Simulación aerodinámica y mecánica de fluidos computacional (CFD):</strong> Correrás ANSYS Fluent, OpenFOAM, MATLAB y modelado 3D en SolidWorks/CATIA. Se requiere GPU dedicada NVIDIA RTX y mínimo 16GB (deseable 32GB) de RAM.",
+        "software": ["ANSYS Fluent (CFD)", "OpenFOAM", "MATLAB / Simulink", "SolidWorks / CATIA", "XFLR5 (aerodinámica)"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 8, "Battery": 5, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#ef4444", "Battery": "#f59e0b", "Display": "#22c55e"},
+        "calcs": [{"name": "Casio fx-991CW o HP Prime v2", "why": "Cálculo vectorial avanzado, ecuaciones diferenciales y sistemas de termodinámica compresible.", "price": "~$35.000 – $140.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse con botón de rueda de alta precisión", "priority": "must", "reason": "Vital para orbitar mallas 3D y geometrías de perfiles alares."},
+            {"name": "Base refrigerante para laptop", "priority": "rec", "reason": "Las mallas CFD estresan la CPU y GPU al 100% durante horas de cálculo."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Los archivos de resultados transientes de CFD pesan decenas de GB por simulación."}
+        ],
+        "tablets": [{"emoji": "🚀", "name": "iPad 10ma gen con Apple Pencil", "reason": "Para diagramas de cuerpo libre, fuerzas aerodinámicas y apuntes vectoriales.", "price": "$330.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 4060", "rtx 3050", "ryzen 7", "core i7", "tuf", "legion", "loq", "32 gb"], "motivo": "Potencia de cómputo para CFD aerodinámico, ANSYS Fluent y modelado 3D.", "badge": "CFD & Aeronáutica"}
+    },
+
+    "ingenieria-civil-mecanica": {
+        "label": "Ingeniería Civil Mecánica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-mecanica/",
+        "family": "cad_heavy",
+        "alert": "<strong>Diseño mecánico 3D y análisis por elementos finitos (FEA):</strong> Usarás SolidWorks, Autodesk Inventor, ANSYS Workbench y MATLAB. Imprescindible contar con tarjeta gráfica dedicada (NVIDIA RTX) para mover ensamblajes complejos sin lag.",
+        "software": ["SolidWorks", "Autodesk Inventor", "ANSYS Mechanical (FEA)", "AutoCAD", "MATLAB"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 8, "Battery": 6, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#ef4444", "Battery": "#f59e0b", "Display": "#22c55e"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Cálculo de esfuerzos, deformaciones elásticas y termodinámica aplicada.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico con scroll preciso", "priority": "must", "reason": "El paneo y zoom en ensamblajes de piezas mecánicas exige mouse físico."},
+            {"name": "Monitor externo 24-27\" IPS", "priority": "rec", "reason": "Permite visualizar planos de fabricación y despieces en detalle."},
+            {"name": "Mochila acolchada reforzada", "priority": "must", "reason": "Para proteger una laptop con chasis potente en traslados a talleres mecánicos."}
+        ],
+        "tablets": [{"emoji": "⚙️", "name": "Tablet Samsung Tab S6 Lite / iPad", "reason": "Para croquis de piezas en taller y consulta de normas técnicas.", "price": "$220.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx", "tuf", "legion", "loq", "nitro", "ryzen 7", "core i7"], "motivo": "Recomendado para modelado 3D CAD en SolidWorks, planos y análisis por elementos finitos.", "badge": "CAD 3D & FEA"}
+    },
+
+    "ingenieria-civil-electrica": {
+        "label": "Ingeniería Civil Eléctrica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-electrica/",
+        "family": "electronics",
+        "alert": "<strong>Sistemas de potencia, alta tensión y control:</strong> Modelarás redes eléctricas en DIgSILENT PowerFactory, MATLAB/Simulink y análisis de transitorios. Se necesita CPU veloz y 16GB de RAM.",
+        "software": ["DIgSILENT PowerFactory", "MATLAB / Simulink", "AutoCAD Electrical", "ETAP", "Python científico"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 5, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Imprescindible para operaciones con números complejos (fasores rectangulares y polares) y matrices de admitancia.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Hub USB con conectores USB-A tradicionales", "priority": "must", "reason": "Para conectar interfaces de comunicación serial y equipos de laboratorio eléctrico."},
+            {"name": "Mouse ergonómico", "priority": "rec", "reason": "Esquemas unilineales y diagramas de bloques en Simulink."},
+            {"name": "Pendrive robusto para mediciones", "priority": "must", "reason": "Para extraer oscilogramas y registros de analizadores de redes."}
+        ],
+        "tablets": [{"emoji": "⚡", "name": "iPad 10ma o Galaxy Tab", "reason": "Muy útil para dibujar fasores, circuitos y diagramas unilineales.", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "powerfactory", "16 gb"], "motivo": "Excelente procesador para flujo de potencia en PowerFactory y simulaciones MATLAB/Simulink.", "badge": "Potencia & Redes"}
+    },
+
+    "ingenieria-civil-electronica": {
+        "label": "Ingeniería Civil Electrónica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-electronica/",
+        "family": "electronics",
+        "alert": "<strong>Diseño de hardware, placas PCB y sistemas embebidos:</strong> Requerirás diseñar circuitos en Altium/KiCad, simular en LTSpice/Proteus y programar microcontroladores (ARM, ESP32, FPGA en Vivado).",
+        "software": ["Altium Designer / KiCad", "LTSpice / Multisim", "Xilinx Vivado (FPGAs)", "MATLAB / Simulink", "C/C++ & Python"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Cálculo de impedancias, análisis de Bode y transformadas de Laplace en circuitos RLC.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Hub multipuerto USB-A / USB-C", "priority": "must", "reason": "Para conectar programadores ST-Link, placas Arduino/ESP32 y analizadores lógicos USB."},
+            {"name": "Mouse de precisión para ruteo PCB", "priority": "must", "reason": "Trazar pistas de circuito impreso milimétricas en KiCad/Altium."},
+            {"name": "Monitor secundario", "priority": "rec", "reason": "Esquemático en una pantalla y layout de la placa PCB en la otra."}
+        ],
+        "tablets": [{"emoji": "💡", "name": "Tablet Samsung Galaxy Tab S6 Lite", "reason": "Para consultar datasheets y diagramas de pines de circuitos integrados en el mesón de trabajo.", "price": "$220.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "vivobook", "kicad", "16 gb"], "motivo": "Fluidez para síntesis en Vivado, ruteo PCB en KiCad y simulación SPICE.", "badge": "Hardware & PCBs"}
+    },
+
+    "ingenieria-civil-en-telecomunicaciones": {
+        "label": "Ingeniería Civil en Telecomunicaciones",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-en-telecomunicaciones/",
+        "family": "electronics",
+        "alert": "<strong>Redes, radiofrecuencia y procesamiento de señales:</strong> Correrás emuladores de redes pesados (GNS3, Cisco Packet Tracer, EVE-NG con máquinas virtuales), MATLAB para modulación/SDR y simulación electromagnética.",
+        "software": ["GNS3 / EVE-NG (VMs)", "Cisco Packet Tracer", "MATLAB (Signal Processing)", "Wireshark", "GNU Radio / SDR"],
+        "scores": {"CPU": 8, "RAM": 9, "Storage": 8, "GPU": 5, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Cálculo de atenuación en decibeles (dB), coeficientes de reflexión y antenas.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Adaptador Ethernet Gigabit a USB-C", "priority": "must", "reason": "Para conectar físicamente la laptop a switches y routers Cisco de laboratorio."},
+            {"name": "Memoria RAM adicional (16GB o 32GB)", "priority": "must", "reason": "GNS3 levanta múltiples instancias de routers virtuales en RAM simultáneamente."},
+            {"name": "Disco SSD externo", "priority": "rec", "reason": "Imágenes de sistemas operativos de red IOS y capturas pcap de Wireshark."}
+        ],
+        "tablets": [{"emoji": "📡", "name": "Tablet Samsung o iPad", "reason": "Lectura de estándares IEEE, RFCs de redes y apuntes de microondas.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "gns3", "packet tracer", "16 gb", "32 gb"], "motivo": "Capacidad de RAM para emuladores de redes GNS3, Wireshark y procesamiento digital de señales.", "badge": "Redes & RF"}
+    },
+
+    "ingenieria-civil-biomedica": {
+        "label": "Ingeniería Civil Biomédica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-biomedica/",
+        "family": "electronics",
+        "alert": "<strong>Intersección entre tecnología e ingeniería clínica:</strong> Procesarás bioseñales (ECG, EEG, EMG) en Python/MATLAB, imágenes médicas DICOM (resonancias, TACs) y modelarás prótesis/implantes en 3D (SolidWorks/Fusion 360).",
+        "software": ["MATLAB / Python (Bioseñales)", "SolidWorks / Fusion 360", "3D Slicer / ImageJ", "LabVIEW", "Altium Designer"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 6, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Filtros analógicos/digitales, fisiología cuantitativa y cálculo matricial.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico para modelado biomecánico", "priority": "must", "reason": "Diseño de dispositivos médicos y segmentación de imágenes en 3D Slicer."},
+            {"name": "Hub USB para instrumentación", "priority": "must", "reason": "Conexión de tarjetas de adquisición de datos y biosensores."},
+            {"name": "Disco externo 1TB", "priority": "rec", "reason": "Datasets clínicos volumétricos de resonancia magnética y tomografía."}
+        ],
+        "tablets": [{"emoji": "🫀", "name": "iPad 10ma gen con Apple Pencil", "reason": "Excelente para atlas de anatomía y esquemas de instrumentación biomédica.", "price": "$320.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 3050", "rtx 4050", "ryzen 7", "core i7", "solidworks", "16 gb"], "motivo": "Capacidad para procesamiento de bioseñales, imágenes médicas 3D e instrumentación clínica.", "badge": "Biomédica & 3D"}
+    },
+
+    "ingenieria-civil-quimica": {
+        "label": "Ingeniería Civil Química",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-quimica/",
+        "family": "process_eng",
+        "alert": "<strong>Simulación de procesos y balances de materia/energía:</strong> Aspen Plus y Aspen HYSYS son los simuladores de planta estándar. Resolverás sistemas termodinámicos pesados en MATLAB y diseñarás diagramas de cañerías (AutoCAD P&ID).",
+        "software": ["Aspen Plus / HYSYS", "MATLAB", "AutoCAD P&ID", "Python (SciPy)", "Excel Solver avanzado"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Imprescindible para equilibrio de fases, ecuaciones de estado (Peng-Robinson, Van der Waals) y balances estequiométricos.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse inalámbrico confiable", "priority": "must", "reason": "Para navegar diagramas de flujo de proceso (PFD) y tablas de propiedades."},
+            {"name": "Monitor secundario 24\"", "priority": "rec", "reason": "Tener Aspen abierto en una pantalla y las especificaciones de reactores en otra."},
+            {"name": "Disco externo de respaldo", "priority": "must", "reason": "Archivos pesados de simulación y proyectos de diseño de planta."}
+        ],
+        "tablets": [{"emoji": "🧪", "name": "iPad 10ma gen o Galaxy Tab", "reason": "Anotar ciclos termodinámicos, diagramas de McCabe-Thiele y apuntes de clases.", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "aspen", "16 gb"], "motivo": "Capacidad de RAM y procesador para simulación de plantas en Aspen HYSYS y modelado termodinámico.", "badge": "Simulación Termodinámica"}
+    },
+
+    "ingenieria-civil-metalurgica": {
+        "label": "Ingeniería Civil Metalúrgica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-metalurgica/",
+        "family": "cad_heavy",
+        "alert": "<strong>Procesamiento de minerales, pirometalurgia e hidrometalurgia:</strong> Utilizarás software de modelación termodinámica (FactSage, HSC Chemistry), simulación de molienda/flotación (JKSimMet) y AutoCAD.",
+        "software": ["FactSage / HSC Chemistry", "JKSimMet (conminución)", "AutoCAD", "MATLAB", "Excel Solver"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 6, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Cálculo de diagramas de Pourbaix, balances metalúrgicos y cinéticas de lixiviación.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para diagramas de flujo de plantas de beneficio de minerales."},
+            {"name": "Funda reforzada para laptop", "priority": "must", "reason": "Protección para salidas a fundiciones y plantas concentradoras."},
+            {"name": "Pendrive metálico de alta durabilidad", "priority": "rec", "reason": "Respaldo de ensayos de laboratorio y granulometría."}
+        ],
+        "tablets": [{"emoji": "⛏️", "name": "Tablet Galaxy Tab A9+ / iPad", "reason": "Para apuntes de procesos pirometalúrgicos y visitas a terreno.", "price": "$170.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "16 gb"], "motivo": "Fluidez para software termodinámico HSC Chemistry y simulación de circuitos de conminución.", "badge": "Metalurgia & Procesos"}
+    },
+
+    "ingenieria-civil-de-minas": {
+        "label": "Ingeniería Civil de Minas",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-de-minas/",
+        "family": "cad_heavy",
+        "alert": "<strong>Modelamiento geológico, diseño de rajos y minería subterránea:</strong> Correrás software de minería pesado en 3D como Vulcan, Datamine, Deswik o Whittle, además de Rocscience para estabilidad de taludes. Imprescindible GPU dedicada y 16GB+ de RAM.",
+        "software": ["Datamine / Vulcan / Deswik", "Whittle (optimización pit)", "Rocscience (Slide/Phase2)", "AutoCAD 3D", "QGIS"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 8, "Battery": 6, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#ef4444", "Battery": "#f59e0b", "Display": "#22c55e"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Geomecánica, cálculo de mallas de tronadura y leyes de corte.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse de alta precisión con cable o 2.4GHz", "priority": "must", "reason": "Manipulación 3D de modelos de bloques geológicos y rampas mineras."},
+            {"name": "Laptop con certificación militar MIL-STD o chasis resistente", "priority": "rec", "reason": "Ambientes de polvo y salidas a faenas mineras en cordillera/norte."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Bases de datos de sondajes y modelos de bloques de cientos de millones de celdas."}
+        ],
+        "tablets": [{"emoji": "🏔️", "name": "Tablet Samsung Galaxy Tab Active o S9 FE", "reason": "Para mapeo geomecánico en frente de carguío y terreno.", "price": "$320.000 – $480.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 4060", "rtx 3050", "ryzen 7", "core i7", "tuf", "legion", "datamine", "16 gb"], "motivo": "GPU dedicada y procesador para modelamiento 3D de yacimientos en Datamine/Vulcan y geomecánica.", "badge": "Minería 3D & Bloques"}
+    },
+
+    "ingenieria-civil-de-materiales": {
+        "label": "Ingeniería Civil de Materiales",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-de-materiales/",
+        "family": "cad_heavy",
+        "alert": "<strong>Caracterización microestructural y mecánica de sólidos:</strong> Procesarás difracción de rayos X (XRD), microscopía electrónica (SEM) en ImageJ y simulaciones cristalográficas o termomecánicas.",
+        "software": ["ImageJ (metalografía/SEM)", "AutoCAD / Inventor", "MATLAB", "OriginLab / HighScore Plus", "ANSYS básico"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 6, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Leyes de Fick (difusión), deformación plástica y cinéticas de transformación de fase.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico de precisión", "priority": "must", "reason": "Conteo de tamaño de grano metalográfico y análisis de imágenes SEM."},
+            {"name": "Disco externo SSD", "priority": "rec", "reason": "Micrografías electrónicas en alta resolución y curvas tensión-deformación."},
+            {"name": "Monitor externo IPS", "priority": "rec", "reason": "Visualización nítida del contraste de fases en microscopía."}
+        ],
+        "tablets": [{"emoji": "🔬", "name": "Tablet Galaxy Tab / iPad", "reason": "Apuntes de diagramas de fase hierro-carbono y ternarios.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkbook", "16 gb"], "motivo": "Fluidez para procesamiento de imágenes SEM, difracción XRD y diagramas de fase.", "badge": "Materiales & Nano"}
+    },
+
+    "ingenieria-civil": {
+        "label": "Ingeniería Civil",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil/",
+        "family": "cad_heavy",
+        "alert": "<strong>Cálculo estructural, hidráulica y geotecnia:</strong> Usarás software de modelado estructural y sísmico (ETABS, SAP2000), AutoCAD Civil 3D y diseño de fundaciones. Requiere buena CPU, 16GB de RAM y GPU dedicada para visualización 3D fluida.",
+        "software": ["ETABS / SAP2000", "AutoCAD Civil 3D", "Revit BIM", "HEC-RAS (hidráulica)", "GeoStudio / Plaxis"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 7, "Battery": 6, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#f59e0b", "Display": "#22c55e"},
+        "calcs": [{"name": "Casio fx-991CW o HP Prime v2", "why": "Matrices de rigidez, momentos de inercia y análisis sísmico estructural.", "price": "~$35.000 – $140.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse con botón de scroll preciso", "priority": "must", "reason": "Imprescindible para desplazarse en planos de estructuras y mallas de elementos finitos."},
+            {"name": "Monitor 27\" QHD", "priority": "rec", "reason": "Permite ver planos estructurales completos sin perder detalle de armaduras."},
+            {"name": "Disco externo 1TB", "priority": "must", "reason": "Proyectos de cálculo estructural y modelos BIM pesados."}
+        ],
+        "tablets": [{"emoji": "🏗️", "name": "iPad 10ma gen con Apple Pencil", "reason": "Excelente para llevar planos en formato PDF a visitas de obra y faena de construcción.", "price": "$330.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 3050", "rtx 4050", "tuf", "legion", "loq", "sap2000", "etabs", "16 gb"], "motivo": "GPU y memoria para cálculo estructural en ETABS/SAP2000 y planos en AutoCAD Civil 3D.", "badge": "Estructuras & BIM"}
+    },
+
+    "ingenieria-civil-primer-ano-comun": {
+        "label": "Ingeniería Civil — Primer Año Común",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-primer-ano-comun/",
+        "family": "cad_heavy",
+        "alert": "<strong>Tronco común de ciencias básicas:</strong> Durante el primer año cursarás Cálculo I-II, Álgebra, Física I y Programación básica en Python. Un equipo equilibrado te preparará para cualquier especialidad civil que elijas en segundo año.",
+        "software": ["Python (NumPy / Matplotlib)", "AutoCAD básico", "Excel avanzado", "GeoGebra", "VS Code"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 5, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz — ESENCIAL", "why": "Es la calculadora estándar autorizada en certámenes de Cálculo, Álgebra y Física en la Facultad de Ingeniería.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse inalámbrico", "priority": "must", "reason": "Comodidad para tareas de programación y guías de ejercicios."},
+            {"name": "Funda acolchada para mochila", "priority": "must", "reason": "Protege tu inversión diaria en los traslados al campus central UdeC."},
+            {"name": "Cargador USB-C portátil", "priority": "rec", "reason": "Para recargar en bibliotecas o salas de estudio."}
+        ],
+        "tablets": [{"emoji": "📐", "name": "Tablet Samsung Tab S6 Lite o iPad 10ma", "reason": "Muy recomendada para resolver guías de cálculo a mano y guardar todos los cuadernos digitales.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 5", "ryzen 7", "core i5", "core i7", "aspire", "vivobook", "16 gb"], "motivo": "Equipo versátil con 16GB de RAM preparado para el plan común y la especialidad elegida.", "badge": "Plan Común Ingeniería"}
+    },
+
+    "ingenieria-civil-matematica": {
+        "label": "Ingeniería Civil Matemática",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-civil-matematica/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Análisis numérico riguroso y computación científica:</strong> Implementarás métodos de elementos finitos, optimización no lineal y algoritmos de alta fidelidad en Python, Julia, C++ y MATLAB. Se requiere CPU multicore potente y abundante RAM.",
+        "software": ["Python (SciPy / NumPy / Numba)", "Julia", "MATLAB", "LaTeX / Overleaf", "FreeFEM++ / FEniCS"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 7, "GPU": 5, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Para certámenes presenciales de cálculo analítico y álgebra abstracta.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Teclado cómodo para redacción en LaTeX", "priority": "must", "reason": "Escribirás cientos de demostraciones y papers con tipografía matemática."},
+            {"name": "Monitor secundario", "priority": "rec", "reason": "Código del algoritmo numérico en un lado y documento compilado en el otro."},
+            {"name": "Mouse ergonómico", "priority": "rec", "reason": "Para largas sesiones de depuración de código científico."}
+        ],
+        "tablets": [{"emoji": "♾️", "name": "iPad o Galaxy Tab con stylus de precisión", "reason": "Herramienta ideal para resolver demostraciones de teoremas a mano alzada sin gastar resmas de papel.", "price": "$240.000 – $400.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "32 gb", "16 gb", "latex"], "motivo": "Máxima potencia de CPU para métodos numéricos, Julia, Python científico y compilación LaTeX.", "badge": "Cálculo Científico"}
+    },
+
+    "ingenieria-ambiental": {
+        "label": "Ingeniería Ambiental",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-ambiental/",
+        "family": "process_eng",
+        "alert": "<strong>Modelación de dispersión de contaminantes y GIS ambiental:</strong> Usarás QGIS/ArcGIS, modelos de calidad del aire (AERMOD, CALPUFF), modelación hidrológica (SWMM) y análisis estadístico en R.",
+        "software": ["QGIS / ArcGIS", "AERMOD (dispersión de aire)", "EPA SWMM / MODFLOW", "RStudio", "AutoCAD"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Balances de masa en reactores biológicos, cinéticas ambientales y estequiometría.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Edición de capas vectoriales y polígonos de cuencas en QGIS."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Imágenes satelitales Sentinel/Landsat y capas geoespaciales raster pesadas."},
+            {"name": "Funda resistente al agua para terreno", "priority": "must", "reason": "Para monitoreos de calidad de aguas en ríos y humedales de la región."}
+        ],
+        "tablets": [{"emoji": "🌿", "name": "Tablet Samsung Galaxy Tab S9 FE", "reason": "Con certificación IP68 contra agua/polvo, ideal para muestreos ambientales de campo.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkbook", "qgis", "16 gb"], "motivo": "Fluidez para capas geoespaciales en QGIS, modelos de dispersión AERMOD y análisis R.", "badge": "GIS & Medio Ambiente"}
+    },
+
+    "ingenieria-ambiental-chillan": {
+        "label": "Ingeniería Ambiental — Chillán",
+        "campus": "Campus Chillán",
+        "url": "https://admision.udec.cl/ingenieria-ambiental-chillan/",
+        "family": "process_eng",
+        "alert": "<strong>Gestión ambiental agrícola y de recursos hídricos en Ñuble:</strong> Enfoque en modelación de cuencas, tratamiento de efluentes agroindustriales y análisis territorial GIS en QGIS y RStudio.",
+        "software": ["QGIS / ArcGIS", "EPA SWMM / MODFLOW", "RStudio", "AutoCAD", "Excel Solver"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Balances de masa y química ambiental en aguas y suelos de la cuenca del Ñuble.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para análisis de zonificación territorial y mapas de cobertura de suelo."},
+            {"name": "Funda protectora para terreno", "priority": "must", "reason": "Salidas de monitoreo a ríos, canales de regadío y plantas agroindustriales."}
+        ],
+        "tablets": [{"emoji": "🌱", "name": "Tablet Galaxy Tab S9 FE", "reason": "Para registro georreferenciado de datos en visitas técnicas rurales.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkbook", "qgis", "16 gb"], "motivo": "Modelación hidrológica, QGIS territorial y balance de contaminantes en Campus Chillán.", "badge": "Gestión Ambiental Ñuble"}
+    },
+
+    "ingenieria-civil-agricola": {
+        "label": "Ingeniería Civil Agrícola — Chillán",
+        "campus": "Campus Chillán",
+        "url": "https://admision.udec.cl/ingenieria-civil-agricola/",
+        "family": "cad_heavy",
+        "alert": "<strong>Ingeniería de riego, drenaje y mecanización agropecuaria:</strong> Correrás software de diseño hidráulico de canales y tuberías (EPANET, HEC-RAS), AutoCAD Civil 3D y telemetría/drones en agricultura de precisión.",
+        "software": ["EPANET (redes a presión)", "AutoCAD Civil 3D", "HEC-RAS", "QGIS (drones / NDVI)", "CropSyst / AquaCrop"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 7, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Pérdidas de carga por fricción (Darcy-Weisbach), hidrología y cálculo estructural de obras de arte.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico para CAD", "priority": "must", "reason": "Diseño de matrices de riego tecnificado por goteo y aspersión."},
+            {"name": "Disco SSD externo resistente", "priority": "must", "reason": "Ortofotos de vuelos con drones y mallas de elevación de predios agrícolas."}
+        ],
+        "tablets": [{"emoji": "🚜", "name": "Tablet Galaxy Tab / iPad", "reason": "Lectura de planos en terreno y control de caudalímetros en predios experimentales.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 3050", "ryzen 7", "core i7", "civil 3d", "epanet", "16 gb"], "motivo": "Diseño hidráulico en EPANET/HEC-RAS, AutoCAD Civil 3D y fotogrametría agrícola.", "badge": "Riego & Hidráulica"}
+    },
+
+    "ingenieria-geomatica": {
+        "label": "Ingeniería Geomática — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/ingenieria-geomatica/",
+        "family": "cad_heavy",
+        "alert": "<strong>Topografía satelital, LiDAR y cartografía digital:</strong> Procesarás nubes de puntos densas (LiDAR), fotogrametría con drones (Pix4D, Agisoft Metashape) y sistemas SIG (ArcGIS/QGIS). Se requiere GPU dedicada NVIDIA RTX y mínimo 16GB de RAM.",
+        "software": ["Pix4D / Agisoft Metashape", "ArcGIS Pro / QGIS", "AutoCAD Civil 3D", "CloudCompare (nubes LiDAR)", "Trimble Business Center"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 9, "GPU": 8, "Battery": 6, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#ef4444", "Battery": "#f59e0b", "Display": "#22c55e"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Geodesia, proyecciones cartográficas UTM y correcciones por curvatura terrestre.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse de alta precisión", "priority": "must", "reason": "Manejo tridimensional fluido de nubes de puntos de millones de vértices."},
+            {"name": "Disco externo SSD NVMe 1TB o 2TB", "priority": "must", "reason": "Los proyectos de ortomosaicos y mallas 3D pesan fácilmente 50GB a 100GB por vuelo."},
+            {"name": "Laptop con chasis resistente", "priority": "must", "reason": "Para campañas topográficas de terreno en Campus Los Ángeles y cordillera del Biobío."}
+        ],
+        "tablets": [{"emoji": "🛰️", "name": "Tablet Samsung Galaxy Tab S9 FE", "reason": "Para conectar receptores GNSS y controlar estaciones totales en tiempo real.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 4060", "rtx 3050", "ryzen 7", "core i7", "metashape", "pix4d", "32 gb", "16 gb"], "motivo": "GPU y memoria para fotogrametría en Pix4D/Metashape y procesamiento de nubes de puntos LiDAR.", "badge": "Geomática & LiDAR"}
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # ARQUITECTURA, URBANISMO Y ARTES
+    # ══════════════════════════════════════════════════════════════════════
+    "arquitectura": {
+        "label": "Arquitectura",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/arquitectura/",
+        "family": "cad_heavy",
+        "alert": "<strong>Modelado 3D BIM y renderizado arquitectónico:</strong> Correrás Revit, Archicad, Rhino + Grasshopper, Lumion / V-Ray y AutoCAD. La tarjeta gráfica dedicada (NVIDIA RTX con 6GB+ VRAM) y pantalla 100% sRGB son indispensables para taller.",
+        "software": ["Revit / Archicad BIM", "Rhino 3D + Grasshopper", "Lumion / D5 Render / V-Ray", "AutoCAD", "Adobe Photoshop + Illustrator"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 9, "GPU": 9, "Battery": 5, "Display": 9},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#ef4444", "Battery": "#f59e0b", "Display": "#ec4899"},
+        "calcs": [{"name": "Casio científica básica o calculadora de bolsillo", "why": "Para cubicar materiales, superficies y áreas en entregas de taller.", "price": "~$12.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico con scroll de alta resistencia", "priority": "must", "reason": "Navegar y modelar volumetrías en el viewport 3D exige botón central continuo."},
+            {"name": "Monitor externo 27\" IPS 100% sRGB / 2K", "priority": "rec", "reason": "Para armar láminas de entrega de taller con fidelidad real de escala y color."},
+            {"name": "Disco SSD externo 1TB+", "priority": "must", "reason": "Los renders y archivos BIM en formato .RVT superan gigabytes por proyecto semestral."}
+        ],
+        "tablets": [{"emoji": "✏️", "name": "iPad 10ma gen con Apple Pencil", "reason": "Es el croquis digital moderno: bosquejos rápidos de ideas en clase y correcciones con profesores.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 4060", "rtx 4050", "rtx 3060", "legion", "loq", "tuf", "revit", "lumion", "16 gb", "32 gb"], "motivo": "GPU dedicada de alto rendimiento para renderizado en Lumion/V-Ray y modelado BIM en Revit.", "badge": "BIM & Render 3D"}
+    },
+
+    "artes-visuales": {
+        "label": "Artes Visuales",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/artes-visuales/",
+        "family": "visual_arts",
+        "alert": "<strong>Fidelidad de color y producción multimedia:</strong> La precisión de la pantalla (100% sRGB o DCI-P3 calibrada de fábrica) es el componente #1 para evitar descalces al imprimir o proyectar. Usarás Photoshop, Illustrator, Premiere y Blender.",
+        "software": ["Adobe Photoshop", "Adobe Illustrator", "Premiere Pro / DaVinci", "Blender 3D", "InDesign"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 7, "Battery": 7, "Display": 10},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#f59e0b", "Battery": "#22c55e", "Display": "#ec4899"},
+        "calcs": [{"name": "No aplica", "why": "Artes Visuales no cuenta con asignaturas de matemáticas formales.", "price": "$0"}],
+        "accessories": [
+            {"name": "Tableta digitalizadora Wacom Intuos o One", "priority": "must", "reason": "La sensibilidad a la presión es la diferencia entre un trazo plano y uno profesional."},
+            {"name": "Disco externo SSD 1TB USB 3.2", "priority": "must", "reason": "Archivos PSD en capas de 300 DPI y metraje de video pesan cientos de gigas."},
+            {"name": "Calibrador de color o pantalla OLED", "priority": "rec", "reason": "Garantiza que lo que pintas en pantalla sea idéntico a la obra expuesta o impresa."}
+        ],
+        "tablets": [{"emoji": "🎨", "name": "iPad 10ma o iPad Air con Apple Pencil — ESENCIAL", "reason": "Con Procreate se convierte en el cuaderno de bocetos definitivo para artes.", "price": "$340.000 – $580.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["oled", "dci-p3", "macbook", "vivobook pro", "yoga", "100% srgb", "rtx"], "motivo": "Pantalla calibrada para colorimetría profesional en suite Adobe y renderizado multimedia.", "badge": "Color & Creatividad"}
+    },
+
+    "teatro": {
+        "label": "Teatro",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/teatro/",
+        "family": "visual_arts",
+        "alert": "<strong>Diseño escenográfico, sonido y dramaturgia:</strong> Necesitarás un equipo ágil y liviano para edición sonora (QLab, Audacity, Reaper), edición de video para proyecciones escénicas y redacción de libretos.",
+        "software": ["QLab (control de audio/luces)", "Audacity / Reaper", "Adobe Premiere básico", "Canva / InDesign", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "Teatro no contempla asignaturas de cálculo formal.", "price": "$0"}],
+        "accessories": [
+            {"name": "Audífonos de estudio cerrados (ej. Audio-Technica ATH-M20x)", "priority": "must", "reason": "Para editar bandas sonoras y pistas de efectos en silencio en camarines o salas."},
+            {"name": "Adaptador USB-C a HDMI y MiniJack", "priority": "must", "reason": "Para conectar tu laptop a la mesa de audio y proyectores de la sala de teatro."},
+            {"name": "Funda antigolpes", "priority": "must", "reason": "Movilidad continua entre ensayos y montajes."}
+        ],
+        "tablets": [{"emoji": "🎭", "name": "iPad 9a/10a gen o Galaxy Tab", "reason": "Excelente para llevar el guión dramatúrgico a los ensayos y hacer anotaciones en escena.", "price": "$220.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["macbook air", "zenbook", "vivobook", "swift", "ideapad slim"], "motivo": "Autonomía de batería y ligereza para gestión escénica, sonido y dramaturgia.", "badge": "Escena & Audio"}
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # CIENCIAS DE LA SALUD Y BIOMÉDICAS
+    # ══════════════════════════════════════════════════════════════════════
+    "medicina": {
+        "label": "Medicina",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/medicina/",
+        "family": "health_clinical",
+        "alert": "<strong>Portabilidad extrema, batería para todo el día y visualización 3D:</strong> Irás a hospitales (Hospital Regional de Concepción, Higueras) y rotaciones clínicas donde no siempre hay enchufes disponibles. El peso pluma (<1.4 kg) y un iPad/Tablet son tus mayores aliados.",
+        "software": ["Complete Anatomy 3D", "UpToDate / DynaMed", "Visores DICOM (RadiAnt / Horos)", "Mendeley / Zotero", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS o fx-991CW", "why": "Cálculo de dosis farmacológicas, aclaramiento de creatinina y bioestadística en primeros años.", "price": "~$18.000 – $35.000 CLP"}],
+        "accessories": [
+            {"name": "Lápiz digital con rechazo de palma para tablet", "priority": "must", "reason": "Anotar esquemas clínicos a mano mejora la retención anatómica un 100%."},
+            {"name": "Funda antigolpes para traslados clínicos", "priority": "must", "reason": "Protege tus equipos contra caídas en pasillos hospitalarios."},
+            {"name": "Cargador compacto GaN USB-C de 65W", "priority": "rec", "reason": "Carga tu celular, tablet y notebook con un solo cargador liviano en la mochila."}
+        ],
+        "tablets": [{"emoji": "🩺", "name": "iPad 10ma gen o iPad Air con Apple Pencil — LA HERRAMIENTA #1", "reason": "El 90% del estudio médico se realiza en tablet: atlas de anatomía en 3D, fichas clínicas y diapositivas de clases.", "price": "$340.000 – $580.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["macbook air", "zenbook", "swift", "yoga", "ideapad slim", "ipad"], "motivo": "Autonomía de batería superior (+10 hrs) y ligereza para rondas hospitalarias y atlas 3D.", "badge": "Ultra Portátil Clínico"}
+    },
+
+    "odontologia": {
+        "label": "Odontología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/odontologia/",
+        "family": "health_clinical",
+        "alert": "<strong>Tomografía Cone Beam 3D y escaneos intraorales:</strong> En clínica dental de la UdeC revisarás tomografías CBCT computarizadas, software de planificación de implantes (Blue Sky Plan, Nemotec) y fotografía clínica dental en alta resolución.",
+        "software": ["RadiAnt DICOM (Cone Beam)", "Blue Sky Plan (implantes)", "Complete Anatomy", "Adobe Photoshop (fotografía dental)", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 8, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica estándar", "why": "Para dosificación farmacológica y biomateriales dentales.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico inalámbrico", "priority": "must", "reason": "Navegar cortes axiales, coronales y sagitales en tomografías CBCT requiere rueda de mouse."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Los volúmenes tomográficos de pacientes y fotos clínicas ocupan gran almacenamiento."},
+            {"name": "Lector de tarjetas SD", "priority": "rec", "reason": "Para traspasar fotos intraorales desde la cámara réflex clínica al computador."}
+        ],
+        "tablets": [{"emoji": "🦷", "name": "iPad 10ma gen con Apple Pencil", "reason": "Excelente para mostrar planes de tratamiento e imágenes radiográficas a pacientes en clínica.", "price": "$330.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["zenbook", "vivobook", "macbook", "aspire", "ideapad", "16 gb"], "motivo": "Fluidez para visores tomográficos 3D Cone Beam (CBCT), fotografía dental y clínica.", "badge": "Tomografía & Clínica Dental"}
+    },
+
+    "enfermeria": {
+        "label": "Enfermería",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/enfermeria/",
+        "family": "health_clinical",
+        "alert": "<strong>Alta movilidad en turnos de hospital y consultorio:</strong> Tus mayores exigencias son encendido instantáneo, peso liviano para la mochila clínica y batería duradera para elaborar planes de atención de enfermería (PAE) y consultar guías clínicas MINSAL.",
+        "software": ["Guías Clínicas MINSAL", "Complete Anatomy", "Excel (gestión de camas e insumos)", "Mendeley", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS o similar", "why": "Cálculo de goteo de sueros (microgotas/minuto), dilución de antibióticos y balances hídricos.", "price": "~$15.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Funda antigolpes para laptop/tablet", "priority": "must", "reason": "Protege el dispositivo de derrames y caídas en salas de enfermería."},
+            {"name": "Cargador USB-C de 65W compacto", "priority": "rec", "reason": "Para no cargar adaptadores pesados en turnos de 12 horas."},
+            {"name": "Mouse inalámbrico liviano", "priority": "rec", "reason": "Comodidad para tipear extensos procesos de atención de enfermería (PAE)."}
+        ],
+        "tablets": [{"emoji": "💉", "name": "Tablet Galaxy Tab A9+ o iPad 9a/10a", "reason": "Herramienta ideal para llevar a turnos clínicos, consultar vademécum farmacológico y patologías.", "price": "$180.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["vivobook", "aspire", "galaxy book", "macbook air", "ideapad slim"], "motivo": "Batería de larga duración y ligereza para turnos hospitalarios y gestión de cuidados.", "badge": "Alta Movilidad Clínica"}
+    },
+
+    "enfermeria-chillan": {
+        "label": "Enfermería — Chillán",
+        "campus": "Campus Chillán",
+        "url": "https://admision.udec.cl/enfermeria-chillan/",
+        "family": "health_clinical",
+        "alert": "<strong>Prácticas clínicas en centros de salud de Ñuble:</strong> Traslados continuos entre Campus Chillán, Hospital Herminda Martín y CESFAMs de la región. Prioriza batería para todo el día y peso inferior a 1.5 kg.",
+        "software": ["Guías Clínicas MINSAL", "Complete Anatomy", "Excel", "Office 365", "Vademécum"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS", "why": "Cálculo de dosis, velocidad de infusión parenteral y balance de líquidos.", "price": "~$15.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Funda resistente al agua", "priority": "must", "reason": "Protección para traslados matutinos a prácticas hospitalarias."},
+            {"name": "Cargador liviano USB-C", "priority": "rec", "reason": "Ahorro de peso en mochila clínica."}
+        ],
+        "tablets": [{"emoji": "💉", "name": "Tablet Samsung Tab A9+ / iPad", "reason": "Para revisar dosis farmacológicas y protocolos en campo clínico.", "price": "$170.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["vivobook", "aspire", "ideapad", "macbook air"], "motivo": "Autonomía de batería y peso pluma para prácticas en Hospital Herminda Martín de Chillán.", "badge": "Clínica & Movilidad"}
+    },
+
+    "enfermeria-los-angeles": {
+        "label": "Enfermería — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/enfermeria-los-angeles/",
+        "family": "health_clinical",
+        "alert": "<strong>Prácticas en el Complejo Asistencial Dr. Víctor Ríos Ruiz:</strong> Requieres un notebook liviano, que encienda rápido y aguante jornadas extensas de rotación comunitaria e intrahospitalaria sin depender de un enchufe.",
+        "software": ["Guías Clínicas MINSAL", "Complete Anatomy", "Excel", "Office 365", "Vademécum"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS", "why": "Dosificación farmacológica y tasas de goteo.", "price": "~$15.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Funda antigolpes para mochila", "priority": "must", "reason": "Seguridad en traslados hacia el hospital de Los Ángeles."}
+        ],
+        "tablets": [{"emoji": "💉", "name": "Galaxy Tab A9+ o iPad 9a/10a", "reason": "Muy cómoda para estudio de farmacología y protocolos de atención.", "price": "$170.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["vivobook", "aspire", "ideapad", "macbook air"], "motivo": "Portabilidad y batería para rotaciones en Complejo Asistencial de Los Ángeles.", "badge": "Salud Los Ángeles"}
+    },
+
+    "kinesiologia": {
+        "label": "Kinesiología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/kinesiologia/",
+        "family": "health_clinical",
+        "alert": "<strong>Biomecánica y análisis del movimiento humano:</strong> Analizarás marcha y gestos deportivos mediante video (Kinovea), software de electromiografía de superficie (EMG) y modelos anatómicos musculoesqueléticos en 3D.",
+        "software": ["Kinovea (análisis biomecánico en video)", "Complete Anatomy (músculo-esquelético)", "SPSS / Jamovi (bioestadística)", "OpenSim básico", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS o fx-991CW", "why": "Cálculo de momentos de fuerza articular, centros de gravedad y bioestadística.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse inalámbrico para análisis de video", "priority": "must", "reason": "Marcar puntos anatómicos cuadro a cuadro en Kinovea requiere alta precisión de puntero."},
+            {"name": "Disco externo 1TB", "priority": "must", "reason": "Videos a 60/120 fps de análisis de marcha y evaluaciones funcionales de pacientes."},
+            {"name": "Funda acolchada", "priority": "rec", "reason": "Para traslados entre salas de rehabilitación y gimnasios terapéuticos."}
+        ],
+        "tablets": [{"emoji": "🏃", "name": "iPad 10ma gen con Apple Pencil", "reason": "Ideal para grabar a pacientes en pruebas de movilidad y dibujar vectores de fuerza directamente sobre el video.", "price": "$330.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["vivobook", "aspire", "yoga", "ideapad", "16 gb"], "motivo": "Fluidez para análisis biomecánico en Kinovea, atlas musculoesquelético 3D y estadística.", "badge": "Biomecánica & Rehabilitación"}
+    },
+
+    "obstetricia-y-puericultura": {
+        "label": "Obstetricia y Puericultura",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/obstetricia-y-puericultura/",
+        "family": "health_clinical",
+        "alert": "<strong>Monitoreo materno-fetal y ecografía obstétrica:</strong> Revisarás registros cardiotocográficos (monitoreo fetal NST), imágenes ecográficas 2D/Doppler y guías perinatales MINSAL en campos clínicos y maternidades.",
+        "software": ["Visores de ecografía DICOM", "Complete Anatomy (anatomía pélvica/fetal)", "Guías Perinatales MINSAL", "Excel", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica estándar", "why": "Cálculo de edad gestacional, fecha probable de parto (Regla de Naegele) y curvas de crecimiento intrauterino.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Funda protectora impermeable", "priority": "must", "reason": "Para resguardo en turnos de urgencia de maternidad y salas de parto."},
+            {"name": "Cargador USB-C de 65W compacto", "priority": "rec", "reason": "Carga rápida durante turnos hospitalarios extensos."}
+        ],
+        "tablets": [{"emoji": "👶", "name": "iPad 10ma gen con Apple Pencil", "reason": "La mejor herramienta para consultar curvas de crecimiento fetal y patologías gineco-obstétricas en turno.", "price": "$330.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["macbook air", "vivobook", "aspire", "ideapad slim"], "motivo": "Autonomía de batería y pantalla nítida para protocolos perinatales y visualización ecográfica.", "badge": "Salud Materno-Perinatal"}
+    },
+
+    "nutricion-y-dietetica": {
+        "label": "Nutrición y Dietética",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/nutricion-y-dietetica/",
+        "family": "health_clinical",
+        "alert": "<strong>Evaluación del estado nutricional y cálculo dietético:</strong> Correrás software de composición de alimentos y cálculo de requerimientos calóricos/macronutrientes (Dial, Food Processor, tablas Chilenas de Alimentos), además de bioestadística en SPSS.",
+        "software": ["Software de cálculo dietético (Dial/Food Processor)", "SPSS / Jamovi", "Tablas de Composición Química de Alimentos", "Excel avanzado", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS o similar", "why": "Cálculo de tasas metabólicas basales (Harris-Benedict, Mifflin), adecuaciones calóricas y balances nitrogenados.", "price": "~$15.000 – $28.000 CLP"}],
+        "accessories": [
+            {"name": "Teclado numérico o teclado completo", "priority": "must", "reason": "Agiliza el ingreso continuo de gramajes, porcentajes de adecuación e ingestas en hojas de cálculo."},
+            {"name": "Mouse ergonómico", "priority": "rec", "reason": "Comodidad para diseño de minutas y planes de alimentación."}
+        ],
+        "tablets": [{"emoji": "🥗", "name": "Tablet Galaxy Tab A9+ o iPad", "reason": "Excelente para mostrar porciones visuales y pirámides alimentarias a pacientes en consulta nutricional.", "price": "$180.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["aspire", "vivobook", "ideapad", "thinkpad"], "motivo": "Equipo ágil con buen teclado numérico para cálculo dietético, balances energéticos y consulta.", "badge": "Dietética & Nutrición"}
+    },
+
+    "fonoaudiologia": {
+        "label": "Fonoaudiología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/fonoaudiologia/",
+        "family": "health_clinical",
+        "alert": "<strong>Análisis acústico de la voz y procesamiento del habla:</strong> Utilizarás software de espectrogramas y parámetros vocales (Praat), pruebas auditivas y modelos de anatomía de laringe y sistema auditivo en 3D.",
+        "software": ["Praat (análisis acústico de voz)", "Complete Anatomy (cabeza y cuello / oído)", "Audacity", "SPSS", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica básica", "why": "Cálculo de decibeles, umbrales auditivos audiométricos y bioestadística.", "price": "~$15.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Audífonos cerrados de monitoreo con conector 3.5mm", "priority": "must", "reason": "Indispensables para escuchar frecuencias formantes y alteraciones fonatorias en Praat sin interferencias."},
+            {"name": "Micrófono de condensador USB", "priority": "rec", "reason": "Para grabaciones de voz limpias con el paciente en sesiones de evaluación vocal."},
+            {"name": "Mouse inalámbrico", "priority": "rec", "reason": "Para seleccionar segmentos fonéticos precisos en oscilogramas."}
+        ],
+        "tablets": [{"emoji": "🗣️", "name": "iPad 10ma gen con Apple Pencil", "reason": "Herramienta terapéutica clave para presentar juegos interactivos y estímulos de lenguaje a niños y adultos.", "price": "$330.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["vivobook", "aspire", "ideapad", "zenbook", "praat", "16 gb"], "motivo": "Capacidad de procesamiento para análisis de audio en Praat, espectrogramas y anatomía laríngea.", "badge": "Acústica Vocal & Habla"}
+    },
+
+    "tecnologia-medica": {
+        "label": "Tecnología Médica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/tecnologia-medica/",
+        "family": "health_clinical",
+        "alert": "<strong>Diagnóstico de laboratorio, imagenología y bioanálisis:</strong> Dependiendo de tu mención (Bioanálisis Clínico, Imagenología, Oftalmología), procesarás imágenes DICOM volumétricas, citometría de flujo y bioinformática diagnóstica.",
+        "software": ["Visores DICOM (RadiAnt / Horos)", "ImageJ (conteo celular)", "FlowJo (citometría)", "BLAST / Bioinformática", "Excel estadístico"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 8, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Curvas de calibración fotométrica, diluciones serológicas y cálculos de absorbancia.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico de alta resolución", "priority": "must", "reason": "Para navegación de cortes tomográficos y conteo de frotis hematológicos."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Almacenamiento de series completas de TACs, resonancias magnéticas y citometrías."},
+            {"name": "Monitor IPS de buen contraste", "priority": "rec", "reason": "Distinguir contrastes tisulares y tinciones microbiológicas."}
+        ],
+        "tablets": [{"emoji": "🔬", "name": "Tablet Samsung Tab S9 FE o iPad", "reason": "Para consultar atlas de hematología, microbiología y patrones radiológicos en laboratorio.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["zenbook", "aspire", "vivobook", "thinkpad", "16 gb"], "motivo": "Fluidez para análisis de imágenes clínicas DICOM, ImageJ y control de calidad analítica.", "badge": "Diagnóstico & Bioanálisis"}
+    },
+
+    "quimica-y-farmacia": {
+        "label": "Química y Farmacia",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/quimica-y-farmacia/",
+        "family": "life_sciences",
+        "alert": "<strong>Química medicinal, farmacocinética y tecnología farmacéutica:</strong> Modelarás estructuras químicas de fármacos (ChemDraw), modelado de acoplamiento molecular (docking básico) y cálculos de farmacocinética de absorción/eliminación.",
+        "software": ["ChemDraw / ChemSketch", "PyMOL / Avogadro", "RStudio (farmacometría)", "GraphPad Prism", "SciFinder / PubMed"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz — ESENCIAL", "why": "Imprescindible para Química General, Orgánica, Fisicoquímica (cinética química, pH de buffers) y farmacocinética clínica.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Para dibujar moléculas orgánicas complejas y mecanismos de reacción en ChemDraw."},
+            {"name": "Funda resistente al agua", "priority": "must", "reason": "Seguridad para trabajo continuo en mesones de laboratorio químico."},
+            {"name": "Disco de respaldo externo", "priority": "rec", "reason": "Para guardar espectros de masa (MS), infrarrojo (FTIR) y cromatogramas HPLC."}
+        ],
+        "tablets": [{"emoji": "💊", "name": "iPad 10ma gen o Galaxy Tab S9 FE", "reason": "Excelente para dibujar rutas de síntesis orgánica a mano y estudiar interacciones farmacológicas.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "chemdraw", "16 gb"], "motivo": "Fluidez para ChemDraw, modelado molecular en PyMOL y cinéticas farmacológicas.", "badge": "Farmacia & Síntesis Química"}
+    },
+
+    "bioquimica": {
+        "label": "Bioquímica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/bioquimica/",
+        "family": "life_sciences",
+        "alert": "<strong>Biología molecular, enzimología y bioinformática:</strong> Visualizarás estructuras de proteínas en 3D (PyMOL), analizarás secuencias génicas con herramientas bioinformáticas (BLAST, MEGA) y procesarás cinéticas enzimáticas en GraphPad.",
+        "software": ["PyMOL / Chimera", "ChemDraw", "GraphPad Prism", "MEGA (filogenia)", "NCBI BLAST / UGENE"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Cinética de Michaelis-Menten, constante de disociación y equilibrios termodinámicos.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse de precisión para visualización 3D", "priority": "must", "reason": "Inspeccionar sitios activos de enzimas y ligandos en PyMOL."},
+            {"name": "Funda resistente al agua para laboratorio", "priority": "must", "reason": "Protege el equipo de derrames de reactivos o amortiguadores."},
+            {"name": "Disco SSD externo", "priority": "rec", "reason": "Archivos PDB y electroferogramas de secuenciación."}
+        ],
+        "tablets": [{"emoji": "🧬", "name": "iPad 10ma gen o Galaxy Tab S9 FE", "reason": "Ideal para esquematizar vías metabólicas (glucólisis, ciclo de Krebs) y regulación génica.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkpad", "pymol", "16 gb"], "motivo": "Capacidad para bioinformática, modelado macromolecular en PyMOL y cinéticas enzimáticas.", "badge": "Biología Molecular & Proteínas"}
+    },
+
+    "bioingenieria": {
+        "label": "Bioingeniería",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/bioingenieria/",
+        "family": "life_sciences",
+        "alert": "<strong>Biotecnología industrial, fermentaciones y genómica:</strong> Usarás herramientas de modelado metabólico, análisis de bioprocesos en biorreactores y procesamiento de datos ómicos (genómica, transcriptómica) en R y Python.",
+        "software": ["RStudio / Bioconductor", "Python (Biopython)", "SuperPro Designer (bioprocesos)", "PyMOL", "GraphPad Prism"],
+        "scores": {"CPU": 8, "RAM": 9, "Storage": 8, "GPU": 5, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Balances estequiométricos de crecimiento celular y transferencia de oxígeno en biorreactores.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para análisis de rutas metabólicas y manejo de árboles filogenéticos."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Archivos FASTQ de secuenciación masiva (NGS) y matrices de expresión génica."},
+            {"name": "Funda para laboratorio", "priority": "must", "reason": "Salidas a plantas piloto de fermentación y laboratorios de cultivo celular."}
+        ],
+        "tablets": [{"emoji": "🌱", "name": "Tablet Galaxy Tab / iPad", "reason": "Para registro de datos cinéticos a pie de biorreactor.", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "32 gb", "16 gb"], "motivo": "Memoria y procesamiento para análisis genómico en R, PyMOL y simulación de bioprocesos.", "badge": "Biotecnología & Genómica"}
+    },
+
+    "biologia": {
+        "label": "Biología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/biologia/",
+        "family": "life_sciences",
+        "alert": "<strong>Ecología, evolución y biodiversidad:</strong> Analizarás datos ecológicos multivariados en RStudio, modelamiento de nichos ecológicos (MaxEnt) y mapeo geoespacial de especies en QGIS.",
+        "software": ["RStudio (Vegan, ggplot2)", "QGIS / ArcGIS", "MaxEnt (distribución de especies)", "ImageJ", "Mendeley"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Bioestadística, índices de diversidad (Shannon-Wiener) y modelos poblacionales de Lotka-Volterra.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Morfometría geométrica en ImageJ y edición cartográfica en QGIS."},
+            {"name": "Mochila técnica para terreno con capa impermeable", "priority": "must", "reason": "Imprescindible para salidas de campo a reservas biológicas y parques nacionales."},
+            {"name": "Disco SSD externo", "priority": "rec", "reason": "Respaldo de fotografías de especímenes, bases de datos y grabaciones bioacústicas."}
+        ],
+        "tablets": [{"emoji": "🍃", "name": "Tablet Samsung Galaxy Tab S9 FE (resistente al agua)", "reason": "Excelente libreta de campo digital para censos de flora y fauna en terreno.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 5", "ryzen 7", "aspire", "thinkpad", "qgis", "16 gb"], "motivo": "Fluidez para bioestadística en R, mapeo ecológico en QGIS y análisis de biodiversidad.", "badge": "Ecología & Biodiversidad"}
+    },
+
+    "biologia-marina": {
+        "label": "Biología Marina",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/biologia-marina/",
+        "family": "life_sciences",
+        "alert": "<strong>Oceanografía y ciencias del mar:</strong> Procesarás datos oceanográficos satelitales (clorofila, temperatura superficial del mar) en Ocean Data View (ODV), RStudio y GIS marino en estaciones costeras como Dichato.",
+        "software": ["Ocean Data View (ODV)", "RStudio", "QGIS (cartografía marina)", "ImageJ (plancton / otolitos)", "Primer-e (ecología marina)"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 4, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Oceanografía física (salinidad, densidad, presión hidrostática) y dinámica de poblaciones de peces.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Bolsa o funda estanca impermeable", "priority": "must", "reason": "Imprescindible para embarque en lanchas de investigación y la Estación de Biología Marina Dichato."},
+            {"name": "Mouse óptico", "priority": "must", "reason": "Para perfiles oceanográficos en ODV y conteo de fitoplancton en microscopio."},
+            {"name": "Disco SSD externo resistente a golpes", "priority": "must", "reason": "Para datos de sensores CTD submarinos e imágenes de fauna bentónica."}
+        ],
+        "tablets": [{"emoji": "🐬", "name": "Tablet con protección IP68 (Galaxy Tab S9 FE)", "reason": "Soporta la humedad salina y salpicaduras en terreno costero y embarcaciones.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkpad", "aspire", "odv", "16 gb"], "motivo": "Capacidad para procesamiento de perfiles CTD en Ocean Data View, QGIS marino y R.", "badge": "Oceanografía & Mar"}
+    },
+
+    "medicina-veterinaria": {
+        "label": "Medicina Veterinaria",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/medicina-veterinaria/",
+        "family": "life_sciences",
+        "alert": "<strong>Clínica de animales menores, mayores y producción:</strong> Revisarás radiografías veterinarias digitales (DICOM), ultrasonografía reproductiva, software de gestión de clínicas y formulación de raciones alimenticias.",
+        "software": ["Visores DICOM Veterinarios", "Complete Anatomy Animal", "Software de formulación de raciones", "SPSS / RStudio", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS o fx-991CW", "why": "Dosis de anestésicos, fluidoterapia en animales y dosificación según peso vivo.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Funda resistente y de fácil limpieza", "priority": "must", "reason": "Para trabajo en hospitales clínicos veterinarios y mangas de animales mayores."},
+            {"name": "Cargador USB-C de 65W compacto", "priority": "rec", "reason": "Movilidad entre hospital veterinario y salidas a predios ganaderos."}
+        ],
+        "tablets": [{"emoji": "🐾", "name": "iPad 10ma gen o Galaxy Tab con funda protectora", "reason": "Excelente para revisar ecografías reproductivas y fichas clínicas a pie de manga en terreno.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["vivobook", "aspire", "ideapad slim", "macbook air"], "motivo": "Autonomía de batería y resistencia para hospital clínico veterinario y terreno ganadero.", "badge": "Medicina Veterinaria"}
+    },
+
+    "medicina-veterinaria-chillan": {
+        "label": "Medicina Veterinaria — Chillán",
+        "campus": "Campus Chillán",
+        "url": "https://admision.udec.cl/medicina-veterinaria-chillan/",
+        "family": "life_sciences",
+        "alert": "<strong>Referente nacional en animales mayores y clínica rural en Campus Chillán:</strong> Actividad intensiva en hospital clínico, pabellones equinos y predios agropecuarios. Requiere equipo liviano y resistente al polvo de terreno.",
+        "software": ["Visores DICOM Veterinarios", "Complete Anatomy Animal", "Formulación de raciones", "Office 365", "SPSS"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica estándar", "why": "Dosificación farmacológica en rumiantes, equinos y pequeños animales.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Funda antigolpes para mochila de campo", "priority": "must", "reason": "Protección para traslados en Campus Chillán y visitas a lecherías y criaderos."},
+            {"name": "Mouse inalámbrico", "priority": "rec", "reason": "Para radiografías equinas y ecografías de tendones."}
+        ],
+        "tablets": [{"emoji": "🐎", "name": "Tablet Galaxy Tab S9 FE con lápiz", "reason": "Indispensable para anotar diagnósticos a pie de caballo o bovino en el predio.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["vivobook", "aspire", "ideapad slim", "macbook air"], "motivo": "Resistencia y batería para hospital clínico de animales mayores en Campus Chillán.", "badge": "Veterinaria Chillán"}
+    },
+
+    "agronomia": {
+        "label": "Agronomía",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/agronomia-concepcion/",
+        "family": "life_sciences",
+        "alert": "<strong>Agricultura de precisión, fisiología vegetal y suelos:</strong> Usarás QGIS para procesar mapas de vigor vegetativo (NDVI por satélite y drones), diseño experimental agronómico en RStudio y balance hídrico de cultivos.",
+        "software": ["QGIS (NDVI / Teledetección)", "RStudio (diseño de bloques / ANOVA)", "CropSyst / AquaCrop", "AutoCAD básico", "Excel agronómico"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Fertirriego, cálculo de evapotranspiración (Penman-Monteith) y dosificación de fitosanitarios.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Para delimitar cuarteles de frutales y polígonos de suelo en QGIS."},
+            {"name": "Disco SSD externo", "priority": "must", "reason": "Mapas multiespectrales de drones y ortofotos agrícolas de predios."},
+            {"name": "Mochila técnica para terreno agrícola", "priority": "must", "reason": "Protege el computador del polvo, sol y barro en visitas a huertos."}
+        ],
+        "tablets": [{"emoji": "🌾", "name": "Tablet Samsung Galaxy Tab S9 FE (IP68)", "reason": "Resistente a polvo y agua; perfecta para monitorear plagas y riego en el huerto.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkbook", "qgis", "16 gb"], "motivo": "Procesamiento de mapas NDVI en QGIS, diseño experimental en R y fisiología vegetal.", "badge": "Agricultura de Precisión"}
+    },
+
+    "agronomia-chillan": {
+        "label": "Agronomía — Chillán",
+        "campus": "Campus Chillán",
+        "url": "https://admision.udec.cl/agronomia-chillan/",
+        "family": "life_sciences",
+        "alert": "<strong>Centro histórico de la Facultad de Agronomía en el corazón agrícola de Chile:</strong> Prácticas directas en la Estación Experimental El Nogal, laboratorios de fitopatología, suelos y agroclimatología.",
+        "software": ["QGIS (Teledetección / NDVI)", "RStudio", "CropSyst / AquaCrop", "AutoCAD", "Excel"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Requerimientos hídricos de cultivos de exportación, nutrición vegetal y fertilización de suelos de Ñuble.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para delimitar predios y analizar variabilidad de suelo en QGIS."},
+            {"name": "Funda reforzada para terreno", "priority": "must", "reason": "Salidas continuas a predios agrícolas y ensayos de campo en Ñuble."}
+        ],
+        "tablets": [{"emoji": "🍇", "name": "Tablet Galaxy Tab S9 FE", "reason": "Muestreo foliar, fenología y registro de datos en huertos frutales.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkbook", "qgis", "16 gb"], "motivo": "Fluidez para teledetección de cultivos, QGIS y ensayos de campo en Campus Chillán.", "badge": "Agronomía Ñuble"}
+    },
+
+    "ingenieria-forestal": {
+        "label": "Ingeniería Forestal",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-forestal/",
+        "family": "process_eng",
+        "alert": "<strong>Silvicultura, biomasa y gestión de incendios forestales:</strong> Procesarás LiDAR forestal para inventario de bosques, teledetección de incendios en QGIS/ArcGIS y modelos de crecimiento de plantaciones.",
+        "software": ["ArcGIS / QGIS", "CloudCompare / FUSION (LiDAR forestal)", "RStudio (biometría forestal)", "FARSITE / BehavePlus (incendios)", "AutoCAD"],
+        "scores": {"CPU": 8, "RAM": 9, "Storage": 8, "GPU": 6, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Dasometría, cubicación de madera en pie, volumen de fuste y tablas de rendimiento.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse de precisión", "priority": "must", "reason": "Para clasificar copas de árboles en nubes de puntos LiDAR."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Imágenes satelitales multiespectrales de masas boscosas y cartografía de cuencas."},
+            {"name": "Mochila técnica para terreno forestal", "priority": "must", "reason": "Resistente a ramas, lluvia y condiciones climáticas del sur de Chile."}
+        ],
+        "tablets": [{"emoji": "🌲", "name": "Tablet Galaxy Tab S9 FE (resistente al agua)", "reason": "Para inventarios forestales de terreno y registro de parcelas de muestreo.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "qgis", "16 gb"], "motivo": "Capacidad para LiDAR forestal, modelos de dispersión de incendios y biometría en R.", "badge": "Bosques & LiDAR"}
+    },
+
+    "ingenieria-en-conservacion-de-recursos-naturales": {
+        "label": "Ingeniería en Conservación de Recursos Naturales",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-en-conservacion-de-recursos-naturales/",
+        "family": "process_eng",
+        "alert": "<strong>Planificación de áreas protegidas y ecología del paisaje:</strong> Modelarás corredores biológicos, pérdida de bosque nativo y servicios ecosistémicos en QGIS/InVEST, con abundante análisis estadístico en R.",
+        "software": ["QGIS / ArcGIS", "InVEST (servicios ecosistémicos)", "RStudio", "Fragstats (ecología del paisaje)", "Google Earth Engine"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Cálculo de balances hidrológicos, tasas de deforestación y modelos ecológicos.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Digitalización de cuencas hidrográficas y coberturas vegetales."},
+            {"name": "Disco externo SSD", "priority": "must", "reason": "Capas espaciales raster y series temporales de satélites."},
+            {"name": "Mochila técnica para terreno", "priority": "must", "reason": "Para expediciones a parques nacionales y reservas ecológicas."}
+        ],
+        "tablets": [{"emoji": "🏞️", "name": "Tablet Galaxy Tab S9 FE (IP68)", "reason": "Toma de datos georreferenciada en bosques nativos y humedales protegidos.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "qgis", "16 gb"], "motivo": "Mapeo territorial en QGIS, modelación InVEST de servicios ecosistémicos y estadística R.", "badge": "Conservación & SIG"}
+    },
+
+    "ingenieria-en-biotecnologia-vegetal": {
+        "label": "Ingeniería en Biotecnología Vegetal",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-en-biotecnologia-vegetal/",
+        "family": "life_sciences",
+        "alert": "<strong>Genómica vegetal y mejoramiento genético de plantas:</strong> Analizarás datos de marcadores moleculares (SNPs, microsatélites), transformación genética vegetal y cultivo de tejidos in vitro en RStudio y BLAST.",
+        "software": ["RStudio / Bioconductor", "NCBI BLAST / Clustal Omega", "ImageJ", "GraphPad Prism", "ChemDraw"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Preparación de medios de cultivo Murashige & Skoog (MS), hormonas vegetales y bioestadística.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Análisis de patrones electroforéticos y selección de genes en bases de datos."},
+            {"name": "Funda para laboratorio", "priority": "must", "reason": "Para salas de cultivo estéril de tejidos y cámaras de crecimiento."}
+        ],
+        "tablets": [{"emoji": "🌱", "name": "Tablet Samsung Tab / iPad", "reason": "Registro de tasas de brotación y enraizamiento in vitro en cámaras bioclimáticas.", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkpad", "aspire", "16 gb"], "motivo": "Fluidez para bioinformática de plantas, genómica y cultivo de tejidos vegetales.", "badge": "Genómica Vegetal"}
+    },
+
+    "ingenieria-en-biotecnologia-vegetal-2": {
+        "label": "Ingeniería en Biotecnología Vegetal — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/ingenieria-en-biotecnologia-vegetal-2/",
+        "family": "life_sciences",
+        "alert": "<strong>Biotecnología aplicada al sector forestal y agrícola del Biobío:</strong> Prácticas en laboratorios de biotecnología de Campus Los Ángeles, micropropagación clonal e identificación de patógenos vegetales.",
+        "software": ["RStudio", "NCBI BLAST", "ImageJ", "GraphPad Prism", "Excel"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Diluciones, preparación de soluciones amortiguadoras y análisis genético.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Para trabajo de alineamiento de secuencias y geles de ADN."},
+            {"name": "Funda acolchada", "priority": "must", "reason": "Seguridad en traslados dentro de Campus Los Ángeles."}
+        ],
+        "tablets": [{"emoji": "🌱", "name": "Tablet Samsung Tab / iPad", "reason": "Toma de datos en viveros clonales y laboratorios.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "ideapad", "16 gb"], "motivo": "Micropropagación clonal, marcadores moleculares y cultivo in vitro en Campus Los Ángeles.", "badge": "Biotecnología Los Ángeles"}
+    },
+
+    "ingenieria-en-biotecnologia-marina-y-acuicultura": {
+        "label": "Ingeniería en Biotecnología Marina y Acuicultura",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-en-biotecnologia-marina-y-acuicultura/",
+        "family": "life_sciences",
+        "alert": "<strong>Acuicultura sustentable, inmunología y genética de salmónidos y moluscos:</strong> Simularás sistemas de recirculación acuícola (RAS), monitoreo genético de reproductores y análisis de patógenos marinos en RStudio y BLAST.",
+        "software": ["RStudio / Bioconductor", "NCBI BLAST", "AquaCrop / simuladores acuícolas", "ImageJ", "GraphPad Prism"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Factores de conversión alimenticia (FCR), densidad de biomasa de peces y química del agua salada.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Para análisis de crecimiento en cultivo y geles de PCR de patógenos."},
+            {"name": "Funda impermeable para terreno costero", "priority": "must", "reason": "Protección para visitas a centros de cultivo en balsa-jaula y hatcheries."}
+        ],
+        "tablets": [{"emoji": "🐟", "name": "Tablet con protección contra salpicaduras", "reason": "Para chequear parámetros de oxígeno disuelto y biomasa a pie de estanque.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkpad", "16 gb"], "motivo": "Modelos bioestadísticos en R, biotecnología de organismos marinos y sistemas RAS.", "badge": "Acuicultura & Genética Marina"}
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # CIENCIAS EXACTAS Y CIENCIAS DE LA TIERRA
+    # ══════════════════════════════════════════════════════════════════════
+    "geologia": {
+        "label": "Geología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/geologia/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Modelamiento geológico 3D, petrografía y cartografía estructural:</strong> Correrás Leapfrog Geo, QGIS/ArcGIS, Stereonet para proyección estereográfica e ioGAS para geoquímica. Requiere GPU dedicada, procesador rápido y chasis resistente para salidas a cordillera.",
+        "software": ["Leapfrog Geo 3D", "QGIS / ArcGIS Pro", "Stereonet / FaultKin", "ioGAS (geoquímica)", "ImageJ (secciones delgadas)"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 8, "Battery": 7, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#ef4444", "Battery": "#22c55e", "Display": "#22c55e"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Geoquímica de elementos mayores y traza, leyes de corte y cristalografía óptica.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse de alta precisión para modelado 3D", "priority": "must", "reason": "Vital para orientar planos de falla y contactos litológicos en Leapfrog."},
+            {"name": "Laptop de construcción sólida (MIL-STD o aluminio)", "priority": "must", "reason": "El polvo de sondajes y el transporte en camionetas de terreno exigen alta durabilidad."},
+            {"name": "Disco SSD externo 1TB", "priority": "must", "reason": "Mapas geológicos vectoriales, sondajes y fotos en alta resolución de cortes petrográficos."}
+        ],
+        "tablets": [{"emoji": "⚒️", "name": "Tablet Samsung Galaxy Tab S9 FE (con lápiz y resistencia al agua)", "reason": "Reemplazo moderno de la libreta de terreno para mapeo litológico georreferenciado.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": True, "palabras_clave": ["rtx 4060", "rtx 3050", "ryzen 7", "core i7", "leapfrog", "qgis", "16 gb"], "motivo": "GPU dedicada para modelamiento de cuerpos geológicos en Leapfrog Geo 3D y mapas SIG.", "badge": "Geología 3D & Sondajes"}
+    },
+
+    "geofisica": {
+        "label": "Geofísica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/geofisica/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Sismología, física de la atmósfera y oceanografía física:</strong> Procesarás señales sísmicas en Python (ObsPy), simularás ondas elásticas y modelarás tsunamis o frentes meteorológicos (WRF). Se requiere alta capacidad de cómputo multicore y 16GB-32GB de RAM.",
+        "software": ["Python (ObsPy / NumPy / SciPy)", "GMT (Generic Mapping Tools)", "SAC (Seismic Analysis Code)", "WRF (modelación atmosférica)", "MATLAB"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 6, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Ecuaciones de onda, propagación de ondas P y S, tensor de momentos sísmicos.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Disco SSD externo 1TB o 2TB", "priority": "must", "reason": "Los registros continuos de sismómetros de banda ancha generan archivos pesados diarios."},
+            {"name": "Monitor secundario para series de tiempo", "priority": "rec", "reason": "Visualizar sismogramas multicanal en una pantalla y scripts de Python en la otra."},
+            {"name": "Mouse ergonómico", "priority": "rec", "reason": "Para picar fases sísmicas y espectrogramas con precisión milimétrica."}
+        ],
+        "tablets": [{"emoji": "🌋", "name": "Tablet Galaxy Tab / iPad", "reason": "Útil para resolución matemática y salidas de campo geofísico.", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "legion", "obspy", "32 gb", "16 gb"], "motivo": "Potencia multicore para Python científico (ObsPy), sismología y modelación atmosférica.", "badge": "Sismología & Atmósfera"}
+    },
+
+    "astronomia": {
+        "label": "Astronomía",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/astronomia/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Astrofísica observacional y reducción de datos telescópicos:</strong> Procesarás cubos de datos FITS espectroscópicos y fotométricos de los observatorios del norte chileno (ALMA, VLT) usando Python (Astropy), SAOImage DS9 y TOPCAT.",
+        "software": ["Python (Astropy / SciPy / Matplotlib)", "SAOImage DS9 (visión FITS)", "TOPCAT (catálogos estelares)", "IRAF / PyRAF", "LaTeX / Overleaf"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 9, "GPU": 6, "Battery": 7, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Mecánica celeste, leyes de Kepler, radiación de cuerpo negro y física cuántica estelar.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Disco SSD externo 1TB o 2TB de alta velocidad", "priority": "must", "reason": "Imágenes astronómicas FITS sin comprimir de grandes telescopios ocupan cientos de gigabytes."},
+            {"name": "Monitor externo IPS con buen contraste de negros", "priority": "rec", "reason": "Para inspeccionar fuentes puntuales tenues y galaxias difusas en SAOImage DS9."},
+            {"name": "Teclado ergonómico", "priority": "rec", "reason": "Para redactar papers científicos y tesis en LaTeX."}
+        ],
+        "tablets": [{"emoji": "🔭", "name": "iPad 10ma gen o Galaxy Tab con stylus", "reason": "Para deducir ecuaciones de transporte radiativo y mecánica orbital a mano.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "32 gb", "16 gb", "astropy"], "motivo": "Capacidad de cómputo para Python científico (Astropy), imágenes FITS y catálogos estelares.", "badge": "Astrofísica & Datos FITS"}
+    },
+
+    "ciencias-fisicas": {
+        "label": "Ciencias Físicas",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ciencias-fisicas/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Física teórica, experimental y computacional:</strong> Simularás sistemas dinámicos, física cuántica y ecuaciones diferenciales no lineales en Python/C++, además de compilar extensos artículos científicos en LaTeX.",
+        "software": ["Python (NumPy / SciPy)", "C++ / Fortran", "MATLAB / GNU Octave", "LaTeX / Overleaf", "OriginLab"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 7, "GPU": 5, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Constantes físicas universales precargadas, cálculo de integrales numéricas y álgebra vectorial.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Teclado para redacción en LaTeX", "priority": "must", "reason": "La notación de tensores y mecánica cuántica se tipea a diario en LaTeX."},
+            {"name": "Monitor secundario 24\"", "priority": "rec", "reason": "Para contrastar gráficas experimentales con las predicciones del modelo teórico."},
+            {"name": "Mouse ergonómico", "priority": "rec", "reason": "Ajuste de curvas no lineales y gráficos científicos en Python."}
+        ],
+        "tablets": [{"emoji": "⚛️", "name": "iPad o Galaxy Tab con lápiz", "reason": "La mejor forma de desarrollar demostraciones de física matemática sin gastar papel.", "price": "$240.000 – $390.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "32 gb", "16 gb", "latex"], "motivo": "Rendimiento multicore para simulaciones físicas numéricas, cálculo cuántico y LaTeX.", "badge": "Física Numérica & LaTeX"}
+    },
+
+    "geografia": {
+        "label": "Geografía",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/geografia/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Análisis territorial, geomorfología y teledetección satelital:</strong> Usarás de forma intensiva QGIS, ArcGIS Pro, Google Earth Engine y procesamiento de imágenes de radar y ópticas para ordenamiento territorial y riesgos naturales.",
+        "software": ["ArcGIS Pro / QGIS", "Google Earth Engine", "ENVI (teledetección)", "RStudio (geoestadística)", "AutoCAD"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 6, "Battery": 8, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS o similar", "why": "Morfometría de cuencas, pendientes topográficas y demografía cuantitativa.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse de precisión para digitalización", "priority": "must", "reason": "Trazar polígonos de zonas de inundación y tipos de uso de suelo en SIG."},
+            {"name": "Disco SSD externo 1TB+", "priority": "must", "reason": "Mosaicos satelitales Sentinel/Landsat y modelos digitales de elevación (DEM)."},
+            {"name": "Monitor externo de buen tamaño (27\")", "priority": "rec", "reason": "Visualización amplia de mapas temáticos con sus respectivas leyendas cartográficas."}
+        ],
+        "tablets": [{"emoji": "🗺️", "name": "Tablet Galaxy Tab S9 FE (con GPS y stylus)", "reason": "Para levantamiento de encuestas territoriales y verificación de campo.", "price": "$330.000 – $450.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "aspire", "thinkbook", "qgis", "arcgis", "16 gb"], "motivo": "Fluidez para sistemas de información geográfica (ArcGIS/QGIS) y teledetección espacial.", "badge": "SIG & Territorio"}
+    },
+
+    "licenciatura-en-matematica": {
+        "label": "Licenciatura en Matemática",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/licenciatura-en-matematica/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Matemática pura y fundamentación teórica:</strong> Álgebra abstracta, topología, análisis real y complejo. Tu software principal es LaTeX/Overleaf para redactar teoremas y papers, y Python/SageMath para verificación computacional.",
+        "software": ["LaTeX / Overleaf", "Python (SageMath / SymPy)", "MATLAB / Octave", "GeoGebra", "Git"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Para verificación de cálculos en ramos aplicados.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Teclado ergonómico mecánico o de tijera", "priority": "must", "reason": "Para redactar código LaTeX con fórmulas complejas durante horas continuas."},
+            {"name": "Monitor con modo lectura / panel mate", "priority": "must", "reason": "Lectura prolongada de libros clásicos (Rudin, Spivak, Lang) sin fatiga visual."}
+        ],
+        "tablets": [{"emoji": "📐", "name": "iPad 10ma gen o Galaxy Tab con stylus de alta sensibilidad", "reason": "La herramienta predilecta para escribir demostraciones matemáticas a mano.", "price": "$240.000 – $400.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["thinkpad", "macbook", "zenbook", "aspire", "latex"], "motivo": "Pantalla mate descansada, teclado ergonómico y fluidez total para LaTeX y álgebra simbólica.", "badge": "Matemática Pura & LaTeX"}
+    },
+
+    "licenciatura-en-quimica-quimico": {
+        "label": "Licenciatura en Química / Químico",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/licenciatura-en-quimica-quimico/",
+        "family": "life_sciences",
+        "alert": "<strong>Química teórica, síntesis orgánica y análisis instrumental:</strong> Correrás cálculos cuánticos moleculares (Gaussian / ORCA), ChemDraw para mecanismos y software de RMN (MestReNova) e infrarrojo.",
+        "software": ["ChemDraw", "MestReNova (espectros RMN)", "ORCA / Gaussian (química cuántica)", "OriginLab", "SciFinder"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 5, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz — ESENCIAL", "why": "Manejo de regresiones, equilibrios ácido-base complejos y termodinámica química.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Dibujar estructuras moleculares tridimensionales y picos de espectros RMN."},
+            {"name": "Funda para laboratorio", "priority": "must", "reason": "Seguridad frente a sustancias químicas en mesones de síntesis."}
+        ],
+        "tablets": [{"emoji": "⚗️", "name": "Tablet Samsung o iPad", "reason": "Para memorizar mecanismos de reacción orgánica y apuntes de clases.", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "chemdraw", "16 gb"], "motivo": "Fluidez para ChemDraw, análisis espectroscópico en MestReNova y química cuántica.", "badge": "Síntesis & Espectroscopía"}
+    },
+
+    "quimico-a-analista": {
+        "label": "Químico/a Analista",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/quimico-a-analista/",
+        "family": "life_sciences",
+        "alert": "<strong>Control de calidad químico, cromatografía y validación de métodos:</strong> Procesarás datos de cromatografía de gases (GC) y líquida (HPLC), espectrometría de absorción atómica (AAS) y validación estadística en Excel y ChemDraw.",
+        "software": ["Software cromatográfico (ChemStation básico)", "ChemDraw", "Excel avanzado (curvas de calibración)", "OriginLab", "Mendeley"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Límites de detección (LOD), límites de cuantificación (LOQ), intervalos de confianza y regresiones ponderadas.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Integración manual de picos cromatográficos y cálculo de áreas bajo la curva."},
+            {"name": "Funda resistente para laboratorio", "priority": "must", "reason": "Protege tu equipo en el laboratorio de análisis instrumental."},
+            {"name": "Pendrive rápido para equipos analíticos", "priority": "must", "reason": "Exportar datos crudos desde espectrofotómetros y cromatógrafos."}
+        ],
+        "tablets": [{"emoji": "🧪", "name": "Tablet Galaxy Tab / iPad", "reason": "Consulta de normas ISO 17025 y procedimientos analíticos estándar (SOP).", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["aspire", "vivobook", "thinkbook", "chemdraw", "16 gb"], "motivo": "Rendimiento veloz para análisis cromatográfico, curvas de calibración y normas de calidad.", "badge": "Análisis Instrumental & HPLC"}
+    },
+
+    "bachillerato-en-ciencias-e-innovacion": {
+        "label": "Bachillerato en Ciencias e Innovación",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/bachillerato-en-ciencias-e-innovacion/",
+        "family": "earth_exact_sciences",
+        "alert": "<strong>Formación científica multidisciplinaria y metodologías de innovación:</strong> Cursarás ramos de matemática, física, química y biología, junto a talleres de design thinking y prototipado. Un computador versátil y ágil es ideal.",
+        "software": ["Python básico", "Excel avanzado", "Canva / Miro (design thinking)", "GeoGebra", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Indispensable para aprobar los ramos de ciencias exactas del ciclo de bachillerato.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse inalámbrico", "priority": "must", "reason": "Comodidad para trabajos en grupo y presentaciones de proyectos."},
+            {"name": "Funda acolchada", "priority": "must", "reason": "Protege el notebook en traslados diarios por el campus central."}
+        ],
+        "tablets": [{"emoji": "💡", "name": "Tablet Samsung o iPad con stylus", "reason": "Excelente para tomar apuntes de las distintas áreas científicas en un solo lugar.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["aspire", "vivobook", "ideapad", "zenbook"], "motivo": "Equipo balanceado y versátil para ciencias exactas, biología y prototipado de innovación.", "badge": "Ciencias & Innovación"}
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # CIENCIAS JURÍDICAS, SOCIALES Y HUMANIDADES
+    # ══════════════════════════════════════════════════════════════════════
+    "derecho": {
+        "label": "Derecho",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/derecho/",
+        "family": "law_humanities",
+        "alert": "<strong>Lectura jurídica intensiva y redacción de memoriales:</strong> Leerás miles de páginas de doctrina, códigos legales y jurisprudencia (vLex, Microjuris, Westlaw). Tu máxima prioridad es una pantalla mate que no canse la vista, teclado cómodo para escribir y batería para todo el día.",
+        "software": ["Adobe Acrobat Pro (OCR y subrayado)", "vLex / Microjuris (jurisprudencia)", "Zotero (citas jurídicas)", "Word con plantillas de escritos", "Firma electrónica avanzada"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Calculadora básica", "why": "Solo requerida esporádicamente para liquidación de indemnizaciones o cálculos de herencias.", "price": "~$6.000 CLP"}],
+        "accessories": [
+            {"name": "Soporte elevador ergonómico para laptop", "priority": "must", "reason": "Mantiene la pantalla a la altura de los ojos y evita dolores de cuello tras 8 horas de lectura."},
+            {"name": "Teclado y mouse inalámbricos", "priority": "rec", "reason": "Comodidad total para redactar ensayos, memorias y recursos de protección en tu escritorio."},
+            {"name": "Audífonos con cancelación de ruido", "priority": "opt", "reason": "Para estudiar concentrado en la biblioteca de la Facultad de Ciencias Jurídicas."}
+        ],
+        "tablets": [{"emoji": "⚖️", "name": "iPad 9a/10a gen o Kindle Paperwhite", "reason": "Reemplazo de los pesados códigos impresos: lleva el Código Civil, Penal y procesal en tu mano a tribunales.", "price": "$140.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "macbook air", "zenbook", "aspire", "vivobook", "ideapad slim"], "motivo": "Teclado ergonómico legendario, pantalla mate descansada para lectura y batería prolongada.", "badge": "Lectura Jurídica & Batería"}
+    },
+
+    "derecho-2": {
+        "label": "Derecho — Chillán",
+        "campus": "Campus Chillán",
+        "url": "https://admision.udec.cl/derecho-2/",
+        "family": "law_humanities",
+        "alert": "<strong>Carrera de Derecho en Campus Chillán:</strong> Exigencia rigurosa en estudio de doctrina y práctica forense en tribunales de la Región de Ñuble. Equipo liviano, silencioso y con teclado cómodo para redacción continua.",
+        "software": ["Adobe Acrobat Pro", "Bases jurisprudenciales (vLex)", "Zotero", "Word", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Calculadora básica de bolsillo", "why": "Para liquidaciones y cálculo de plazos legales.", "price": "~$6.000 CLP"}],
+        "accessories": [
+            {"name": "Soporte elevador para laptop", "priority": "must", "reason": "Higiene postural para extensas jornadas de lectura."},
+            {"name": "Funda acolchada", "priority": "must", "reason": "Para traslados seguros al Campus Chillán y juzgados."}
+        ],
+        "tablets": [{"emoji": "⚖️", "name": "iPad 9a/10a gen o Kindle", "reason": "Ideal para transportar legislación y apuntes de derecho civil y procesal.", "price": "$140.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "macbook air", "zenbook", "aspire", "vivobook"], "motivo": "Autonomía de batería y pantalla antirreflejo para estudio de leyes en Campus Chillán.", "badge": "Derecho Chillán"}
+    },
+
+    "psicologia": {
+        "label": "Psicología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/psicologia/",
+        "family": "law_humanities",
+        "alert": "<strong>Evaluación clínica, neurociencia y análisis de datos cuantitativos/cualitativos:</strong> Manejarás SPSS y JASP para psicometría, ATLAS.ti para análisis de entrevistas cualitativas y software de experimentos cognitivos (PsychoPy).",
+        "software": ["SPSS Statistics / JASP", "ATLAS.ti / NVivo (cualitativo)", "PsychoPy (experimentos cognitivos)", "Zotero / Mendeley (APA 7)", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica estándar", "why": "Psicometría, puntajes T, percentiles y análisis de varianza en certámenes.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para codificar transcripciones de entrevistas en ATLAS.ti y navegar salidas de SPSS."},
+            {"name": "Audífonos con micrófono nítido", "priority": "must", "reason": "Para transcripción fiel de entrevistas clínicas y sesiones de investigación."},
+            {"name": "Funda protectora para mochila", "priority": "must", "reason": "Seguridad en traslados entre salas y centros de práctica."}
+        ],
+        "tablets": [{"emoji": "🧠", "name": "Tablet Samsung Tab A9+ o iPad 9a/10a", "reason": "Muy cómoda para tomar notas de campo en observaciones clínicas y aplicar tests proyectivos/psicométricos.", "price": "$180.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["vivobook", "aspire", "ideapad", "macbook air", "zenbook"], "motivo": "Fluidez para redacción de informes clínicos, análisis estadístico (SPSS/JASP) y ATLAS.ti.", "badge": "Psicometría & Clínica"}
+    },
+
+    "periodismo": {
+        "label": "Periodismo",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/periodismo/",
+        "family": "visual_arts",
+        "alert": "<strong>Producción periodística multimedia y cobertura en terreno:</strong> Editarás audio para radio/podcast (Audacity, Audition) y video para TV/redes sociales (Premiere Pro, DaVinci Resolve) en plazos urgentes. La velocidad de render y ligereza de transporte son vitales.",
+        "software": ["Adobe Premiere Pro / DaVinci Resolve", "Adobe Audition / Audacity", "Photoshop / Canva", "OBS Studio", "Office 365"],
+        "scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 6, "Battery": 8, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#ec4899"},
+        "calcs": [{"name": "No aplica", "why": "Periodismo no contempla asignaturas de matemáticas formales.", "price": "$0"}],
+        "accessories": [
+            {"name": "Audífonos cerrados de monitoreo con cable", "priority": "must", "reason": "Para monitorear sonido en entrevistas de calle y editar pistas de voz sin ruido exterior."},
+            {"name": "Disco SSD externo 1TB veloz", "priority": "must", "reason": "Las grabaciones de video en 4K y notas de audio saturan el disco interno en pocas semanas."},
+            {"name": "Lector de tarjetas SD / USB-C", "priority": "must", "reason": "Para traspasar de inmediato las tarjetas de memoria de cámaras de TV y grabadoras digitales."}
+        ],
+        "tablets": [{"emoji": "🎙️", "name": "iPad 10ma gen o Galaxy Tab", "reason": "Herramienta ágil para reporterear en terreno, grabar notas de voz y leer pautas de prensa.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["macbook air", "oled", "zenbook", "vivobook pro", "yoga", "16 gb"], "motivo": "Edición ágil de video/audio en terreno (Premiere/Audition) y transmisiones en vivo.", "badge": "Periodismo Multimedia"}
+    },
+
+    "trabajo-social": {
+        "label": "Trabajo Social",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/trabajo-social/",
+        "family": "law_humanities",
+        "alert": "<strong>Intervención comunitaria e informes socioeconómicos:</strong> Redactarás diagnósticos sociales, peritajes e informes sociales extensos, además de procesar datos del Registro Social de Hogares y encuestas en SPSS.",
+        "software": ["SPSS / Jamovi", "Excel avanzado (matriz de marco lógico)", "ATLAS.ti", "Zotero", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Calculadora básica", "why": "Cálculo de ingresos per cápita, líneas de pobreza y presupuesto familiar.", "price": "~$6.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para tipear diagnósticos sociales e informes periciales sin fatiga."},
+            {"name": "Funda impermeable para mochila", "priority": "must", "reason": "Para visitas domiciliarias e intervenciones territoriales en terreno."},
+            {"name": "Pendrive cifrado o con clave", "priority": "must", "reason": "Para proteger la confidencialidad de fichas familiares de usuarios (Ley de Protección de Datos)."}
+        ],
+        "tablets": [{"emoji": "📋", "name": "Tablet Samsung Tab A9+ con funda", "reason": "Excelente para aplicar fichas socioeconómicas y encuestas en terreno comunitario.", "price": "$170.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad", "thinkpad"], "motivo": "Equipo ligero con batería durable para trabajo en terreno social e informes periciales.", "badge": "Intervención & Social"}
+    },
+
+    "sociologia": {
+        "label": "Sociología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/sociologia/",
+        "family": "law_humanities",
+        "alert": "<strong>Metodología de investigación cuantitativa y cualitativa:</strong> Procesarás encuestas nacionales masivas (CASEN, ENE, CEP) en RStudio o SPSS, y análisis de discurso en ATLAS.ti o NVivo.",
+        "software": ["RStudio / SPSS", "ATLAS.ti / NVivo", "Excel avanzado", "Zotero / Mendeley", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica estándar", "why": "Estadística social, pruebas de hipótesis (Chi-cuadrado, T-Student) y muestreo probabilístico.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Navegación de matrices de datos con miles de variables en SPSS/R."},
+            {"name": "Teclado ergonómico", "priority": "rec", "reason": "Para redactar extensos informes de investigación sociológica."},
+            {"name": "Disco de respaldo externo", "priority": "rec", "reason": "Para archivar bases de datos CASEN históricas y transcripciones."}
+        ],
+        "tablets": [{"emoji": "📊", "name": "Tablet Samsung o iPad", "reason": "Para lectura de teoría sociológica clásica y contemporánea en cualquier lugar.", "price": "$180.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["thinkpad", "aspire", "vivobook", "ideapad"], "motivo": "Fluidez para procesamiento de encuestas CASEN en SPSS/R y análisis cualitativo en ATLAS.ti.", "badge": "Investigación & Datos Sociales"}
+    },
+
+    "antropologia": {
+        "label": "Antropología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/antropologia/",
+        "family": "law_humanities",
+        "alert": "<strong>Etnografía, antropología física y patrimonio:</strong> Realizarás transcripción de relatos orales, análisis etnográfico en ATLAS.ti, bioantropología en ImageJ (morfometría ósea) y redacción de monografías.",
+        "software": ["ATLAS.ti / NVivo", "ImageJ (análisis osteológico)", "Audacity (audio de campo)", "Zotero", "QGIS básico"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 10, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Calculadora básica", "why": "Morfometría ósea y estadística descriptiva de restos osteológicos.", "price": "~$8.000 CLP"}],
+        "accessories": [
+            {"name": "Grabadora de voz digital o micrófono de solapa", "priority": "must", "reason": "Registro nítido de testimonios y entrevistas etnográficas en terreno."},
+            {"name": "Mochila resistente para trabajo etnográfico de campo", "priority": "must", "reason": "Para traslados a comunidades rurales, costeras e indígenas."},
+            {"name": "Disco SSD externo", "priority": "must", "reason": "Respaldo seguro de audios, fotografías etnográficas y diarios de campo."}
+        ],
+        "tablets": [{"emoji": "🗿", "name": "iPad 9a/10a gen o Galaxy Tab con funda protectora", "reason": "El diario de campo digital ideal para registrar observaciones etnográficas in situ.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "macbook air", "zenbook", "aspire"], "motivo": "Autonomía de batería y confiabilidad para trabajo etnográfico de campo y ATLAS.ti.", "badge": "Etnografía & Campo"}
+    },
+
+    "licenciatura-en-historia": {
+        "label": "Licenciatura en Historia",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/licenciatura-en-historia/",
+        "family": "law_humanities",
+        "alert": "<strong>Análisis documental en archivos y paleografía:</strong> Trabajarás con manuscritos históricos digitalizados en alta resolución, periódicos del siglo XIX/XX y redactarás artículos historiográficos con aparato crítico formal (Zotero).",
+        "software": ["Adobe Acrobat Pro", "Transkribus (paleografía asistida)", "Zotero / Mendeley (citas Chicago)", "QGIS histórico", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 7, "GPU": 2, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "Historia no cuenta con asignaturas de cálculo formal.", "price": "$0"}],
+        "accessories": [
+            {"name": "Monitor con excelente definición y panel mate", "priority": "must", "reason": "Para descifrar caligrafía antigua en documentos coloniales sin reflejos."},
+            {"name": "Teclado ergonómico", "priority": "must", "reason": "Comodidad de tipeo para extensos ensayos y tesis de grado en historia."},
+            {"name": "Disco externo de respaldo", "priority": "rec", "reason": "Para colecciones de fuentes primarias digitalizadas en archivos nacionales."}
+        ],
+        "tablets": [{"emoji": "📜", "name": "iPad 9a/10a gen o Kindle Paperwhite", "reason": "Excelente para leer documentos de archivo históricos y papers en bibliotecas.", "price": "$140.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "macbook air", "aspire", "ideapad slim"], "motivo": "Pantalla mate antirreflejo para lectura de documentos históricos y teclado ergonómico.", "badge": "Historia & Archivos"}
+    },
+
+    "traduccion-interpretacion-en-idiomas-extranjeros": {
+        "label": "Traducción / Interpretación en Idiomas Extranjeros",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/traduccion-interpretacion-en-idiomas-extranjeros/",
+        "family": "law_humanities",
+        "alert": "<strong>Herramientas de traducción asistida por computador (CAT Tools) e interpretación simultánea:</strong> Utilizarás SDL Trados Studio, memoQ, OmegaT, subtitulaje (Subtitle Edit) y cabinas de audio con auriculares profesionales para interpretación.",
+        "software": ["SDL Trados Studio / memoQ", "OmegaT", "Subtitle Edit (subtitulaje)", "Audacity", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora en traducción.", "price": "$0"}],
+        "accessories": [
+            {"name": "Headset / Auriculares profesionales con micrófono direccional", "priority": "must", "reason": "Esencial para cabina de interpretación simultánea y consecutiva."},
+            {"name": "Teclado ergonómico con distribución internacional", "priority": "must", "reason": "Comodidad y rapidez al ingresar miles de palabras traducidas por día."},
+            {"name": "Monitor secundario", "priority": "rec", "reason": "Documento original en un monitor y software CAT en el otro."}
+        ],
+        "tablets": [{"emoji": "🌐", "name": "iPad 10ma gen o Galaxy Tab con stylus", "reason": "Herramienta ideal para toma de notas en interpretación consecutiva (bloque de notas digital).", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["thinkpad", "macbook", "zenbook", "aspire", "trados", "16 gb"], "motivo": "Fluidez para memorias de traducción en Trados/memoQ, subtitulaje y cabina de audio.", "badge": "CAT Tools & Traducción"}
+    },
+
+    "bachillerato-en-humanidades": {
+        "label": "Bachillerato en Humanidades",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/bachillerato-en-humanidades/",
+        "family": "law_humanities",
+        "alert": "<strong>Formación interdisciplinaria en letras, filosofía e historia:</strong> Lectura intensiva de clásicos, ensayos críticos y redacción académica. Un equipo liviano, con pantalla cómoda y batería duradera es la mejor elección.",
+        "software": ["Adobe Acrobat Reader", "Zotero (citas bibliográficas)", "Word", "Canva", "Office 365"],
+        "scores": {"CPU": 5, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "Bachillerato en Humanidades no cuenta con matemáticas cuantitativas.", "price": "$0"}],
+        "accessories": [
+            {"name": "Soporte elevador para laptop", "priority": "must", "reason": "Evita dolores cervicales durante horas de lectura de ensayos."},
+            {"name": "Funda acolchada", "priority": "must", "reason": "Protección para traslados diarios por el campus."}
+        ],
+        "tablets": [{"emoji": "📖", "name": "Kindle Paperwhite o iPad 9a/10a", "reason": "Para leer novelas, ensayos filosóficos y papers académicos con total comodidad visual.", "price": "$120.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "macbook air", "aspire", "ideapad slim"], "motivo": "Equipo liviano, silencioso y con batería extensa para lectura humanista y ensayos.", "badge": "Humanidades & Letras"}
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # CIENCIAS ECONÓMICAS, ADMINISTRATIVAS Y GESTIÓN
+    # ══════════════════════════════════════════════════════════════════════
+    "ingenieria-comercial": {
+        "label": "Ingeniería Comercial",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-comercial/",
+        "family": "business_quant",
+        "alert": "<strong>Finanzas corporativas, econometría y marketing analítico:</strong> Trabajarás con grandes modelos en Excel, Stata/RStudio para econometría, Power BI para tableros de negocios y simuladores de toma de decisiones.",
+        "software": ["Excel avanzado (Solver / Tablas dinámicas)", "Stata / RStudio (econometría)", "Power BI / Tableau", "Python para negocios", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [
+            {"name": "Casio fx-991CW ClassWiz", "why": "Álgebra matricial, cálculo multivariable y estadística en primeros 3 años.", "price": "~$32.000 – $42.000 CLP"},
+            {"name": "HP 12c Financiera (Opcional)", "why": "Clásica calculadora financiera para ramos avanzados de Finanzas e Inversiones (TIR, VAN, bonos).", "price": "~$45.000 – $65.000 CLP"}
+        ],
+        "accessories": [
+            {"name": "Teclado con pad numérico integrado", "priority": "must", "reason": "Indispensable para ingresar estados financieros y flujos de caja a toda velocidad."},
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Navegar hojas de cálculo multicapa y tableros en Power BI."},
+            {"name": "Adaptador USB-C a HDMI", "priority": "rec", "reason": "Para defensas de planes de negocios y pitch de marketing frente a comisiones."}
+        ],
+        "tablets": [{"emoji": "💼", "name": "iPad 10ma gen o Galaxy Tab S9 FE", "reason": "Herramienta ideal para estudiar casos Harvard Business School y presentar proyectos a clientes.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["thinkbook", "thinkpad", "zenbook", "macbook", "aspire", "16 gb"], "motivo": "Rendimiento veloz en Excel con grandes volúmenes de datos, Stata y Power BI.", "badge": "Business & Analytics"}
+    },
+
+    "ingenieria-comercial-chillan": {
+        "label": "Ingeniería Comercial — Chillán",
+        "campus": "Campus Chillán",
+        "url": "https://admision.udec.cl/ingenieria-comercial-chillan/",
+        "family": "business_quant",
+        "alert": "<strong>Gestión estratégica de empresas y agronegocios en Ñuble:</strong> Modelos financieros en Excel, econometría aplicada en Stata/R y evaluación de proyectos de inversión en Campus Chillán.",
+        "software": ["Excel avanzado", "Stata / RStudio", "Power BI", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Cálculo, optimización y finanzas corporativas.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico con teclado numérico", "priority": "must", "reason": "Velocidad en modelos de finanzas y flujos de caja."},
+            {"name": "Funda para notebook", "priority": "must", "reason": "Protección para traslados en Campus Chillán."}
+        ],
+        "tablets": [{"emoji": "💼", "name": "iPad 9a/10a gen o Galaxy Tab", "reason": "Para lectura de casos de negocios y presentaciones.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["thinkbook", "aspire", "vivobook", "16 gb"], "motivo": "Modelación en Excel, econometría y evaluación de proyectos en Campus Chillán.", "badge": "Comercial Chillán"}
+    },
+
+    "ingenieria-comercial-los-angeles": {
+        "label": "Ingeniería Comercial — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/ingenieria-comercial-los-angeles/",
+        "family": "business_quant",
+        "alert": "<strong>Finanzas, gestión empresarial y desarrollo económico regional:</strong> Modelación económica en Excel y Stata, gestión de operaciones y proyectos de emprendimiento en la provincia del Biobío.",
+        "software": ["Excel avanzado", "Stata / RStudio", "Power BI", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW", "why": "Cálculo financiero, tasas de interés y estadística de negocios.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse inalámbrico", "priority": "must", "reason": "Imprescindible para trabajar con hojas de cálculo continuas."}
+        ],
+        "tablets": [{"emoji": "💼", "name": "Tablet Samsung o iPad", "reason": "Para lectura de papers de economía y casos de estudio.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["thinkbook", "aspire", "vivobook", "16 gb"], "motivo": "Finanzas corporativas, Excel y econometría en Campus Los Ángeles.", "badge": "Comercial Los Ángeles"}
+    },
+
+    "auditoria": {
+        "label": "Auditoría",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/auditoria/",
+        "family": "business_quant",
+        "alert": "<strong>Auditoría contable, tributaria y sistemas ERP:</strong> Analizarás estados financieros bajo normas IFRS, auditoría forense con software de datos (ACL, IDEA), ERPs empresariales (SAP básico) y planillas tributarias masivas.",
+        "software": ["Excel avanzado (Macros / Power Query)", "Software de auditoría (IDEA / ACL básico)", "Sistemas ERP contables (Softland/SAP)", "Power BI", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 2, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica con funciones estadísticas", "why": "Muestreo de auditoría, matemática financiera y cálculo de impuestos.", "price": "~$22.000 – $35.000 CLP"}],
+        "accessories": [
+            {"name": "Teclado numérico físico obligatorio", "priority": "must", "reason": "Ingresar libros diarios, balances de comprobación y balances tributarios sin teclado numérico es inviable."},
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para auditar hojas de cálculo de cientos de filas y columnas."},
+            {"name": "Disco SSD externo", "priority": "must", "reason": "Para respaldos de papeles de trabajo de auditoría e informes IFRS."}
+        ],
+        "tablets": [{"emoji": "🧾", "name": "Tablet Galaxy Tab o iPad", "reason": "Para consulta de normas internacionales IFRS/NIIF y leyes tributarias en cualquier lugar.", "price": "$180.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["thinkbook", "aspire", "vivobook", "thinkpad", "16 gb"], "motivo": "Potencia en Excel, Power Query y software de auditoría contable y tributaria.", "badge": "Auditoría & IFRS"}
+    },
+
+    "auditoria-diurna": {
+        "label": "Auditoría — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/auditoria-diurna/",
+        "family": "business_quant",
+        "alert": "<strong>Auditoría y contabilidad pública en Campus Los Ángeles:</strong> Formación en normas IFRS, auditoría de gestión tributaria y control financiero en empresas de la provincia de Biobío.",
+        "software": ["Excel avanzado (Power Query)", "Software ERP contable", "Office 365", "Power BI"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 2, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica estándar", "why": "Cálculo de impuestos, depreciaciones de activos y matemática financiera.", "price": "~$22.000 – $35.000 CLP"}],
+        "accessories": [
+            {"name": "Teclado numérico", "priority": "must", "reason": "Indispensable para asientos contables e ingresos numéricos continuos."}
+        ],
+        "tablets": [{"emoji": "🧾", "name": "Tablet Samsung o iPad", "reason": "Lectura de normas contables IFRS y código tributario.", "price": "$180.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["thinkbook", "aspire", "ideapad", "16 gb"], "motivo": "Manejo ágil de planillas contables, normas IFRS y auditoría en Campus Los Ángeles.", "badge": "Auditoría Los Ángeles"}
+    },
+
+    "administracion-publica-y-ciencia-politica": {
+        "label": "Administración Pública y Ciencia Política",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/administracion-publica-y-ciencia-politica/",
+        "family": "business_quant",
+        "alert": "<strong>Políticas públicas, compras estatales y análisis gubernamental:</strong> Analizarás presupuestos del sector público (SIGFE, Mercado Público), formulación de políticas públicas en matriz de marco lógico y análisis de opinión pública en SPSS.",
+        "software": ["Excel avanzado (presupuesto público)", "SPSS / RStudio (datos electorales)", "Mercado Público / SIGFE", "Zotero", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Calculadora básica", "why": "Cálculo de índices presupuestarios públicos, inflación y ejecución de gastos.", "price": "~$8.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Navegación de presupuestos públicos y licitaciones del Estado."},
+            {"name": "Funda acolchada para notebook", "priority": "must", "reason": "Protege el equipo en traslados a ministerios y municipalidades en práctica profesional."}
+        ],
+        "tablets": [{"emoji": "🏛️", "name": "Tablet Samsung o iPad", "reason": "Ideal para leer leyes de presupuesto, estatuto administrativo y políticas públicas.", "price": "$180.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad", "thinkpad"], "motivo": "Equipo ligero y ágil para gestión presupuestaria pública, datos de gobierno y políticas.", "badge": "Gestión Pública & Estado"}
+    },
+
+    "ingenieria-estadistica": {
+        "label": "Ingeniería Estadística",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/ingenieria-estadistica/",
+        "family": "business_quant",
+        "alert": "<strong>Ciencia de datos, inferencia y modelación predictiva:</strong> Tu software central es R, Python (scikit-learn, statsmodels), SAS y bases de datos SQL para minería de datos y Machine Learning. Se necesita procesador multinúcleo y mínimo 16GB de RAM.",
+        "software": ["R + RStudio (Tidyverse)", "Python (scikit-learn / Pandas)", "SQL (PostgreSQL / SQLite)", "SAS / SPSS", "LaTeX / Quarto"],
+        "scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 6, "Battery": 7, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Distribuciones de probabilidad continuas/discretas, contrastes de hipótesis y matrices de covarianza.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Monitor externo de 24\" o 27\"", "priority": "must", "reason": "Scripts de análisis estadístico en una pantalla y gráficos ggplot2 / reportes Quarto en la otra."},
+            {"name": "Mouse ergonómico", "priority": "rec", "reason": "Para jornadas intensas de depuración de código y exploración de datos."},
+            {"name": "Disco SSD externo", "priority": "must", "reason": "Para almacenar datasets pesados sin saturar la unidad principal."}
+        ],
+        "tablets": [{"emoji": "📈", "name": "iPad o Galaxy Tab con lápiz", "reason": "Para deducir demostraciones de inferencia estadística y estimadores a mano.", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "32 gb", "16 gb", "rstudio"], "motivo": "Máxima fluidez para ciencia de datos en R, Python, Machine Learning y Big Data.", "badge": "Data Science & Inferencia"}
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # FACULTAD DE EDUCACIÓN Y PEDAGOGÍAS
+    # ══════════════════════════════════════════════════════════════════════
+    "educacion-general-basica": {
+        "label": "Educación General Básica",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/educacion-general-basica/",
+        "family": "education",
+        "alert": "<strong>Diseño didáctico multimedia y docencia en aula:</strong> Crearás recursos interactivos (Canva, Genially), guías de aprendizaje y planificaciones curriculares, además de proyectar material en colegios de práctica.",
+        "software": ["Canva Pro / Genially", "Google Classroom / Workspace", "PowerPoint interactivo", "Excel (evaluación y notas)", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio científica básica (fx-82MS)", "why": "Para ramos de didáctica de la matemática en enseñanza básica.", "price": "~$15.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Puntero láser inalámbrico con control de diapositivas", "priority": "must", "reason": "Para desplazarte libremente por la sala de clases mientras presentas material."},
+            {"name": "Adaptador USB-C a HDMI y VGA", "priority": "must", "reason": "Los proyectores de colegios e institutos suelen tener cables VGA antiguos o HDMI."},
+            {"name": "Mochila acolchada", "priority": "rec", "reason": "Para transportar computador y material didáctico a las prácticas en colegios."}
+        ],
+        "tablets": [{"emoji": "🎒", "name": "Tablet Samsung Galaxy Tab A9+ o iPad 9a", "reason": "Excelente para pasar asistencia, mostrar láminas ilustrativas a los niños y evaluar en aula.", "price": "$160.000 – $280.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad", "galaxy book"], "motivo": "Ligero, con HDMI y batería duradera para planificaciones didácticas y docencia escolar.", "badge": "Docencia Básica & Aula"}
+    },
+
+    "educacion-general-basica-los-angeles": {
+        "label": "Educación General Básica — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/educacion-general-basica-los-angeles/",
+        "family": "education",
+        "alert": "<strong>Pedagogía en enseñanza básica en Campus Los Ángeles:</strong> Prácticas docentes en escuelas urbanas y rurales de la provincia del Biobío. Prioriza autonomía de batería y salida HDMI para proyectores escolares.",
+        "software": ["Canva / Genially", "Google Workspace", "Excel", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS", "why": "Didáctica matemática en educación primaria.", "price": "~$15.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Adaptador HDMI/VGA", "priority": "must", "reason": "Para proyectores de colegios de práctica de Los Ángeles."}
+        ],
+        "tablets": [{"emoji": "🎒", "name": "Tablet Samsung A9+ / iPad", "reason": "Para recursos didácticos interactivos en la sala de clases.", "price": "$160.000 – $280.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad"], "motivo": "Batería y ligereza para prácticas docentes en escuelas de Los Ángeles.", "badge": "Docencia Los Ángeles"}
+    },
+
+    "educacion-diferencial": {
+        "label": "Educación Diferencial",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/educacion-diferencial/",
+        "family": "education",
+        "alert": "<strong>Educación inclusiva y adecuaciones curriculares (PIE):</strong> Crearás material adaptado con pictogramas (ARASAAC), tableros de comunicación aumentativa, software de lectura accesible y evaluaciones psicopedagógicas.",
+        "software": ["Software de pictogramas (ARASAAC / In-TIC)", "Canva Pro", "Lectores de pantalla / Accesibilidad", "Office 365", "Google Workspace"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Calculadora básica", "why": "Cálculo de edades cronológicas y puntajes estandarizados en tests psicopedagógicos.", "price": "~$8.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse inalámbrico de fácil agarre", "priority": "must", "reason": "Para diseñar material visual adaptado y pictogramas."},
+            {"name": "Adaptador HDMI/VGA para proyectar", "priority": "must", "reason": "Conexión en salas PIE y escuelas especiales de práctica."},
+            {"name": "Funda resistente", "priority": "rec", "reason": "Para traslados seguros entre aulas de recursos."}
+        ],
+        "tablets": [{"emoji": "🧩", "name": "iPad 10ma gen o Galaxy Tab con lápiz — MUY RECOMENDADO", "reason": "Herramienta terapéutica y didáctica insustituible para niños con necesidades educativas especiales (TEA, TDAH, motricidad).", "price": "$240.000 – $380.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad", "galaxy book"], "motivo": "Equipo ágil con pantalla clara para diseño de material adaptado PIE y educación inclusiva.", "badge": "Educación Inclusiva & PIE"}
+    },
+
+    "educacion-diferencial-los-angeles": {
+        "label": "Educación Diferencial — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/educacion-diferencial-los-angeles/",
+        "family": "education",
+        "alert": "<strong>Inclusión y atención a la diversidad en Campus Los Ángeles:</strong> Diseño de recursos adaptados para programas de integración escolar (PIE) en escuelas de la provincia.",
+        "software": ["ARASAAC / Pictogramas", "Canva", "Office 365", "Google Classroom"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Calculadora básica", "why": "Para percentiles y edades cronológicas en evaluaciones.", "price": "~$8.000 CLP"}],
+        "accessories": [
+            {"name": "Adaptador multipuerto", "priority": "must", "reason": "Conexión a proyectores y pantallas en escuelas especiales."}
+        ],
+        "tablets": [{"emoji": "🧩", "name": "iPad 9a/10a o Galaxy Tab", "reason": "Excelente para aplicaciones de comunicación aumentativa en aula.", "price": "$220.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad"], "motivo": "Diseño de material didáctico inclusivo y apoyo PIE en escuelas de Los Ángeles.", "badge": "Diferencial Los Ángeles"}
+    },
+
+    "educacion-parvularia": {
+        "label": "Educación Parvularia",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/educacion-parvularia/",
+        "family": "education",
+        "alert": "<strong>Desarrollo infantil temprano y estimulación didáctica:</strong> Crearás canciones, cuentos interactivos digitales, láminas plastificadas y planificaciones pedagógicas alineadas con las Bases Curriculares de Educación Parvularia (BCEP).",
+        "software": ["Canva Pro (láminas y recursos)", "Audacity / Spotify (canciones infantiles)", "PowerPoint interactivo", "Office 365", "Pinterest"],
+        "scores": {"CPU": 5, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora formal en Educación Parvularia.", "price": "$0"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para recortar, diseñar y diagramar cuentos y material visual en Canva."},
+            {"name": "Funda antigolpes para mochila", "priority": "must", "reason": "Protege el computador en salas de párvulos y jardines infantiles de práctica."},
+            {"name": "Adaptador HDMI / VGA", "priority": "must", "reason": "Para proyectar videos y canciones en las salas de actividades."}
+        ],
+        "tablets": [{"emoji": "🧸", "name": "Tablet Samsung Galaxy Tab A9+ o iPad", "reason": "Permite proyectar cuentos ilustrados a los niños y poner canciones infantiles fácilmente.", "price": "$160.000 – $280.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["aspire", "vivobook", "ideapad slim", "galaxy book"], "motivo": "Ligero, batería duradera y facilidad para diseño de recursos didácticos infantiles.", "badge": "Infancia & Didáctica"}
+    },
+
+    "pedagogia-en-educacion-fisica": {
+        "label": "Pedagogía en Educación Física",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-educacion-fisica/",
+        "family": "education",
+        "alert": "<strong>Fisiología del ejercicio, evaluación deportiva y motricidad escolar:</strong> Analizarás patrones motores en video (Kinovea), planificarás entrenamientos y procesarás tests de aptitud física escolar (Navette, salto largo) en Excel.",
+        "software": ["Kinovea (análisis de movimiento)", "Excel (batería de tests motores)", "Canva (pautas de entrenamiento)", "Office 365", "Google Forms"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 4, "Battery": 9, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio básica o científica", "why": "Cálculo de VO2 máx, frecuencias cardíacas de entrenamiento y porcentajes de grasa.", "price": "~$15.000 – $25.000 CLP"}],
+        "accessories": [
+            {"name": "Funda deportiva resistente y repelente al agua", "priority": "must", "reason": "Para llevar a gimnasios, pistas de atletismo y canchas de la Casa del Deporte UdeC."},
+            {"name": "Mouse inalámbrico", "priority": "rec", "reason": "Para análisis de gestos técnicos en video."},
+            {"name": "Puntero láser inalámbrico", "priority": "rec", "reason": "Para clases teóricas de anatomía y fisiología del ejercicio."}
+        ],
+        "tablets": [{"emoji": "⚽", "name": "Tablet Galaxy Tab A9+ o iPad con funda antigolpes", "reason": "Ideal para llevar a la cancha, cronometrar y registrar marcas de alumnos en tiempo real.", "price": "$170.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad", "galaxy book"], "motivo": "Batería prolongada, ligereza y resistencia para gimnasios, pistas y docencia deportiva.", "badge": "Motricidad & Deporte"}
+    },
+
+    "pedagogia-en-educacion-musical": {
+        "label": "Pedagogía en Educación Musical",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-educacion-musical/",
+        "family": "education",
+        "alert": "<strong>Edición de partituras, teoría musical y producción de audio escolar:</strong> Utilizarás software de notación musical (MuseScore, Sibelius, Finale) y grabación/secuenciación en estaciones DAW (Reaper, Ableton Live o GarageBand).",
+        "software": ["MuseScore / Sibelius (partituras)", "Reaper / GarageBand / Ableton (DAW)", "Audacity", "Guitar Pro", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora en música.", "price": "$0"}],
+        "accessories": [
+            {"name": "Audífonos de estudio cerrados de alta fidelidad (ej. Audio-Technica M20x/M30x)", "priority": "must", "reason": "Indispensables para arreglos corales, armonía y mezcla de pistas escolares con nitidez."},
+            {"name": "Interfaz de audio USB (ej. Focusrite Scarlett o Behringer UMC)", "priority": "rec", "reason": "Para conectar micrófonos e instrumentos en la grabación de ensambles musicales escolares."},
+            {"name": "Teclado controlador MIDI USB compacto", "priority": "rec", "reason": "Agiliza en un 300% el ingreso de notas a las partituras en MuseScore/Sibelius."}
+        ],
+        "tablets": [{"emoji": "🎵", "name": "iPad 10ma gen o Galaxy Tab con stylus", "reason": "Reemplazo total del atril de papel: lee partituras en vivo y anota digitaciones a mano.", "price": "$280.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["macbook air", "vivobook", "aspire", "ideapad", "16 gb"], "motivo": "Latencia baja de audio y fluidez para software de partituras (MuseScore/Sibelius) y DAWs.", "badge": "Notación & Audio Musical"}
+    },
+
+    "pedagogia-en-artes-visuales": {
+        "label": "Pedagogía en Artes Visuales",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-artes-visuales/",
+        "family": "visual_arts",
+        "alert": "<strong>Educación artística, grabado, pintura y tecnologías visuales:</strong> Diseñarás proyectos didácticos de artes, guías visuales y presentaciones estéticas en Photoshop, Illustrator y Canva. La fidelidad de color de la pantalla es clave.",
+        "software": ["Adobe Photoshop", "Adobe Illustrator", "Canva Pro", "InDesign", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 5, "Battery": 8, "Display": 9},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#22c55e", "Display": "#ec4899"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora formal.", "price": "$0"}],
+        "accessories": [
+            {"name": "Tableta digitalizadora Wacom One o Intuos", "priority": "must", "reason": "Para crear ilustraciones didácticas y demostraciones de técnicas artísticas a estudiantes."},
+            {"name": "Pantalla IPS 100% sRGB", "priority": "must", "reason": "Para garantizar fidelidad tonal en reproducciones de obras de arte."},
+            {"name": "Adaptador HDMI para proyectar en colegios", "priority": "must", "reason": "Para presentar obras y artistas en clases de historia del arte."}
+        ],
+        "tablets": [{"emoji": "🎨", "name": "iPad 10ma gen con Apple Pencil", "reason": "Excelente para bosquejar y mostrar obras interactivas a estudiantes en aula.", "price": "$330.000 – $420.000 CLP"}],
+        "db_profile": {"min_ram": 16, "gpu_dedicada": False, "palabras_clave": ["oled", "vivobook", "aspire", "100% srgb", "macbook", "16 gb"], "motivo": "Pantalla calibrada para color y fluidez en suite Adobe para proyectos artísticos didácticos.", "badge": "Artes Visuales & Didáctica"}
+    },
+
+    "pedagogia-en-espanol": {
+        "label": "Pedagogía en Español",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-espanol/",
+        "family": "education",
+        "alert": "<strong>Didáctica de la lengua, literatura y gramática:</strong> Redactarás planificaciones curriculares, análisis sintáctico de oraciones, ensayos literarios y diseñarás guías de comprensión lectora para enseñanza media.",
+        "software": ["Word avanzado", "Canva Pro (guías de lectura)", "Zotero / Mendeley (APA)", "Diccionario RAE digital", "Google Classroom"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora en Pedagogía en Español.", "price": "$0"}],
+        "accessories": [
+            {"name": "Teclado ergonómico", "priority": "must", "reason": "Tipeo continuo de ensayos literarios, corrección de pruebas y guías de lenguaje."},
+            {"name": "Soporte elevador para laptop", "priority": "must", "reason": "Comodidad visual para revisar cientos de ensayos de alumnos."},
+            {"name": "Adaptador HDMI/VGA", "priority": "must", "reason": "Para proyectar en colegios de práctica."}
+        ],
+        "tablets": [{"emoji": "📚", "name": "Kindle Paperwhite o iPad 9a/10a", "reason": "Para leer obras literarias clásicas y novelas contemporáneas sin cansar la vista.", "price": "$120.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "macbook air", "aspire", "vivobook"], "motivo": "Pantalla descansada, teclado ergonómico y batería durable para didáctica de la lengua.", "badge": "Lengua & Literatura"}
+    },
+
+    "pedagogia-en-espanol-los-angeles": {
+        "label": "Pedagogía en Español — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/pedagogia-en-espanol-los-angeles/",
+        "family": "education",
+        "alert": "<strong>Pedagogía en Lenguaje y Comunicación en Campus Los Ángeles:</strong> Prácticas en liceos y colegios de la provincia de Biobío. Prioriza teclado de tipeo rápido y batería para toda la jornada.",
+        "software": ["Word", "Canva", "Google Workspace", "Zotero"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora.", "price": "$0"}],
+        "accessories": [
+            {"name": "Funda para notebook", "priority": "must", "reason": "Seguridad en traslados a colegios de Los Ángeles."}
+        ],
+        "tablets": [{"emoji": "📚", "name": "Kindle o iPad", "reason": "Lectura masiva de obras literarias y textos escolares.", "price": "$120.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "aspire", "vivobook"], "motivo": "Equipo liviano y cómodo para redacción y docencia de lengua en Los Ángeles.", "badge": "Español Los Ángeles"}
+    },
+
+    "pedagogia-en-ingles": {
+        "label": "Pedagogía en Inglés",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-ingles/",
+        "family": "education",
+        "alert": "<strong>Enseñanza del inglés como lengua extranjera (TEFL/TESOL):</strong> Grabación de pronunciación, fonética acústica en Praat, recursos interactivos de listening (BBC Learning English, Kahoot) y presentaciones dinámicas en aula.",
+        "software": ["Praat (fonética acústica)", "Audacity", "Kahoot / Quizlet", "Canva Pro", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora en Pedagogía en Inglés.", "price": "$0"}],
+        "accessories": [
+            {"name": "Headset con micrófono con cancelación de ruido", "priority": "must", "reason": "Esencial para laboratorios de fonética, evaluación de pronunciación y listening."},
+            {"name": "Puntero inalámbrico de diapositivas", "priority": "must", "reason": "Para dinamizar la enseñanza comunicativa del idioma en la sala de clases."},
+            {"name": "Adaptador HDMI / VGA", "priority": "must", "reason": "Para proyectar videos y audios en liceos de práctica."}
+        ],
+        "tablets": [{"emoji": "🇬🇧", "name": "iPad 10ma gen o Galaxy Tab", "reason": "Herramienta ideal para llevar actividades interactivas y lecturas graduadas al aula.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["aspire", "vivobook", "macbook air", "ideapad slim"], "motivo": "Excelente micrófono/audio, batería y ligereza para didáctica del inglés (TEFL).", "badge": "Didáctica del Inglés"}
+    },
+
+    "pedagogia-en-ingles-los-angeles": {
+        "label": "Pedagogía en Inglés — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/pedagogia-en-ingles-los-angeles/",
+        "family": "education",
+        "alert": "<strong>Docencia del idioma inglés en Campus Los Ángeles:</strong> Prácticas en colegios de la provincia. Prioriza conectividad HDMI para proyectores y buen micrófono para audio de pronunciación.",
+        "software": ["Praat", "Audacity", "Canva", "Google Classroom", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora.", "price": "$0"}],
+        "accessories": [
+            {"name": "Headset con micrófono", "priority": "must", "reason": "Para prácticas de pronunciación fonética."},
+            {"name": "Adaptador HDMI", "priority": "must", "reason": "Para proyecciones en colegios de práctica."}
+        ],
+        "tablets": [{"emoji": "🇬🇧", "name": "Tablet Samsung A9+ / iPad", "reason": "Para juegos y dinámicas interactivas de inglés en sala.", "price": "$170.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["aspire", "vivobook", "ideapad"], "motivo": "Autonomía de batería y audio claro para docencia del idioma en Los Ángeles.", "badge": "Inglés Los Ángeles"}
+    },
+
+    "pedagogia-en-historia-y-geografia": {
+        "label": "Pedagogía en Historia y Geografía",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-historia-y-geografia/",
+        "family": "education",
+        "alert": "<strong>Didáctica de las ciencias sociales y pensamiento crítico:</strong> Crearás mapas históricos didácticos en QGIS/Google Earth, líneas de tiempo interactivas y presentaciones audiovisuales para educación media.",
+        "software": ["QGIS / Google Earth", "Canva Pro / Genially", "Timeline JS (líneas de tiempo)", "Zotero", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 9, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora formal.", "price": "$0"}],
+        "accessories": [
+            {"name": "Puntero láser inalámbrico", "priority": "must", "reason": "Para señalar mapas y eventos históricos en proyecciones de clases."},
+            {"name": "Adaptador HDMI / VGA", "priority": "must", "reason": "Para conectar proyectores de colegios e institutos."},
+            {"name": "Funda acolchada", "priority": "must", "reason": "Para traslados seguros en micro y locomoción colectiva a las prácticas."}
+        ],
+        "tablets": [{"emoji": "🗺️", "name": "iPad 9a/10a gen o Galaxy Tab", "reason": "Excelente para mostrar mapas interactivos y fotografías históricas a estudiantes.", "price": "$220.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["aspire", "vivobook", "ideapad", "thinkpad"], "motivo": "Batería y ligereza para didáctica de la historia, cartografía escolar y presentaciones.", "badge": "Historia & Didáctica Social"}
+    },
+
+    "pedagogia-en-filosofia": {
+        "label": "Pedagogía en Filosofía",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-filosofia/",
+        "family": "education",
+        "alert": "<strong>Argumentación filosófica, ética y pensamiento crítico:</strong> Lectura y análisis de textos clásicos (Platón, Kant, Nietzsche), redacción de ensayos filosóficos y diseño de debates reflexivos en aula.",
+        "software": ["Word", "Adobe Acrobat Reader", "Zotero (citas bibliográficas)", "Canva", "Google Classroom"],
+        "scores": {"CPU": 5, "RAM": 8, "Storage": 6, "GPU": 2, "Battery": 10, "Display": 8},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "No aplica", "why": "No se requiere calculadora en filosofía.", "price": "$0"}],
+        "accessories": [
+            {"name": "Teclado ergonómico", "priority": "must", "reason": "Comodidad para escribir extensos ensayos de reflexión filosófica."},
+            {"name": "Soporte elevador para laptop", "priority": "must", "reason": "Para horas de lectura de textos densos con buena postura."},
+            {"name": "Adaptador HDMI/VGA", "priority": "must", "reason": "Para conectar proyectores en liceos."}
+        ],
+        "tablets": [{"emoji": "🏛️", "name": "Kindle Paperwhite o iPad 9a/10a", "reason": "Para leer tratados filosóficos completos con pantalla mate descansada.", "price": "$120.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.5, "palabras_clave": ["thinkpad", "macbook air", "aspire", "ideapad slim"], "motivo": "Autonomía de batería y pantalla descansada para lectura y redacción filosófica.", "badge": "Filosofía & Argumentación"}
+    },
+
+    "pedagogia-en-matematicas": {
+        "label": "Pedagogía en Matemáticas",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-matematicas/",
+        "family": "education",
+        "alert": "<strong>Didáctica de la geometría, álgebra y cálculo escolar:</strong> Utilizarás intensivamente GeoGebra para modelar figuras geométricas en tiempo real, LaTeX para pruebas y certámenes matemáticos con tipografía profesional.",
+        "software": ["GeoGebra (geometría dinámica)", "LaTeX / Overleaf (pruebas formales)", "Excel (estadística escolar)", "Python básico", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz — OBLIGATORIA", "why": "La calculadora de referencia en la formación del profesor de matemáticas (matrices, derivadas, integrales y funciones QR).", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para manipular construcciones geométricas y deslizadores en GeoGebra."},
+            {"name": "Adaptador HDMI/VGA", "priority": "must", "reason": "Para proyectar animaciones de GeoGebra en la sala de clases."},
+            {"name": "Teclado cómodo para código LaTeX", "priority": "rec", "reason": "Para escribir ecuaciones de evaluaciones y guías."}
+        ],
+        "tablets": [{"emoji": "📐", "name": "Tablet Samsung Tab S6 Lite o iPad 10ma con stylus", "reason": "Pizarra digital portátil para resolver ejercicios paso a paso frente al curso.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["aspire", "vivobook", "ideapad", "thinkbook", "geogebra", "16 gb"], "motivo": "Fluidez para GeoGebra dinámico, compilación de pruebas en LaTeX y cálculo escolar.", "badge": "GeoGebra & Didáctica Matemática"}
+    },
+
+    "pedagogia-en-matematicas-los-angeles": {
+        "label": "Pedagogía en Matemáticas — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/pedagogia-en-matematicas-los-angeles/",
+        "family": "education",
+        "alert": "<strong>Formación de profesores de matemática en Campus Los Ángeles:</strong> Didáctica escolar, uso intensivo de GeoGebra y preparación de material de evaluación en LaTeX y Word.",
+        "software": ["GeoGebra", "LaTeX / Overleaf", "Excel", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Calculadora oficial para certámenes de matemáticas universitarias y escolares.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Adaptador HDMI para proyector", "priority": "must", "reason": "Imprescindible para proyectar GeoGebra en colegios de Los Ángeles."}
+        ],
+        "tablets": [{"emoji": "📐", "name": "Tablet Galaxy Tab / iPad con lápiz", "reason": "Pizarra digital para resolución interactiva de ecuaciones.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["aspire", "vivobook", "ideapad"], "motivo": "Docencia matemática en GeoGebra y elaboración de evaluaciones en Los Ángeles.", "badge": "Matemáticas Los Ángeles"}
+    },
+
+    "pedagogia-en-ciencias-naturales-y-biologia": {
+        "label": "Pedagogía en Ciencias Naturales y Biología",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-biologia/",
+        "family": "education",
+        "alert": "<strong>Laboratorios escolares, ecología y didáctica de las ciencias:</strong> Crearás guías de laboratorio escolar seguras, esquemas de biología celular en Canva y simulaciones interactivas de ciencias (PhET Interactive Simulations).",
+        "software": ["Simulaciones PhET (Colorado)", "Complete Anatomy básico", "Canva Pro", "ImageJ", "Office 365"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS o fx-991CW", "why": "Cálculo de genética mendeliana, tasas metabólicas y bioestadística escolar.", "price": "~$18.000 – $32.000 CLP"}],
+        "accessories": [
+            {"name": "Adaptador HDMI / VGA", "priority": "must", "reason": "Para proyectar simulaciones científicas de PhET en la sala de clases."},
+            {"name": "Funda protectora para laboratorio", "priority": "must", "reason": "Protección para trabajo con microscopios y reactivos escolares."},
+            {"name": "Puntero láser inalámbrico", "priority": "rec", "reason": "Para explicar esquemas anatómicos y fisiológicos proyectados."}
+        ],
+        "tablets": [{"emoji": "🔬", "name": "Tablet Samsung Tab A9+ o iPad", "reason": "Para mostrar modelos tridimensionales de células y organismos a los alumnos.", "price": "$180.000 – $340.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad", "galaxy book"], "motivo": "Equipo ligero para didáctica de las ciencias naturales, simulaciones PhET y laboratorios.", "badge": "Ciencias & Laboratorio Escolar"}
+    },
+
+    "pedagogia-en-ciencias-naturales-y-biologia-los-angeles": {
+        "label": "Pedagogía en Ciencias Naturales y Biología — Los Ángeles",
+        "campus": "Campus Los Ángeles",
+        "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-biologia-los-angeles/",
+        "family": "education",
+        "alert": "<strong>Enseñanza de las ciencias biológicas en Campus Los Ángeles:</strong> Prácticas escolares con laboratorios de biología, ecología de la cuenca del Biobío y diseño de material didáctico.",
+        "software": ["PhET Simulations", "Canva", "Office 365", "Google Classroom"],
+        "scores": {"CPU": 6, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-82MS", "why": "Genética y bioestadística escolar.", "price": "~$18.000 – $28.000 CLP"}],
+        "accessories": [
+            {"name": "Adaptador HDMI para proyector", "priority": "must", "reason": "Proyección de recursos visuales en colegios de Los Ángeles."}
+        ],
+        "tablets": [{"emoji": "🔬", "name": "Tablet Samsung A9+ / iPad", "reason": "Para interactuar con simuladores científicos en la sala de clases.", "price": "$170.000 – $320.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "peso_max": 1.6, "palabras_clave": ["aspire", "vivobook", "ideapad"], "motivo": "Didáctica científica escolar y laboratorios en Campus Los Ángeles.", "badge": "Biología Los Ángeles"}
+    },
+
+    "pedagogia-en-ciencias-naturales-y-fisica": {
+        "label": "Pedagogía en Ciencias Naturales y Física",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-fisica/",
+        "family": "education",
+        "alert": "<strong>Laboratorios experimentales de física y simulaciones mecánicas:</strong> Usarás Tracker (análisis de video de cinemática y dinámica), PhET Physics y GeoGebra para enseñar las leyes de Newton, óptica y electromagnetismo.",
+        "software": ["Tracker (videoanálisis físico)", "Simulaciones PhET (Colorado)", "GeoGebra", "Excel científico", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Imprescindible para ramos universitarios de Mecánica, Electromagnetismo y Óptica.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse ergonómico", "priority": "must", "reason": "Para marcar trayectorias cuadro a cuadro en Tracker Video Analysis."},
+            {"name": "Adaptador HDMI/VGA", "priority": "must", "reason": "Para proyectar simulaciones de física y experimentos en aula."},
+            {"name": "Puntero láser", "priority": "rec", "reason": "Para presentaciones y experimentos de óptica geométrica."}
+        ],
+        "tablets": [{"emoji": "⚡", "name": "Tablet Samsung Tab / iPad", "reason": "Pizarra digital para resolución en vivo de diagramas de cuerpo libre y circuitos.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["aspire", "vivobook", "ideapad", "thinkbook"], "motivo": "Fluidez para videoanálisis en Tracker, simulaciones PhET de física y docencia escolar.", "badge": "Física Escolar & Tracker"}
+    },
+
+    "pedagogia-en-ciencias-naturales-y-quimica": {
+        "label": "Pedagogía en Ciencias Naturales y Química",
+        "campus": "Campus Concepción",
+        "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-quimica/",
+        "family": "education",
+        "alert": "<strong>Didáctica de la química, estequiometría y laboratorio escolar:</strong> Dibujarás moléculas y reacciones en ChemDraw/ChemSketch, diseñarás prácticas seguras de laboratorio escolar y proyectarás simulaciones de enlace químico.",
+        "software": ["ChemDraw / ChemSketch", "PhET Chemistry Simulations", "Avogadro (modelado molecular 3D)", "Canva Pro", "Office 365"],
+        "scores": {"CPU": 7, "RAM": 8, "Storage": 6, "GPU": 3, "Battery": 8, "Display": 7},
+        "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"},
+        "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Estequiometría, equilibrios químicos, pH de disoluciones y cinéticas.", "price": "~$32.000 – $42.000 CLP"}],
+        "accessories": [
+            {"name": "Mouse óptico", "priority": "must", "reason": "Para dibujar fórmulas estructurales y enlaces en ChemDraw."},
+            {"name": "Adaptador HDMI/VGA", "priority": "must", "reason": "Para proyectar simulaciones moleculares en la sala de clases."},
+            {"name": "Funda resistente al agua", "priority": "must", "reason": "Seguridad para trabajo en laboratorios de química de la universidad y colegios."}
+        ],
+        "tablets": [{"emoji": "🧪", "name": "Tablet Samsung Tab / iPad", "reason": "Para mostrar modelos moleculares 3D interactivos a estudiantes de educación media.", "price": "$220.000 – $360.000 CLP"}],
+        "db_profile": {"min_ram": 8, "gpu_dedicada": False, "palabras_clave": ["aspire", "vivobook", "ideapad", "chemdraw"], "motivo": "Fluidez para ChemDraw, simulaciones PhET de química y experimentos de aula.", "badge": "Química Escolar & Didáctica"}
+    }
+}
+
+# Agregar retrocompatibilidad para alias antiguos (ej. ing_civil_industrial)
+ALIASES = {
+    "ing_civil_industrial": "ingenieria-civil-industrial",
+    "ing_civil_informatica": "ingenieria-civil-informatica",
+    "ing_mecanica": "ingenieria-civil-mecanica",
+    "ing_electrica": "ingenieria-civil-electrica",
+    "ing_quimica": "ingenieria-civil-quimica",
+    "ing_comercial": "ingenieria-comercial",
+    "diseno_grafico": "artes-visuales",
+    "administracion": "administracion-publica-y-ciencia-politica",
+    "contabilidad": "auditoria",
+    "economia": "ingenieria-comercial",
+    "cine": "artes-visuales",
+    "pedagogia": "educacion-general-basica",
+    "agronomia-concepcion": "agronomia",
+    "derecho-chillan": "derecho-2",
+    "auditoria-los-angeles": "auditoria-diurna",
+    "ingenieria-en-biotecnologia-vegetal-los-angeles": "ingenieria-en-biotecnologia-vegetal-2"
+}
+
+for alias, target in ALIASES.items():
+    if target in CARRERAS_DETALLADAS and alias not in CARRERAS_DETALLADAS:
+        CARRERAS_DETALLADAS[alias] = dict(CARRERAS_DETALLADAS[target])
+
+print(f"Total perfiles detallados generados: {len(CARRERAS_DETALLADAS)}")
+
+# Guardar en JSON definitivo
+with open("backend/carreras_detalladas_92.json", "w", encoding="utf-8") as f:
+    json.dump(CARRERAS_DETALLADAS, f, ensure_ascii=False, indent=2)
+
+print("Guardado exitoso en backend/carreras_detalladas_92.json")

@@ -183,7 +183,27 @@ def api_recomendar(carrera: str = "ing_civil_industrial", presupuesto: str = Non
         "presupuesto": presupuesto,
         "categoria": categoria,
         "total": len(res),
-        "productos": res
+    }
+
+
+@app.get("/api/carreras")
+def api_carreras():
+    """Retorna la lista oficial completa de las 92 carreras UdeC distribuidas en sus 3 campus."""
+    return {
+        "status": "ok",
+        "total": len(PERFILES_CARRERAS),
+        "carreras": [
+            {
+                "id": slug,
+                "nombre": prof.get("nombre", slug),
+                "campus": prof.get("campus", "Campus Concepción"),
+                "url": prof.get("url", "https://admision.udec.cl/carreras-udec/"),
+                "min_ram": prof.get("min_ram", 8),
+                "gpu_dedicada": prof.get("gpu_dedicada", False),
+                "badge": prof.get("badge", "")
+            }
+            for slug, prof in PERFILES_CARRERAS.items()
+        ]
     }
 
 
@@ -302,16 +322,19 @@ def chat(request: ChatRequest):
 
         # 6. System instruction institucional formal sin emojis, con límites estrictos de legalidad y temática
         system_instruction = (
-            "Eres TechAdvisor UdeC, asesor institucional de tecnología, computación, equipamiento universitario "
-            "y calculadoras científicas/graficadoras para estudiantes y docentes del Grupo de Investigación en Informática y Arquitectura (GIIA) de la Universidad de Concepción.\n"
+            "Eres UdeskFit UdeC, asesor institucional inteligente de tecnología y equipamiento universitario "
+            "de la Universidad de Concepción (iniciativa desarrollada por el laboratorio GIIA).\n"
             "NORMAS INSTITUCIONALES OBLIGATORIAS:\n"
-            "1. NO utilices ningún emoji ni emoticón bajo ninguna circunstancia. Tu comunicación debe ser siempre formal, sobria, técnica y académica.\n"
-            "2. Atiende consultas exclusivamente sobre computadores, notebooks, tablets, monitores, periféricos, software académico y calculadoras para ramos de la universidad.\n"
+            "1. Tu nombre oficial es UdeskFit UdeC. NUNCA te presentes ni te refieras a ti mismo como TechAdvisor.\n"
+            "2. El usuario que consulta es un estudiante, docente o postulante general de cualquier carrera de la Universidad de Concepción. "
+            "NO asumas que quien te consulta pertenece al GIIA ni lo trates como integrante de dicho grupo.\n"
+            "3. NO utilices ningún emoji ni emoticón bajo ninguna circunstancia. Tu comunicación debe ser siempre formal, sobria, técnica y académica.\n"
+            "4. Atiende consultas exclusivamente sobre computadores, notebooks, tablets, monitores, periféricos, software académico y calculadoras para ramos de la universidad.\n"
             "Si el usuario pregunta sobre cualquier tema ajeno (cocina, deportes, política, poemas, tareas generales, chistes, etc.), declina respetuosamente indicando: "
-            "'Como asesor institucional de TechAdvisor UdeC, solo puedo responder consultas sobre equipamiento tecnológico y cotizaciones para la Universidad de Concepción.'\n"
-            "3. NUNCA respondas ni asistas en actividades ilegales, armas, violencia, vulneración de sistemas, malware, piratería o cualquier acción dañina o dudosa.\n"
-            "4. En tus recomendaciones, menciona modelos específicos disponibles en el catálogo, sus especificaciones técnicas destacadas, su valor referencial en CLP y el enlace a SoloTodo para que el estudiante revise tiendas en Chile.\n"
-            "5. Sé directo, claro y conciso para optimizar la respuesta."
+            "'Como asesor institucional de UdeskFit UdeC, solo puedo responder consultas sobre equipamiento tecnológico y requerimientos para la Universidad de Concepción.'\n"
+            "5. NUNCA respondas ni asistas en actividades ilegales, armas, violencia, vulneración de sistemas, malware, piratería o cualquier acción dañina o dudosa.\n"
+            "6. En tus recomendaciones, menciona modelos específicos disponibles en el catálogo, sus especificaciones técnicas destacadas, su valor referencial en CLP y el enlace a SoloTodo para que el estudiante revise tiendas en Chile.\n"
+            "7. Sé directo, claro y conciso para optimizar la respuesta."
         )
 
         prompt_completo = (

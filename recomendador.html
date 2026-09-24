@@ -2049,6 +2049,40 @@
       margin-top: 6px;
     }
 
+    
+    .campus-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(34, 60, 106, 0.09);
+      color: var(--udec-azul);
+      border: 1px solid rgba(34, 60, 106, 0.22);
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .udec-link-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #1d4ed8;
+      text-decoration: none;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 5px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .udec-link-badge:hover {
+      background: #dbeafe;
+      color: #1e40af;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.15);
+    }
+
     /* ─── UDEC & GIIA FOOTER (FONDO BLANCO INSTITUCIONAL) ─── */
     .udec-footer {
       position: relative;
@@ -2167,34 +2201,111 @@
     <div class="search-card" id="searchCard">
       <div class="search-grid">
         <div class="field-group">
-          <label class="field-label">Carrera Universidad de Concepción</label>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <label class="field-label" style="margin-bottom:0">Carrera Universidad de Concepción</label>
+            <span style="font-size:0.75rem;color:var(--muted)">92 Carreras Oficiales (3 Campus)</span>
+          </div>
+          <input type="text" id="carreraSearchInput" class="field-input" placeholder="🔍 Escribe para filtrar carrera (ej: Informática, Agronomía, Chillán, Medicina)..." style="margin-bottom:8px;padding:9px 12px;font-size:0.86rem;border-radius:9px;border:1px solid #cbd5e1;width:100%;box-sizing:border-box;" oninput="filterCarreraOptions(this.value)">
           <div class="select-wrap">
             <select class="field-select" id="carreraSelect">
-              <option value="">— Selecciona tu carrera UdeC —</option>
-              <optgroup label="Facultad de Ingeniería">
-                <option value="ing_civil_industrial">Ingeniería Civil Industrial</option>
-                <option value="ing_civil_informatica">Ingeniería Civil Informática</option>
-                <option value="ing_mecanica">Ingeniería Mecánica</option>
-                <option value="ing_electrica">Ingeniería Civil Eléctrica / Electrónica</option>
-                <option value="ing_quimica">Ingeniería Civil Química</option>
-              </optgroup>
-              <optgroup label="Facultad de Arquitectura, Urbanismo y Geografía">
+              <option value="">— Selecciona tu carrera oficial UdeC —</option>
+<optgroup label="🏛️ Campus Concepción (74 carreras)">
+                <option value="administracion-publica-y-ciencia-politica">Administración Pública y Ciencia Política</option>
+                <option value="agronomia-concepcion">Agronomía</option>
+                <option value="antropologia">Antropología</option>
                 <option value="arquitectura">Arquitectura</option>
-                <option value="diseno_grafico">Diseño Gráfico / Visual</option>
-              </optgroup>
-              <optgroup label="Facultad de Medicina y Salud">
-                <option value="medicina">Medicina</option>
-                <option value="odontologia">Odontología</option>
-                <option value="enfermeria">Enfermería</option>
-                <option value="kinesiologia">Kinesiología</option>
-              </optgroup>
-              <optgroup label="Ciencias Jurídicas y Sociales">
+                <option value="artes-visuales">Artes Visuales</option>
+                <option value="astronomia">Astronomía</option>
+                <option value="auditoria">Auditoría</option>
+                <option value="bachillerato-en-ciencias-e-innovacion">Bachillerato en Ciencias e Innovación</option>
+                <option value="bachillerato-en-humanidades">Bachillerato en Humanidades</option>
+                <option value="bioingenieria">Bioingeniería</option>
+                <option value="biologia">Biología</option>
+                <option value="biologia-marina">Biología Marina</option>
+                <option value="bioquimica">Bioquímica</option>
+                <option value="ciencias-fisicas">Ciencias Físicas</option>
                 <option value="derecho">Derecho</option>
-                <option value="psicologia">Psicología</option>
+                <option value="educacion-general-basica">Educación General Básica</option>
+                <option value="educacion-diferencial">Educación Diferencial</option>
+                <option value="educacion-parvularia">Educación Parvularia</option>
+                <option value="enfermeria">Enfermería</option>
+                <option value="fonoaudiologia">Fonoaudiología</option>
+                <option value="geofisica">Geofísica</option>
+                <option value="geografia">Geografía</option>
+                <option value="geologia">Geología</option>
+                <option value="ingenieria-ambiental">Ingeniería Ambiental</option>
+                <option value="ingenieria-civil-primer-ano-comun">Ingeniería Civil – Primer Año Común</option>
+                <option value="ingenieria-civil">Ingeniería Civil</option>
+                <option value="ingenieria-civil-aeroespacial">Ingeniería Civil Aeroespacial</option>
+                <option value="ingenieria-civil-biomedica">Ingeniería Civil Biomédica</option>
+                <option value="ingenieria-civil-de-materiales">Ingeniería Civil de Materiales</option>
+                <option value="ingenieria-civil-de-minas">Ingeniería Civil de Minas</option>
+                <option value="ingenieria-civil-electrica">Ingeniería Civil Eléctrica</option>
+                <option value="ingenieria-civil-electronica">Ingeniería Civil Electrónica</option>
+                <option value="ingenieria-civil-en-telecomunicaciones">Ingeniería Civil en Telecomunicaciones</option>
+                <option value="ingenieria-civil-industrial">Ingeniería Civil Industrial</option>
+                <option value="ingenieria-civil-informatica">Ingeniería Civil Informática</option>
+                <option value="ingenieria-civil-matematica">Ingeniería Civil Matemática</option>
+                <option value="ingenieria-civil-mecanica">Ingeniería Civil Mecánica</option>
+                <option value="ingenieria-civil-metalurgica">Ingeniería Civil Metalúrgica</option>
+                <option value="ingenieria-civil-quimica">Ingeniería Civil Química</option>
+                <option value="ingenieria-comercial">Ingeniería Comercial</option>
+                <option value="ingenieria-en-biotecnologia-marina-y-acuicultura">Ingeniería en Biotecnología Marina y Acuicultura</option>
+                <option value="ingenieria-en-biotecnologia-vegetal">Ingeniería en Biotecnología Vegetal</option>
+                <option value="ingenieria-en-conservacion-de-recursos-naturales">Ingeniería en Conservación de Recursos Naturales</option>
+                <option value="ingenieria-estadistica">Ingeniería Estadística</option>
+                <option value="ingenieria-forestal">Ingeniería Forestal</option>
+                <option value="kinesiologia">Kinesiología</option>
+                <option value="licenciatura-en-historia">Licenciatura en Historia</option>
+                <option value="licenciatura-en-matematica">Licenciatura en Matemática</option>
+                <option value="licenciatura-en-quimica-quimico">Licenciatura en Química-Químico</option>
+                <option value="medicina">Medicina</option>
+                <option value="medicina-veterinaria">Medicina Veterinaria</option>
+                <option value="nutricion-y-dietetica">Nutrición y Dietética</option>
+                <option value="obstetricia-y-puericultura">Obstetricia y Puericultura</option>
+                <option value="odontologia">Odontología</option>
+                <option value="pedagogia-en-artes-visuales">Pedagogía en Artes Visuales</option>
+                <option value="pedagogia-en-ciencias-naturales-y-biologia">Pedagogía en Ciencias Naturales y Biología</option>
+                <option value="pedagogia-en-ciencias-naturales-y-fisica">Pedagogía en Ciencias Naturales y Física</option>
+                <option value="pedagogia-en-ciencias-naturales-y-quimica">Pedagogía en Ciencias Naturales y Química</option>
+                <option value="pedagogia-en-educacion-fisica">Pedagogía en Educación Física</option>
+                <option value="pedagogia-en-educacion-musical">Pedagogía en Educación Musical</option>
+                <option value="pedagogia-en-espanol">Pedagogía en Español</option>
+                <option value="pedagogia-en-filosofia">Pedagogía en Filosofía</option>
+                <option value="pedagogia-en-historia-y-geografia">Pedagogía en Historia y Geografía</option>
+                <option value="pedagogia-en-ingles">Pedagogía en Inglés</option>
+                <option value="pedagogia-en-matematicas">Pedagogía en Matemáticas</option>
                 <option value="periodismo">Periodismo</option>
+                <option value="psicologia">Psicología</option>
+                <option value="quimica-y-farmacia">Química y Farmacia</option>
+                <option value="quimico-a-analista">Químico/a Analista</option>
+                <option value="sociologia">Sociología</option>
+                <option value="teatro">Teatro</option>
+                <option value="tecnologia-medica">Tecnología Médica</option>
+                <option value="traduccion-interpretacion-en-idiomas-extranjeros">Traducción / Interpretación en Idiomas Extranjeros</option>
+                <option value="trabajo-social">Trabajo Social</option>
               </optgroup>
-              <optgroup label="Ciencias Económicas y Administrativas">
-                <option value="ing_comercial">Ingeniería Comercial / Auditoría</option>
+              <optgroup label="🌱 Campus Chillán (7 carreras)">
+                <option value="agronomia-chillan">Agronomía – Chillán</option>
+                <option value="derecho-2">Derecho – Chillán</option>
+                <option value="enfermeria-chillan">Enfermería – Chillán</option>
+                <option value="ingenieria-ambiental-chillan">Ingeniería Ambiental – Chillán</option>
+                <option value="ingenieria-civil-agricola">Ingeniería Civil Agrícola – Chillán</option>
+                <option value="ingenieria-comercial-chillan">Ingeniería Comercial – Chillán</option>
+                <option value="medicina-veterinaria-chillan">Medicina Veterinaria – Chillán</option>
+              </optgroup>
+              <optgroup label="🌲 Campus Los Ángeles (11 carreras)">
+                <option value="auditoria-diurna">Auditoría – Los Ángeles</option>
+                <option value="educacion-general-basica-los-angeles">Educación General Básica – Los Ángeles</option>
+                <option value="educacion-diferencial-los-angeles">Educación Diferencial – Los Ángeles</option>
+                <option value="enfermeria-los-angeles">Enfermería – Los Ángeles</option>
+                <option value="ingenieria-comercial-los-angeles">Ingeniería Comercial – Los Ángeles</option>
+                <option value="ingenieria-en-biotecnologia-vegetal-2">Ingeniería en Biotecnología Vegetal – Los Ángeles</option>
+                <option value="ingenieria-geomatica">Ingeniería Geomática – Los Ángeles</option>
+                <option value="pedagogia-en-ciencias-naturales-y-biologia-los-angeles">Pedagogía en Ciencias Naturales y Biología – Los Ángeles</option>
+                <option value="pedagogia-en-espanol-los-angeles">Pedagogía en Español – Los Ángeles</option>
+                <option value="pedagogia-en-ingles-los-angeles">Pedagogía en Inglés – Los Ángeles</option>
+                <option value="pedagogia-en-matematicas-los-angeles">Pedagogía en Matemáticas – Los Ángeles</option>
               </optgroup>
             </select>
           </div>
@@ -2222,7 +2333,15 @@
   <div id="resultsArea">
     <div class="result-header anim-1">
       <div>
-        <div class="result-title">Recomendación para <span id="resCarreraName"></span></div>
+        <div class="result-title">
+          Recomendación para <span id="resCarreraName"></span>
+          <span id="resCampusBadge" class="campus-badge"></span>
+        </div>
+        <div id="resOfficialLinkWrap" style="margin-top:6px;display:none;">
+          <a id="resOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="udec-link-badge">
+            🔗 Ver Malla Curricular y Perfil Oficial UdeC ↗
+          </a>
+        </div>
         <div class="result-sub" id="resSubtitle"></div>
       </div>
       <button class="reset-btn" onclick="resetForm()">← Nueva búsqueda</button>
@@ -2372,455 +2491,52 @@
   <script>
     var selectedBudget = 'alto';
 
+    
+    function filterCarreraOptions(query) {
+      var q = (query || '').toLowerCase().trim();
+      var select = document.getElementById('carreraSelect');
+      var groups = select.getElementsByTagName('optgroup');
+      for (var i = 0; i < groups.length; i++) {
+        var group = groups[i];
+        var options = group.getElementsByTagName('option');
+        var visibleInGroup = 0;
+        for (var j = 0; j < options.length; j++) {
+          var opt = options[j];
+          var match = !q || opt.textContent.toLowerCase().indexOf(q) !== -1 || group.label.toLowerCase().indexOf(q) !== -1;
+          opt.style.display = match ? '' : 'none';
+          if (match) visibleInGroup++;
+        }
+        group.style.display = visibleInGroup > 0 ? '' : 'none';
+      }
+    }
+
     function selectBudget(el) {
       document.querySelectorAll('.budget-chip').forEach(function (c) { c.classList.remove('active'); });
       el.classList.add('active');
       selectedBudget = el.dataset.val;
     }
 
-    var CAREERS = {
-      ing_civil_industrial: {
-        label: 'Ing. Civil Industrial', emoji: '',
-        alert: '<strong>Carrera cuantitativa:</strong> Usarás Python, R, MATLAB y simuladores como Simio. El cuello de botella real es la RAM — con 8GB tendrás freezes constantes al trabajar con datasets y simulaciones simultáneas.',
-        scores: { CPU: 7, RAM: 8, Storage: 7, GPU: 3, Battery: 7, Display: 6 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Python + Pandas', 'R + RStudio', 'Simio Simulation', 'Excel Solver', 'AutoCAD básico'],
-        laptops: {
-          ideal: { name: 'Lenovo ThinkBook 16 G6 / HP EliteBook 845', cpu: 'AMD Ryzen 7 7730U o Intel i7-1355U', ram: '16 GB DDR4 3200MHz', storage: 'SSD NVMe 512GB+', gpu: 'Radeon / Iris Xe integrada', battery: '~10-12 hrs', display: '16" FHD IPS Anti-glare', price: '$750.000 – $950.000', why: '16 GB son <strong>indispensables</strong> para correr MATLAB, RStudio y Arena al mismo tiempo. El Ryzen 7 7730U compila Python en la mitad del tiempo de un i5 de gama media. Anti-glare por las horas de pantalla.' },
-          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5 (Ryzen 5)', cpu: 'AMD Ryzen 5 7530U o Intel i5-1235U', ram: '16 GB DDR4 (actualizable)', storage: 'SSD NVMe 512GB', gpu: 'AMD Radeon Vega integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $700.000', why: 'Si viene con 8GB, <strong>actualiza a 16GB antes del primer semestre</strong> (~$35.000 extra). El SSD NVMe marca la diferencia: abrir RStudio tarda 8s vs 90s con HDD.' },
-          eco: { name: 'Equipo refurbished (Mínimo viable)', cpu: 'Intel i5 10ma gen o AMD Ryzen 5 4000', ram: '8 GB DDR4 → actualiza a 16GB', storage: 'SSD 256GB mínimo + disco externo', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$200.000–$380.000 + ~$50.000 mejoras', why: 'Compra refurbished y <strong>reemplaza el HDD por un SSD</strong> (~$40k) y agrega RAM. Esa inversión de $90k puede hacer funcionar un equipo de $250k tan bien como uno de $500k.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad (9a/10a gen) — Muy recomendada', reason: 'Apuntes en clases de estadística con Apple Pencil, anotar correcciones en mallas de procesos, leer papers. Complementa perfectamente la laptop.', price: '$230.000 – $380.000 CLP' },
-          { emoji: '', name: 'Samsung Galaxy Tab A8 — Económica', reason: 'Para leer apuntes y PDFs. Sin lápiz preciso pero cumple para estudio básico.', price: '$120.000 – $180.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW (ClassWiz) — RECOMENDADA', why: '552 funciones, álgebra matricial, estadística avanzada, integración numérica. QR code para ver gráficos en el celular. Permitida en la mayoría de certámenes.', price: '~$32.000 – $42.000 CLP' },
-          { name: 'HP 50g — Para usuarios avanzados', why: 'Calculadora gráfica con CAS (álgebra simbólica). Útil desde 4to semestre para Optimización y EDDP. Curva de aprendizaje alta.', price: '~$85.000 – $120.000 CLP (usada)' }
-        ],
-        accessories: [
-          { name: 'Ratón ergonómico inalámbrico', emoji: '', priority: 'must', reason: 'Trabajarás horas con hojas de cálculo y simulaciones. El trackpad no es viable para Excel/MATLAB a largo plazo.' },
-          { name: 'Monitor externo 24" FHD', emoji: '', priority: 'rec', reason: 'Python en un monitor y Excel en el otro es un cambio de productividad enorme. ~$90.000 en ferias.' },
-          { name: 'Disco externo 1TB USB 3.0', emoji: '', priority: 'must', reason: 'Datasets, proyectos y backups. Un semestre puede generar 30-50GB de archivos de simulación.' },
-          { name: 'Hub USB-C multipuerto', emoji: '', priority: 'rec', reason: 'Laptops modernas tienen pocos puertos. Conectas monitor, ratón, disco y cargador simultáneamente.' },
-          { name: 'Audífonos con cancelación de ruido', emoji: '', priority: 'opt', reason: 'Para concentrarse en la biblioteca durante certámenes.' },
-          { name: 'Mochila con compartimento acolchado', emoji: '', priority: 'must', reason: 'No cargues una laptop de $700k sin protección. ~$15.000-$25.000 en FabricStore o Falabella.' }
-        ]
-      },
-
-      ing_civil_informatica: {
-        label: 'Ing. Civil Informática', emoji: '',
-        alert: '<strong>La carrera más exigente en hardware.</strong> Correrás máquinas virtuales (VM), compilarás código constantemente y usarás IDEs pesados como IntelliJ. Menos de 16GB de RAM es inaceptable desde primer año.',
-        scores: { CPU: 9, RAM: 9, Storage: 8, GPU: 6, Battery: 6, Display: 7 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#22c55e', Battery: '#f59e0b', Display: '#14b8a6' },
-        software: ['VS Code / IntelliJ', 'Docker + VMs', 'Git + GitHub', 'Linux WSL2', 'Node.js / Python / Java'],
-        laptops: {
-          ideal: { name: 'ASUS ROG Zephyrus G14 / Lenovo Legion Slim 5', cpu: 'AMD Ryzen 9 7940H o Intel i7-13700H', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB PCIe 4.0', gpu: 'NVIDIA RTX 4060 6GB', battery: '~6-8 hrs', display: '14-16" QHD 165Hz', price: '$1.200.000 – $1.600.000', why: '32GB para correr 2 VMs + IntelliJ + Chrome con 20 tabs sin que nada se queje. La RTX 4060 sirve en ML/IA desde 3er año. El SSD PCIe 4.0 hace que compilar un proyecto Java grande tome 8s en vez de 45s.' },
-          balance: { name: 'Lenovo IdeaPad Gaming 3 / HP Victus 15', cpu: 'AMD Ryzen 5 7535H o Intel i5-12500H', ram: '16 GB DDR5 (actualizar a 32GB)', storage: 'SSD NVMe 512GB', gpu: 'NVIDIA RTX 3050 4GB', battery: '~5-7 hrs', display: '15.6" FHD 144Hz', price: '$650.000 – $900.000', why: 'RTX 3050 permite correr modelos de ML con CUDA. 16GB son suficientes el 1er año, pero <strong>planifica actualizar antes de 3er año</strong> cuando lleguen Redes y SSOO.' },
-          eco: { name: 'Laptop Ryzen 5 5500U + upgrade manual', cpu: 'AMD Ryzen 5 5500U', ram: '8GB → actualizar a 16GB inmediato', storage: 'SSD NVMe 256GB + externo', gpu: 'AMD Radeon integrada', battery: '~8 hrs', display: '15.6" FHD', price: '$300.000 – $500.000', why: 'Funciona los primeros 2 años. Sin GPU dedicada no podrás hacer Deep Learning nativo, pero sí todo el stack de desarrollo. La actualización a 16GB es <strong>obligatoria el día 1</strong>.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad Pro + Apple Pencil — Ideal para diagramas', reason: 'Diagramas UML en clases de diseño de sistemas, fotos a la pizarra con OCR, reuniones de equipo.', price: '$600.000 – $900.000 CLP' },
-          { emoji: '', name: 'Monitor externo es mejor inversión', reason: 'El dinero de una tablet rinde más en un 2do monitor. La productividad de desarrollar con doble pantalla es enorme.', price: '$80.000 – $150.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — Para los primeros semestres', why: 'Solo necesitarás calculadora en Cálculo, Álgebra y Física (años 1-2). Después todo es en código.', price: '~$32.000 – $42.000 CLP' },
-          { name: 'WolframAlpha / GeoGebra / Python SymPy', why: 'Desde 3er año en adelante, todas las operaciones matemáticas complejas van en código. No necesitas calculadora gráfica.', price: 'Gratis' }
-        ],
-        accessories: [
-          { name: '2do monitor externo 27" FHD/QHD', emoji: '', priority: 'must', reason: 'Código en un lado, documentación/terminal en el otro. El setup de doble monitor aumenta la productividad de un dev en ~35%.' },
-          { name: 'Teclado mecánico externo', emoji: '', priority: 'rec', reason: 'Escribirás miles de líneas de código por semestre. Un teclado bueno reduce fatiga y aumenta velocidad.' },
-          { name: 'Ratón de alta precisión', emoji: '', priority: 'must', reason: 'Para navegar código, clic preciso en IDEs y trabajo en hojas de datos.' },
-          { name: 'Hub USB-C con Ethernet', emoji: '', priority: 'rec', reason: 'Ethernet para pruebas de red en los ramos de Redes y Servidores.' },
-          { name: 'Audífonos con micrófono', emoji: '', priority: 'must', reason: 'Stand-ups del equipo, defensa de proyectos en remoto, reuniones de grupo.' }
-        ]
-      },
-
-      arquitectura: {
-        label: 'Arquitectura', emoji: '',
-        alert: '<strong>La carrera con mayores exigencias de GPU y pantalla.</strong> Revit y SketchUp Pro consumen GPU dedicada para renderizar. Una pantalla 100% sRGB es tan importante como el procesador.',
-        scores: { CPU: 8, RAM: 9, Storage: 8, GPU: 9, Battery: 5, Display: 10 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#f97316', Battery: '#64748b', Display: '#ec4899' },
-        software: ['AutoCAD 2024', 'Revit (BIM)', 'SketchUp Pro', 'Lumion / Enscape', 'Adobe Photoshop + Illustrator', 'Rhino 3D'],
-        laptops: {
-          ideal: { name: 'ASUS ProArt Studiobook / MacBook Pro 14" M3 Pro', cpu: 'Intel i9-13900H o Apple M3 Pro', ram: '32 GB DDR5 / 36GB unificada', storage: 'SSD NVMe 1TB', gpu: 'NVIDIA RTX 4070 / GPU M3 30-core', battery: '~5-7 hrs (8-12 en Mac)', display: '16" OLED/Retina, 100% sRGB, DCI-P3', price: '$1.500.000 – $2.500.000', why: 'En Lumion, renderizar una escena de 30s toma <strong>3 min con RTX 4070 vs 45 min con GPU integrada</strong>. La pantalla OLED es indispensable para que los colores de tus renders sean fieles al imprimirlos.' },
-          balance: { name: 'Lenovo Legion 5 / MSI Katana 15 B12V', cpu: 'AMD Ryzen 7 7745H o Intel i7-12650H', ram: '16 GB DDR5 (actualizar a 32GB)', storage: 'SSD 512GB + externo', gpu: 'NVIDIA RTX 4060 8GB', battery: '~4-6 hrs', display: '15.6" FHD 144Hz (busca 100% sRGB)', price: '$900.000 – $1.200.000', why: 'RTX 4060 con 8GB VRAM es suficiente para Revit y renders medianos. <strong>Busca específicamente 100% sRGB</strong> — es el dato que más se omite en fichas técnicas y más importa para diseño.' },
-          eco: { name: 'Desktop potente + laptop básica para clases', cpu: 'Desktop: Ryzen 7 5700X + RTX 3060 Ti', ram: '32 GB DDR4 (desktop)', storage: 'SSD 512GB + HDD 2TB', gpu: 'RTX 3060 Ti (desktop)', battery: 'No aplica (desktop)', display: 'Monitor 27" IPS 100% sRGB (~$150.000)', price: '$600.000 – $900.000 (desktop completo)', why: 'Si tienes espacio en casa: un desktop potente + laptop básica para clases es más económico que una laptop gaming de $1.2M. Los renders se corren en el desktop por la noche.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad Pro 12.9" + Apple Pencil Pro — ESENCIAL', reason: 'Croquis digitales, bocetos de fachadas, anotaciones sobre planos exportados. En los primeros años pasarás más tiempo dibujando en tablet que en laptop.', price: '$800.000 – $1.100.000 CLP' },
-          { emoji: '', name: 'Wacom Intuos Medium — Alternativa económica', reason: 'Tableta de dibujo sin pantalla. Compatible con AutoCAD y Photoshop. Sin movilidad pero mucho más económica.', price: '$90.000 – $140.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — Para Cálculo y Física', why: 'Solo necesitarás calculadora en las ciencias básicas del primer año. Arquitectura no tiene matemáticas pesadas después del 2do año.', price: '~$32.000 – $42.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Monitor externo 27" IPS 100% sRGB', emoji: '', priority: 'must', reason: 'Para trabajar con planos en casa. La diferencia con la pantalla de 15" es enorme.' },
-          { name: 'Impresora A3 / acceso a impresión', emoji: '', priority: 'must', reason: 'Imprimirás muchos planos. Busca una de tinta A3 (~$80.000) o el servicio de impresión más cercano a tu facultad.' },
-          { name: 'Disco SSD externo 2TB', emoji: '', priority: 'must', reason: 'Un proyecto de Revit puede pesar 500MB-2GB. Un semestre genera fácilmente 20-30GB de archivos.' },
-          { name: 'Hub USB-C con HDMI 4K', emoji: '', priority: 'rec', reason: 'Para conectar el monitor externo y otros periféricos simultáneamente.' }
-        ]
-      },
-
-      diseno_grafico: {
-        label: 'Diseño Gráfico / UX', emoji: '',
-        alert: '<strong>La pantalla lo es todo.</strong> Una pantalla sin calibración de color te hará entregar trabajos que se ven distintos al imprimirlos. Prioriza 100% sRGB. La tableta digitalizadora es tu accesorio #1.',
-        scores: { CPU: 7, RAM: 7, Storage: 8, GPU: 7, Battery: 7, Display: 10 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#14b8a6', GPU: '#f97316', Battery: '#22c55e', Display: '#ec4899' },
-        software: ['Adobe Photoshop + Illustrator + InDesign', 'Figma (UX/UI)', 'Adobe XD', 'Lightroom', 'DaVinci Resolve (video)'],
-        laptops: {
-          ideal: { name: 'MacBook Pro 14" M3 / Dell XPS 15 OLED', cpu: 'Apple M3 / Intel i7-13700H', ram: '18GB unificada / 32GB DDR5', storage: 'SSD 512GB-1TB', gpu: 'M3 GPU / RTX 4060', battery: '+15 hrs (Mac) / 5-7 hrs (Dell)', display: 'Liquid Retina / OLED 3.5K 100% DCI-P3', price: '$1.400.000 – $1.800.000', why: 'El MacBook M3 corre Photoshop e Illustrator más rápido que cualquier PC equivalente en precio. La pantalla Retina es la mejor calibrada del mercado. La batería de 15hrs te libera del enchufe en clases.' },
-          balance: { name: 'ASUS VivoBook Pro 16 OLED / Lenovo IdeaPad 5 Pro', cpu: 'AMD Ryzen 7 6800H o Intel i5-12500H', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'NVIDIA RTX 3050 Ti', battery: '~6-8 hrs', display: '16" OLED 2.8K 100% DCI-P3', price: '$700.000 – $950.000', why: 'Los modelos OLED en este rango tienen paneles de excelente calidad. Clave: <strong>busca específicamente "OLED" o "100% DCI-P3"</strong> al comparar especificaciones.' },
-          eco: { name: 'Laptop básica + monitor externo calibrado', cpu: 'Intel i5 10ma / Ryzen 5 5000', ram: '16 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: 'Variable', display: 'Monitor externo IPS 100% sRGB', price: '$250.000 (laptop) + $100.000 (monitor)', why: 'Si el presupuesto aprieta: laptop básica + <strong>monitor externo IPS 100% sRGB</strong> (~$100k) para casa. La laptop solo para movilidad en clases, el trabajo real en el monitor calibrado.' }
-        },
-        tablets: [
-          { emoji: '', name: 'Wacom Intuus Medium — ESENCIAL', reason: 'Para diseño vectorial en Illustrator, retoque en Photoshop y wireframes en Figma. La diferencia de precisión respecto al mouse es enorme. Es el accesorio #1 de esta carrera.', price: '$90.000 – $130.000 CLP' },
-          { emoji: '', name: 'iPad Air + Apple Pencil 2 — Alternativa premium', reason: 'Si prefieres portabilidad, el iPad Air + Procreate reemplaza al Wacom y además sirve como tablet para apuntes.', price: '$500.000 – $700.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-82MS — Solo para ciencias básicas', why: 'Diseño Gráfico no tiene ramos de matemáticas avanzadas. Una científica básica es suficiente para el primer año.', price: '~$12.000 – $18.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Monitor externo IPS 24-27" 100% sRGB', emoji: '', priority: 'must', reason: 'Calibración de color consistente. Busca "100% sRGB" o "100% Adobe RGB" en especificaciones.' },
-          { name: 'Disco SSD externo 1TB', emoji: '', priority: 'must', reason: 'Archivos PSD y proyectos de video son enormes. Un semestre puede generar 50-100GB.' },
-          { name: 'Calibrador de pantalla (Spyder X)', emoji: '', priority: 'opt', reason: 'Para trabajo profesional serio. Calibra tu monitor para que los colores sean fieles al imprimir.' }
-        ]
-      },
-
-      medicina: {
-        label: 'Medicina', emoji: '',
-        alert: '<strong>Portabilidad y durabilidad sobre todo.</strong> Irás a hospitales y rotaciones donde no siempre habrá enchufes. La batería es crítica. El iPad es el accesorio más importante de la carrera.',
-        scores: { CPU: 6, RAM: 7, Storage: 6, GPU: 3, Battery: 10, Display: 7 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['OneNote / GoodNotes', 'Anki (memorización)', 'Complete Anatomy 3D', 'Office 365', 'Zoom / Teams'],
-        laptops: {
-          ideal: { name: 'MacBook Air 13" M2 / Lenovo ThinkPad X1 Carbon', cpu: 'Apple M2 / Intel i7-1365U', ram: '16 GB', storage: 'SSD 512GB', gpu: 'Integrada (suficiente)', battery: '+15 hrs (Mac) / 12 hrs (ThinkPad)', display: '13-14" Retina/IPS antirreflejo', price: '$950.000 – $1.300.000', why: 'La batería de +15hrs del MacBook M2 es el mayor activo para rotaciones clínicas. No necesitas GPU dedicada para medicina. La delgadez del ThinkPad X1 lo hace ideal para ambientes hospitalarios.' },
-          balance: { name: 'ASUS ZenBook 14 / Samsung Galaxy Book3', cpu: 'Intel i5-1335U o AMD Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10-12 hrs', display: '14" FHD IPS', price: '$600.000 – $850.000', why: 'Laptops ligeras (~1.3-1.5kg) con buena batería son perfectas. Evita laptops gaming pesadas: las cargarás todo el día en el hospital.' },
-          eco: { name: 'iPad + teclado + laptop básica', cpu: 'iPad M1 + cualquier laptop i5', ram: '8GB laptop / 8GB iPad', storage: 'iPad 128GB + nube', gpu: 'Integrada', battery: 'iPad: 10hrs+ | Laptop: variable', display: 'iPad 10.9" Liquid Retina', price: '$350.000 (iPad) + $250.000 (laptop)', why: 'Para los primeros años donde solo tomas apuntes, el iPad con teclado puede reemplazar la laptop en el hospital. La laptop queda para casa y trabajos escritos.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad 10a gen + Apple Pencil — ESENCIAL', reason: 'Anki en modo activo, apuntes sobre láminas de histología, GoodNotes para anatomía. Es el accesorio #1 de los estudiantes de medicina modernos.', price: '$280.000 – $380.000 CLP' },
-          { emoji: '', name: 'iPad Air + Apple Pencil 2 — Premium', reason: 'Pantalla laminada de mayor calidad para anotar sobre imágenes PACS. La diferencia de calidad al escribir sobre anatomía es notable.', price: '$500.000 – $600.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — Para bioquímica y farmacología', why: 'Cálculos de dosis, concentraciones y diluciones en farmacología. Una científica avanzada es suficiente para toda la carrera.', price: '~$32.000 – $42.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Mochila médica ergonómica ligera', emoji: '', priority: 'must', reason: 'Cargarás libros enormes (Harrison, Robbins) + laptop + iPad. Una mochila ergonómica te ahorra lesiones de columna.' },
-          { name: 'Batería externa 20.000mAh', emoji: '', priority: 'must', reason: 'Para rotaciones de turnos largos sin enchufe. Carga laptop pequeña + celular + iPad.' },
-          { name: 'Audífonos discretos con micro', emoji: '', priority: 'rec', reason: 'Para clases en línea, seminarios y discusiones de caso en biblioteca.' }
-        ]
-      },
-
-      administracion: {
-        label: 'Administración de Empresas', emoji: '',
-        alert: '<strong>Excel avanzado es tu herramienta central.</strong> Usarás Power BI, SPSS y quizás SAP desde 3er año. La calculadora financiera BA II Plus es tan importante como la laptop.',
-        scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 2, Battery: 8, Display: 6 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Excel + Power BI', 'Word + PowerPoint', 'SPSS / Minitab', 'SAP (algunos programas)', 'Google Workspace'],
-        laptops: {
-          ideal: { name: 'Lenovo ThinkBook 14s / HP EliteBook 840', cpu: 'Intel i5-1335U o Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10-12 hrs', display: '14" FHD IPS antirreflejo', price: '$550.000 – $750.000', why: 'Un ThinkBook tiene teclado de calidad superior (clave para redactar informes largos), buena batería y pantalla antirreflejo para leer Excel en campus.' },
-          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Intel i5-1135G7 o Ryzen 5 5500U', ram: '8-16 GB', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$380.000 – $550.000', why: 'Equipos confiables. Si viene con 8GB, verifica que tenga slot libre para agregar más RAM más adelante.' },
-          eco: { name: 'Laptop refurbished i5/Ryzen 5 + SSD', cpu: 'Intel i5 8va-10ma gen', ram: '8 GB DDR4', storage: 'SSD 256GB (reemplaza HDD)', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$180.000 – $320.000', why: 'Para Administración no necesitas hardware potente. Un equipo de segunda mano con SSD funciona perfectamente durante toda la carrera.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad básico — Recomendado', reason: 'Para presentaciones de proyectos, lectura de casos y apuntes en clases. Útil pero no esencial como en otras carreras.', price: '$230.000 – $320.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — Para estadística', why: 'Estadística básica, probabilidades y análisis financiero. Permite trabajar con distribuciones estadísticas directamente.', price: '~$32.000 – $42.000 CLP' },
-          { name: 'Texas Instruments BA II Plus — Para finanzas', why: 'Si te especializas en Finanzas, la BA II Plus es la calculadora financiera estándar mundial (CFA, CPA). Calcula TIR, VPN, amortización directamente.', price: '~$45.000 – $70.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Ratón ergonómico inalámbrico', emoji: '', priority: 'must', reason: 'Trabajarás horas en Excel. El trackpad nunca es suficiente para tablas dinámicas grandes.' },
-          { name: 'Monitor externo 24" para casa', emoji: '', priority: 'rec', reason: 'Ver una hoja de Excel con 50 columnas en un monitor de 24" vs pantalla de 15" es una diferencia enorme.' }
-        ]
-      },
-
-      contabilidad: {
-        label: 'Contabilidad y Auditoría', emoji: '',
-        alert: '<strong>Excel, ERP y software contable.</strong> Softland, SAP B1 o ContaPlus corren bien en hardware modesto. La calculadora financiera BA II Plus es tu segunda herramienta más importante.',
-        scores: { CPU: 4, RAM: 5, Storage: 4, GPU: 1, Battery: 8, Display: 5 },
-        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Excel + tablas dinámicas', 'SAP / Softland / ContaPlus', 'Word + PowerPoint', 'SII en línea'],
-        laptops: {
-          ideal: { name: 'ASUS VivoBook 15 / HP Laptop 15s', cpu: 'Intel i5-1235U o Ryzen 5 5500U', ram: '8-16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$380.000 – $550.000', why: 'Contabilidad no requiere hardware potente. La pantalla de 15.6" da espacio para trabajar con múltiples columnas en Excel sin scroll horizontal constante.' },
-          balance: { name: 'Laptop básica 14-15" con SSD', cpu: 'Intel i3-1215U o Ryzen 3 5300U', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~7-9 hrs', display: '14-15" FHD', price: '$250.000 – $380.000', why: 'Con SSD el equipo más básico moderno es suficiente. El SSD hace que SAP y Excel abran en segundos en vez de minutos.' },
-          eco: { name: 'Laptop refurbished con SSD', cpu: 'Intel i5 7ma-8va gen con SSD', ram: '8 GB DDR3', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '15.6"', price: '$130.000 – $220.000', why: 'La opción más económica válida. Asegúrate que tenga SSD (pide el modelo exacto y verifica en Speccy antes de comprar).' }
-        },
-        tablets: [
-          { emoji: '', name: 'Tablet básica Android — Opcional', reason: 'Para leer y anotar en PDFs de normas IFRS o material de curso. No es esencial para Contabilidad.', price: 'Desde $80.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Texas Instruments BA II Plus — ESENCIAL', why: 'La calculadora financiera estándar para CPA y auditoría. Calcula VPN, TIR, NPV, amortización, flujos de caja descontados. Muchas asignaturas la exigen específicamente.', price: '~$45.000 – $70.000 CLP' },
-          { name: 'Casio fx-991CW — Complementaria', why: 'Para ramos de estadística y matemáticas del primer año.', price: '~$32.000 – $42.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Ratón ergonómico', emoji: '', priority: 'must', reason: 'Excel intensivo requiere ratón. El trackpad no es viable para trabajo contable real.' }
-        ]
-      },
-
-      derecho: {
-        label: 'Derecho', emoji: '',
-        alert: '<strong>Portabilidad y batería por encima de todo.</strong> Leerás miles de páginas de jurisprudencia y redactarás escritos. Un equipo ligero con batería larga vale más que uno potente y pesado.',
-        scores: { CPU: 4, RAM: 5, Storage: 5, GPU: 1, Battery: 10, Display: 6 },
-        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Word + Outlook + OneDrive', 'Westlaw / LexisNexis / Vlex', 'Zotero (citas)', 'Adobe Acrobat', 'Zoom/Teams'],
-        laptops: {
-          ideal: { name: 'MacBook Air 13" M2 / Lenovo IdeaPad Slim 5', cpu: 'Apple M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+15 hrs (Mac) / +10 hrs (Lenovo)', display: '13-14" IPS antirreflejo', price: '$700.000 – $1.000.000', why: 'Para Derecho el factor #1 es la batería. El MacBook Air M2 dura una jornada completa sin enchufar. Su pantalla antirreflejo es ideal para leer sentencias horas seguidas.' },
-          balance: { name: 'Samsung Galaxy Book3 / ASUS VivoBook 14', cpu: 'Intel i5-1235U', ram: '8 GB DDR4', storage: 'SSD 256GB', gpu: 'Intel Iris Xe', battery: '~10 hrs', display: '14" FHD IPS', price: '$400.000 – $600.000', why: 'Laptops de 14" ultralivianas (~1.3-1.5 kg). Evita las de 15.6" para Derecho — la diferencia de peso se siente enormemente al final de un día con varios ramos.' },
-          eco: { name: 'Chromebook / laptop básica 14"', cpu: 'Intel Celeron / Pentium', ram: '4-8 GB', storage: '64-128GB eMMC + nube', gpu: 'Integrada', battery: '~8 hrs', display: '14" HD o FHD', price: '$150.000 – $280.000', why: 'Para Derecho, un Chromebook es perfectamente funcional: Google Docs, Gmail, plataformas de jurisprudencia online. Solo necesitarás Windows si la universidad requiere software específico.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad + Kindle Paperwhite — Muy recomendados', reason: 'Leer el Código Civil completo en papel es un martirio. Un iPad o Kindle con los textos legales en PDF cambia radicalmente la experiencia de estudio.', price: 'iPad desde $230.000 / Kindle ~$100.000 CLP' }
-        ],
-        calcs: [
-          { name: 'No se necesita calculadora en Derecho', why: 'Los ramos de Economía o Estadística que pueda haber se resuelven con calculadora básica del celular.', price: 'Calculadora celular = $0' }
-        ],
-        accessories: [
-          { name: 'Ratón compacto inalámbrico', emoji: '', priority: 'rec', reason: 'Para redactar escritos largos con comodidad.' },
-          { name: 'Funda/sleeve para laptop', emoji: '', priority: 'must', reason: 'Protección básica. No necesitas mochila gaming, una sleeve delgada es suficiente.' },
-          { name: 'Batería externa 10.000mAh', emoji: '', priority: 'rec', reason: 'Para jornadas largas en tribunales o biblioteca.' }
-        ]
-      },
-
-      psicologia: {
-        label: 'Psicología', emoji: '',
-        alert: '<strong>Hardware modesto con software estadístico.</strong> Usarás SPSS o Jamovi para análisis de datos desde 2do año. El peso de la laptop importa porque irás a práctica y trabajo de campo.',
-        scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 1, Battery: 9, Display: 6 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['SPSS / Jamovi / JASP', 'Word + APA Style', 'Zotero', 'Google Forms / Qualtrics', 'Zoom'],
-        laptops: {
-          ideal: { name: 'MacBook Air 13" M2 / ASUS ZenBook 14', cpu: 'M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+12 hrs', display: '13-14" IPS', price: '$600.000 – $950.000', why: 'Portabilidad es la clave para Psicología. Irás a centros de salud, colegios y campo. Una laptop ligera con buena batería vale más que una potente y pesada.' },
-          balance: { name: 'Lenovo IdeaPad Slim 3 / Acer Aspire 5 14"', cpu: 'Ryzen 5 5500U o Intel i5-1135G7', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" FHD IPS', price: '$320.000 – $500.000', why: 'Equipos confiables de 14" por la portabilidad. El SSD es el componente más importante.' },
-          eco: { name: 'Laptop refurbished + apps en nube', cpu: 'Intel i5 cualquier gen con SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '13-15"', price: '$180.000 – $300.000', why: 'SPSS y Jamovi corren bien incluso en hardware modesto. Lo crítico es el SSD.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad + GoodNotes — Recomendado', reason: 'Para apuntes en clases de evaluación y diagnóstico, observaciones en campo, y lectura del DSM-5.', price: '$230.000 – $380.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW', why: 'Para estadística descriptiva e inferencial del primer año. SPSS hace el resto.', price: '~$32.000 – $42.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Mochila ligera ergonómica', emoji: '', priority: 'must', reason: 'Prácticas de campo con laptop + materiales de evaluación.' },
-          { name: 'Audífonos con micrófono', emoji: '', priority: 'rec', reason: 'Entrevistas y sesiones de práctica en modalidad online.' }
-        ]
-      },
-
-      periodismo: {
-        label: 'Periodismo / Comunicación', emoji: '',
-        alert: '<strong>Edición de video y audio desde primer año.</strong> DaVinci Resolve y Premiere requieren SSD rápido y algo de GPU. El micrófono externo es tan importante como la laptop.',
-        scores: { CPU: 6, RAM: 7, Storage: 8, GPU: 6, Battery: 7, Display: 7 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#14b8a6', GPU: '#f97316', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Adobe Premiere Pro', 'DaVinci Resolve', 'Adobe Audition / Audacity', 'Canva Pro', 'WordPress'],
-        laptops: {
-          ideal: { name: 'MacBook Pro 14" M3 / ASUS ProArt Studiobook', cpu: 'M3 / Intel i7-13700H', ram: '18GB M3 / 32GB DDR5', storage: 'SSD 1TB', gpu: 'M3 GPU / RTX 4060', battery: '+15hrs (Mac)', display: '14-16" Liquid Retina / OLED 100% DCI-P3', price: '$1.300.000 – $1.800.000', why: 'DaVinci Resolve corre en tiempo real en el M3 sin fan noise. Para producción audiovisual profesional, el MacBook Pro M3 rinde mucho mejor que cualquier PC equivalente en precio.' },
-          balance: { name: 'Lenovo Legion Slim 5 / HP Pavilion Plus 16"', cpu: 'Ryzen 7 7745H o Intel i5-13500H', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 4060 / RTX 3050 Ti', battery: '~6-8 hrs', display: '16" FHD/QHD IPS 100% sRGB', price: '$750.000 – $1.000.000', why: 'GPU dedicada para edición de video. El SSD NVMe es crítico para que Premiere no se queje al trabajar con footage 4K.' },
-          eco: { name: 'Cualquier laptop i5 + DaVinci Resolve gratis', cpu: 'Intel i5 10ma+ con SSD NVMe', ram: '16 GB DDR4', storage: 'SSD 512GB + externo 1TB', gpu: 'Integrada (render más lento)', battery: 'Variable', display: '15.6" FHD', price: '$350.000 – $500.000 + disco externo', why: 'DaVinci Resolve es gratuito y corre sin GPU dedicada (más lento). El SSD y 16GB de RAM son el mínimo real.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad + LumaFusion — Edición móvil', reason: 'Editar videos cortos para redes sociales directo desde el iPad. Útil para cobertura en campo.', price: '$280.000 – $500.000 CLP' }
-        ],
-        calcs: [
-          { name: 'No se necesita calculadora específica', why: 'Periodismo no tiene ramos de matemáticas intensivas. La calculadora del celular es suficiente.', price: '$0' }
-        ],
-        accessories: [
-          { name: 'Micrófono USB de condensador', emoji: '', priority: 'must', reason: 'Para podcast, entrevistas y contenido audiovisual. Un Rode NT-USB Mini (~$50.000-$80.000) marca enorme diferencia respecto al micro integrado.' },
-          { name: 'Disco SSD externo 2TB', emoji: '', priority: 'must', reason: 'Footage 4K ocupa 400MB/min. Un semestre de proyectos puede generar 100-200GB fácilmente.' },
-          { name: 'Auriculares de estudio (planos)', emoji: '', priority: 'must', reason: 'Para mezcla de audio correcta. Los audífonos con bass boost engañan al editar.' },
-          { name: 'Hub USB-C con lector SD', emoji: '', priority: 'rec', reason: 'Para transferir footage desde cámaras y grabadoras.' }
-        ]
-      },
-
-      cine: {
-        label: 'Cine / Producción Audiovisual', emoji: '',
-        alert: '<strong>La carrera con mayor demanda de almacenamiento.</strong> Un día de rodaje en 4K genera fácilmente 100-200GB de footage. GPU dedicada y SSD veloz son absolutamente necesarios.',
-        scores: { CPU: 9, RAM: 8, Storage: 10, GPU: 9, Battery: 5, Display: 9 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#f97316', GPU: '#ec4899', Battery: '#64748b', Display: '#14b8a6' },
-        software: ['DaVinci Resolve / Adobe Premiere', 'Adobe After Effects', 'ProTools / Logic Pro', 'Blender (motion)'],
-        laptops: {
-          ideal: { name: 'MacBook Pro 16" M3 Max / ASUS ProArt Studiobook 16', cpu: 'M3 Max / Intel i9-13980HX', ram: '48GB M3 / 64GB DDR5', storage: 'SSD 1TB+', gpu: 'M3 Max 40-core / RTX 4090', battery: '~12 hrs (Mac)', display: '16" Liquid Retina XDR / OLED 4K', price: '$2.500.000 – $4.000.000', why: 'Editar en 4K RAW o 8K requiere el máximo poder disponible. El M3 Max hace renders que tardan horas en PCs convencionales.' },
-          balance: { name: 'ASUS ROG Strix G16 / Lenovo Legion Pro 5', cpu: 'Intel i7-13700H', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB PCIe 4.0', gpu: 'NVIDIA RTX 4070 8GB VRAM', battery: '~4-6 hrs', display: '16" QHD 165Hz 100% DCI-P3', price: '$1.300.000 – $1.700.000', why: 'RTX 4070 con 8GB VRAM permite edición 4K fluida en Premiere y After Effects. Pantalla QHD con DCI-P3 para colorimetría correcta.' },
-          eco: { name: 'Desktop gaming + monitor de producción', cpu: 'Ryzen 9 5900X o i7-12700K', ram: '32 GB DDR4', storage: 'SSD NVMe 1TB + HDD 4TB', gpu: 'RTX 3070 o 3080 (segunda mano)', battery: 'No aplica', display: '27" IPS 4K 100% DCI-P3', price: '$700.000 – $1.100.000 (todo el set)', why: 'Para Cine, el workflow principal es en estación fija. Un desktop potente de segunda mano + buen monitor es mejor relación precio/rendimiento que una laptop de $2M.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad Pro + Apple Pencil — Para storyboards', reason: 'Dibujar storyboards digitales, animar en Procreate, usar LumaFusion para edición rápida en set.', price: '$800.000 – $1.100.000 CLP' }
-        ],
-        calcs: [
-          { name: 'No aplica para esta carrera', why: 'Cine no tiene ramos de matemáticas avanzadas.', price: '$0' }
-        ],
-        accessories: [
-          { name: 'SSD externo 4TB (Crucial X9 Pro o similar)', emoji: '', priority: 'must', reason: 'El accesorio más crítico de Cine. Footage RAW ocupa enormidades. Necesitas rápido (USB 3.2 Gen2) y grande.' },
-          { name: 'Monitor de referencia de color', emoji: '', priority: 'must', reason: 'Un monitor calibrado para post-producción. BenQ SW270C (~$300.000) es el entry-level profesional.' },
-          { name: 'Tarjeta de sonido externa', emoji: '', priority: 'rec', reason: 'Para monitoreo de audio de calidad durante la mezcla.' }
-        ]
-      },
-
-      ing_mecanica: {
-        label: 'Ingeniería Mecánica', emoji: '',
-        alert: '<strong>Simulación FEM y CAD 3D son las cargas más pesadas.</strong> ANSYS y SolidWorks son los programas más exigentes de la ingeniería. GPU dedicada y 16GB RAM son el mínimo desde 3er año.',
-        scores: { CPU: 8, RAM: 8, Storage: 7, GPU: 8, Battery: 5, Display: 7 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#f97316', Battery: '#64748b', Display: '#14b8a6' },
-        software: ['SolidWorks / Fusion 360', 'ANSYS (FEM)', 'MATLAB / Simulink', 'AutoCAD Mechanical', 'Python numérico'],
-        laptops: {
-          ideal: { name: 'Lenovo ThinkPad P16 / HP ZBook Fury 15', cpu: 'Intel i7-13700H o Ryzen 9 Pro', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB', gpu: 'NVIDIA RTX A2000 (Workstation)', battery: '~6-8 hrs', display: '16" FHD/QHD IPS antirreflejo', price: '$1.400.000 – $2.000.000', why: 'Workstations certificadas para SolidWorks y ANSYS. La diferencia entre una GPU gaming y una Workstation (RTX A vs RTX) es la certificación de drivers que garantiza que las simulaciones no fallen en medio de un cálculo.' },
-          balance: { name: 'ASUS ROG Zephyrus G15 / MSI Stealth 15', cpu: 'Ryzen 7 7745H', ram: '16-32 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 4060 o RTX 4070', battery: '~5-7 hrs', display: '15.6" QHD 165Hz', price: '$900.000 – $1.300.000', why: 'RTX 4060/4070 con drivers actualizados corren SolidWorks y ANSYS Student perfectamente para uso estudiantil.' },
-          eco: { name: 'Laptop gaming media gama + acceso a labs', cpu: 'Intel i5-12500H + RTX 3050', ram: '16 GB DDR5', storage: 'SSD 512GB', gpu: 'RTX 3050 4GB', battery: '~5 hrs', display: '15.6" FHD 144Hz', price: '$550.000 – $750.000', why: 'RTX 3050 corre SolidWorks básico y simulaciones pequeñas. Para simulaciones FEM grandes, usa los laboratorios de cómputo de la facultad en horas de bajo uso.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad — Útil para apuntes técnicos', reason: 'Para anotar en clases de termodinámica, mecánica de fluidos y resistencia de materiales con diagramas.', price: '$230.000 – $380.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — ESENCIAL años 1-3', why: 'Cálculos manuales de mecánica, termodinámica y resistencia de materiales. La ClassWiz tiene resolución de ecuaciones diferenciales numéricas e integración.', price: '~$32.000 – $42.000 CLP' },
-          { name: 'HP 50g o TI-Nspire CX CAS — Avanzada', why: 'Para Mecánica de Fluidos y simulaciones donde quieras verificar resultados analíticamente. CAS te permite hacer álgebra simbólica.', price: '~$80.000 – $130.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Ratón ergonómico preciso', emoji: '', priority: 'must', reason: 'Modelado CAD 3D con trackpad es una pesadilla. Un ratón con buen DPI es fundamental.' },
-          { name: 'Monitor externo 27" FHD/QHD', emoji: '', priority: 'rec', reason: 'Ver un modelo 3D de SolidWorks en un monitor grande cambia el flujo de trabajo completamente.' },
-          { name: 'Disco externo 1TB', emoji: '', priority: 'must', reason: 'Proyectos de simulación FEM pueden pesar varios GB cada uno.' }
-        ]
-      },
-
-      bioquimica: {
-        label: 'Bioquímica / Biología', emoji: '',
-        alert: '<strong>Análisis bioinformático desde 3er año.</strong> Alineamientos de secuencias y análisis de datos NGS requieren RAM y CPU. Python/R para bioinformática es el stack principal.',
-        scores: { CPU: 7, RAM: 8, Storage: 6, GPU: 4, Battery: 7, Display: 6 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Python + BioPython', 'R + Bioconductor', 'BLAST / HMMER', 'PyMOL (visualización)', 'ImageJ / FIJI'],
-        laptops: {
-          ideal: { name: 'Lenovo ThinkBook 16 / ASUS ZenBook Pro 16X', cpu: 'AMD Ryzen 7 7745H o Intel i7-1360P', ram: '32 GB DDR5', storage: 'SSD NVMe 1TB', gpu: 'RTX 4060 (CUDA para Deep Learning bio)', battery: '~8-10 hrs', display: '16" IPS 4K antiglare', price: '$900.000 – $1.300.000', why: '32GB para correr BLAST, alinear genomas completos y tener Jupyter + PyMOL abiertos simultáneamente. La GPU con CUDA ayuda en Bioinformática Computacional avanzada.' },
-          balance: { name: 'ASUS VivoBook Pro 15 / Lenovo IdeaPad 5 Pro', cpu: 'Ryzen 5 7530U o Intel i5-1335U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$550.000 – $750.000', why: '16GB es el mínimo real para bioinformática. Para visualización de proteínas en PyMOL la GPU integrada es suficiente.' },
-          eco: { name: 'Laptop + acceso a clúster universitario', cpu: 'i5/Ryzen 5 con SSD', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8 hrs', display: '15.6" FHD', price: '$380.000 – $550.000', why: 'Los análisis más pesados (ensamblaje genómico, RNA-seq) conviene correrlos en el clúster de la universidad o en Google Colab gratis.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad + GoodNotes — Recomendado', reason: 'Para apuntes en laboratorio, diagramas de vías metabólicas y lectura de papers en PDF.', price: '$230.000 – $380.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW', why: 'Para Química, Bioquímica y Fisicoquímica. Cálculos de pH, concentraciones y cinética enzimática.', price: '~$32.000 – $42.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Disco externo SSD 1TB', emoji: '', priority: 'must', reason: 'Datos de secuenciación (FASTQ) son archivos enormes (1-20GB por muestra).' },
-          { name: 'Ratón de laboratorio', emoji: '', priority: 'rec', reason: 'Trabajarás en entornos de laboratorio donde el ratón necesita ser fácil de limpiar.' }
-        ]
-      },
-
-      pedagogia: {
-        label: 'Pedagogía', emoji: '',
-        alert: '<strong>Portabilidad y herramientas creativas.</strong> Crearás materiales didácticos y presentaciones. La laptop ligera con buena batería es perfecta para práctica profesional en establecimientos.',
-        scores: { CPU: 4, RAM: 5, Storage: 4, GPU: 1, Battery: 9, Display: 6 },
-        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['PowerPoint / Canva', 'Word + Google Docs', 'Kahoot / Mentimeter', 'Google Classroom', 'Loom (video)'],
-        laptops: {
-          ideal: { name: 'MacBook Air 13" M2 / Samsung Galaxy Book3', cpu: 'M2 / Intel i5-1335U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+12 hrs', display: '13-14" IPS antirreflejo', price: '$600.000 – $950.000', why: 'Para práctica en establecimientos la batería larga es crítica. El MacBook M2 dura todo el día sin enchufar y tiene el mejor trackpad para presentaciones.' },
-          balance: { name: 'Lenovo IdeaPad Slim 3 14" / ASUS VivoBook 14', cpu: 'Intel i5-1135G7 o Ryzen 5 5500U', ram: '8 GB DDR4', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" FHD IPS', price: '$320.000 – $500.000', why: '14" es el tamaño ideal: portable y con pantalla suficiente para presentar al proyector de una sala.' },
-          eco: { name: 'Chromebook 14" / laptop básica', cpu: 'Intel Celeron / Pentium', ram: '4-8 GB', storage: '64GB eMMC + Google Drive', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" HD', price: '$150.000 – $250.000', why: 'Si toda tu plataforma es Google (Docs, Classroom, Drive), un Chromebook es perfectamente suficiente y tiene batería excelente.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad básico — Muy recomendado', reason: 'Para mostrar contenido interactivo a estudiantes, apps educativas como Khan Academy y crear material en Canva.', price: '$230.000 – $320.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Calculadora según mención', why: 'Si tu mención es Matemática o Ciencias, necesitarás Casio fx-991CW para demostrar a los alumnos. Otras menciones no requieren calculadora específica.', price: '~$32.000 CLP si aplica' }
-        ],
-        accessories: [
-          { name: 'Puntero láser con control de presentación', emoji: '', priority: 'must', reason: 'Para presentaciones en sala sin tener que estar pegado al computador.' },
-          { name: 'Adaptador HDMI universal', emoji: '', priority: 'must', reason: 'Los proyectores de establecimientos usan HDMI o VGA. Lleva siempre un adaptador.' }
-        ]
-      },
-
-      enfermeria: {
-        label: 'Enfermería / Kinesiología', emoji: '',
-        alert: '<strong>Similares a Medicina en portabilidad.</strong> Priorizas batería y peso. El software clínico suele ser web-based, no necesitas hardware potente.',
-        scores: { CPU: 5, RAM: 6, Storage: 5, GPU: 2, Battery: 10, Display: 6 },
-        scoreColors: { CPU: '#64748b', RAM: '#6366f1', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['OneNote / GoodNotes', 'Anki', 'Office 365', 'Zoom', 'Software clínico web-based'],
-        laptops: {
-          ideal: { name: 'MacBook Air 13" M2 / Lenovo ThinkPad E14', cpu: 'M2 / Intel i5-1235U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '+12 hrs', display: '13-14" IPS', price: '$700.000 – $1.000.000', why: 'Batería y portabilidad son lo más importante. Irás a hospitales y clínicas todo el día.' },
-          balance: { name: 'ASUS VivoBook 14 / Acer Aspire 5 14"', cpu: 'Ryzen 5 5500U o Intel i5-1135G7', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '14" FHD', price: '$320.000 – $500.000', why: 'Laptops de 14" ultralivianas. La diferencia de peso de una de 15.6" se siente al final de una jornada clínica.' },
-          eco: { name: 'Laptop refurbished ligera', cpu: 'Intel i5 8va gen con SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '14-15"', price: '$180.000 – $300.000', why: 'Perfectamente válido para Enfermería. El software que usarás es liviano.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad + GoodNotes — ESENCIAL', reason: 'Para apuntes sobre anatomo-patología, procedimientos y protocolos clínicos. Funciona igual que en Medicina.', price: '$230.000 – $380.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW', why: 'Para cálculos de dosis, goteos, concentraciones de soluciones y farmacología.', price: '~$32.000 – $42.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Mochila ergonómica', emoji: '', priority: 'must', reason: 'Cargarás laptop + material clínico + libros todo el día.' },
-          { name: 'Batería externa 10.000mAh', emoji: '', priority: 'rec', reason: 'Para turnos largos sin acceso a enchufes.' }
-        ]
-      },
-
-      economia: {
-        label: 'Economía', emoji: '',
-        alert: '<strong>Similar a Ingeniería en el componente cuantitativo.</strong> Python/R para econometría, STATA o EViews para series de tiempo. RAM y CPU moderados son suficientes.',
-        scores: { CPU: 6, RAM: 7, Storage: 6, GPU: 2, Battery: 7, Display: 6 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#374151', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Python + Pandas/Statsmodels', 'R + tidyverse', 'STATA / EViews', 'Excel + Power BI', 'MATLAB (algunos programas)'],
-        laptops: {
-          ideal: { name: 'Lenovo ThinkBook 14 / ASUS VivoBook Pro 14', cpu: 'Intel i5-1335U o Ryzen 5 7530U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~10 hrs', display: '14" FHD IPS', price: '$500.000 – $700.000', why: '16GB son el mínimo real para correr STATA + Python + Excel sin problemas. Un procesador moderno con SSD es suficiente para econometría.' },
-          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Intel i5-1135G7 o Ryzen 5 5500U', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD', price: '$320.000 – $500.000', why: 'Equipos confiables. Si viene con 8GB, actualiza a 16GB al inicio.' },
-          eco: { name: 'Laptop refurbished + SSD', cpu: 'i5 8va-10ma gen con SSD', ram: '8 GB', storage: 'SSD 256GB', gpu: 'Integrada', battery: 'Variable', display: '15.6"', price: '$180.000 – $300.000', why: 'STATA y Python corren bien en equipos modestos modernos con SSD.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad — Recomendado para apuntes', reason: 'Para apuntes en clases de econometría y microeconomía con diagramas.', price: '$230.000 – $380.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — Para matemáticas', why: 'Para cálculo, álgebra lineal y estadística del primer año.', price: '~$32.000 – $42.000 CLP' },
-          { name: 'Texas Instruments BA II Plus — Optativa', why: 'Si te especializas en Finanzas Públicas o Evaluación de Proyectos, la BA II Plus te ahorra tiempo en cálculos de VPN y TIR.', price: '~$45.000 – $70.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Ratón inalámbrico', emoji: '', priority: 'must', reason: 'Para trabajo intensivo en Excel y hojas de datos.' },
-          { name: 'Monitor externo 24"', emoji: '', priority: 'rec', reason: 'Muy útil para análisis de datos con Python y STATA en casa.' }
-        ]
-      },
-
-      ing_electrica: {
-        label: 'Ingeniería Eléctrica / Electrónica', emoji: '',
-        alert: '<strong>MATLAB, Simulink y software de diseño de circuitos.</strong> Las simulaciones de circuitos pueden ser pesadas. GPU no es prioritaria pero sí CPU y RAM.',
-        scores: { CPU: 7, RAM: 7, Storage: 6, GPU: 4, Battery: 6, Display: 7 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['MATLAB + Simulink', 'LTspice / Multisim', 'AutoCAD Electrical', 'Python numérico', 'LabVIEW'],
-        laptops: {
-          ideal: { name: 'Lenovo ThinkBook 16 / Dell Inspiron 16 Plus', cpu: 'AMD Ryzen 7 7745H o Intel i7-1360P', ram: '16-32 GB DDR4/5', storage: 'SSD 512GB-1TB', gpu: 'RTX 3050 o integrada', battery: '~8-10 hrs', display: '16" FHD IPS antirreflejo', price: '$700.000 – $1.000.000', why: '16-32GB para correr MATLAB + Simulink + LTspice sin problemas. El SSD NVMe reduce el tiempo de carga de modelos grandes de Simulink.' },
-          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5', cpu: 'Ryzen 5 7530U o Intel i5-1235U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $700.000', why: '16GB son suficientes para la mayoría de los años de la carrera. Actualiza si llegas a ramos de control avanzado con simulaciones muy pesadas.' },
-          eco: { name: 'Laptop refurbished i5/Ryzen 5 + SSD', cpu: 'Intel i5 10ma gen o Ryzen 5 4000', ram: '8-16 GB', storage: 'SSD 256-512GB', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$200.000 – $380.000', why: 'Para los primeros años es suficiente. MATLAB y LTspice no son extremadamente pesados en los primeros semestres.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad — Para apuntes de circuitos', reason: 'Diagramar circuitos a mano en GoodNotes es más cómodo que en papel. Útil para clases de electrónica.', price: '$230.000 – $380.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — ESENCIAL', why: 'Para análisis de circuitos, números complejos, transformadas de Fourier manuales y cálculos de potencia. Imprescindible en certámenes.', price: '~$32.000 – $42.000 CLP' },
-          { name: 'HP 50g — Para usuarios avanzados', why: 'Para resolver ecuaciones de estado en Control Automático y sistemas complejos.', price: '~$80.000 – $120.000 CLP (usada)' }
-        ],
-        accessories: [
-          { name: 'Ratón inalámbrico', emoji: '', priority: 'must', reason: 'Para diseño de circuitos en LTspice y navegación en MATLAB.' },
-          { name: 'Monitor externo 24"', emoji: '', priority: 'rec', reason: 'Para tener Simulink en un monitor y código en el otro.' },
-          { name: 'Multímetro digital básico', emoji: '', priority: 'rec', reason: 'Para las prácticas de laboratorio. Un Fluke o UNI-T básico (~$15.000-$30.000).' }
-        ]
-      },
-
-      ing_quimica: {
-        label: 'Ingeniería Química', emoji: '',
-        alert: '<strong>Simulación de procesos y análisis de datos.</strong> Aspen Plus y HYSYS son los simuladores de planta más usados. MATLAB y Python para modelado numérico.',
-        scores: { CPU: 7, RAM: 8, Storage: 6, GPU: 3, Battery: 6, Display: 6 },
-        scoreColors: { CPU: '#6366f1', RAM: '#8b5cf6', Storage: '#06b6d4', GPU: '#64748b', Battery: '#22c55e', Display: '#f59e0b' },
-        software: ['Aspen Plus / HYSYS', 'MATLAB + Simulink', 'Python (SciPy, NumPy)', 'AutoCAD P&ID', 'Excel avanzado'],
-        laptops: {
-          ideal: { name: 'Lenovo ThinkBook 16 / HP EliteBook 845', cpu: 'AMD Ryzen 7 7730U o Intel i7-1355U', ram: '16-32 GB DDR4', storage: 'SSD NVMe 512GB-1TB', gpu: 'Integrada', battery: '~10-12 hrs', display: '16" FHD IPS', price: '$750.000 – $1.000.000', why: 'Aspen Plus con modelos de columnas de destilación complejos puede usar 8-12GB de RAM solo. 16GB es el mínimo funcional; 32GB la opción ideal.' },
-          balance: { name: 'ASUS VivoBook 15 / Acer Aspire 5 Ryzen', cpu: 'AMD Ryzen 5 7530U o Intel i5-1235U', ram: '16 GB DDR4', storage: 'SSD 512GB', gpu: 'Integrada', battery: '~8-10 hrs', display: '15.6" FHD IPS', price: '$500.000 – $700.000', why: '16GB DDR4 con SSD NVMe corre Aspen en la mayoría de los casos. Evita equipos con 8GB para esta carrera.' },
-          eco: { name: 'Laptop refurbished + upgrade RAM', cpu: 'Intel i5/Ryzen 5 reciente', ram: '8GB → actualiza a 16GB', storage: 'SSD NVMe', gpu: 'Integrada', battery: 'Variable', display: '15.6" FHD', price: '$250.000 – $450.000', why: 'Si el presupuesto aprieta, compra un equipo refurbished moderno y actualiza la RAM a 16GB. El SSD es indispensable.' }
-        },
-        tablets: [
-          { emoji: '', name: 'iPad — Para apuntes de termodinámica', reason: 'Para diagramar ciclos termodinámicos, diagramas de flujo de proceso y apuntar en clases de operaciones unitarias.', price: '$230.000 – $380.000 CLP' }
-        ],
-        calcs: [
-          { name: 'Casio fx-991CW — ESENCIAL', why: 'Cálculos de equilibrio de fases, termodinámica, balance de masa y energía. Imprescindible en certámenes de los primeros 4 años.', price: '~$32.000 – $42.000 CLP' }
-        ],
-        accessories: [
-          { name: 'Ratón inalámbrico', emoji: '', priority: 'must', reason: 'Para trabajar cómodamente en Aspen y Excel.' },
-          { name: 'Disco externo 1TB', emoji: '', priority: 'must', reason: 'Las simulaciones de Aspen y proyectos de diseño de planta generan archivos pesados.' }
-        ]
-      }
-    };
+    var CAREER_FAMILIES = {"software_dev": {"scores": {"CPU": 9, "RAM": 9, "Storage": 8, "GPU": 6, "Battery": 6, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#f59e0b", "Display": "#14b8a6"}, "alert": "<strong>Carrera de alta exigencia de cómputo:</strong> Requerirás compilar proyectos, ejecutar máquinas virtuales (VM), contenedores Docker y múltiples IDEs. Menos de 16GB de RAM se queda corto rápidamente.", "software": ["VS Code / IntelliJ", "Docker + VMs", "Git + GitHub", "Linux WSL2", "Python / C++ / Java"], "laptops": {"ideal": {"name": "ASUS ROG Zephyrus G14 / Lenovo Legion Slim 5", "cpu": "AMD Ryzen 9 / 7 serie 7000H o Intel Core i7-13700H", "ram": "32 GB DDR5", "storage": "SSD NVMe 1TB PCIe 4.0", "gpu": "NVIDIA RTX 4060 8GB GDDR6", "battery": "~6-8 hrs", "display": "14\"-16\" QHD 144Hz+", "price": "$1.100.000 – $1.600.000", "why": "32GB permiten correr 2 VMs + contenedores + IDEs sin cuello de botella. La GPU dedicada acelera modelos de Machine Learning y procesamiento paralelo."}, "balance": {"name": "Lenovo IdeaPad Gaming 3 / HP Victus 15", "cpu": "AMD Ryzen 5 7535H o Intel Core i5-12500H", "ram": "16 GB DDR5 (con slot para expandir)", "storage": "SSD NVMe 512GB", "gpu": "NVIDIA RTX 3050 4GB/6GB", "battery": "~5-7 hrs", "display": "15.6\" FHD IPS 144Hz", "price": "$650.000 – $900.000", "why": "Excelente relación costo/beneficio con GPU CUDA para primeros ramos de IA y compilar fluidamente. 16GB aseguran fluidez los primeros 3 años."}, "eco": {"name": "Laptop Ryzen 5 serie 5000/7000 + upgrade a 16GB", "cpu": "AMD Ryzen 5 5500U/7530U o Intel i5 12va gen", "ram": "8 GB DDR4 (actualizar inmediatamente a 16GB)", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados Radeon / Iris Xe", "battery": "~8-10 hrs", "display": "15.6\" FHD IPS", "price": "$380.000 – $520.000", "why": "Excelente base para programar y aprender algoritmos en los primeros semestres; la actualización a 16GB es indispensable."}}, "tablets": [{"emoji": "📱", "name": "Tablet Samsung Galaxy Tab S9 FE / iPad 10ma", "reason": "Complemento opcional para lectura de PDFs y diagramación rápida, aunque la prioridad #1 es siempre la laptop.", "price": "$300.000 – $420.000 CLP"}], "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Calculadora científica recomendada para ramos matemáticos del plan común (Cálculo I-III y Álgebra).", "price": "~$32.000 – $42.000 CLP"}], "accessories": [{"name": "Monitor externo 24-27\" IPS FHD/QHD", "priority": "rec", "reason": "Tener dos pantallas al programar duplica la productividad (código en una, consola/documentación en la otra)."}, {"name": "Teclado mecánico y mouse ergonómico", "priority": "rec", "reason": "Evita fatiga muscular y síndrome del túnel carpiano por largas sesiones de código."}, {"name": "Disco externo SSD NVMe 1TB", "priority": "must", "reason": "Respaldos periódicos de repositorios, máquinas virtuales y proyectos de titulación."}], "db_profile": {"min_ram": 16, "gpu_dedicada": true, "palabras_clave": ["rtx", "ryzen 7", "core i7", "legion", "tuf", "victus", "loq", "16 gb", "32 gb"], "motivo": "Recomendado para desarrollo de software, múltiples IDEs, Docker y compilación pesada.", "badge": "Dev & VMs Ready"}}, "cad_heavy": {"scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 8, "Battery": 6, "Display": 8}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#ef4444", "Battery": "#f59e0b", "Display": "#22c55e"}, "alert": "<strong>Carrera de modelado 3D y simulación técnica:</strong> Se requiere GPU dedicada (NVIDIA GeForce RTX) y mínimo 16GB de RAM para software como AutoCAD, SolidWorks, Revit, Inventor o ANSYS sin colgarse en el viewport 3D.", "software": ["AutoCAD", "SolidWorks / Inventor", "Revit / BIM", "ANSYS / FEA", "MATLAB"], "laptops": {"ideal": {"name": "ASUS TUF Gaming / Lenovo LOQ / Legion", "cpu": "Intel Core i7-13650HX o AMD Ryzen 7 7840HS", "ram": "16 GB a 32 GB DDR5", "storage": "SSD NVMe 1TB PCIe 4.0", "gpu": "NVIDIA GeForce RTX 4060 8GB GDDR6", "battery": "~5-7 hrs", "display": "15.6\" o 16\" FHD/QHD 144Hz IPS 100% sRGB", "price": "$950.000 – $1.400.000", "why": "La GPU dedicada RTX acelera el renderizado por hardware y el cálculo por elementos finitos. 16GB+ garantizan fluidez con ensamblajes grandes."}, "balance": {"name": "Acer Nitro V15 / Lenovo IdeaPad Gaming 3", "cpu": "AMD Ryzen 5 7535HS o Intel Core i5-13420H", "ram": "16 GB DDR5", "storage": "SSD NVMe 512GB", "gpu": "NVIDIA RTX 3050 / RTX 4050", "battery": "~5-6 hrs", "display": "15.6\" FHD 144Hz IPS", "price": "$650.000 – $850.000", "why": "Punto de equilibrio perfecto: tarjeta dedicada suficiente para modelado de piezas, planos BIM y proyectos de taller."}, "eco": {"name": "Notebook Ryzen 5 / i5 con GPU GTX 1650 / RTX 2050 / 3050 refurbished", "cpu": "AMD Ryzen 5 5600H o Intel Core i5 11va gen", "ram": "8 GB → actualizar a 16GB", "storage": "SSD NVMe 512GB", "gpu": "NVIDIA GTX 1650 o RTX 3050", "battery": "~4-6 hrs", "display": "15.6\" FHD", "price": "$420.000 – $580.000", "why": "Equipo con GPU dedicada de entrada que cumple los requerimientos mínimos de acreditación de software técnico."}}, "tablets": [{"emoji": "📱", "name": "iPad 10ma gen con Apple Pencil", "reason": "Excelente para bosquejos iniciales a mano alzada, revisión de planos en terreno y anotaciones técnicas.", "price": "$330.000 – $420.000 CLP"}], "calcs": [{"name": "Casio fx-991CW ClassWiz — Recomendada", "why": "Cálculo vectorial, matricial y ecuaciones simultáneas para ramos de Mecánica, Estática y Dinámica.", "price": "~$32.000 – $42.000 CLP"}, {"name": "HP Prime v2 / TI-Nspire CX II CAS", "why": "Graficadora avanzada para cálculo de vigas, deformaciones y optimización.", "price": "~$130.000 – $190.000 CLP"}], "accessories": [{"name": "Mouse ergonómico con rueda de precisión (CAD)", "priority": "must", "reason": "El botón central (scroll) es vital para paneo y órbita 3D en AutoCAD y SolidWorks."}, {"name": "Monitor externo 27\" QHD IPS", "priority": "rec", "reason": "Área de trabajo amplia para ver planos a escala y herramientas simultáneamente."}, {"name": "Base refrigerante para laptop", "priority": "rec", "reason": "Mantiene temperaturas estables durante renders y simulaciones pesadas prolongadas."}], "db_profile": {"min_ram": 16, "gpu_dedicada": true, "palabras_clave": ["rtx", "tuf", "legion", "loq", "nitro", "victus", "ryzen 7", "core i7"], "motivo": "Recomendado para modelado 3D CAD, planos BIM, AutoCAD y cálculo de elementos finitos.", "badge": "CAD 3D & FEA"}}, "electronics": {"scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 7, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"}, "alert": "<strong>Carrera de circuitos y simulación matemática:</strong> Se requiere buen procesador y 16GB de RAM para MATLAB/Simulink, diseño de PCBs en Altium/KiCad y simulación SPICE de circuitos analógicos y digitales.", "software": ["MATLAB / Simulink", "LTSpice / Proteus", "Altium Designer / KiCad", "Python / C++", "LabVIEW"], "laptops": {"ideal": {"name": "Lenovo ThinkBook 16 / ASUS VivoBook Pro", "cpu": "Intel Core i7-13700H o AMD Ryzen 7 7735HS", "ram": "16 GB a 32 GB DDR5", "storage": "SSD NVMe 1TB PCIe 4.0", "gpu": "NVIDIA RTX 3050 o Radeon 780M avanzada", "battery": "~8-10 hrs", "display": "15.6\" o 16\" FHD IPS mate", "price": "$800.000 – $1.100.000", "why": "Potencia multicore para simulaciones pesadas de circuitos en el dominio del tiempo y frecuencia sin demoras."}, "balance": {"name": "Acer Aspire 5 / ASUS VivoBook 15", "cpu": "AMD Ryzen 7 7730U o Intel Core i5-1335U", "ram": "16 GB DDR4/DDR5", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados Radeon / Iris Xe", "battery": "~8-10 hrs", "display": "15.6\" FHD IPS", "price": "$520.000 – $720.000", "why": "Capacidad óptima para programar microcontroladores, ESP32, Arduino y correr simulaciones SPICE."}, "eco": {"name": "Lenovo IdeaPad 3 / HP 15 Ryzen 5", "cpu": "AMD Ryzen 5 5500U o Intel Core i5 11va gen", "ram": "8 GB (ampliable a 16GB)", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~7-8 hrs", "display": "15.6\" FHD", "price": "$360.000 – $480.000", "why": "Equipo accesible con buen procesador capaz de cubrir los ramos de circuitos y programación."}}, "tablets": [{"emoji": "📱", "name": "iPad 10ma gen o Galaxy Tab S6 Lite", "reason": "Útil para dibujar diagramas esquemáticos rápidos, revisar datasheets de componentes y apuntes de clases.", "price": "$220.000 – $360.000 CLP"}], "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Esencial para números complejos (forma polar y rectangular), cálculo de fasores e impedancias en certámenes.", "price": "~$32.000 – $42.000 CLP"}, {"name": "HP Prime v2", "why": "Graficadora con transformada de Laplace y Fourier simbólica para ramos de Control y Señales.", "price": "~$140.000 – $190.000 CLP"}], "accessories": [{"name": "Hub USB multipuerto USB-A y USB-C", "priority": "must", "reason": "Para conectar placas de desarrollo (Arduino, STM32), osciloscopios USB y programadores PIC."}, {"name": "Mouse ergonómico", "priority": "rec", "reason": "Precisión para ruteo de pistas en PCB sobre KiCad o Altium."}, {"name": "Disco externo o pendrive rápido", "priority": "must", "reason": "Guardar librerías de componentes y proyectos de laboratorio."}], "db_profile": {"min_ram": 16, "gpu_dedicada": false, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "vivobook", "16 gb"], "motivo": "Excelente procesador para simulaciones SPICE, MATLAB/Simulink y diseño de circuitos.", "badge": "Simulación & Circuitos"}}, "process_eng": {"scores": {"CPU": 8, "RAM": 8, "Storage": 7, "GPU": 4, "Battery": 7, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"}, "alert": "<strong>Carrera de ingeniería de procesos y ciencias aplicadas:</strong> Se requiere memoria RAM amplia (16GB) para software de simulación como Aspen HYSYS, modelación termodinámica, MATLAB y balances de masa/energía.", "software": ["Aspen HYSYS / Plus", "MATLAB", "AutoCAD P&ID", "RStudio", "Excel Solver avanzado"], "laptops": {"ideal": {"name": "Lenovo ThinkBook 16 / HP EliteBook 845", "cpu": "AMD Ryzen 7 7730U/7735HS o Intel Core i7-1355U", "ram": "16 GB a 32 GB DDR5", "storage": "SSD NVMe 1TB PCIe", "gpu": "Gráficos Radeon / Iris Xe integrados", "battery": "~9-11 hrs", "display": "15.6\"-16\" FHD IPS mate", "price": "$750.000 – $1.000.000", "why": "16GB a 32GB son ideales para correr simuladores de plantas químicas y reactores sin pérdida de datos."}, "balance": {"name": "Acer Aspire 5 / ASUS VivoBook 15", "cpu": "AMD Ryzen 5 7530U o Intel Core i5-1235U/1335U", "ram": "16 GB DDR4/DDR5", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~8-10 hrs", "display": "15.6\" FHD IPS", "price": "$500.000 – $700.000", "why": "Estándar recomendado que corre Aspen y hojas de cálculo masivas con total estabilidad."}, "eco": {"name": "Notebook Ryzen 5 / i5 + ampliación a 16GB", "cpu": "AMD Ryzen 5 5500U o Intel Core i5 10ma/11ma", "ram": "8 GB (ampliar a 16GB para ramos de 3er año)", "storage": "SSD NVMe 256GB/512GB", "gpu": "Gráficos integrados", "battery": "~7-8 hrs", "display": "15.6\" FHD", "price": "$350.000 – $480.000", "why": "Económico para los dos primeros años de plan común, con margen de actualización."}}, "tablets": [{"emoji": "📱", "name": "Tablet Samsung Galaxy Tab A9+ / iPad", "reason": "Para lectura de diagramas de flujo de procesos (PFD/P&ID) y guías de laboratorio.", "price": "$170.000 – $320.000 CLP"}], "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Permite resolver sistemas de ecuaciones no lineales y tablas termodinámicas en certámenes.", "price": "~$32.000 – $42.000 CLP"}], "accessories": [{"name": "Mouse inalámbrico confiable", "priority": "must", "reason": "Indispensable para navegar hojas de cálculo kilométricas y diagramas de plantas."}, {"name": "Monitor externo 24\" FHD", "priority": "rec", "reason": "Permite contrastar literatura técnica y simulaciones a la vez."}, {"name": "Pendrive resistente o disco externo", "priority": "must", "reason": "Para transportar datos de experimentos de laboratorio de manera segura."}], "db_profile": {"min_ram": 16, "gpu_dedicada": false, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "vivobook", "16 gb"], "motivo": "Capacidad de memoria para simulación de procesos químicos, modelado termodinámico y balances.", "badge": "Simulación de Procesos"}}, "business_quant": {"scores": {"CPU": 7, "RAM": 8, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"}, "alert": "<strong>Carrera de modelación, analítica y gestión:</strong> El software clave incluye Python, R, Power BI, Excel Solver y simuladores como Simio o Arena. 16GB de RAM evitan congelamientos al procesar datasets masivos.", "software": ["Python + Pandas", "R + RStudio", "Power BI / Tableau", "Excel avanzado + VBA", "Simio / Arena"], "laptops": {"ideal": {"name": "Lenovo ThinkBook 16 G6 / HP EliteBook 845", "cpu": "AMD Ryzen 7 7730U o Intel Core i7-1355U", "ram": "16 GB DDR4/DDR5 3200MHz+", "storage": "SSD NVMe 512GB / 1TB", "gpu": "Gráficos integrados Radeon / Iris Xe", "battery": "~10-12 hrs", "display": "15.6\"-16\" FHD IPS Anti-glare", "price": "$750.000 – $950.000", "why": "16GB indispensables para correr RStudio, Power BI y simuladores en paralelo. Gran teclado con pad numérico para ingreso de datos."}, "balance": {"name": "ASUS VivoBook 15 / Acer Aspire 5", "cpu": "AMD Ryzen 5 7530U o Intel Core i5-1235U", "ram": "16 GB DDR4/DDR5", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~8-10 hrs", "display": "15.6\" FHD IPS", "price": "$500.000 – $700.000", "why": "Excelente equilibrio. Abre modelos de optimización y bases de datos en pocos segundos."}, "eco": {"name": "Notebook refurbished i5/Ryzen 5 con SSD", "cpu": "Intel Core i5 10ma gen o AMD Ryzen 5 serie 4000", "ram": "8 GB (actualizable a 16GB)", "storage": "SSD 256GB / 512GB", "gpu": "Gráficos integrados", "battery": "~6-8 hrs", "display": "15.6\" FHD", "price": "$280.000 – $420.000", "why": "Opción económica eficiente; al sumar $30k en un segundo módulo de RAM queda como equipo de gama media."}}, "tablets": [{"emoji": "📱", "name": "iPad 9a/10a gen o Galaxy Tab S9 FE", "reason": "Muy recomendada para lectura de papers, casos de estudio en grupos y presentaciones de negocios.", "price": "$240.000 – $390.000 CLP"}], "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "552 funciones, álgebra matricial, estadística avanzada y distribuciones de probabilidad.", "price": "~$32.000 – $42.000 CLP"}, {"name": "HP 12c Financiera (Opcional)", "why": "Clásica para ramos avanzados de Finanzas, flujos de caja y tasas de interés.", "price": "~$45.000 – $65.000 CLP"}], "accessories": [{"name": "Mouse ergonómico inalámbrico con teclado numérico", "priority": "must", "reason": "Fundamental para jornadas largas con hojas de cálculo y modelos financieros."}, {"name": "Monitor externo 24\" FHD", "priority": "rec", "reason": "Permite ver el dataset en una pantalla y el reporte en la otra."}, {"name": "Hub USB-C con HDMI", "priority": "rec", "reason": "Para conectar tu notebook en salas de presentación y defensas de proyectos."}], "db_profile": {"min_ram": 16, "gpu_dedicada": false, "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "thinkpad", "elitebook", "aspire", "16 gb"], "motivo": "Fluidez óptima para análisis de datos en Python/R, simulación de procesos y Power BI.", "badge": "Optimización & Datos"}}, "visual_arts": {"scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 7, "Battery": 7, "Display": 9}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#f59e0b", "Battery": "#22c55e", "Display": "#ec4899"}, "alert": "<strong>Carrera de expresión visual y diseño:</strong> La precisión de color de la pantalla (100% sRGB / DCI-P3) es tan crucial como la potencia. Se requiere GPU dedicada o Apple Silicon para edición fluida en suite Adobe y 3D.", "software": ["Adobe Photoshop", "Adobe Illustrator", "Premiere Pro / After Effects", "Blender 3D", "Figma / InDesign"], "laptops": {"ideal": {"name": "Apple MacBook Air M2/M3 (16GB) / ASUS VivoBook Pro OLED", "cpu": "Apple M2/M3 o Intel Core i7 / Ryzen 7", "ram": "16 GB a 32 GB unificada/DDR5", "storage": "SSD NVMe 1TB", "gpu": "GPU Apple 10 núcleos o NVIDIA RTX 4050/4060", "battery": "~12-16 hrs (Mac) / ~8 hrs (ASUS)", "display": "Pantalla Retina o OLED 2.8K 100% DCI-P3 calibrada de fábrica", "price": "$1.050.000 – $1.500.000", "why": "La fidelidad de color evita errores al imprimir o exponer. El renderizado de video y gráficos vectoriales vuela en esta configuración."}, "balance": {"name": "ASUS VivoBook 15 OLED / Lenovo IdeaPad Slim 5", "cpu": "AMD Ryzen 5 7530U o Intel Core i5 13va gen", "ram": "16 GB RAM", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados avanzados o NVIDIA RTX 3050", "battery": "~7-9 hrs", "display": "15.6\" OLED FHD 100% DCI-P3 o IPS 100% sRGB", "price": "$600.000 – $850.000", "why": "Panel de color profesional a precio accesible, perfecto para ilustración digital y retoque fotográfico."}, "eco": {"name": "Laptop estándar IPS FHD + Monitor externo calibrado", "cpu": "AMD Ryzen 5 o Intel Core i5", "ram": "16 GB RAM", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~6-8 hrs", "display": "15.6\" FHD IPS", "price": "$400.000 – $550.000", "why": "Permite trabajar diseño vectorial y maquetación digital de forma fluida."}}, "tablets": [{"emoji": "🎨", "name": "Wacom Intuos / iPad 10ma con Apple Pencil", "reason": "Herramienta ESENCIAL para ilustración a mano, dibujo vectorial y retoque de texturas.", "price": "$80.000 – $380.000 CLP"}], "calcs": [{"name": "Calculadora básica de bolsillo", "why": "No se requieren funciones avanzadas en artes visuales.", "price": "~$5.000 CLP"}], "accessories": [{"name": "Tableta digitalizadora con lápiz sensible a la presión", "priority": "must", "reason": "La precisión respecto a un mouse convencional es abismal para ilustrar."}, {"name": "Disco externo 1TB-2TB para proyectos multimedia", "priority": "must", "reason": "Archivos PSD, TIFF y secuencias de video ocupan cientos de gigabytes."}, {"name": "Calibrador de color o monitor externo IPS", "priority": "rec", "reason": "Garantiza que lo que ves en pantalla sea idéntico al resultado impreso."}], "db_profile": {"min_ram": 16, "gpu_dedicada": false, "palabras_clave": ["oled", "dci-p3", "macbook", "vivobook pro", "yoga", "100% srgb", "rtx"], "motivo": "Excelente calibración de pantalla y fluidez para Adobe Creative Cloud, Blender y Figma.", "badge": "Color & Creatividad"}}, "health_clinical": {"scores": {"CPU": 6, "RAM": 7, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"}, "alert": "<strong>Carrera clínica y hospitalaria:</strong> La portabilidad, peso ultra liviano (<1.5 kg) y autonomía de batería (+9 hrs) son la máxima prioridad para turnos y rotaciones en centros de salud. La tablet/iPad es un aliado crítico.", "software": ["Complete Anatomy 3D", "UpToDate / ClinicalKey", "Visores DICOM (Radiografías)", "Mendeley / Zotero", "Office 365"], "laptops": {"ideal": {"name": "Apple MacBook Air M2 / ASUS ZenBook 14 OLED", "cpu": "Apple M2 o Intel Core i5/i7 EVO / Ryzen 7 (bajo consumo)", "ram": "16 GB RAM", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados eficientes", "battery": "~12-16 hrs (batería para todo el día sin enchufe)", "display": "13.3\" a 14\" IPS / OLED antirreflejo", "price": "$850.000 – $1.150.000", "why": "Pesa apenas 1.2 kg, enciende al instante al abrir la tapa y dura toda la jornada en rotaciones hospitalarias."}, "balance": {"name": "Lenovo IdeaPad Slim 5 / Acer Swift Go 14", "cpu": "AMD Ryzen 5 7530U o Intel Core i5-1335U", "ram": "16 GB DDR4/DDR5", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~8-10 hrs", "display": "14\" FHD IPS mate", "price": "$500.000 – $680.000", "why": "Excelente relación entre peso reducido, batería duradera y fluidez para atlas de anatomía 3D."}, "eco": {"name": "Notebook ultra portátil 14\" i5/Ryzen 5 refurbished o entrada", "cpu": "Intel Core i5 o AMD Ryzen 5", "ram": "8 GB a 16 GB", "storage": "SSD 256GB / 512GB", "gpu": "Gráficos integrados", "battery": "~6-8 hrs", "display": "14\" FHD", "price": "$300.000 – $440.000", "why": "Ligero y económico para transportar en mochila médica a laboratorios y clases."}}, "tablets": [{"emoji": "🩺", "name": "iPad 10ma gen o iPad Air con Apple Pencil — MUY RECOMENDADO", "reason": "Es la herramienta #1 de estudio en salud: atlas de anatomía 3D, fichas clínicas, apuntes sobre diapositivas y lectura de papers.", "price": "$320.000 – $580.000 CLP"}], "calcs": [{"name": "Casio fx-82MS o fx-991CW", "why": "Para cálculo de dosis, diluciones farmacológicas y bioestadística en primeros años.", "price": "~$18.000 – $35.000 CLP"}], "accessories": [{"name": "Lápiz digital con rechazo de palma para tablet", "priority": "must", "reason": "Anotar esquemas clínicos a mano mejora la retención anatómica un 100%."}, {"name": "Funda antigolpes para tablet/laptop", "priority": "must", "reason": "Protección para traslados continuos entre campus UdeC y campos clínicos."}, {"name": "Cargador compacto GaN USB-C de 65W", "priority": "rec", "reason": "Carga tu celular, tablet y laptop con un solo cargador liviano en la mochila."}], "db_profile": {"min_ram": 8, "gpu_dedicada": false, "peso_max": 1.6, "palabras_clave": ["macbook", "zenbook", "swift", "yoga", "ideapad slim", "ipad"], "motivo": "Gran autonomía de batería y peso ultra ligero para rondas hospitalarias, seminarios y atlas 3D.", "badge": "Ultra Portátil Clínico"}}, "life_sciences": {"scores": {"CPU": 7, "RAM": 7, "Storage": 7, "GPU": 3, "Battery": 8, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"}, "alert": "<strong>Carrera científica y biológica:</strong> Utilizarás software de bioestadística (RStudio, GraphPad), análisis de secuencias bioinformáticas, química estructural y procesamiento de imágenes microscópicas (ImageJ).", "software": ["RStudio / GraphPad Prism", "ChemDraw / PyMOL", "ImageJ (microscopía)", "Bioinformática / BLAST", "Mendeley / Zotero"], "laptops": {"ideal": {"name": "Lenovo ThinkPad E14 / ASUS ZenBook 14", "cpu": "AMD Ryzen 7 7730U o Intel Core i7 13va gen", "ram": "16 GB DDR4/DDR5", "storage": "SSD NVMe 512GB / 1TB", "gpu": "Gráficos integrados", "battery": "~10-12 hrs", "display": "14\"-15.6\" FHD IPS mate", "price": "$700.000 – $920.000", "why": "Chasis duradero para salidas a terreno y laboratorios de investigación, con batería para todo el día."}, "balance": {"name": "Acer Aspire 5 / ASUS VivoBook 15", "cpu": "AMD Ryzen 5 7530U o Intel Core i5-1235U", "ram": "16 GB DDR4", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~8-10 hrs", "display": "15.6\" FHD IPS", "price": "$480.000 – $680.000", "why": "Excelente desempeño para correlaciones estadísticas, curvas de calibración y modelos moleculares en 3D."}, "eco": {"name": "Notebook Ryzen 5 con SSD", "cpu": "AMD Ryzen 5 5500U", "ram": "8 GB (ampliable)", "storage": "SSD 512GB", "gpu": "Gráficos integrados", "battery": "~7-8 hrs", "display": "15.6\" FHD", "price": "$340.000 – $460.000", "why": "Resuelve holgadamente los informes de laboratorio, hojas de cálculo y papers."}}, "tablets": [{"emoji": "🔬", "name": "Samsung Galaxy Tab S9 FE o iPad 10ma", "reason": "Excelente para registrar datos en terreno o mesón de laboratorio sin el estorbo de una laptop grande.", "price": "$280.000 – $390.000 CLP"}], "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Imprescindible para Química General, Orgánica, Físico-Química y Bioquímica (regresiones lineales, equilibrios iónicos).", "price": "~$32.000 – $42.000 CLP"}], "accessories": [{"name": "Mouse óptico inalámbrico", "priority": "must", "reason": "Para conteo celular en ImageJ y selección precisa de moléculas en PyMOL."}, {"name": "Funda resistente al agua para salidas a terreno / laboratorio", "priority": "must", "reason": "Protege tus equipos contra salpicaduras accidentales y condiciones de campo."}, {"name": "Disco externo de respaldo", "priority": "rec", "reason": "Para fotos de geles de electroforesis y bases de datos experimentales."}], "db_profile": {"min_ram": 16, "gpu_dedicada": false, "palabras_clave": ["ryzen 5", "ryzen 7", "core i5", "core i7", "aspire", "vivobook", "thinkpad"], "motivo": "Fluidez para bioinformática, análisis estadístico R/GraphPad y modelado molecular.", "badge": "Ciencia & Laboratorio"}}, "earth_exact_sciences": {"scores": {"CPU": 8, "RAM": 8, "Storage": 8, "GPU": 6, "Battery": 7, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#22c55e", "Battery": "#f59e0b", "Display": "#14b8a6"}, "alert": "<strong>Carrera científica y de modelación espacial/terrestre:</strong> Manejarás grandes volúmenes de datos geoespaciales (QGIS, ArcGIS), simulaciones físicas en Python/MATLAB y análisis espectral o astronómico.", "software": ["Python (NumPy / SciPy)", "MATLAB / GNU Octave", "QGIS / ArcGIS", "LaTeX / Overleaf", "SAOImage DS9 / IRAF"], "laptops": {"ideal": {"name": "Lenovo Legion Slim 5 / ASUS TUF Gaming", "cpu": "AMD Ryzen 7 7840HS o Intel Core i7-13700H", "ram": "16 GB a 32 GB DDR5", "storage": "SSD NVMe 1TB PCIe", "gpu": "NVIDIA RTX 4050/4060 6GB+", "battery": "~6-8 hrs", "display": "15.6\"-16\" FHD/QHD IPS mate", "price": "$850.000 – $1.250.000", "why": "La GPU dedicada procesa capas raster GIS y paralelismo CUDA para simulaciones astronómicas o geofísicas en una fracción del tiempo."}, "balance": {"name": "Acer Aspire 5 / ASUS VivoBook 15", "cpu": "AMD Ryzen 7 7730U o Intel Core i5 13va gen", "ram": "16 GB DDR4/DDR5", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados avanzados", "battery": "~8-10 hrs", "display": "15.6\" FHD IPS", "price": "$520.000 – $750.000", "why": "Muy buen desempeño multicore para scripts de cálculo científico y procesamiento de mallas geológicas."}, "eco": {"name": "Notebook Ryzen 5 con SSD NVMe", "cpu": "AMD Ryzen 5 5500U/7520U", "ram": "8 GB (ampliar a 16GB)", "storage": "SSD 512GB", "gpu": "Gráficos integrados", "battery": "~7-8 hrs", "display": "15.6\" FHD", "price": "$360.000 – $480.000", "why": "Responde con agilidad a ramos matemáticos y físicos de los primeros semestres."}}, "tablets": [{"emoji": "📱", "name": "Tablet Samsung Galaxy Tab S6 Lite / iPad 10ma", "reason": "Excelente para resolución de problemas a mano alzada en cálculo y física, y cartografía en terreno.", "price": "$220.000 – $360.000 CLP"}], "calcs": [{"name": "Casio fx-991CW ClassWiz", "why": "Cálculo integral numérico, matrices, vectores y constantes físicas universales preprogramadas.", "price": "~$32.000 – $42.000 CLP"}], "accessories": [{"name": "Disco externo 1TB o 2TB de alta velocidad", "priority": "must", "reason": "Para imágenes satelitales multiespectrales, cubos de datos astronómicos y registros sísmicos."}, {"name": "Mouse ergonómico", "priority": "must", "reason": "Fundamental para digitalización de curvas de nivel y polígonos en QGIS."}, {"name": "Mochila técnica para terreno", "priority": "must", "reason": "Protege el equipo en salidas de campo a cordillera o costa."}], "db_profile": {"min_ram": 16, "gpu_dedicada": false, "palabras_clave": ["ryzen 7", "core i7", "aspire", "legion", "tuf", "qgis", "16 gb"], "motivo": "Potencia computacional para Python científico, mapas GIS, simulaciones geofísicas y astronomía.", "badge": "Datos Científicos & GIS"}}, "law_humanities": {"scores": {"CPU": 5, "RAM": 6, "Storage": 6, "GPU": 2, "Battery": 9, "Display": 8}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"}, "alert": "<strong>Carrera de lectura extensiva y redacción jurídica/social:</strong> La prioridad máxima es una pantalla mate antirreflejo para no cansar la vista tras 8 horas de lectura, un teclado ergonómico de alta precisión y batería para todo el día.", "software": ["Adobe Acrobat Pro / PDF24", "SPSS / Jamovi (estadística social)", "ATLAS.ti / NVivo (análisis cualitativo)", "Zotero / Mendeley (citas APA)", "Office 365"], "laptops": {"ideal": {"name": "Lenovo ThinkPad E14 / Apple MacBook Air M2", "cpu": "Intel Core i5 gen 12/13, AMD Ryzen 5 o Apple M2", "ram": "16 GB RAM", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~12-15 hrs", "display": "14\" FHD IPS mate antirreflejo con filtro de luz azul", "price": "$650.000 – $950.000", "why": "El teclado ThinkPad es legendario por su comodidad de tipeo en memorias y alegatos. Batería que no te deja botado en la biblioteca ni en tribunales."}, "balance": {"name": "Lenovo IdeaPad Slim 3 / Acer Aspire 3 o 5", "cpu": "AMD Ryzen 5 7520U/7530U o Intel Core i3/i5", "ram": "8 GB a 16 GB RAM", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~7-9 hrs", "display": "15.6\" o 14\" FHD mate", "price": "$380.000 – $550.000", "why": "Equipo liviano y silencioso que maneja cientos de páginas en PDF y múltiples pestañas de leyes y jurisprudencia sin esfuerzo."}, "eco": {"name": "Notebook refurbished corporativo (ThinkPad T480/T490) con SSD", "cpu": "Intel Core i5 8va-10ma gen", "ram": "8 GB RAM", "storage": "SSD 256GB / 512GB", "gpu": "Gráficos integrados", "battery": "~5-7 hrs", "display": "14\" FHD IPS mate", "price": "$220.000 – $320.000", "why": "Para leer doctrinas, redactar informes y buscar jurisprudencia, un equipo corporativo con SSD vuela y ahorra mucho dinero."}}, "tablets": [{"emoji": "📚", "name": "iPad 9a/10a gen o Kindle Paperwhite", "reason": "Excelente alternativa para transportar códigos legales (Civil, Penal, etc.) y leer jurisprudencia en cualquier lugar.", "price": "$120.000 – $340.000 CLP"}], "calcs": [{"name": "Calculadora básica", "why": "Solo requerida esporádicamente para liquidaciones o estadística social básica.", "price": "~$6.000 CLP"}], "accessories": [{"name": "Atril elevador para laptop", "priority": "must", "reason": "Mantiene la pantalla a la altura de los ojos y previene dolores cervicales tras horas de lectura jurídica."}, {"name": "Teclado y mouse inalámbricos para el escritorio", "priority": "rec", "reason": "Comodidad total para redactar ensayos, recursos y memorias de título."}, {"name": "Audífonos con cancelación de ruido", "priority": "opt", "reason": "Para aislar el ruido exterior y concentrarse al estudiar en la biblioteca."}], "db_profile": {"min_ram": 8, "gpu_dedicada": false, "peso_max": 1.6, "palabras_clave": ["thinkpad", "macbook", "zenbook", "aspire", "vivobook", "ideapad slim"], "motivo": "Teclado ergonómico, pantalla mate descansada para lectura y batería para toda la jornada.", "badge": "Lectura & Batería"}}, "education": {"scores": {"CPU": 5, "RAM": 6, "Storage": 6, "GPU": 2, "Battery": 8, "Display": 7}, "scoreColors": {"CPU": "#6366f1", "RAM": "#8b5cf6", "Storage": "#06b6d4", "GPU": "#64748b", "Battery": "#22c55e", "Display": "#f59e0b"}, "alert": "<strong>Carrera docente y pedagógica:</strong> Necesitarás un equipo ágil para preparar material didáctico multimedia, guías, planificaciones curriculares y conectarlo frecuentemente a proyectores de colegios.", "software": ["Canva Pro / Genially", "Google Workspace / Classroom", "Microsoft Teams / Zoom", "GeoGebra (matemáticas)", "Office 365"], "laptops": {"ideal": {"name": "ASUS VivoBook 14/15 / Lenovo IdeaPad Slim 5", "cpu": "AMD Ryzen 5 7530U o Intel Core i5 12va/13va gen", "ram": "16 GB RAM", "storage": "SSD NVMe 512GB", "gpu": "Gráficos integrados", "battery": "~8-10 hrs", "display": "14\"-15.6\" FHD IPS mate", "price": "$480.000 – $680.000", "why": "16GB de RAM aseguran que Canva, diapositivas pesadas y decenas de pestañas de investigación educativa corran simultáneamente sin trabas."}, "balance": {"name": "Acer Aspire 3 / HP 15", "cpu": "AMD Ryzen 3/5 o Intel Core i3/i5", "ram": "8 GB a 16 GB", "storage": "SSD 512GB", "gpu": "Gráficos integrados", "battery": "~7-8 hrs", "display": "15.6\" FHD", "price": "$360.000 – $480.000", "why": "Confiable, rápido para crear presentaciones y con puerto HDMI nativo para conectar proyectores."}, "eco": {"name": "Notebook refurbished con SSD", "cpu": "Intel Core i5 o AMD Ryzen 3/5", "ram": "8 GB RAM", "storage": "SSD 256GB", "gpu": "Gráficos integrados", "battery": "~5-6 hrs", "display": "14\" FHD", "price": "$220.000 – $320.000", "why": "Suficiente para redactar planificaciones, preparar evaluaciones y reuniones online."}}, "tablets": [{"emoji": "🎒", "name": "Tablet Samsung Galaxy Tab A9+ o iPad 9a", "reason": "Excelente para pasar asistencia, proyectar recursos visuales en la sala de clases y corregir guías digitalmente.", "price": "$160.000 – $280.000 CLP"}], "calcs": [{"name": "Casio fx-82MS / fx-991CW", "why": "Casio científica estándar (indispensable para menciones en Matemáticas o Ciencias).", "price": "~$18.000 – $35.000 CLP"}], "accessories": [{"name": "Puntero láser inalámbrico con control de diapositivas", "priority": "must", "reason": "Permite moverte libremente por la sala de clases mientras presentas material."}, {"name": "Adaptador HDMI / VGA a USB-C", "priority": "must", "reason": "Los proyectores de colegios e institutos muchas veces usan cables VGA antiguos o HDMI estándar."}, {"name": "Mochila universitaria acolchada", "priority": "rec", "reason": "Para transportar de forma segura tu computador y materiales didácticos a las prácticas pedagógicas."}], "db_profile": {"min_ram": 8, "gpu_dedicada": false, "peso_max": 1.7, "palabras_clave": ["aspire", "vivobook", "ideapad", "galaxy book", "swift"], "motivo": "Ligero, con HDMI y batería duradera para planificaciones docentes y presentaciones en aula.", "badge": "Docencia & Aula"}}};
+    var UDEC_CARRERAS_DATA = {"administracion-publica-y-ciencia-politica": {"label": "Administración Pública y Ciencia Política", "campus": "Campus Concepción", "url": "https://admision.udec.cl/administracion-publica-y-ciencia-politica/", "family": "business_quant"}, "agronomia-concepcion": {"label": "Agronomía", "campus": "Campus Concepción", "url": "https://admision.udec.cl/agronomia-concepcion/", "family": "life_sciences"}, "antropologia": {"label": "Antropología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/antropologia/", "family": "law_humanities"}, "arquitectura": {"label": "Arquitectura", "campus": "Campus Concepción", "url": "https://admision.udec.cl/arquitectura/", "family": "cad_heavy"}, "artes-visuales": {"label": "Artes Visuales", "campus": "Campus Concepción", "url": "https://admision.udec.cl/artes-visuales/", "family": "visual_arts"}, "astronomia": {"label": "Astronomía", "campus": "Campus Concepción", "url": "https://admision.udec.cl/astronomia/", "family": "earth_exact_sciences"}, "auditoria": {"label": "Auditoría", "campus": "Campus Concepción", "url": "https://admision.udec.cl/auditoria/", "family": "business_quant"}, "bachillerato-en-ciencias-e-innovacion": {"label": "Bachillerato en Ciencias e Innovación", "campus": "Campus Concepción", "url": "https://admision.udec.cl/bachillerato-en-ciencias-e-innovacion/", "family": "earth_exact_sciences"}, "bachillerato-en-humanidades": {"label": "Bachillerato en Humanidades", "campus": "Campus Concepción", "url": "https://admision.udec.cl/bachillerato-en-humanidades/", "family": "law_humanities"}, "bioingenieria": {"label": "Bioingeniería", "campus": "Campus Concepción", "url": "https://admision.udec.cl/bioingenieria/", "family": "life_sciences"}, "biologia": {"label": "Biología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/biologia/", "family": "life_sciences"}, "biologia-marina": {"label": "Biología Marina", "campus": "Campus Concepción", "url": "https://admision.udec.cl/biologia-marina/", "family": "life_sciences"}, "bioquimica": {"label": "Bioquímica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/bioquimica/", "family": "life_sciences"}, "ciencias-fisicas": {"label": "Ciencias Físicas", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ciencias-fisicas/", "family": "earth_exact_sciences"}, "derecho": {"label": "Derecho", "campus": "Campus Concepción", "url": "https://admision.udec.cl/derecho/", "family": "law_humanities"}, "educacion-general-basica": {"label": "Educación General Básica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/educacion-general-basica/", "family": "education"}, "educacion-diferencial": {"label": "Educación Diferencial", "campus": "Campus Concepción", "url": "https://admision.udec.cl/educacion-diferencial/", "family": "education"}, "educacion-parvularia": {"label": "Educación Parvularia", "campus": "Campus Concepción", "url": "https://admision.udec.cl/educacion-parvularia/", "family": "education"}, "enfermeria": {"label": "Enfermería", "campus": "Campus Concepción", "url": "https://admision.udec.cl/enfermeria/", "family": "health_clinical"}, "fonoaudiologia": {"label": "Fonoaudiología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/fonoaudiologia/", "family": "health_clinical"}, "geofisica": {"label": "Geofísica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/geofisica/", "family": "earth_exact_sciences"}, "geografia": {"label": "Geografía", "campus": "Campus Concepción", "url": "https://admision.udec.cl/geografia/", "family": "earth_exact_sciences"}, "geologia": {"label": "Geología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/geologia/", "family": "earth_exact_sciences"}, "ingenieria-ambiental": {"label": "Ingeniería Ambiental", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-ambiental/", "family": "process_eng"}, "ingenieria-civil-primer-ano-comun": {"label": "Ingeniería Civil — Primer Año Común", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-primer-ano-comun/", "family": "cad_heavy"}, "ingenieria-civil": {"label": "Ingeniería Civil", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil/", "family": "cad_heavy"}, "ingenieria-civil-aeroespacial": {"label": "Ingeniería Civil Aeroespacial", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-aeroespacial/", "family": "cad_heavy"}, "ingenieria-civil-biomedica": {"label": "Ingeniería Civil Biomédica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-biomedica/", "family": "electronics"}, "ingenieria-civil-de-materiales": {"label": "Ingeniería Civil de Materiales", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-de-materiales/", "family": "cad_heavy"}, "ingenieria-civil-de-minas": {"label": "Ingeniería Civil de Minas", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-de-minas/", "family": "cad_heavy"}, "ingenieria-civil-electrica": {"label": "Ingeniería Civil Eléctrica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-electrica/", "family": "electronics"}, "ingenieria-civil-electronica": {"label": "Ingeniería Civil Electrónica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-electronica/", "family": "electronics"}, "ingenieria-civil-en-telecomunicaciones": {"label": "Ingeniería Civil en Telecomunicaciones", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-en-telecomunicaciones/", "family": "electronics"}, "ingenieria-civil-industrial": {"label": "Ingeniería Civil Industrial", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-industrial/", "family": "business_quant"}, "ingenieria-civil-informatica": {"label": "Ingeniería Civil Informática", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-informatica/", "family": "software_dev"}, "ingenieria-civil-matematica": {"label": "Ingeniería Civil Matemática", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-matematica/", "family": "earth_exact_sciences"}, "ingenieria-civil-mecanica": {"label": "Ingeniería Civil Mecánica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-mecanica/", "family": "cad_heavy"}, "ingenieria-civil-metalurgica": {"label": "Ingeniería Civil Metalúrgica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-metalurgica/", "family": "cad_heavy"}, "ingenieria-civil-quimica": {"label": "Ingeniería Civil Química", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-civil-quimica/", "family": "process_eng"}, "ingenieria-comercial": {"label": "Ingeniería Comercial", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-comercial/", "family": "business_quant"}, "ingenieria-en-biotecnologia-marina-y-acuicultura": {"label": "Ingeniería en Biotecnología Marina y Acuicultura", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-en-biotecnologia-marina-y-acuicultura/", "family": "life_sciences"}, "ingenieria-en-biotecnologia-vegetal": {"label": "Ingeniería en Biotecnología Vegetal", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-en-biotecnologia-vegetal/", "family": "life_sciences"}, "ingenieria-en-conservacion-de-recursos-naturales": {"label": "Ingeniería en Conservación de Recursos Naturales", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-en-conservacion-de-recursos-naturales/", "family": "process_eng"}, "ingenieria-estadistica": {"label": "Ingeniería Estadística", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-estadistica/", "family": "business_quant"}, "ingenieria-forestal": {"label": "Ingeniería Forestal", "campus": "Campus Concepción", "url": "https://admision.udec.cl/ingenieria-forestal/", "family": "process_eng"}, "kinesiologia": {"label": "Kinesiología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/kinesiologia/", "family": "health_clinical"}, "licenciatura-en-historia": {"label": "Licenciatura en Historia", "campus": "Campus Concepción", "url": "https://admision.udec.cl/licenciatura-en-historia/", "family": "law_humanities"}, "licenciatura-en-matematica": {"label": "Licenciatura en Matemática", "campus": "Campus Concepción", "url": "https://admision.udec.cl/licenciatura-en-matematica/", "family": "earth_exact_sciences"}, "licenciatura-en-quimica-quimico": {"label": "Licenciatura en Química / Químico", "campus": "Campus Concepción", "url": "https://admision.udec.cl/licenciatura-en-quimica-quimico/", "family": "life_sciences"}, "medicina": {"label": "Medicina", "campus": "Campus Concepción", "url": "https://admision.udec.cl/medicina/", "family": "health_clinical"}, "medicina-veterinaria": {"label": "Medicina Veterinaria", "campus": "Campus Concepción", "url": "https://admision.udec.cl/medicina-veterinaria/", "family": "life_sciences"}, "nutricion-y-dietetica": {"label": "Nutrición y Dietética", "campus": "Campus Concepción", "url": "https://admision.udec.cl/nutricion-y-dietetica/", "family": "health_clinical"}, "obstetricia-y-puericultura": {"label": "Obstetricia y Puericultura", "campus": "Campus Concepción", "url": "https://admision.udec.cl/obstetricia-y-puericultura/", "family": "health_clinical"}, "odontologia": {"label": "Odontología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/odontologia/", "family": "health_clinical"}, "pedagogia-en-artes-visuales": {"label": "Pedagogía en Artes Visuales", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-artes-visuales/", "family": "visual_arts"}, "pedagogia-en-ciencias-naturales-y-biologia": {"label": "Pedagogía en Ciencias Naturales y Biología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-biologia/", "family": "education"}, "pedagogia-en-ciencias-naturales-y-fisica": {"label": "Pedagogía en Ciencias Naturales y Física", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-fisica/", "family": "education"}, "pedagogia-en-ciencias-naturales-y-quimica": {"label": "Pedagogía en Ciencias Naturales y Química", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-quimica/", "family": "education"}, "pedagogia-en-educacion-fisica": {"label": "Pedagogía en Educación Física", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-educacion-fisica/", "family": "education"}, "pedagogia-en-educacion-musical": {"label": "Pedagogía en Educación Musical", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-educacion-musical/", "family": "education"}, "pedagogia-en-espanol": {"label": "Pedagogía en Español", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-espanol/", "family": "education"}, "pedagogia-en-filosofia": {"label": "Pedagogía en Filosofía", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-filosofia/", "family": "education"}, "pedagogia-en-historia-y-geografia": {"label": "Pedagogía en Historia y Geografía", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-historia-y-geografia/", "family": "education"}, "pedagogia-en-ingles": {"label": "Pedagogía en Inglés", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-ingles/", "family": "education"}, "pedagogia-en-matematicas": {"label": "Pedagogía en Matemáticas", "campus": "Campus Concepción", "url": "https://admision.udec.cl/pedagogia-en-matematicas/", "family": "education"}, "periodismo": {"label": "Periodismo", "campus": "Campus Concepción", "url": "https://admision.udec.cl/periodismo/", "family": "law_humanities"}, "psicologia": {"label": "Psicología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/psicologia/", "family": "law_humanities"}, "quimica-y-farmacia": {"label": "Química y Farmacia", "campus": "Campus Concepción", "url": "https://admision.udec.cl/quimica-y-farmacia/", "family": "life_sciences"}, "quimico-a-analista": {"label": "Químico/a Analista", "campus": "Campus Concepción", "url": "https://admision.udec.cl/quimico-a-analista/", "family": "life_sciences"}, "sociologia": {"label": "Sociología", "campus": "Campus Concepción", "url": "https://admision.udec.cl/sociologia/", "family": "law_humanities"}, "teatro": {"label": "Teatro", "campus": "Campus Concepción", "url": "https://admision.udec.cl/teatro/", "family": "visual_arts"}, "tecnologia-medica": {"label": "Tecnología Médica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/tecnologia-medica/", "family": "health_clinical"}, "traduccion-interpretacion-en-idiomas-extranjeros": {"label": "Traducción / Interpretación en Idiomas Extranjeros", "campus": "Campus Concepción", "url": "https://admision.udec.cl/traduccion-interpretacion-en-idiomas-extranjeros/", "family": "law_humanities"}, "trabajo-social": {"label": "Trabajo Social", "campus": "Campus Concepción", "url": "https://admision.udec.cl/trabajo-social/", "family": "law_humanities"}, "agronomia-chillan": {"label": "Agronomía — Chillán", "campus": "Campus Chillán", "url": "https://admision.udec.cl/agronomia-chillan/", "family": "life_sciences"}, "derecho-2": {"label": "Derecho — Chillán", "campus": "Campus Chillán", "url": "https://admision.udec.cl/derecho-2/", "family": "law_humanities"}, "enfermeria-chillan": {"label": "Enfermería — Chillán", "campus": "Campus Chillán", "url": "https://admision.udec.cl/enfermeria-chillan/", "family": "health_clinical"}, "ingenieria-ambiental-chillan": {"label": "Ingeniería Ambiental — Chillán", "campus": "Campus Chillán", "url": "https://admision.udec.cl/ingenieria-ambiental-chillan/", "family": "process_eng"}, "ingenieria-civil-agricola": {"label": "Ingeniería Civil Agrícola — Chillán", "campus": "Campus Chillán", "url": "https://admision.udec.cl/ingenieria-civil-agricola/", "family": "cad_heavy"}, "ingenieria-comercial-chillan": {"label": "Ingeniería Comercial — Chillán", "campus": "Campus Chillán", "url": "https://admision.udec.cl/ingenieria-comercial-chillan/", "family": "business_quant"}, "medicina-veterinaria-chillan": {"label": "Medicina Veterinaria — Chillán", "campus": "Campus Chillán", "url": "https://admision.udec.cl/medicina-veterinaria-chillan/", "family": "life_sciences"}, "auditoria-diurna": {"label": "Auditoría — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/auditoria-diurna/", "family": "business_quant"}, "educacion-general-basica-los-angeles": {"label": "Educación General Básica — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/educacion-general-basica-los-angeles/", "family": "education"}, "educacion-diferencial-los-angeles": {"label": "Educación Diferencial — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/educacion-diferencial-los-angeles/", "family": "education"}, "enfermeria-los-angeles": {"label": "Enfermería — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/enfermeria-los-angeles/", "family": "health_clinical"}, "ingenieria-comercial-los-angeles": {"label": "Ingeniería Comercial — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/ingenieria-comercial-los-angeles/", "family": "business_quant"}, "ingenieria-en-biotecnologia-vegetal-2": {"label": "Ingeniería en Biotecnología Vegetal — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/ingenieria-en-biotecnologia-vegetal-2/", "family": "life_sciences"}, "ingenieria-geomatica": {"label": "Ingeniería Geomática — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/ingenieria-geomatica/", "family": "cad_heavy"}, "pedagogia-en-ciencias-naturales-y-biologia-los-angeles": {"label": "Pedagogía en Ciencias Naturales y Biología — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/pedagogia-en-ciencias-naturales-y-biologia-los-angeles/", "family": "education"}, "pedagogia-en-espanol-los-angeles": {"label": "Pedagogía en Español — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/pedagogia-en-espanol-los-angeles/", "family": "education"}, "pedagogia-en-ingles-los-angeles": {"label": "Pedagogía en Inglés — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/pedagogia-en-ingles-los-angeles/", "family": "education"}, "pedagogia-en-matematicas-los-angeles": {"label": "Pedagogía en Matemáticas — Los Ángeles", "campus": "Campus Los Ángeles", "url": "https://admision.udec.cl/pedagogia-en-matematicas-los-angeles/", "family": "education"}, "agronomia": {"label": "Agronomía", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "life_sciences"}, "derecho-chillan": {"label": "Derecho — Chillán", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "law_humanities"}, "auditoria-los-angeles": {"label": "Auditoría — Los Ángeles", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "business_quant"}, "ingenieria-en-biotecnologia-vegetal-los-angeles": {"label": "Ingeniería en Biotecnología Vegetal — Los Ángeles", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "life_sciences"}, "ing_civil_industrial": {"label": "Ingeniería Civil Industrial", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "business_quant"}, "ing_civil_informatica": {"label": "Ingeniería Civil Informática", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "software_dev"}, "ing_mecanica": {"label": "Ingeniería Civil Mecánica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "cad_heavy"}, "ing_electrica": {"label": "Ingeniería Civil Eléctrica", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "electronics"}, "ing_quimica": {"label": "Ingeniería Civil Química", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "process_eng"}, "ing_comercial": {"label": "Ingeniería Comercial", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "business_quant"}, "diseno_grafico": {"label": "Artes Visuales & Diseño", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "visual_arts"}, "administracion": {"label": "Administración Pública", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "business_quant"}, "contabilidad": {"label": "Auditoría", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "business_quant"}, "economia": {"label": "Ingeniería Comercial", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "business_quant"}, "cine": {"label": "Artes Visuales & Multimedia", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "visual_arts"}, "pedagogia": {"label": "Pedagogía General", "campus": "Campus Concepción", "url": "https://admision.udec.cl/carreras-udec/", "family": "education"}};
+    var CAREERS = {};
+    Object.keys(UDEC_CARRERAS_DATA).forEach(function(k) {
+      var c = UDEC_CARRERAS_DATA[k];
+      var f = CAREER_FAMILIES[c.family] || CAREER_FAMILIES['business_quant'];
+      CAREERS[k] = {
+        label: c.label,
+        campus: c.campus,
+        url: c.url,
+        family: c.family,
+        alert: f.alert,
+        scores: f.scores,
+        scoreColors: f.scoreColors,
+        software: f.software,
+        laptops: f.laptops,
+        tablets: f.tablets,
+        calcs: f.calcs,
+        accessories: f.accessories
+      };
+    });
 
     // ══════════════════════════════════════════
     // SOLOTODO LIVE RECOMMENDATION CONTROLLER
@@ -3084,6 +2800,14 @@
 
       // Header
       document.getElementById('resCarreraName').textContent = career.label;
+      if (document.getElementById('resCampusBadge')) {
+        document.getElementById('resCampusBadge').textContent = career.campus || 'Campus Concepción';
+      }
+      if (document.getElementById('resOfficialLink') && career.url) {
+        document.getElementById('resOfficialLink').href = career.url;
+        var linkWrap = document.getElementById('resOfficialLinkWrap');
+        if (linkWrap) linkWrap.style.display = 'block';
+      }
       document.getElementById('resSubtitle').textContent = 'Presupuesto: ' + budgetLabels[budget] + ' · Universidad de Concepción (UdeC) · Software: ' + career.software.slice(0, 3).join(', ');
 
       // Alert
@@ -3374,6 +3098,8 @@
 
     function resetForm() {
       document.getElementById('resultsArea').classList.remove('visible');
+      var linkWrap = document.getElementById('resOfficialLinkWrap');
+      if (linkWrap) linkWrap.style.display = 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -3559,7 +3285,7 @@
         <div>
           <div class="ai-chat-title">UdeskFit</div>
           <div class="ai-chat-status">
-            <span class="ai-chat-btn-dot"></span> Asesor Oficial GIIA · UdeC
+            <span class="ai-chat-btn-dot"></span> Asesor Inteligente · UdeC
           </div>
         </div>
       </div>
@@ -3573,8 +3299,9 @@
     <!-- Messages Container -->
     <div id="aiChatMessages" class="ai-chat-messages">
       <div class="ai-msg assistant">
-        ¡Hola! Soy tu <strong>Asesor Tech UdeC</strong> de la iniciativa <strong>GIIA</strong>. Te ayudo a encontrar
-        el notebook, monitor o accesorio ideal según los ramos y software de tu carrera en la <strong>Universidad de
+        ¡Hola! Soy el asistente inteligente de <strong>UdeskFit UdeC</strong>. Te ayudo a encontrar
+        el notebook, tablet, calculadora o equipamiento ideal según las exigencias de tu carrera en la
+        <strong>Universidad de
           Concepción</strong>.
         <div style="margin-top:10px; font-weight:600; font-size:0.78rem; color:var(--muted);">Consultas frecuentes UdeC:
         </div>

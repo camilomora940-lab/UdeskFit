@@ -166,119 +166,45 @@ def buscar_productos(categoria: str = None, presupuesto_maximo: int = None, quer
     return formateados
 
 
-PERFILES_CARRERAS = {
-    "ing_civil_informatica": {
-        "min_ram": 16,
-        "gpu_dedicada": True,
-        "palabras_clave": ["rtx", "ryzen 7", "core i7", "legion", "tuf", "victus", "macbook", "32 gb", "16 gb"],
-        "motivo": "Recomendado para desarrollo de software, múltiples IDEs, Docker y compilación pesada.",
-        "badge": "Dev & VMs Ready"
-    },
-    "arquitectura": {
-        "min_ram": 16,
-        "gpu_dedicada": True,
-        "palabras_clave": ["rtx", "oled", "proart", "legion", "katana", "macbook pro"],
-        "motivo": "Recomendado para modelado 3D BIM, AutoCAD, Revit y renderizado en Lumion/SketchUp.",
-        "badge": "BIM & Render 3D"
-    },
-    "diseno_grafico": {
-        "min_ram": 16,
-        "gpu_dedicada": False,
-        "palabras_clave": ["oled", "dci-p3", "macbook", "vivobook pro", "yoga", "100% srgb"],
-        "motivo": "Excelente calibración de pantalla y fluidez para Adobe Creative Cloud y Figma.",
-        "badge": "Color Calibrado"
-    },
-    "ing_civil_industrial": {
-        "min_ram": 16,
-        "gpu_dedicada": False,
-        "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "thinkpad", "elitebook", "aspire"],
-        "motivo": "Fluidez óptima para simulación de procesos (Arena), MATLAB, RStudio y análisis de datos.",
-        "badge": "Optimización & Datos"
-    },
-    "ing_mecanica": {
-        "min_ram": 16,
-        "gpu_dedicada": True,
-        "palabras_clave": ["rtx", "ryzen 7", "core i7", "tuf", "legion", "loq"],
-        "motivo": "Potencia de cómputo para análisis por elementos finitos (Ansys), SolidWorks e Inventor.",
-        "badge": "CAD 3D & FEA"
-    },
-    "ing_electrica": {
-        "min_ram": 16,
-        "gpu_dedicada": False,
-        "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "vivobook"],
-        "motivo": "Excelente procesador para simulaciones SPICE, MATLAB/Simulink y programación de microcontroladores.",
-        "badge": "Simulación & Circuitos"
-    },
-    "ing_quimica": {
-        "min_ram": 16,
-        "gpu_dedicada": False,
-        "palabras_clave": ["ryzen 5", "ryzen 7", "core i5", "core i7", "thinkbook", "aspire"],
-        "motivo": "Capacidad de memoria para simulación de procesos en Aspen HYSYS y modelado termodinámico.",
-        "badge": "Simulación Termodinámica"
-    },
-    "medicina": {
-        "min_ram": 8,
-        "gpu_dedicada": False,
-        "peso_max": 1.6,
-        "palabras_clave": ["macbook", "zenbook", "yoga", "swift", "galaxy book", "ipad"],
-        "motivo": "Gran autonomía de batería y peso ultra ligero para rondas hospitalarias y seminarios.",
-        "badge": "Ultra Portátil Clínico"
-    },
-    "odontologia": {
-        "min_ram": 8,
-        "gpu_dedicada": False,
-        "peso_max": 1.7,
-        "palabras_clave": ["macbook", "zenbook", "yoga", "aspire", "ipad"],
-        "motivo": "Equipo ligero y ágil para visualización clínica, radiografías y presentaciones.",
-        "badge": "Portabilidad Clínica"
-    },
-    "enfermeria": {
-        "min_ram": 8,
-        "gpu_dedicada": False,
-        "peso_max": 1.6,
-        "palabras_clave": ["vivobook", "aspire", "galaxy book", "macbook air", "ideapad"],
-        "motivo": "Batería de larga duración y ligereza para turnos clínicos y gestión de cuidados.",
-        "badge": "Alta Movilidad"
-    },
-    "kinesiologia": {
-        "min_ram": 8,
-        "gpu_dedicada": False,
-        "peso_max": 1.7,
-        "palabras_clave": ["vivobook", "aspire", "yoga", "ideapad"],
-        "motivo": "Cómodo para laboratorios de biomecánica, análisis de movimiento y apuntes móviles.",
-        "badge": "Biomecánica & Estudio"
-    },
-    "derecho": {
-        "min_ram": 8,
-        "gpu_dedicada": False,
-        "peso_max": 1.6,
-        "palabras_clave": ["thinkpad", "macbook", "zenbook", "aspire", "vivobook"],
-        "motivo": "Teclado ergonómico, pantalla mate descansada para lectura y batería para toda la jornada.",
-        "badge": "Lectura & Batería"
-    },
-    "psicologia": {
-        "min_ram": 8,
-        "gpu_dedicada": False,
-        "peso_max": 1.6,
-        "palabras_clave": ["vivobook", "aspire", "macbook", "ideapad"],
-        "motivo": "Fluidez para redacción de informes clínicos, software estadístico (SPSS/JASP) y movilidad.",
-        "badge": "Análisis & Portabilidad"
-    },
-    "periodismo": {
-        "min_ram": 16,
-        "gpu_dedicada": False,
-        "palabras_clave": ["macbook", "oled", "zenbook", "vivobook pro", "yoga"],
-        "motivo": "Ideal para edición ágil de video/audio en terreno (Premiere/Audition) y transmisiones.",
-        "badge": "Edición Multimedia Móvil"
-    },
-    "ing_comercial": {
-        "min_ram": 8,
-        "gpu_dedicada": False,
-        "palabras_clave": ["thinkbook", "thinkpad", "zenbook", "macbook", "aspire", "vivobook"],
-        "motivo": "Rendimiento veloz en Excel con grandes volúmenes de datos, Tableau, PowerBI y presentaciones.",
-        "badge": "Business & Analytics"
+def _cargar_perfiles_carreras():
+    modular_path = os.path.join(os.path.dirname(__file__), "carreras_udec_modular.json")
+    if os.path.exists(modular_path):
+        try:
+            with open(modular_path, "r", encoding="utf-8") as f:
+                mod = json.load(f)
+            fams = mod.get("families", {})
+            cars = mod.get("carreras", {})
+            profs = {}
+            for slug, c in cars.items():
+                fam = fams.get(c.get("family"), fams.get("business_quant", {}))
+                p = dict(fam.get("db_profile", {}))
+                p["nombre"] = c.get("label", slug)
+                p["campus"] = c.get("campus", "Campus Concepción")
+                p["url"] = c.get("url", f"https://admision.udec.cl/{slug}/")
+                profs[slug] = p
+            if profs:
+                return profs
+        except Exception as e:
+            print(f"Error cargando carreras_udec_modular.json: {e}")
+
+    # Fallback básico si el archivo no existe
+    return {
+        "ing_civil_informatica": {
+            "min_ram": 16, "gpu_dedicada": True,
+            "palabras_clave": ["rtx", "ryzen 7", "core i7", "legion", "16 gb", "32 gb"],
+            "motivo": "Recomendado para desarrollo de software, Docker y compilación.",
+            "badge": "Dev & VMs Ready", "nombre": "Ingeniería Civil Informática", "campus": "Campus Concepción"
+        },
+        "ing_civil_industrial": {
+            "min_ram": 16, "gpu_dedicada": False,
+            "palabras_clave": ["ryzen 7", "core i7", "thinkbook", "aspire", "16 gb"],
+            "motivo": "Fluidez óptima para simulación de procesos, RStudio y optimización.",
+            "badge": "Optimización & Datos", "nombre": "Ingeniería Civil Industrial", "campus": "Campus Concepción"
+        }
     }
-}
+
+PERFILES_CARRERAS = _cargar_perfiles_carreras()
+
 
 
 def recomendar_por_carrera(carrera: str = None, presupuesto: str = None, categoria: str = None, query: str = None, limite: int = 50) -> list:

@@ -1,5 +1,5 @@
 """
-Script de Ingesta y Población de Base de Datos TechAdvisor UdeC desde SoloTodo (solotodo.cl)
+Script de Ingesta y Población de Base de Datos UdeskFit UdeC desde SoloTodo (solotodo.cl)
 Descarga productos reales, precios vigentes en Chile, especificaciones técnicas detalladas
 y tiendas disponibles para estudiantes y académicos de la Universidad de Concepción.
 """
@@ -326,7 +326,7 @@ def get_curated_calculators():
 
 def populate_database(output_path="products_db.json"):
     print("=" * 60)
-    print("Iniciando Ingesta de Datos desde SoloTodo para TechAdvisor UdeC")
+    print("Iniciando Ingesta de Datos desde SoloTodo para UdeskFit UdeC")
     print("=" * 60)
     
     stores_map = get_stores_map()

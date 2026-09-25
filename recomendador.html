@@ -3072,7 +3072,7 @@
 
       if (career && career.calcs && career.calcs.length > 0) {
         calcModel = career.calcs.map(function (c) {
-          return c.name + ' (' + c.why + (c.price • ' - ref: ' + c.price : '') + ')';
+          return c.name + ' (' + c.why + (c.price ? ' - ref: ' + c.price : '') + ')';
         }).join(' • ');
       }
 

@@ -47,13 +47,34 @@ Las recomendaciones y respuestas del asistente se generan localmente a partir de
 
 ## Ejecución local
 
+### Ejecución con docker
+
+Clona el respositorio:
+
+```bash
+git clone https://github.com/camilomora940-lab/UdeskFit.git
+```
+
+Crea un archivo .env en la carpeta /backend con las siguientes variables:
+```bash
+GEMINI_API_KEY={GEMINI_KEY}
+```
+
+Desde la raíz corre el contenedor con docker:
+```bash
+docker compose up -d
+```
+
+La aplicación se ejecuta en el puerto 6767
+
+### Ejecución local
+
 Clona el repositorio y entra en la carpeta del proyecto:
 
 ```bash
 git clone https://github.com/camilomora940-lab/UdeskFit.git
 cd UdeskFit
 ```
-
 Crea y activa un entorno virtual. En Windows:
 
 ```powershell
@@ -77,10 +98,10 @@ python -m uvicorn backend.main:app --reload
 
 Abre estas direcciones en el navegador:
 
-- Aplicación: <http://127.0.0.1:8000/>
-- Panel de administración: <http://127.0.0.1:8000/admin>
-- Documentación interactiva de la API: <http://127.0.0.1:8000/docs>
-- Estado del servicio: <http://127.0.0.1:8000/api/health>
+- Aplicación: <http://127.0.0.1:6767/>
+- Panel de administración: <http://127.0.0.1:6767/admin>
+- Documentación interactiva de la API: <http://127.0.0.1:6767/docs>
+- Estado del servicio: <http://127.0.0.1:6767/api/health>
 
 Usa la URL servida por FastAPI en vez de abrir `recomendador.html` directamente como archivo, ya que la interfaz consulta los endpoints del backend.
 

@@ -41,17 +41,19 @@ PATRONES_PROHIBIDOS = [
 _COMPILED_PATTERNS = [re.compile(p, re.IGNORECASE) for p in PATRONES_PROHIBIDOS]
 
 # Longitud máxima por mensaje para evitar consumo excesivo de tokens (protección cuota gratuita)
-MAX_MESSAGE_LENGTH = 500
+MAX_MESSAGE_LENGTH = 400
 
 # Límite de mensajes guardados por sesión (Ventana deslizante de memoria)
 # 4 mensajes = 2 turnos (usuario + modelo + usuario + modelo)
 MAX_HISTORY_TURNS = 4
 
-# Tiempo de expiración de sesión inactiva (en segundos, ej. 30 minutos)
-SESSION_TTL_SECONDS = 1800
+# Tiempo de expiración de sesión inactiva (en segundos, ej. 60 minutos)
+SESSION_TTL_SECONDS = 3600
 
 # Control de velocidad por sesión: mínimo de segundos entre peticiones del mismo usuario
-MIN_INTERVAL_SECONDS = 1.5
+MIN_INTERVAL_SECONDS = 5
+MAX_REQUESTS_PER_WINDOW = 10
+REQUEST_WINDOW_SECONDS = 3600
 
 
 class SessionManager:
@@ -74,14 +76,31 @@ class SessionManager:
             for sid, _ in sorted_sessions[:30]:
                 self._sessions.pop(sid, None)
 
-    def is_rate_limited(self, session_id: str) -> bool:
-        """Verifica si el usuario está enviando mensajes demasiado rápido (antispam para cuota gratuita)."""
+    def register_request(self, session_id: str) -> str | None:
+        """Registra el consumo y aplica límites de frecuencia y cuota por sesión."""
         now = time.time()
-        if session_id in self._sessions:
-            last_req = self._sessions[session_id].get("last_request", 0)
-            if now - last_req < MIN_INTERVAL_SECONDS:
-                return True
-        return False
+        session = self._sessions.setdefault(session_id, {
+            "history": [],
+            "last_active": now,
+            "last_request": 0,
+            "request_times": [],
+        })
+        request_times = [
+            requested_at
+            for requested_at in session.get("request_times", [])
+            if now - requested_at < REQUEST_WINDOW_SECONDS
+        ]
+        session["request_times"] = request_times
+
+        if now - session.get("last_request", 0) < MIN_INTERVAL_SECONDS:
+            return "Espera unos segundos antes de enviar otra consulta."
+        if len(request_times) >= MAX_REQUESTS_PER_WINDOW:
+            return "Alcanzaste el límite de 10 consultas por hora para esta sesión."
+
+        request_times.append(now)
+        session["last_request"] = now
+        session["last_active"] = now
+        return None
 
     def get_history(self, session_id: str) -> list[dict]:
         """Obtiene el historial reciente de la sesión respetando la ventana de memoria."""
@@ -98,12 +117,12 @@ class SessionManager:
             self._sessions[session_id] = {
                 "history": [],
                 "last_active": now,
-                "last_request": now
+                "last_request": now,
+                "request_times": [],
             }
         
         session = self._sessions[session_id]
         session["last_active"] = now
-        session["last_request"] = now
         
         # Agregar mensajes recortados
         session["history"].append({"role": "user", "text": user_text[:MAX_MESSAGE_LENGTH]})
@@ -118,7 +137,11 @@ class SessionManager:
 session_manager = SessionManager()
 
 
-def validar_mensaje(mensaje: str, session_id: str = "default") -> tuple[bool, str | None]:
+def validar_mensaje(
+    mensaje: str,
+    session_id: str = "default",
+    quota_id: str | None = None,
+) -> tuple[bool, str | None]:
     """
     Valida el mensaje antes de llamar a la API de Gemini:
     1. Verifica si excede la tasa de peticiones (antispam).
@@ -131,15 +154,11 @@ def validar_mensaje(mensaje: str, session_id: str = "default") -> tuple[bool, st
     if not texto:
         return False, "Por favor, escribe una pregunta o consulta sobre tecnología."
 
-    # 1. Antispam
-    if session_manager.is_rate_limited(session_id):
-        return False, "Por favor espera un segundo antes de enviar otra consulta."
-
-    # 2. Control de longitud (evita inyección masiva de tokens)
+    # 1. Control de longitud (evita inyección masiva de tokens)
     if len(texto) > MAX_MESSAGE_LENGTH:
         return False, f"Tu consulta es demasiado larga (máximo {MAX_MESSAGE_LENGTH} caracteres). Por favor, sé más conciso para cuidar los recursos."
 
-    # 3. Filtro local de seguridad y legalidad
+    # 2. Filtro local de seguridad y legalidad
     for patron in _COMPILED_PATTERNS:
         if patron.search(texto):
             return False, (
@@ -147,5 +166,10 @@ def validar_mensaje(mensaje: str, session_id: str = "default") -> tuple[bool, st
                 "asesoría, cotización y dudas sobre equipos computacionales y tecnología. "
                 "No respondo preguntas sobre armas, actividades ilegales o fuera de este ámbito."
             )
+
+    # 3. Limita el consumo por sesión antes de llamar al modelo.
+    mensaje_limite = session_manager.register_request(quota_id or session_id)
+    if mensaje_limite:
+        return False, mensaje_limite
 
     return True, None

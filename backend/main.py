@@ -17,10 +17,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
-# Import the new Google GenAI SDK
-from google import genai
-from google.genai import types
-
 from db_mock import buscar_productos, recargar_catalogo, CATALOGO_PRODUCTOS, recomendar_por_carrera, PERFILES_CARRERAS
 from guardrails import validar_mensaje, session_manager
 
@@ -44,13 +40,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Inicializar cliente de Gemini
-api_key = os.environ.get("GEMINI_API_KEY")
-client = genai.Client(api_key=api_key) if api_key else None
-
 class ChatRequest(BaseModel):
     mensaje: str
     session_id: str = "default"
+    client_id: str | None = None
 
 @app.get("/")
 def read_root():
@@ -78,7 +71,7 @@ def health_check():
         "status": "ok",
         "app": "UDeskFit UdeC",
         "productos_en_catalogo": len(CATALOGO_PRODUCTOS),
-        "ai_status": "ready" if client else "missing_api_key"
+        "ai_status": "local_only"
     }
 
 CACHE_DIR = os.path.join(os.path.dirname(__file__), "cache_images")
@@ -229,14 +222,12 @@ def reset_session(session_id: str = "default"):
 
 @app.post("/api/chat")
 def chat(request: ChatRequest):
-    if not client:
-        return {
-            "respuesta": "El servidor está funcionando, pero no se ha configurado la API Key de Gemini. " 
-                         "Por favor, añade GEMINI_API_KEY a tu archivo .env en la carpeta backend."
-        }
-    
     # 1. Filtro local de seguridad y optimización de cuota (Costo $0)
-    es_valido, error_guardrail = validar_mensaje(request.mensaje, request.session_id)
+    es_valido, error_guardrail = validar_mensaje(
+        request.mensaje,
+        request.session_id,
+        request.client_id,
+    )
     if not es_valido:
         return {"respuesta": error_guardrail}
 
@@ -305,132 +296,63 @@ def chat(request: ChatRequest):
         # Perfil y requerimientos de la carrera
         perfil_carrera = PERFILES_CARRERAS.get(carrera_detectada) if carrera_detectada else None
 
-        # Construir contexto de grounding
-        contexto_prods = f"CATÁLOGO DE PRODUCTOS EN CHILE (SoloTodo - Categoría: {categoria.upper()}):\n"
-        for p in productos_rel:
-            contexto_prods += (
-                f"- Modelo: {p.get('nombre')} | Precio referencial: {p.get('precio_clp')} | "
-                f"Specs: {json.dumps(p.get('specs', {}))} | Enlace: {p.get('solotodo_url')}\n"
-            )
-        
-        if perfil_carrera:
-            contexto_prods += (
-                f"\nESTÁNDAR ACADÉMICO UDEC:\n"
-                f"- RAM mínima recomendada: {perfil_carrera.get('min_ram', 8)}GB\n"
-                f"- GPU dedicada: {'Requerida' if perfil_carrera.get('gpu_dedicada') else 'Opcional / Integrada suficiente'}\n"
-                f"- Justificación académica: {perfil_carrera.get('motivo')}\n"
-            )
-
-        # 6. System instruction institucional formal sin emojis, con límites estrictos de legalidad y temática
-        system_instruction = (
-            "Eres UdeskFit UdeC, asesor institucional inteligente de tecnología y equipamiento universitario "
-            "de la Universidad de Concepción (iniciativa desarrollada por el laboratorio GIIA).\n"
-            "NORMAS INSTITUCIONALES OBLIGATORIAS:\n"
-            "1. Tu nombre oficial es UdeskFit UdeC. NUNCA te presentes ni te refieras a ti mismo como TechAdvisor.\n"
-            "2. El usuario que consulta es un estudiante, docente o postulante general de cualquier carrera de la Universidad de Concepción. "
-            "NO asumas que quien te consulta pertenece al GIIA ni lo trates como integrante de dicho grupo.\n"
-            "3. NO utilices ningún emoji ni emoticón bajo ninguna circunstancia. Tu comunicación debe ser siempre formal, sobria, técnica y académica.\n"
-            "4. Atiende consultas exclusivamente sobre computadores, notebooks, tablets, monitores, periféricos, software académico y calculadoras para ramos de la universidad.\n"
-            "Si el usuario pregunta sobre cualquier tema ajeno (cocina, deportes, política, poemas, tareas generales, chistes, etc.), declina respetuosamente indicando: "
-            "'Como asesor institucional de UdeskFit UdeC, solo puedo responder consultas sobre equipamiento tecnológico y requerimientos para la Universidad de Concepción.'\n"
-            "5. NUNCA respondas ni asistas en actividades ilegales, armas, violencia, vulneración de sistemas, malware, piratería o cualquier acción dañina o dudosa.\n"
-            "6. En tus recomendaciones, menciona modelos específicos disponibles en el catálogo, sus especificaciones técnicas destacadas, su valor referencial en CLP y el enlace a SoloTodo para que el estudiante revise tiendas en Chile.\n"
-            "7. Sé directo, claro y conciso para optimizar la respuesta."
-        )
-
-        prompt_completo = (
-            f"INFORMACIÓN VERIFICADA Y ACTUALIZADA DISPONIBLE EN EL SISTEMA:\n"
-            f"{contexto_prods}\n\n"
-            f"CONSULTA DEL ESTUDIANTE:\n"
-            f"{request.mensaje}"
-        )
-
-        # Configuración de seguridad oficial Gemini (bloqueo de contenido dañino)
-        safety_settings = [
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_HARASSMENT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                threshold=types.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
-            ),
+        temas_permitidos = [
+            "tecnolog", "comput", "notebook", "laptop", "tablet", "calculadora",
+            "monitor", "mouse", "teclado", "audifono", "perifer", "software",
+            "program", "ram", "gpu", "memoria", "udec", "carrera", "estudi",
+            "equipo", "pc", "mac", "windows", "linux", "presupuesto", "precio",
         ]
+        consulta_permitida = carrera_detectada or any(term in msg_lower for term in temas_permitidos)
 
-        # Configurar historial para multi-turno (ventana deslizante de ahorro de tokens)
-        gemini_history = []
-        for item in historial_previo:
-            gemini_history.append(
-                types.Content(
-                    role=item["role"],
-                    parts=[types.Part.from_text(text=item["text"])]
-                )
+        if not consulta_permitida:
+            respuesta_texto = (
+                "Como asesor de UdeskFit UdeC, solo puedo orientar sobre equipamiento "
+                "tecnológico y software académico para la Universidad de Concepción."
             )
-
-        modelos_candidatos = [
-            "gemini-3.5-flash-lite",
-            "gemini-flash-latest",
-            "gemini-3.7-flash",
-            "gemini-3.6-flash"
-        ]
-        
-        respuesta_texto = None
-        ultimo_error = None
-
-        for modelo in modelos_candidatos:
-            try:
-                chat_session = client.chats.create(
-                    model=modelo,
-                    history=gemini_history,
-                    config=types.GenerateContentConfig(
-                        system_instruction=system_instruction,
-                        temperature=0.25,
-                        max_output_tokens=700,
-                        safety_settings=safety_settings
-                    )
-                )
-                response = chat_session.send_message(prompt_completo)
-                
-                # Extraer texto de la respuesta
-                if response and response.text:
-                    respuesta_texto = response.text.strip()
-                elif response and response.candidates:
-                    cand = response.candidates[0]
-                    if cand.content and cand.content.parts:
-                        parts = [p.text for p in cand.content.parts if getattr(p, "text", None)]
-                        if parts:
-                            respuesta_texto = "".join(parts).strip()
-                
-                if respuesta_texto:
-                    break
-            except Exception as err:
-                ultimo_error = err
-                continue
-
-        # Si ningún modelo respondió, utilizar recomendador estructurado local
-        if not respuesta_texto:
+        else:
             lineas_resp = [
-                f"Estimado estudiante, en base a los requerimientos institucionales de la Universidad de Concepción para la categoría de {categoria}:",
-                ""
+                f"Recomendación local UdeskFit UdeC para {categoria}:",
+                "",
             ]
             if perfil_carrera:
-                lineas_resp.append(f"Criterio académico: {perfil_carrera.get('motivo')} (Mínimo recomendado: {perfil_carrera.get('min_ram', 8)}GB RAM).")
+                lineas_resp.append(
+                    f"Criterio académico para {perfil_carrera.get('nombre', 'la carrera')}: "
+                    f"{perfil_carrera.get('motivo')} (mínimo recomendado: "
+                    f"{perfil_carrera.get('min_ram', 8)} GB RAM)."
+                )
+                software = perfil_carrera.get("software", [])
+                if software:
+                    lineas_resp.append(f"Software de referencia: {', '.join(software[:5])}.")
+                if perfil_carrera.get("alert"):
+                    lineas_resp.append(f"Nota: {perfil_carrera['alert']}")
                 lineas_resp.append("")
-            
-            lineas_resp.append("Opciones destacadas en el mercado nacional (SoloTodo):")
-            for p in productos_rel[:3]:
-                lineas_resp.append(f"- {p.get('nombre')}: {p.get('precio_clp')}. Enlace de tiendas: {p.get('solotodo_url')}")
-            
-            lineas_resp.append("")
-            lineas_resp.append("Para más detalles o contrastar alternativas, puede explorar las pestañas de cotización superior.")
+
+            if presupuesto_clp:
+                lineas_resp.append(f"Presupuesto indicado: ${presupuesto_clp:,} CLP.".replace(",", "."))
+
+            if productos_rel:
+                lineas_resp.append("Opciones disponibles en el catálogo local:")
+                for producto in productos_rel[:3]:
+                    lineas_resp.append(
+                        f"- {producto.get('nombre')}: {producto.get('precio_clp')}."
+                    )
+                    specs = producto.get("specs", {})
+                    if isinstance(specs, dict):
+                        specs_resumen = ", ".join(
+                            f"{nombre.upper()}: {valor}"
+                            for nombre, valor in list(specs.items())[:4]
+                            if valor
+                        )
+                        if specs_resumen:
+                            lineas_resp.append(f"  Especificaciones: {specs_resumen}.")
+                    if producto.get("solotodo_url"):
+                        lineas_resp.append(f"  Referencia: {producto['solotodo_url']}")
+            else:
+                lineas_resp.append(
+                    "No encontré productos que coincidan en el catálogo local. "
+                    "Prueba con otra categoría o presupuesto."
+                )
+
             respuesta_texto = "\n".join(lineas_resp)
 
         # Guardar en memoria de sesión

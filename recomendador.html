@@ -33,31 +33,40 @@
 
       /* Identidad GIIA & UdeC */
       --giia-blue: #223c6a;
-      --giia-gold: #e69b0a;
-      --giia-gradient: linear-gradient(135deg, #1d4ed8 0%, #223c6a 60%, #e69b0a 100%);
+      --giia-gold: #d9a32a;
+      --giia-gradient: linear-gradient(135deg, #f8fafc 0%, #e7edf8 35%, #dfeaf7 100%);
 
       /* UI System Institucional - Fondo Blanco (Normas Gráficas UdeC) */
-      --bg: #ffffff;
-      --bg2: #f8fafc;
+      --bg: #f8fafc;
+      --bg2: #f4f7fb;
       --surface: #ffffff;
       --surface2: #f8fafc;
       --surface3: #f1f5f9;
-      --border: #e2e8f0;
+      --border: #dfe7f1;
       --border2: #cbd5e1;
-      --border-subtle: #e2e8f0;
+      --border-subtle: #e6edf6;
       --text: #1e293b;
       --muted: #64748b;
       --muted2: #94a3b8;
       --accent: #223c6a;
-      --accent2: #1e3a8a;
+      --accent2: #1b2f57;
       --accent-blue: #223c6a;
-      --gold: #e69b0a;
-      --gold2: #d97706;
+      --gold: #d9a32a;
+      --gold2: #c68600;
       --silver: #64748b;
-      --eco: #059669;
-      --radius: 14px;
-      --radius-sm: 10px;
-      --radius-xs: 8px;
+      --eco: #2a7a5c;
+      --radius: 18px;
+      --radius-sm: 14px;
+      --radius-xs: 10px;
+    }
+
+    .search-card,
+    .laptop-card,
+    .info-card,
+    .calc-card,
+    .st-card,
+    .alert-banner {
+      border-radius: var(--radius);
     }
 
     *,
@@ -418,7 +427,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 32px 32px 28px;
-      box-shadow: 0 10px 35px rgba(34, 60, 106, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
     }
 
     .search-grid {
@@ -549,17 +558,17 @@
       min-height: 52px;
       max-height: 52px;
       padding: 0 20px;
-      background: linear-gradient(135deg, #223c6a 0%, #172a4c 100%);
+      background: #223c6a;
       border: 1px solid #223c6a;
       border-radius: var(--radius-xs);
       color: #ffffff;
       font-size: 1.02rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all .25s ease;
+      transition: all .2s ease;
       letter-spacing: .02em;
       margin-top: 18px;
-      box-shadow: 0 4px 16px rgba(34, 60, 106, 0.25);
+      box-shadow: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -568,11 +577,11 @@
 
     .cta-btn:hover,
     .search-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(230, 155, 10, 0.35);
-      background: linear-gradient(135deg, #e69b0a 0%, #d97706 100%);
-      border-color: #e69b0a;
+      transform: translateY(-1px);
+      background: #1b2f57;
+      border-color: #1b2f57;
       color: #ffffff;
+      box-shadow: 0 6px 14px rgba(34, 60, 106, 0.12);
     }
 
     .cta-btn:active,
@@ -669,15 +678,15 @@
       border-radius: var(--radius);
       padding: 24px;
       position: relative;
-      transition: all .3s ease;
+      transition: transform .2s ease, border-color .2s ease;
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(34, 60, 106, 0.06);
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
     }
 
     .laptop-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 32px rgba(34, 60, 106, 0.12);
-      border-color: rgba(34, 60, 106, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+      border-color: rgba(34, 60, 106, 0.2);
     }
 
     .laptop-card::before {
@@ -1258,7 +1267,7 @@
       border: 1px solid #e2e8f0;
       border-radius: var(--radius);
       padding: 24px;
-      box-shadow: 0 4px 16px rgba(34, 60, 106, 0.05);
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
     }
 
     .info-card-header {
@@ -3126,6 +3135,11 @@
         sessionId = 'web_' + Math.random().toString(36).substring(2, 10);
         localStorage.setItem('udeskfit_session_id', sessionId);
       }
+      let clientId = localStorage.getItem('udeskfit_client_id');
+      if (!clientId) {
+        clientId = 'client_' + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem('udeskfit_client_id', clientId);
+      }
 
       function toggleChat() {
         chatWin.classList.toggle('open');
@@ -3226,14 +3240,18 @@
         chatInput.value = '';
         sendBtn.disabled = true;
         showTyping();
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 35000);
 
         try {
           const res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            signal: controller.signal,
             body: JSON.stringify({
               mensaje: text,
-              session_id: sessionId
+              session_id: sessionId,
+              client_id: clientId
             })
           });
 
@@ -3248,8 +3266,13 @@
           appendMessage(data.respuesta || 'No se recibió respuesta.', 'assistant');
         } catch (err) {
           hideTyping();
-          appendMessage('No se pudo conectar con el servidor local. Por favor, asegúrate de que FastAPI esté ejecutándose en http://127.0.0.1:8000.', 'assistant');
+          if (err.name === 'AbortError') {
+            appendMessage('La respuesta está tardando demasiado. Inténtalo nuevamente en unos momentos.', 'assistant');
+          } else {
+            appendMessage('No se pudo conectar con el servidor local. Por favor, asegúrate de que FastAPI esté ejecutándose en http://127.0.0.1:8000.', 'assistant');
+          }
         } finally {
+          clearTimeout(timeoutId);
           sendBtn.disabled = false;
           chatInput.focus();
         }

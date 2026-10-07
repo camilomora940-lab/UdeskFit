@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/33112137/README.md)
 # UDeskFit UdeC
 
 Recomendador de equipamiento tecnológico para estudiantes de la Universidad de Concepción. Permite explorar productos por carrera, categoría y presupuesto, y entrega orientación considerando los requerimientos académicos de cada carrera.
@@ -44,12 +45,34 @@ Las recomendaciones y respuestas del asistente se generan localmente a partir de
 
 ## Requisitos
 
+- Python 3.11
 - Git
-- Docker Desktop (Windows/macOS) o Docker Engine con el plugin Docker Compose (Linux)
 
-## Ejecutar con Docker Compose
+## Ejecución local
 
-Clona el repositorio y entra en la carpeta:
+### Ejecución con docker
+
+Clona el respositorio:
+
+```bash
+git clone https://github.com/camilomora940-lab/UdeskFit.git
+```
+
+Crea un archivo .env en la carpeta /backend con las siguientes variables:
+```bash
+GEMINI_API_KEY={GEMINI_KEY}
+```
+
+Desde la raíz corre el contenedor con docker:
+```bash
+docker compose up -d
+```
+
+La aplicación se ejecuta en el puerto 6767
+
+### Ejecución local
+
+Clona el repositorio y entra en la carpeta del proyecto:
 
 ```bash
 git clone https://github.com/camilomora940-lab/UdeskFit.git
@@ -104,7 +127,14 @@ python -m pip install -r requirements.txt
 python -m uvicorn backend.main:app --reload
 ```
 
-La aplicación estará disponible en <http://127.0.0.1:8000/>. Usa la URL servida por FastAPI en vez de abrir `recomendador.html` directamente como archivo, ya que la interfaz consulta los endpoints del backend.
+Abre estas direcciones en el navegador:
+
+- Aplicación: <http://127.0.0.1:6767/>
+- Panel de administración: <http://127.0.0.1:6767/admin>
+- Documentación interactiva de la API: <http://127.0.0.1:6767/docs>
+- Estado del servicio: <http://127.0.0.1:6767/api/health>
+
+Usa la URL servida por FastAPI en vez de abrir `recomendador.html` directamente como archivo, ya que la interfaz consulta los endpoints del backend.
 
 ## API
 
@@ -127,7 +157,7 @@ El backend carga los productos desde `backend/products_db.json` al iniciar. Los 
 
 ## Despliegue
 
-El repositorio incluye `render.yaml` para configurar el servicio web en Render y un `Dockerfile` para construir la imagen. El punto de entrada de FastAPI es `backend.main:app`.
+El repositorio incluye `render.yaml` para configurar el servicio web en Render. También incluye un `Dockerfile` para construir una imagen de la aplicación. En ambos casos, el punto de entrada de FastAPI es `backend.main:app`.
 
 ## Licencia
 

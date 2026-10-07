@@ -2,5 +2,5 @@ services:
   udeskfit:
     build: .
     ports:
-      - "${APP_PORT:-8000}:8000"
+      - "${APP_PORT:-6767}:6767"
     restart: unless-stopped

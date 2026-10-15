@@ -1,5 +1,8 @@
-import time
+import hashlib
+import hmac
 import re
+import secrets
+import time
 
 # Patrones prohibidos para filtrado local (Costo 0 de API)
 PATRONES_PROHIBIDOS = [
@@ -50,7 +53,7 @@ MAX_HISTORY_TURNS = 4
 # Tiempo de expiración de sesión inactiva (en segundos, ej. 60 minutos)
 SESSION_TTL_SECONDS = 3600
 
-# Control de velocidad por sesión: mínimo de segundos entre peticiones del mismo usuario
+# Control de velocidad por IP observada por el servidor
 MIN_INTERVAL_SECONDS = 5
 MAX_REQUESTS_PER_WINDOW = 10
 REQUEST_WINDOW_SECONDS = 3600
@@ -58,8 +61,9 @@ REQUEST_WINDOW_SECONDS = 3600
 
 class SessionManager:
     def __init__(self):
-        # session_id -> {"last_active": float, "history": list[dict]}
+        # Session ids are references; callers must also present the session token.
         self._sessions: dict[str, dict] = {}
+        self._rate_limits: dict[str, dict] = {}
 
     def _cleanup_old_sessions(self):
         now = time.time()
@@ -76,30 +80,70 @@ class SessionManager:
             for sid, _ in sorted_sessions[:30]:
                 self._sessions.pop(sid, None)
 
-    def register_request(self, session_id: str) -> str | None:
-        """Registra el consumo y aplica límites de frecuencia y cuota por sesión."""
+        expired_rate_limit_keys = [
+            key for key, data in self._rate_limits.items()
+            if now - data.get("last_active", 0) > REQUEST_WINDOW_SECONDS
+        ]
+        for key in expired_rate_limit_keys:
+            del self._rate_limits[key]
+
+    def create_session(self) -> tuple[str, str]:
+        """Creates an opaque session reference and its private access token."""
+        self._cleanup_old_sessions()
+        session_id = secrets.token_urlsafe(24)
+        session_token = secrets.token_urlsafe(32)
         now = time.time()
-        session = self._sessions.setdefault(session_id, {
+        self._sessions[session_id] = {
             "history": [],
+            "last_active": now,
+            "last_request": 0,
+            "request_times": [],
+            "token_hash": hashlib.sha256(session_token.encode("utf-8")).hexdigest(),
+        }
+        return session_id, session_token
+
+    def verify_session(self, session_id: str, session_token: str) -> bool:
+        """Checks the presented token without exposing whether a session exists."""
+        self._cleanup_old_sessions()
+        session = self._sessions.get(session_id)
+        if not session:
+            return False
+        token_hash = hashlib.sha256(session_token.encode("utf-8")).hexdigest()
+        stored_token_hash = session.get("token_hash")
+        return (
+            isinstance(stored_token_hash, str)
+            and hmac.compare_digest(stored_token_hash, token_hash)
+        )
+
+    def delete_session(self, session_id: str, session_token: str) -> bool:
+        if not self.verify_session(session_id, session_token):
+            return False
+        del self._sessions[session_id]
+        return True
+
+    def register_request(self, client_ip: str) -> str | None:
+        """Applies the chat rate limits to the address observed by the server."""
+        now = time.time()
+        rate_limit = self._rate_limits.setdefault(client_ip, {
             "last_active": now,
             "last_request": 0,
             "request_times": [],
         })
         request_times = [
             requested_at
-            for requested_at in session.get("request_times", [])
+            for requested_at in rate_limit.get("request_times", [])
             if now - requested_at < REQUEST_WINDOW_SECONDS
         ]
-        session["request_times"] = request_times
+        rate_limit["request_times"] = request_times
 
-        if now - session.get("last_request", 0) < MIN_INTERVAL_SECONDS:
+        if now - rate_limit.get("last_request", 0) < MIN_INTERVAL_SECONDS:
             return "Espera unos segundos antes de enviar otra consulta."
         if len(request_times) >= MAX_REQUESTS_PER_WINDOW:
-            return "Alcanzaste el límite de 10 consultas por hora para esta sesión."
+            return "Alcanzaste el límite de 10 consultas por hora desde esta conexión."
 
         request_times.append(now)
-        session["last_request"] = now
-        session["last_active"] = now
+        rate_limit["last_request"] = now
+        rate_limit["last_active"] = now
         return None
 
     def get_history(self, session_id: str) -> list[dict]:
@@ -139,8 +183,7 @@ session_manager = SessionManager()
 
 def validar_mensaje(
     mensaje: str,
-    session_id: str = "default",
-    quota_id: str | None = None,
+    client_ip: str,
 ) -> tuple[bool, str | None]:
     """
     Valida el mensaje antes de llamar a la API de Gemini:
@@ -168,7 +211,7 @@ def validar_mensaje(
             )
 
     # 3. Limita el consumo por sesión antes de llamar al modelo.
-    mensaje_limite = session_manager.register_request(quota_id or session_id)
+    mensaje_limite = session_manager.register_request(client_ip)
     if mensaje_limite:
         return False, mensaje_limite
 

@@ -1,11 +1,16 @@
 import requests
 import json
-import uuid
 
-url = "http://127.0.0.1:8000/api/chat"
+base_url = "http://127.0.0.1:8000"
+url = f"{base_url}/api/chat"
+url_session = f"{base_url}/api/chat/session"
 url_reset = "http://127.0.0.1:8000/api/chat/reset"
 headers = {"Content-Type": "application/json"}
-session_id = str(uuid.uuid4())[:8]
+session_response = requests.post(url_session, timeout=10)
+session_response.raise_for_status()
+session = session_response.json()
+session_id = session["session_id"]
+session_token = session["session_token"]
 
 print("=== Prueba del Recomendador Tech (Con Memoria & Seguridad) ===")
 print(f"ID de Sesión: {session_id}")
@@ -22,7 +27,17 @@ while True:
 
     if mensaje.lower() == 'reiniciar':
         try:
-            res = requests.post(f"{url_reset}?session_id={session_id}")
+            res = requests.post(
+                url_reset,
+                json={"session_id": session_id, "session_token": session_token},
+                timeout=10,
+            )
+            res.raise_for_status()
+            session_response = requests.post(url_session, timeout=10)
+            session_response.raise_for_status()
+            session = session_response.json()
+            session_id = session["session_id"]
+            session_token = session["session_token"]
             print("\n[Sistema] Memoria conversacional reiniciada.\n")
         except Exception as e:
             print(f"\nError al reiniciar: {e}\n")
@@ -30,7 +45,8 @@ while True:
 
     payload = {
         "mensaje": mensaje,
-        "session_id": session_id
+        "session_id": session_id,
+        "session_token": session_token,
     }
     
     try:
@@ -41,4 +57,3 @@ while True:
             print(f"\nError {response.status_code}: {response.text}\n")
     except requests.exceptions.ConnectionError:
         print("\nError: No se pudo conectar. ¿Asegúrate de que el servidor FastAPI esté corriendo en el puerto 8000?\n")
-

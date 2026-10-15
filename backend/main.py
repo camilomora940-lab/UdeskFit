@@ -4,25 +4,30 @@ import re
 import json
 import hashlib
 import urllib.request
+import hmac
+from datetime import datetime, timedelta, timezone
 
 # Asegurar que el directorio backend esté siempre en sys.path (para despliegue en Render, Railway, Docker)
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 if CURRENT_DIR not in sys.path:
     sys.path.insert(0, CURRENT_DIR)
 
-from fastapi import FastAPI, HTTPException
+import jwt
+from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.responses import Response, FileResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 from db_mock import buscar_productos, recargar_catalogo, CATALOGO_PRODUCTOS, recomendar_por_carrera, PERFILES_CARRERAS
 from guardrails import validar_mensaje, session_manager
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"))
 
 app = FastAPI(title="UDeskFit - Recomendador Tech UdeC API")
+bearer_scheme = HTTPBearer(auto_error=False)
+ADMIN_TOKEN_TTL_MINUTES = 30
 
 # Rutas estáticas para despliegue unificado
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -31,19 +36,71 @@ ASSETS_DIR = os.path.join(PROJECT_ROOT, "assets")
 if os.path.exists(ASSETS_DIR):
     app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
 
-# Habilitar CORS para que el frontend pueda conectarse desde cualquier dominio
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 class ChatRequest(BaseModel):
     mensaje: str
-    session_id: str = "default"
-    client_id: str | None = None
+    session_id: str = Field(min_length=1, max_length=128)
+    session_token: str = Field(min_length=1, max_length=256)
+
+
+class ChatSessionRequest(BaseModel):
+    session_id: str = Field(min_length=1, max_length=128)
+    session_token: str = Field(min_length=1, max_length=256)
+
+
+class AdminLoginRequest(BaseModel):
+    username: str = Field(min_length=1, max_length=128)
+    password: str = Field(min_length=1, max_length=1024)
+
+
+def get_admin_auth_config() -> tuple[str, str, str]:
+    username = os.getenv("ADMIN_USERNAME", "").strip()
+    password = os.getenv("ADMIN_PASSWORD", "")
+    secret = os.getenv("JWT_SECRET_KEY", "")
+    if not username or not password or not secret:
+        raise HTTPException(
+            status_code=503,
+            detail="La autenticación administrativa no está configurada.",
+        )
+    if len(secret.encode("utf-8")) < 32:
+        raise HTTPException(
+            status_code=503,
+            detail="JWT_SECRET_KEY debe tener al menos 32 bytes.",
+        )
+    return username, password, secret
+
+
+def require_admin(
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
+) -> str:
+    if credentials is None or credentials.scheme.lower() != "bearer":
+        raise HTTPException(
+            status_code=401,
+            detail="Se requiere un token de administrador.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    username, _, secret = get_admin_auth_config()
+    try:
+        payload = jwt.decode(
+            credentials.credentials,
+            secret,
+            algorithms=["HS256"],
+            options={"require": ["exp", "iat", "sub", "role"]},
+        )
+    except jwt.InvalidTokenError:
+        raise HTTPException(
+            status_code=401,
+            detail="Token inválido o expirado.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    if payload.get("role") != "admin" or payload.get("sub") != username:
+        raise HTTPException(
+            status_code=403,
+            detail="No tienes permisos para esta operación.",
+        )
+    return username
+
 
 @app.get("/")
 def read_root():
@@ -57,14 +114,6 @@ def read_root():
         "productos_en_catalogo": len(CATALOGO_PRODUCTOS)
     }
 
-@app.get("/admin")
-def read_admin():
-    """Sirve el panel de administración admin.html."""
-    admin_path = os.path.join(PROJECT_ROOT, "admin.html")
-    if os.path.exists(admin_path):
-        return FileResponse(admin_path)
-    return {"status": "error", "message": "admin.html no encontrado"}
-
 @app.get("/api/health")
 def health_check():
     return {
@@ -73,6 +122,45 @@ def health_check():
         "productos_en_catalogo": len(CATALOGO_PRODUCTOS),
         "ai_status": "local_only"
     }
+
+
+@app.post("/api/auth/login")
+def admin_login(request: AdminLoginRequest):
+    username, password, secret = get_admin_auth_config()
+    valid_username = hmac.compare_digest(
+        request.username.strip().encode("utf-8"),
+        username.encode("utf-8"),
+    )
+    valid_password = hmac.compare_digest(
+        request.password.encode("utf-8"),
+        password.encode("utf-8"),
+    )
+    if not (valid_username and valid_password):
+        raise HTTPException(
+            status_code=401,
+            detail="Usuario o contraseña incorrectos.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    now = datetime.now(timezone.utc)
+    expires_at = now + timedelta(minutes=ADMIN_TOKEN_TTL_MINUTES)
+    token = jwt.encode(
+        {
+            "sub": username,
+            "role": "admin",
+            "iat": now,
+            "exp": expires_at,
+        },
+        secret,
+        algorithm="HS256",
+    )
+    return {
+        "access_token": token,
+        "token_type": "bearer",
+        "expires_in": ADMIN_TOKEN_TTL_MINUTES * 60,
+        "role": "admin",
+    }
+
 
 CACHE_DIR = os.path.join(os.path.dirname(__file__), "cache_images")
 os.makedirs(CACHE_DIR, exist_ok=True)
@@ -202,7 +290,7 @@ def api_carreras():
 
 
 @app.post("/api/admin/sync-solotodo")
-def sync_solotodo():
+def sync_solotodo(_: str = Depends(require_admin)):
     """Ejecuta la actualización del catálogo desde SoloTodo."""
     try:
         from populate_from_solotodo import populate_database
@@ -213,27 +301,39 @@ def sync_solotodo():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error sincronizando con SoloTodo: {str(e)}")
 
+@app.post("/api/chat/session")
+def create_chat_session():
+    """Issues an opaque session reference and a token required to use it."""
+    session_id, session_token = session_manager.create_session()
+    return {"session_id": session_id, "session_token": session_token}
+
+
 @app.post("/api/chat/reset")
-def reset_session(session_id: str = "default"):
+def reset_session(request: ChatSessionRequest):
     """Permite reiniciar el historial de una conversación."""
-    if session_id in session_manager._sessions:
-        del session_manager._sessions[session_id]
+    if not session_manager.delete_session(request.session_id, request.session_token):
+        raise HTTPException(status_code=404, detail="Sesión no encontrada o credenciales inválidas.")
     return {"status": "ok", "message": "Historial reiniciado correctamente."}
 
 @app.post("/api/chat")
-def chat(request: ChatRequest):
+def chat(chat_request: ChatRequest, http_request: Request):
+    if not session_manager.verify_session(chat_request.session_id, chat_request.session_token):
+        raise HTTPException(status_code=401, detail="Sesión inválida o expirada.")
+
+    if http_request.client is None or not http_request.client.host:
+        raise HTTPException(status_code=503, detail="No se pudo determinar el origen de la conexión.")
+
     # 1. Filtro local de seguridad y optimización de cuota (Costo $0)
     es_valido, error_guardrail = validar_mensaje(
-        request.mensaje,
-        request.session_id,
-        request.client_id,
+        chat_request.mensaje,
+        http_request.client.host,
     )
     if not es_valido:
         return {"respuesta": error_guardrail}
 
     try:
-        msg_lower = request.mensaje.lower()
-        historial_previo = session_manager.get_history(request.session_id)
+        msg_lower = chat_request.mensaje.lower()
+        historial_previo = session_manager.get_history(chat_request.session_id)
         
         # Considerar mensaje actual y último mensaje del usuario para contexto
         textos_recientes = msg_lower
@@ -273,7 +373,7 @@ def chat(request: ChatRequest):
 
         # 4. Detección de Presupuesto
         presupuesto_clp = None
-        num_match = re.search(r'(\d{1,3}(?:\.\d{3})+|\d{5,8})', request.mensaje.replace('$', ''))
+        num_match = re.search(r'(\d{1,3}(?:\.\d{3})+|\d{5,8})', chat_request.mensaje.replace('$', ''))
         if num_match:
             try:
                 presupuesto_clp = int(num_match.group(1).replace('.', ''))
@@ -281,7 +381,7 @@ def chat(request: ChatRequest):
                 presupuesto_clp = None
 
         # 5. Obtención de productos reales de SoloTodo
-        terminos_limpios = " ".join([w for w in re.findall(r'\b[a-zA-Z0-9áéíóúñ]{3,}\b', request.mensaje.lower()) if w not in {"hola", "busco", "necesito", "quiero", "cual", "que", "para", "con", "por", "menos", "mas", "recomiendas"}])
+        terminos_limpios = " ".join([w for w in re.findall(r'\b[a-zA-Z0-9áéíóúñ]{3,}\b', chat_request.mensaje.lower()) if w not in {"hola", "busco", "necesito", "quiero", "cual", "que", "para", "con", "por", "menos", "mas", "recomiendas"}])
         query_busqueda = f"{carrera_detectada or ''} {terminos_limpios}".strip()
 
         productos_rel = buscar_productos(
@@ -356,7 +456,7 @@ def chat(request: ChatRequest):
             respuesta_texto = "\n".join(lineas_resp)
 
         # Guardar en memoria de sesión
-        session_manager.add_interaction(request.session_id, request.mensaje, respuesta_texto)
+        session_manager.add_interaction(chat_request.session_id, chat_request.mensaje, respuesta_texto)
         return {"respuesta": respuesta_texto}
 
     except Exception as e:

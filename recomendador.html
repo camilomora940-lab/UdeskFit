@@ -3113,6 +3113,7 @@
     // =========================================================
     function initAIChat() {
       const API_URL = (API_BASE ? API_BASE : '') + '/api/chat';
+      const API_SESSION_URL = (API_BASE ? API_BASE : '') + '/api/chat/session';
       const API_RESET_URL = (API_BASE ? API_BASE : '') + '/api/chat/reset';
 
       const launcher = document.getElementById('aiChatLauncher');
@@ -3129,16 +3130,26 @@
         return;
       }
 
-      // Obtener o crear ID de sesión único y persistente
+      // Session credentials are issued by the server and stored for this browser.
       let sessionId = localStorage.getItem('udeskfit_session_id');
-      if (!sessionId) {
-        sessionId = 'web_' + Math.random().toString(36).substring(2, 10);
+      let sessionToken = localStorage.getItem('udeskfit_session_token');
+
+      async function createChatSession() {
+        const response = await fetch(API_SESSION_URL, { method: 'POST' });
+        if (!response.ok) {
+          throw new Error(`No se pudo iniciar la sesión (${response.status}).`);
+        }
+        const session = await response.json();
+        sessionId = session.session_id;
+        sessionToken = session.session_token;
         localStorage.setItem('udeskfit_session_id', sessionId);
+        localStorage.setItem('udeskfit_session_token', sessionToken);
       }
-      let clientId = localStorage.getItem('udeskfit_client_id');
-      if (!clientId) {
-        clientId = 'client_' + Math.random().toString(36).substring(2, 10);
-        localStorage.setItem('udeskfit_client_id', clientId);
+
+      async function ensureChatSession() {
+        if (!sessionId || !sessionToken) {
+          await createChatSession();
+        }
       }
 
       function toggleChat() {
@@ -3164,12 +3175,21 @@
       resetBtn.addEventListener('click', async function () {
         if (confirm('¿Deseas reiniciar la memoria de la conversación?')) {
           try {
-            await fetch(`${API_RESET_URL}?session_id=${encodeURIComponent(sessionId)}`, { method: 'POST' });
+            await ensureChatSession();
+            const response = await fetch(API_RESET_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ session_id: sessionId, session_token: sessionToken })
+            });
+            if (!response.ok && response.status !== 404) {
+              throw new Error(`No se pudo reiniciar la sesión (${response.status}).`);
+            }
+            await createChatSession();
           } catch (e) {
-            console.warn('Reset error', e);
+            appendMessage('No se pudo reiniciar la memoria. Inténtalo nuevamente.', 'assistant');
+            console.error('Reset error', e);
+            return;
           }
-          sessionId = 'web_' + Math.random().toString(36).substring(2, 10);
-          localStorage.setItem('udeskfit_session_id', sessionId);
 
           const sysMsg = document.createElement('div');
           sysMsg.className = 'ai-msg system';
@@ -3244,16 +3264,22 @@
         const timeoutId = setTimeout(() => controller.abort(), 35000);
 
         try {
-          const res = await fetch(API_URL, {
+          await ensureChatSession();
+          const makeChatRequest = () => fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             signal: controller.signal,
             body: JSON.stringify({
               mensaje: text,
               session_id: sessionId,
-              client_id: clientId
+              session_token: sessionToken
             })
           });
+          let res = await makeChatRequest();
+          if (res.status === 401) {
+            await createChatSession();
+            res = await makeChatRequest();
+          }
 
           hideTyping();
 

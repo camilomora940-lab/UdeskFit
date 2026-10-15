@@ -33,7 +33,7 @@ Las recomendaciones y respuestas del asistente se generan localmente a partir de
 │   ├── products_db.json            # Catálogo local de productos
 │   ├── carreras_detalladas_92.json # Perfiles detallados de carreras UdeC
 │   └── requirements.txt            # Dependencias del backend
-├── admin.html                      # Panel de administración
+├── admin.html                      # Archivo legado; no se sirve ni se usa en la aplicación
 ├── recomendador.html               # Interfaz principal
 ├── requirements.txt                # Dependencias para ejecutar y desplegar
 ├── compose.yaml                    # Servicio Docker Compose
@@ -58,17 +58,14 @@ Clona el respositorio:
 git clone https://github.com/camilomora940-lab/UdeskFit.git
 ```
 
-Crea un archivo .env en la carpeta /backend con las siguientes variables:
-```bash
-GEMINI_API_KEY={GEMINI_KEY}
-```
+Antes de iniciar la aplicación, configura las credenciales de administrador en un archivo `.env` en la raíz del repositorio. No lo subas a Git.
 
 Desde la raíz corre el contenedor con docker:
 ```bash
 docker compose up -d
 ```
 
-La aplicación se ejecuta en el puerto 6767
+La aplicación se ejecuta por defecto en el puerto 6767.
 
 ### Ejecución local
 
@@ -87,10 +84,9 @@ docker compose up -d
 
 Compose construye la imagen si es necesario e inicia el contenedor en segundo plano. Luego abre:
 
-- Aplicación: <http://localhost:8000/>
-- Panel de administración: <http://localhost:8000/admin>
-- Documentación de la API: <http://localhost:8000/docs>
-- Estado del servicio: <http://localhost:8000/api/health>
+- Aplicación: <http://localhost:6767/>
+- Documentación de la API: <http://localhost:6767/docs>
+- Estado del servicio: <http://localhost:6767/api/health>
 
 Para ver los registros:
 
@@ -108,15 +104,24 @@ Al cambiar el código o las dependencias, reconstruye y reinicia con `docker com
 
 ### Variables de entorno
 
-No se necesitan claves ni variables de entorno para ejecutar la configuración predeterminada. `APP_PORT` es opcional y cambia el puerto publicado en el equipo anfitrión; el puerto interno del contenedor permanece en `8000`.
+La autenticación para operaciones administrativas de la API requiere las siguientes variables. La aplicación principal sigue disponible si no se configuran, pero el inicio de sesión administrativo falla de forma cerrada. `ADMIN_PASSWORD` debe ser una contraseña larga y única; `JWT_SECRET_KEY` debe tener al menos 32 bytes aleatorios. Puedes generar una clave con:
 
-Para usar un puerto distinto, crea un archivo `.env` en la raíz del repositorio:
-
-```dotenv
-APP_PORT=8080
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(48))"
 ```
 
-Después inicia Compose con `docker compose up -d` y visita <http://localhost:8080/>. No agregues secretos al repositorio. El archivo `.dockerignore` excluye `.env` de la imagen.
+Crea un archivo `.env` en la raíz del repositorio y añade estos valores:
+
+```dotenv
+APP_PORT=6767
+ADMIN_USERNAME=
+ADMIN_PASSWORD=
+JWT_SECRET_KEY=
+```
+
+Completa los tres valores de administrador antes de iniciar el servicio. Compose inyecta las credenciales al contenedor; el archivo `.dockerignore` excluye `.env` de la imagen y `.gitignore` evita que se suba al repositorio. Para cambiar el puerto publicado, modifica `APP_PORT`; por ejemplo, `8080` permite acceder desde <http://localhost:8080/>.
+
+En Render, configura `ADMIN_USERNAME`, `ADMIN_PASSWORD` y `JWT_SECRET_KEY` como variables secretas del servicio. Usa HTTPS en despliegues públicos. Si una clave ya se compartió o expuso, revócala y genera una nueva.
 
 ### Ejecución sin Docker (opcional)
 
@@ -124,13 +129,12 @@ Se requiere Python 3.11. Instala las dependencias desde la raíz del repositorio
 
 ```bash
 python -m pip install -r requirements.txt
-python -m uvicorn backend.main:app --reload
+python -m uvicorn backend.main:app --reload --port 6767
 ```
 
 Abre estas direcciones en el navegador:
 
 - Aplicación: <http://127.0.0.1:6767/>
-- Panel de administración: <http://127.0.0.1:6767/admin>
 - Documentación interactiva de la API: <http://127.0.0.1:6767/docs>
 - Estado del servicio: <http://127.0.0.1:6767/api/health>
 
@@ -145,11 +149,13 @@ Usa la URL servida por FastAPI en vez de abrir `recomendador.html` directamente 
 | `GET` | `/api/productos` | Búsqueda del catálogo; admite filtros como `categoria`, `presupuesto_max`, `q` y `limit` |
 | `GET` | `/api/recomendar` | Recomendaciones filtradas por carrera, categoría y presupuesto |
 | `GET` | `/api/imagen-proxy` | Obtiene y cachea imágenes alojadas en SoloTodo |
-| `POST` | `/api/chat` | Envía una consulta al asistente local |
-| `POST` | `/api/chat/reset` | Reinicia el historial de una sesión |
-| `POST` | `/api/admin/sync-solotodo` | Actualiza el catálogo local desde SoloTodo |
+| `POST` | `/api/chat/session` | Crea una sesión de chat y entrega sus credenciales |
+| `POST` | `/api/chat` | Envía una consulta con las credenciales de su sesión |
+| `POST` | `/api/chat/reset` | Reinicia una sesión presentando sus credenciales |
+| `POST` | `/api/auth/login` | Valida credenciales de administrador y devuelve un JWT |
+| `POST` | `/api/admin/sync-solotodo` | Actualiza el catálogo local desde SoloTodo; requiere JWT con rol `admin` |
 
-La documentación interactiva disponible en `/docs` muestra los parámetros y esquemas de cada endpoint.
+La documentación interactiva disponible en `/docs` muestra los parámetros y esquemas de cada endpoint. El chat obtiene primero un `session_id` opaco y un `session_token` mediante `POST /api/chat/session`, y debe enviar ambos en las solicitudes de chat y reinicio. El token de sesión no debe exponerse en URL. La cuota de chat se aplica según la dirección IP que ve el servidor, no según un identificador proporcionado por el navegador. En Render, Uvicorn confía en las cabeceras de IP reenviadas por el proxy de la plataforma. Un cliente administrativo obtiene un JWT mediante `POST /api/auth/login`; el token dura 30 minutos. Las rutas de consulta y chat no requieren cuenta; `/api/admin/sync-solotodo` valida el rol `admin` en el backend. `admin.html` es un archivo legado que ya no se sirve desde la aplicación.
 
 ## Datos del catálogo
 

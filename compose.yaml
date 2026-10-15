@@ -3,4 +3,8 @@ services:
     build: .
     ports:
       - "${APP_PORT:-6767}:6767"
+    environment:
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-}
     restart: unless-stopped

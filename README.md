@@ -163,7 +163,7 @@ El backend carga los productos desde `backend/products_db.json` al iniciar. Los 
 
 ## Despliegue
 
-El repositorio incluye `render.yaml` para configurar el servicio web en Render. También incluye un `Dockerfile` para construir una imagen de la aplicación. En ambos casos, el punto de entrada de FastAPI es `backend.main:app`.
+El repositorio incluye `render.yaml` para configurar el servicio web en Render. También incluye un `Dockerfile` para construir una imagen de la aplicación. En ambos casos, el punto de entrada de FastAPI es `backend.main:app`. La construcción Docker actualiza los paquetes Debian disponibles y `setuptools`; reconstruye y vuelve a escanear la imagen periódicamente. Docker Scout todavía reporta CVE-2026-85091 en zlib de Debian Trixie sin una versión corregida disponible; no se oculta el hallazgo y se debe reconstruir cuando Debian publique el parche.
 
 ## Licencia
 

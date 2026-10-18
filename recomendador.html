@@ -2616,7 +2616,7 @@
           var grid = document.getElementById('solotodoProductsGrid');
           if (grid) {
             grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#64748b;background:#f8fafc;border-radius:12px;border:1px dashed #cbd5e1">' +
-              'ℹ️ Inicia el servidor backend en http://127.0.0.1:8000 para cargar las ofertas de SoloTodo en tiempo real.' +
+              'ℹ️ No se pudieron cargar las ofertas en tiempo real en este momento. Inténtalo nuevamente más tarde.' +
               '</div>';
           }
         });
@@ -3284,7 +3284,7 @@
           hideTyping();
 
           if (!res.ok) {
-            appendMessage('Lo siento, hubo un problema al procesar la respuesta. Verifica que el servidor FastAPI esté corriendo en el puerto 8000.', 'assistant');
+            appendMessage('Lo siento, el servicio de asesoría técnica no se encuentra disponible temporalmente. Por favor, inténtalo más tarde.', 'assistant');
             return;
           }
 
@@ -3295,7 +3295,7 @@
           if (err.name === 'AbortError') {
             appendMessage('La respuesta está tardando demasiado. Inténtalo nuevamente en unos momentos.', 'assistant');
           } else {
-            appendMessage('No se pudo conectar con el servidor local. Por favor, asegúrate de que FastAPI esté ejecutándose en http://127.0.0.1:8000.', 'assistant');
+            appendMessage('No se pudo establecer conexión con el servicio de asesoría técnica. Por favor, verifica tu conexión o inténtalo más tarde.', 'assistant');
           }
         } finally {
           clearTimeout(timeoutId);
@@ -3377,7 +3377,6 @@
       <div class="ai-chat-footer-note">Potenciado por Google Gemini • Catálogo en tiempo real</div>
     </div>
   </div>
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a8c9f13f4c7c40509d47f261c089a593"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 
 </html>

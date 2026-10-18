@@ -18,7 +18,8 @@ COPY . .
 
 # Puerto por defecto
 ENV PORT=6767
+ENV FORWARDED_ALLOW_IPS=127.0.0.1
 EXPOSE 6767
 
 # Comando de ejecución
-CMD ["python", "-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "6767"]
+CMD ["sh", "-c", "python -m uvicorn backend.main:app --host 0.0.0.0 --port 6767 --proxy-headers --forwarded-allow-ips=$FORWARDED_ALLOW_IPS"]

@@ -13,7 +13,7 @@ if CURRENT_DIR not in sys.path:
     sys.path.insert(0, CURRENT_DIR)
 
 import jwt
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.responses import Response, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -37,7 +37,7 @@ if os.path.exists(ASSETS_DIR):
     app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
 
 class ChatRequest(BaseModel):
-    mensaje: str
+    mensaje: str = Field(min_length=1, max_length=500)
     session_id: str = Field(min_length=1, max_length=128)
     session_token: str = Field(min_length=1, max_length=256)
 
@@ -165,6 +165,34 @@ def admin_login(request: AdminLoginRequest):
 CACHE_DIR = os.path.join(os.path.dirname(__file__), "cache_images")
 os.makedirs(CACHE_DIR, exist_ok=True)
 
+# Límites del proxy de imágenes (Hallazgo I)
+MAX_IMAGE_BYTES = 10 * 1024 * 1024  # 10 MB máximo por imagen
+MAX_CACHE_FILES = 500  # Máximo de imágenes en caché
+
+
+def _enforce_cache_limit():
+    """Elimina los archivos más antiguos del caché si se excede MAX_CACHE_FILES."""
+    try:
+        cache_files = [
+            os.path.join(CACHE_DIR, f)
+            for f in os.listdir(CACHE_DIR)
+            if not f.endswith(".meta")
+        ]
+        if len(cache_files) <= MAX_CACHE_FILES:
+            return
+        # Ordenar por mtime (más antiguo primero) y eliminar excedentes
+        cache_files.sort(key=lambda p: os.path.getmtime(p))
+        for path in cache_files[: len(cache_files) - MAX_CACHE_FILES]:
+            try:
+                os.remove(path)
+                meta = path + ".meta"
+                if os.path.exists(meta):
+                    os.remove(meta)
+            except OSError:
+                pass
+    except OSError:
+        pass
+
 def detect_mime(data: bytes, url: str) -> str:
     if len(data) >= 12:
         if data.startswith(b'\x89PNG\r\n\x1a\n'):
@@ -188,7 +216,7 @@ def detect_mime(data: bytes, url: str) -> str:
     return 'image/jpeg'
 
 @app.get("/api/imagen-proxy")
-def imagen_proxy(url: str):
+def imagen_proxy(url: str = Query(max_length=2048)):
     """
     Proxy que resuelve el problema de Content-Type: application/octet-stream
     de la CDN de SoloTodo y cachea localmente las imágenes para carga ultra rápida.
@@ -222,11 +250,18 @@ def imagen_proxy(url: str):
             }
         )
         with urllib.request.urlopen(req, timeout=10) as resp:
-            data = resp.read()
+            # Leer con límite de tamaño para evitar uso descontrolado de RAM
+            data = resp.read(MAX_IMAGE_BYTES + 1)
+            if len(data) > MAX_IMAGE_BYTES:
+                raise HTTPException(
+                    status_code=413,
+                    detail=f"La imagen excede el tamaño máximo permitido ({MAX_IMAGE_BYTES // (1024 * 1024)} MB)."
+                )
             mime_type = detect_mime(data, url)
             
-            # Guardar en caché
+            # Guardar en caché respetando el límite de archivos
             try:
+                _enforce_cache_limit()
                 with open(cache_path, 'wb') as f:
                     f.write(data)
                 with open(meta_path, 'w', encoding='utf-8') as f:
@@ -237,11 +272,18 @@ def imagen_proxy(url: str):
             return Response(content=data, media_type=mime_type, headers={"Cache-Control": "public, max-age=2592000"})
     except urllib.error.HTTPError as he:
         raise HTTPException(status_code=he.code, detail=f"SoloTodo devolvió error {he.code}")
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Error obteniendo imagen de SoloTodo: {str(e)}")
 
 @app.get("/api/productos")
-def listar_productos(categoria: str = None, presupuesto_max: int = None, q: str = None, limit: int = 50):
+def listar_productos(
+    categoria: str = Query(default=None, max_length=64),
+    presupuesto_max: int = Query(default=None, ge=0, le=100_000_000),
+    q: str = Query(default=None, max_length=200),
+    limit: int = Query(default=50, ge=1, le=100),
+):
     """Retorna productos del catálogo SoloTodo filtrados por categoría, presupuesto y búsqueda."""
     res = buscar_productos(categoria=categoria, presupuesto_maximo=presupuesto_max, query=q, limite=limit)
     return {
@@ -252,7 +294,13 @@ def listar_productos(categoria: str = None, presupuesto_max: int = None, q: str 
     }
 
 @app.get("/api/recomendar")
-def api_recomendar(carrera: str = "ing_civil_industrial", presupuesto: str = None, categoria: str = None, q: str = None, limit: int = 50):
+def api_recomendar(
+    carrera: str = Query(default="ing_civil_industrial", max_length=128),
+    presupuesto: str = Query(default=None, max_length=20),
+    categoria: str = Query(default=None, max_length=64),
+    q: str = Query(default=None, max_length=200),
+    limit: int = Query(default=50, ge=1, le=100),
+):
     """
     Retorna productos reales de SoloTodo clasificados y optimizados para la carrera universitaria
     y presupuesto seleccionados.
@@ -302,9 +350,14 @@ def sync_solotodo(_: str = Depends(require_admin)):
         raise HTTPException(status_code=500, detail=f"Error sincronizando con SoloTodo: {str(e)}")
 
 @app.post("/api/chat/session")
-def create_chat_session():
+def create_chat_session(http_request: Request):
     """Issues an opaque session reference and a token required to use it."""
-    session_id, session_token = session_manager.create_session()
+    if http_request.client is None or not http_request.client.host:
+        raise HTTPException(status_code=503, detail="No se pudo determinar el origen de la conexión.")
+    try:
+        session_id, session_token = session_manager.create_session(http_request.client.host)
+    except ValueError as e:
+        raise HTTPException(status_code=429, detail=str(e))
     return {"session_id": session_id, "session_token": session_token}
 
 

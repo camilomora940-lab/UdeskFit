@@ -58,6 +58,9 @@ MIN_INTERVAL_SECONDS = 5
 MAX_REQUESTS_PER_WINDOW = 10
 REQUEST_WINDOW_SECONDS = 3600
 
+# Máximo de sesiones activas por IP (Hallazgo III)
+MAX_SESSIONS_PER_IP = 5
+
 
 class SessionManager:
     def __init__(self):
@@ -74,11 +77,15 @@ class SessionManager:
         for sid in expired_keys:
             del self._sessions[sid]
 
-        # Si aún hay demasiadas sesiones (más de 100), descartar las más antiguas
-        if len(self._sessions) > 100:
+        # Si aún hay demasiadas sesiones (más de 200), descartar solo las menos activas
+        if len(self._sessions) > 200:
             sorted_sessions = sorted(self._sessions.items(), key=lambda item: item[1].get("last_active", 0))
-            for sid, _ in sorted_sessions[:30]:
-                self._sessions.pop(sid, None)
+            for sid, data in sorted_sessions:
+                if len(self._sessions) <= 200:
+                    break
+                # Solo eliminar sesiones inactivas por más de la mitad del TTL
+                if now - data.get("last_active", 0) > SESSION_TTL_SECONDS / 2:
+                    self._sessions.pop(sid, None)
 
         expired_rate_limit_keys = [
             key for key, data in self._rate_limits.items()
@@ -87,9 +94,21 @@ class SessionManager:
         for key in expired_rate_limit_keys:
             del self._rate_limits[key]
 
-    def create_session(self) -> tuple[str, str]:
+    def create_session(self, client_ip: str) -> tuple[str, str]:
         """Creates an opaque session reference and its private access token."""
         self._cleanup_old_sessions()
+
+        # Limitar sesiones por IP para evitar abuso (Hallazgo III)
+        ip_session_count = sum(
+            1 for data in self._sessions.values()
+            if data.get("client_ip") == client_ip
+        )
+        if ip_session_count >= MAX_SESSIONS_PER_IP:
+            raise ValueError(
+                f"Límite de sesiones activas alcanzado ({MAX_SESSIONS_PER_IP}). "
+                "Cierra o espera que expire una sesión existente antes de crear una nueva."
+            )
+
         session_id = secrets.token_urlsafe(24)
         session_token = secrets.token_urlsafe(32)
         now = time.time()
@@ -99,6 +118,7 @@ class SessionManager:
             "last_request": 0,
             "request_times": [],
             "token_hash": hashlib.sha256(session_token.encode("utf-8")).hexdigest(),
+            "client_ip": client_ip,
         }
         return session_id, session_token
 

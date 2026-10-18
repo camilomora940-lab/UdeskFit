@@ -1,1 +1,1 @@
-web: python -m uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8000}
+web: python -m uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8000} --proxy-headers --forwarded-allow-ips=${FORWARDED_ALLOW_IPS:-127.0.0.1}
